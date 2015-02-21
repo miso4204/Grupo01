@@ -3,31 +3,31 @@
 		<struct>
 			<and abstract="true" mandatory="true" name="stampidia">
 				<and mandatory="true" name="productDesign">
-					<and name="shirtDesign">
+					<and mandatory="true" name="shirtDesign">
 						<feature name="customText"/>
 						<feature mandatory="true" name="shirtSize"/>
 						<feature name="shirtColor"/>
 						<feature name="shirtStyle"/>
 						<feature name="stampLocation"/>
 					</and>
-					<and name="stampDesign">
+					<and mandatory="true" name="stampDesign">
 						<feature name="stampSize"/>
-						<feature name="stampStyle"/>
+						<feature mandatory="true" name="stampStyle"/>
 					</and>
 				</and>
 				<and mandatory="true" name="shoppingCart">
-					<feature name="cartCRUD"/>
-					<or name="paymentMethod">
+					<feature mandatory="true" name="cartCRUD"/>
+					<or mandatory="true" name="paymentMethod">
 						<feature mandatory="true" name="cashOnDelivery"/>
 						<feature mandatory="true" name="creditCard"/>
 						<feature mandatory="true" name="bankDeposit"/>
 						<feature mandatory="true" name="PSE"/>
 					</or>
-					<and name="shippingInfo">
-						<feature name="talk2Vendor"/>
-						<feature name="stampidiaHandlesIt"/>
-					</and>
-					<feature name="checkout"/>
+					<or mandatory="true" name="shippingInfo">
+						<feature mandatory="true" name="talk2Vendor"/>
+						<feature mandatory="true" name="stampidiaHandlesIt"/>
+					</or>
+					<feature mandatory="true" name="checkout"/>
 				</and>
 				<or mandatory="true" name="catalog">
 					<feature mandatory="true" name="search"/>
@@ -51,21 +51,21 @@
 					<feature mandatory="true" name="createRating"/>
 				</and>
 				<and name="socialNetworking">
-					<and name="login">
-						<feature name="googlePlus"/>
-						<feature name="twitter"/>
-						<feature name="facebook"/>
-					</and>
+					<or name="login">
+						<feature mandatory="true" name="googlePlus"/>
+						<feature mandatory="true" name="twitter"/>
+						<feature mandatory="true" name="facebook"/>
+					</or>
 					<and name="share">
 						<feature name="like"/>
 						<feature name="purchase"/>
 					</and>
 				</and>
-				<and name="reports">
-					<feature name="reportByTheme"/>
-					<feature name="reportByStamp"/>
-					<feature name="reportByDate"/>
-				</and>
+				<or name="reports">
+					<feature mandatory="true" name="reportByTheme"/>
+					<feature mandatory="true" name="reportByStamp"/>
+					<feature mandatory="true" name="reportByDate"/>
+				</or>
 				<feature name="auction"/>
 			</and>
 		</struct>
