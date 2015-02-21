@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="stampidia">
+				<and mandatory="true" name="productDesign">
+					<and name="shirtDesign">
+						<feature name="customText"/>
+						<feature mandatory="true" name="shirtSize"/>
+						<feature name="shirtColor"/>
+						<feature name="shirtStyle"/>
+						<feature name="stampLocation"/>
+					</and>
+					<and name="stampDesign">
+						<feature name="stampSize"/>
+						<feature name="stampStyle"/>
+					</and>
+				</and>
+				<and mandatory="true" name="shoppingCart">
+					<feature name="cartCRUD"/>
+					<or name="paymentMethod">
+						<feature mandatory="true" name="cashOnDelivery"/>
+						<feature mandatory="true" name="creditCard"/>
+						<feature mandatory="true" name="bankDeposit"/>
+						<feature mandatory="true" name="PSE"/>
+					</or>
+					<and name="shippingInfo">
+						<feature name="talk2Vendor"/>
+						<feature name="stampidiaHandlesIt"/>
+					</and>
+					<feature name="checkout"/>
+				</and>
+				<or mandatory="true" name="catalog">
+					<feature mandatory="true" name="search"/>
+					<or mandatory="true" name="filter">
+						<feature mandatory="true" name="byTheme"/>
+						<feature mandatory="true" name="byAuthor"/>
+						<feature mandatory="true" name="byRating"/>
+						<feature mandatory="true" name="byPrice"/>
+						<feature mandatory="true" name="byDate"/>
+					</or>
+				</or>
+				<feature mandatory="true" name="productManagement"/>
+				<and mandatory="true" name="admin">
+					<feature mandatory="true" name="logIn"/>
+					<feature mandatory="true" name="signUp"/>
+					<feature mandatory="true" name="signOut"/>
+					<feature mandatory="true" name="CRUDUser"/>
+					<feature mandatory="true" name="updateProfile"/>
+				</and>
+				<and name="postsale">
+					<feature mandatory="true" name="createRating"/>
+				</and>
+				<and name="socialNetworking">
+					<and name="login">
+						<feature name="googlePlus"/>
+						<feature name="twitter"/>
+						<feature name="facebook"/>
+					</and>
+					<and name="share">
+						<feature name="like"/>
+						<feature name="purchase"/>
+					</and>
+				</and>
+				<and name="reports">
+					<feature name="reportByTheme"/>
+					<feature name="reportByStamp"/>
+					<feature name="reportByDate"/>
+				</and>
+				<feature name="auction"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>cashOnDelivery</var>
+					<var>talk2Vendor</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>byRating</var>
+					<var>createRating</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
