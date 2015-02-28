@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- prefuse TreeML Writer | Sat Feb 28 11:30:13 COT 2015 -->
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="solitary" type="Int"/>
+    <attributeDecl name="group" type="Int"/>
+  </declarations>
+
+  <branch>
+    <attribute name="name" value="Inmobiliaria"/>
+    <attribute name="solitary" value="-1"/>
+    <attribute name="group" value="-1"/>
+    <branch>
+      <attribute name="name" value="GActivos"/>
+      <attribute name="solitary" value="0"/>
+      <attribute name="group" value="-1"/>
+      <leaf>
+        <attribute name="name" value="revisionesMercado"/>
+        <attribute name="solitary" value="1"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <branch>
+        <attribute name="name" value="reporting"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+        <branch>
+          <attribute name="name" value="XOR106"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="16"/>
+          <leaf>
+            <attribute name="name" value="operativo"/>
+            <attribute name="solitary" value="-1"/>
+            <attribute name="group" value="-1"/>
+          </leaf>
+          <leaf>
+            <attribute name="name" value="financiero"/>
+            <attribute name="solitary" value="-1"/>
+            <attribute name="group" value="-1"/>
+          </leaf>
+        </branch>
+      </branch>
+      <leaf>
+        <attribute name="name" value="refinanciacion"/>
+        <attribute name="solitary" value="1"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="adquisicionInmuebles"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="contabilidad"/>
+        <attribute name="solitary" value="1"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="alquileres"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="auditorias"/>
+        <attribute name="solitary" value="1"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <branch>
+        <attribute name="name" value="gestionInmobiliaria"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+        <leaf>
+          <attribute name="name" value="gestionEquipamiento"/>
+          <attribute name="solitary" value="0"/>
+          <attribute name="group" value="-1"/>
+        </leaf>
+      </branch>
+      <leaf>
+        <attribute name="name" value="ventaActivos"/>
+        <attribute name="solitary" value="1"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="valoraciones"/>
+        <attribute name="solitary" value="1"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+    </branch>
+    <branch>
+      <attribute name="name" value="GCapital"/>
+      <attribute name="solitary" value="1"/>
+      <attribute name="group" value="-1"/>
+      <branch>
+        <attribute name="name" value="inversiones"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+        <branch>
+          <attribute name="name" value="OR107"/>
+          <attribute name="solitary" value="-1"/>
+          <attribute name="group" value="8"/>
+          <leaf>
+            <attribute name="name" value="tradicionales"/>
+            <attribute name="solitary" value="-1"/>
+            <attribute name="group" value="-1"/>
+          </leaf>
+          <leaf>
+            <attribute name="name" value="alternativas"/>
+            <attribute name="solitary" value="-1"/>
+            <attribute name="group" value="-1"/>
+          </leaf>
+        </branch>
+      </branch>
+      <leaf>
+        <attribute name="name" value="adquisiciones"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="RelacionInversores"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="definicionGobiernoCorporativo"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+      <leaf>
+        <attribute name="name" value="ventaActivs"/>
+        <attribute name="solitary" value="0"/>
+        <attribute name="group" value="-1"/>
+      </leaf>
+    </branch>
+  </branch>
+</tree>

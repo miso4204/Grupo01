@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!-- 
+Universidad de los Andes (Bogotá - Colombia)
+Departamento de Ingeniería de Sistemas y Computación 
+Licenciado bajo el esquema Academic Free License version 2.1 
+
+Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
+Ejercicio: n15_biblioteca
+Autor: Juan Erasmo Gómez - 12-ago-2008
+-->
+<project name="biblioteca" default="build" basedir="../">
+
+	<!--
+	*******************************************************
+		Generales
+	*******************************************************
+	-->
+
+	<!-- Classpath para compilación -->
+	<path id="classpath">
+		<fileset dir="./lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Classpath para compilación de pruebas -->
+	<path id="classpathTests">
+		<fileset dir="./test/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="./lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement location="classes" />
+	</path>
+
+	<!-- Inicialización de las Propiedades -->
+	<target name="init" description="Inicializa las propiedades">
+		<!-- Definición de Propiedades -->
+		<property name="source" value="./source" />
+		<property name="classes" value="./classes" />
+		<property name="data" value="./data" />
+		<property name="dist" value="./dist" />
+		<property name="jar" value="biblioteca.jar" />
+		<property name="bin" value="./bin" />
+		<property name="dist" value="./dist" />
+		<property name="lib" value="./lib" />
+		<property name="test" value="./test" />
+		<property name="javadoc" value="./docs/api" />
+		<property name="main-class" value="uniandes.cupi2.biblioteca.interfaz.InterfazBiblioteca" />
+		<!-- Borra y crea los directorios nuevamente -->
+		<delete dir="${classes}" />
+		<mkdir dir="${classes}" />
+		<delete dir="${test}/${classes}" />
+		<mkdir dir="${test}/${classes}" />
+		<delete dir="${dist}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<!--
+	*******************************************************
+		Ejercicio
+	*******************************************************
+	-->
+
+	<!-- Compilación -->
+	<target name="compile" description="Compilación" depends="init">
+		<!-- Compila -->
+		<javac destdir="${classes}" debug="on" deprecation="on" optimize="on" classpathref="classpath">
+			<src path="${source}" />
+		</javac>
+	</target>
+
+	<!-- Creación del jar ejecutable -->
+	<target name="build" depends="compile" description="Crea el JAR de la aplicación">
+		<!-- Copia la carpeta lib en dist -->
+		<copy todir="${dist}/${lib}">
+			<fileset dir="${lib}" />
+		</copy>
+		<!-- Copia la carpeta data a dist -->
+		<copy todir="${dist}/${data}">
+			<fileset dir="${data}" />
+		</copy>
+
+		<!-- Crea una propiedad con los jar utilizados en el proyecto -->
+		<pathconvert property="jars" pathsep=" ">
+			<mapper>
+				<chainedmapper>
+					<!-- elimina los paths absolutos -->
+					<flattenmapper />
+					<!-- Agrega el prefijo lib/ -->
+					<globmapper from="*" to="lib/*" />
+				</chainedmapper>
+			</mapper>
+			<path>
+				<!-- Especifica los jar que se quieren en el manifest -->
+				<fileset dir="${dist}/${lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</path>
+		</pathconvert>
+
+		<!-- Empaqueta las clases en un JAR ejecutable -->
+		<jar jarfile="${dist}/${jar}">
+			<fileset dir="${classes}" />
+			<!--Variables del manifest-->
+			<manifest>
+				<attribute name="Class-Path" value="${jars}" />
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!--
+	*******************************************************
+		Pruebas
+	*******************************************************
+	-->
+
+	<!-- Compila las pruebas -->
+	<target name="compileTest" description="Compilación de las pruebas" depends="compile">
+		<javac destdir="${test}/${classes}" debug="on" deprecation="on" optimize="on" classpathref="classpathTests">
+			<src path="${test}/${source}" />
+		</javac>
+	</target>
+
+
+	<!-- Ejecución de las pruebas -->
+	<target name="runTest" depends="compileTest" description="Ejecuta las pruebas del sistema">
+		<java classname="junit.swingui.TestRunner" fork="yes">
+			<classpath>
+				<path refid="classpathTests" />
+				<pathelement location="${test}/${classes}" />
+			</classpath>
+			<arg value="uniandes.cupi2.biblioteca.test.BibliotecaTest" />
+			<jvmarg value="-ea" />
+		</java>
+	</target>
+
+	<!--
+	*******************************************************
+		Documentación
+	*******************************************************
+	-->
+
+	<!-- Generación del javadoc -->
+	<target name="javaDoc" depends="init" description="Genera el java doc de la aplicación">
+		<javadoc destdir="${javadoc}">
+			<fileset dir="${source}" />
+			<fileset dir="${test}/${source}" />
+		</javadoc>
+	</target>
+</project>
