@@ -1,0 +1,332 @@
+<div>
+
+				<p>
+ESTRUCTURAS DE DATOS ? NIVEL 15				</p>
+
+				<p>
+José F. Vargas y Juan S. Montes				</p>
+
+				<p>
+				</p>
+
+				<h1>
+Análisis implementación				</h1>
+
+				<p>
+				</p>
+
+				<p>
+					<img width="566" height="753" src="Disenio_archivos/image001.jpg">
+					</img>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+Para cumplir con los requerimientos exigidos
+se implementaron dos Tablas Hashing y tres Árboles AVL cada nodo
+del árbol conteniendo a su vez Listas Encadenadas Ordenadas, las
+tres estructuras siendo de cupi2collections y una ArrayList. La
+primera tabla hashing es usada con el objetivo de administrar los
+usuarios, que a su vez contiene un ArrayList para manejar las
+referencias a los libros alquilados y la segunda para administrar
+los libros. Los árboles AVL se usan con el proposito de almacenar
+los índices de los libros y lograr que su inserción y busqueda sea
+lo más eficiente posible. Las listas contenidas por los nodos del
+árbol son usadas para almacenar los libros con ciertos índices
+teniendo por referencia su posición en el ArrayList de referencias,
+estas listas son ordenadas para que la intersección entre los
+índices se pueda realizar de modo paralelo y eficiente.				</p>
+
+				<p>
+				</p>
+
+				<p>
+En cuestión a la serialización los libros y
+los autores son almacenados en ArrayList sin tener en cuenta los
+árboles. Una vez cargadoos los archivos de serialización se agregan
+los libros, usuarios y se rearman los árboles con sus
+índices.				</p>
+
+				<p>
+				</p>
+
+				<p>
+					<img width="566" height="441" src="Disenio_archivos/image002.jpg">
+					</img>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+Esquema de representación				</p>
+
+				<p>
+				</p>
+
+				<p>
+					<img width="567" height="351" src="Disenio_archivos/image003.jpg">
+					</img>
+				</p>
+
+				<p>
+				</p>
+
+				<p>
+Cálculo de complejidad:				</p>
+
+				<p>
+				</p>
+
+				<p>
+ArbolIndices:				</p>
+
+				<ul type="disc">
+
+					<li>
+Constructor, O(1)					</li>
+
+					<li>
+agregarIndices, O(n*n)					</li>
+
+					<li>
+buscarIndicesExactos, O(n*n*n)					</li>
+
+					<li>
+buscarIndicesPorPalabra, O(n*n)					</li>
+
+				</ul>
+
+				<p>
+Biblioteca				</p>
+
+				<ul type="disc">
+
+					<li>
+Constructor, O(n*n*n)					</li>
+
+					<li>
+						<span lang="EN-US">
+r0_registrarUsuario,
+O(1)						</span>
+					</li>
+
+					<li>
+r1_agregarLibro, O(n*n)					</li>
+
+					<li>
+r2_buscarPorTitulo, O(n*n*n)					</li>
+
+					<li>
+r2_buscarPorTituloP, O(n*n)					</li>
+
+					<li>
+r3_buscarPorAutores, O(n*n*n)					</li>
+
+					<li>
+r3_buscarPorAutoresP, O(n*n)					</li>
+
+					<li>
+r4_buscarPorDescriptores, O(n*n*n)					</li>
+
+					<li>
+r4_buscarPorDescriptoresP, O(n*n)					</li>
+
+					<li>
+r5_alquilarLibro, O(1)					</li>
+
+					<li>
+r6_devolverLibro, O(1)					</li>
+
+					<li>
+r7_darTotallLibros, O(1)					</li>
+
+					<li>
+r7_darTotalEnPrestamo, O(1)					</li>
+
+					<li>
+darUsuario, O(1)					</li>
+
+					<li>
+darLibro, O(1)					</li>
+
+					<li>
+sumarTotal, O(1)					</li>
+
+					<li>
+darTitulos, O(1)					</li>
+
+					<li>
+darAutores(), O(1)					</li>
+
+					<li>
+darDescriptores(), O(1)					</li>
+
+					<li>
+darPosicion(int), O(1)					</li>
+
+					<li>
+serializar, O(1)					</li>
+
+					<li>
+cargar, O(n*n*n)					</li>
+
+				</ul>
+
+				<p>
+Libro				</p>
+
+				<ul type="disc">
+
+					<li>
+Constructor, O(n)					</li>
+
+					<li>
+reducirCopiasDisponibles, O(1)					</li>
+
+					<li>
+reducirCopiasEnPrestamo, O(1)					</li>
+
+					<li>
+aumentarCopiasDisponibles, O(1)					</li>
+
+					<li>
+aumentarCopiasEnPrestamo, O(1)					</li>
+
+					<li>
+estanTodosDisponibles, O(1)					</li>
+
+					<li>
+darReferencia, O(1)					</li>
+
+					<li>
+darTitulo, O(1)					</li>
+
+					<li>
+darAutores, O(n)					</li>
+
+					<li>
+darDescriptores, O(n)					</li>
+
+					<li>
+darCopiasDisponibles, O(1)					</li>
+
+					<li>
+darCopiasPrestamo, O(1)					</li>
+
+					<li>
+getAutores, O(1)					</li>
+
+					<li>
+getDescriptores, O(1)					</li>
+
+					<li>
+getPalabrasTitulo, O(1)					</li>
+
+					<li>
+darTodos, O(1)					</li>
+
+				</ul>
+
+				<p>
+NodoIndice				</p>
+
+				<ul type="disc">
+
+					<li>
+Constructor, O(1)					</li>
+
+					<li>
+agregarLista, O(n)					</li>
+
+					<li>
+darIndice, O(1)					</li>
+
+					<li>
+darLista, O(1)					</li>
+
+					<li>
+compareTo, O(n)					</li>
+
+				</ul>
+
+				<p>
+Usuario				</p>
+
+				<ul type="disc">
+
+					<li>
+Constructor, O(1)					</li>
+
+					<li>
+alquilar, O(n)					</li>
+
+					<li>
+devolver, O(n)					</li>
+
+					<li>
+darNombre, O(1)					</li>
+
+					<li>
+darNombreC, O(1)					</li>
+
+					<li>
+darClave, O(1)					</li>
+
+					<li>
+darLista, O(1)					</li>
+
+				</ul>
+
+			</div>
+
+		</body>
+
+	

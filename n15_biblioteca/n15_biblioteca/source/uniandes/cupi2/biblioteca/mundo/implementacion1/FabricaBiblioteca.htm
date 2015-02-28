@@ -1,0 +1,61 @@
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;$Id:&nbsp;FabricaBiblioteca.java,v&nbsp;1.1&nbsp;2008/09/03&nbsp;10:50:46&nbsp;jua-gome&nbsp;Exp&nbsp;$</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Universidad&nbsp;de&nbsp;los&nbsp;Andes&nbsp;(Bogot&aacute;&nbsp;-&nbsp;Colombia)</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Departamento&nbsp;de&nbsp;Ingenier&iacute;a&nbsp;de&nbsp;Sistemas&nbsp;y&nbsp;Computaci&oacute;n&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Licenciado&nbsp;bajo&nbsp;el&nbsp;esquema&nbsp;Academic&nbsp;Free&nbsp;License&nbsp;version&nbsp;2.1&nbsp;</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Proyecto&nbsp;Cupi2&nbsp;(http://cupi2.uniandes.edu.co)</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Ejercicio:&nbsp;n15_biblioteca</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Autor:&nbsp;Jose&nbsp;Felipe&nbsp;Vargas&nbsp;-&nbsp;23-Jul-2007</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Autor:&nbsp;Juan&nbsp;Sebastian&nbsp;Montes&nbsp;-&nbsp;23-Jul-2007</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Modificado&nbsp;por:&nbsp;Juan&nbsp;Erasmo&nbsp;G&oacute;mez&nbsp;-&nbsp;20-Ago-2008</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">uniandes.cupi2.biblioteca.mundo.implementacion1;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca;</font><br />
+<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">uniandes.cupi2.biblioteca.mundo.IFabricaBiblioteca;</font><br />
+<font color="#ffffff"></font><br />
+<font color="#3f5fbf">/**</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Fabrica&nbsp;que&nbsp;construye&nbsp;bibliotecas.</font><br />
+<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">FabricaBiblioteca&nbsp;</font><font color="#7f0055"><b>implements&nbsp;</b></font><font color="#000000">IFabricaBiblioteca</font><br />
+<font color="#000000">{</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;-----------------------------------------------------------------</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;M&eacute;todos</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">//&nbsp;-----------------------------------------------------------------</font><br />
+<font color="#ffffff"></font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">/*</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;(non-Javadoc)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*&nbsp;@see&nbsp;uniandes.cupi2.biblioteca.mundo.IFabricaBiblioteca#darBiblioteca(java.lang.String,&nbsp;java.lang.String)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">AbstractBiblioteca&nbsp;darBiblioteca</font><font color="#000000">(&nbsp;</font><font color="#000000">String&nbsp;archivoSerializacionLibros,&nbsp;String&nbsp;archivoSerializacionUsuarios&nbsp;</font><font color="#000000">)</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;new&nbsp;</b></font><font color="#000000">Biblioteca</font><font color="#000000">(&nbsp;</font><font color="#000000">archivoSerializacionLibros,&nbsp;archivoSerializacionUsuarios&nbsp;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#ffffff"></font><br />
+<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
