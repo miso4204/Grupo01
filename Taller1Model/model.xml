@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="Biblioteca">
+				<feature mandatory="true" name="AgregarCopia"/>
+				<and mandatory="true" name="DarLibro">
+					<alt mandatory="true" name="CriterioBusqueda">
+						<feature mandatory="true" name="Titulo"/>
+						<feature mandatory="true" name="Autor"/>
+						<feature mandatory="true" name="Descriptor"/>
+					</alt>
+					<alt mandatory="true" name="TipoBusqueda">
+						<feature mandatory="true" name="PorPalabra"/>
+						<feature mandatory="true" name="TodasLasPalabras"/>
+					</alt>
+				</and>
+				<feature mandatory="true" name="PedirLibro"/>
+				<feature mandatory="true" name="DevolverLibro"/>
+				<and mandatory="true" name="ConsultarLibro">
+					<feature mandatory="true" name="NumeroTotalLibros"/>
+					<feature mandatory="true" name="NumeroTotalLibrosPrestados"/>
+				</and>
+				<feature mandatory="true" name="InsertarLibro"/>
+				<feature mandatory="true" name="AutenticarUsuario"/>
+				<feature mandatory="true" name="Insertarusuario"/>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
