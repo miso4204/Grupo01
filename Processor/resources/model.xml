@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <featureModel xsi:schemaLocation="./resources/featureide.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <struct>
-        <and mandatory="true" name="Biblioteca"/>
+        <and mandatory="true" name="Biblioteca">
+            <feature name="autenticar"/>
+            <feature name="darTotalLibros"/>
+            <feature name="darTotalLibrosEnPrestamo"/>
+            <feature name="darLibroPorReferencia"/>
+            <feature name="buscarPorAutores"/>
+            <feature name="buscarPorAutoresExacto"/>
+            <feature name="buscarPorDescriptores"/>
+            <feature name="buscarPorDescriptoresExacto"/>
+            <feature name="buscarPorTitulo"/>
+            <feature name="buscarPorTituloExacto"/>
+            <feature name="darAlquilados"/>
+            <feature name="agregarCopia"/>
+            <feature name="alquilarLibro"/>
+            <feature name="devolverLibro"/>
+            <feature name="insertarLibro"/>
+            <feature name="insertarUsuario"/>
+        </and>
     </struct>
 </featureModel>

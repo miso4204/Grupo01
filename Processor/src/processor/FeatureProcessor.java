@@ -2,6 +2,7 @@ package processor;
 
 import generated.And;
 import generated.FeatureModel;
+import generated.NamedElement;
 import generated.ObjectFactory;
 import generated.Parent;
 import generated.Struct;
@@ -51,9 +52,9 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
 			System.out.println("Constructor Found "+annotation.getElementValue("featureName"));
 			generated.Feature fea= factory.createFeature();
 			fea.setName(annotation.getElementValue("featureName")+"");
-		
-			
-			//struct.setAnd(andTempo);
+			//TODO if mandatory annotation -> set mandatory to feature fea
+			root.getAndOrAltOrOr().add(fea);
+			//struct.setAnd(fea);
 	}	
 
 	@Override
