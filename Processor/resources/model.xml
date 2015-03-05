@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<featureModel xsi:schemaLocation="./resources/featureide.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <struct>
+        <and mandatory="true" name="Biblioteca"/>
+    </struct>
+</featureModel>
