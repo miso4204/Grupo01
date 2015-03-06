@@ -57,7 +57,6 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
 		{
 			fea.setMandatory(true);
 		}
-		System.out.println("aa "+annotation.getElementValue("optional"));
 		root.getAndOrAltOrOr().add(fea);
 
 	}	
