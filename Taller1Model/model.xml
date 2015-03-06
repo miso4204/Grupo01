@@ -18,7 +18,6 @@
 						<feature mandatory="true" name="Titulo"/>
 						<feature mandatory="true" name="Autor"/>
 						<feature mandatory="true" name="Descriptor"/>
-						<feature mandatory="true" name="Referencia"/>
 					</alt>
 					<alt mandatory="true" name="TipoBusqueda">
 						<feature mandatory="true" name="PorPalabra"/>
