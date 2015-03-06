@@ -2,22 +2,22 @@
 <featureModel xsi:schemaLocation="./resources/featureide.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <struct>
         <and mandatory="true" name="Biblioteca">
-            <feature name="autenticar"/>
-            <feature name="darTotalLibros"/>
-            <feature name="darTotalLibrosEnPrestamo"/>
-            <feature name="darLibroPorReferencia"/>
-            <feature name="buscarPorAutores"/>
+            <feature mandatory="true" name="autenticar"/>
+            <feature mandatory="true" name="darTotalLibros"/>
+            <feature mandatory="true" name="darTotalLibrosEnPrestamo"/>
+            <feature mandatory="true" name="darLibroPorReferencia"/>
+            <feature mandatory="true" name="buscarPorAutores"/>
             <feature name="buscarPorAutoresExacto"/>
-            <feature name="buscarPorDescriptores"/>
-            <feature name="buscarPorDescriptoresExacto"/>
-            <feature name="buscarPorTitulo"/>
+            <feature mandatory="true" name="buscarPorDescriptores"/>
+            <feature mandatory="true" name="buscarPorDescriptoresExacto"/>
+            <feature mandatory="true" name="buscarPorTitulo"/>
             <feature name="buscarPorTituloExacto"/>
-            <feature name="darAlquilados"/>
-            <feature name="agregarCopia"/>
-            <feature name="alquilarLibro"/>
-            <feature name="devolverLibro"/>
-            <feature name="insertarLibro"/>
-            <feature name="insertarUsuario"/>
+            <feature mandatory="true" name="darAlquilados"/>
+            <feature mandatory="true" name="agregarCopia"/>
+            <feature mandatory="true" name="alquilarLibro"/>
+            <feature mandatory="true" name="devolverLibro"/>
+            <feature mandatory="true" name="insertarLibro"/>
+            <feature mandatory="true" name="insertarUsuario"/>
         </and>
     </struct>
 </featureModel>
