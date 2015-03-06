@@ -1,5 +1,5 @@
 package annotation;
 
 public enum FeatureType {
-	ALT, OR, AND
+	ALT, OR, AND, NULL
 }
