@@ -4,6 +4,6 @@ public @interface Feature {
 
 	String featureName() default "";
 	boolean optional() default false;
-	boolean isPatent() default false;
+	boolean isParent() default false;
 	FeatureType featureType() default FeatureType.AND;
 }
