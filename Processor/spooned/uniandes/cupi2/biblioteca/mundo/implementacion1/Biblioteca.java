@@ -127,7 +127,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         insertarLibro(libro);
     }
     
-    @annotation.Feature(featureName = "buscarPorTituloExacto")
+    @annotation.Feature(featureName = "buscarPorTituloExacto", optional = true)
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorTituloExacto(java.lang.String titulo) {
         uniandes.cupi2.collections.lista.Lista<uniandes.cupi2.biblioteca.mundo.ILibro>  libros = tablaLibrosTitulo.dar(titulo);
         if (libros == null)
@@ -136,7 +136,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return libros.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorTitulo")
+    @annotation.Feature(featureName = "buscarPorTitulo", optional = false)
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorTitulo(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
         for (int i = 0 ; i < (datos.length) ; i++) {
@@ -150,7 +150,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return resultados.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorAutoresExacto")
+    @annotation.Feature(featureName = "buscarPorAutoresExacto", optional = true)
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorAutoresExacto(java.lang.String nombreAutor) {
         uniandes.cupi2.collections.lista.Lista<uniandes.cupi2.biblioteca.mundo.ILibro>  libros = tablaLibrosAutor.dar(nombreAutor);
         return libros.darIterador();

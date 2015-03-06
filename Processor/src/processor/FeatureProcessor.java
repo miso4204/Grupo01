@@ -53,6 +53,10 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
 			generated.Feature fea= factory.createFeature();
 			fea.setName(annotation.getElementValue("featureName")+"");
 			//TODO if mandatory annotation -> set mandatory to feature fea
+			if(!(boolean) annotation.getElementValue("optional"))
+			{
+				root.setMandatory(true);
+			}
 			root.getAndOrAltOrOr().add(fea);
 			//struct.setAnd(fea);
 	}	

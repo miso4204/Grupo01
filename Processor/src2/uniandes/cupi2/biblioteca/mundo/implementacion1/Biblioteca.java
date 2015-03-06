@@ -237,7 +237,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorTituloExacto(java.lang.String)
      */
-    @Feature(featureName="buscarPorTituloExacto")
+    @Feature(featureName="buscarPorTituloExacto", optional=true)
     public Iterador<ILibro> buscarPorTituloExacto( String titulo )
     {
         Lista<ILibro> libros = tablaLibrosTitulo.dar( titulo );
@@ -251,7 +251,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorTitulo(java.lang.String[])
      */
-    @Feature(featureName="buscarPorTitulo")
+    @Feature(featureName="buscarPorTitulo", optional=false)
     public Iterador<ILibro> buscarPorTitulo( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -273,7 +273,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorAutoresExacto(java.lang.String)
      */
-    @Feature(featureName="buscarPorAutoresExacto")
+    @Feature(featureName="buscarPorAutoresExacto", optional=true)
     public Iterador<ILibro> buscarPorAutoresExacto( String nombreAutor )
     {
         Lista<ILibro> libros = tablaLibrosAutor.dar( nombreAutor );
