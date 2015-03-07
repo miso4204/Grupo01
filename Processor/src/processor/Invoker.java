@@ -6,7 +6,8 @@ public class Invoker {
 
 	public static void main(String[] args){
 		Invoker invoker = new Invoker();
-		invoker.invokeSpoon("./src2/uniandes/cupi2/biblioteca/mundo/implementacion1", "processor.FeatureProcessor");
+		invoker.invokeSpoon("./src2", "processor.FeatureProcessor");
+		//invoker.invokeSpoon("./src2/uniandes/cupi2/biblioteca/mundo/implementacion1", "processor.FeatureProcessor");
 		//invoker.invokeSpoon("./src/code", "processor.FeatureProcessor");
 	}
 	
