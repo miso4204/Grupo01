@@ -16,6 +16,8 @@ package uniandes.cupi2.biblioteca.mundo.implementacion1;
 
 import java.io.Serializable;
 
+import annotation.Feature;
+import annotation.FeatureType;
 import uniandes.cupi2.biblioteca.mundo.ILibro;
 import uniandes.cupi2.biblioteca.mundo.IUsuario;
 import uniandes.cupi2.collections.iterador.Iterador;

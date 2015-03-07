@@ -3,7 +3,8 @@ package annotation;
 public @interface Feature {
 
 	String featureName() default "";
-	boolean optional() default false;
+	boolean mandatory() default true;
 	String parentName() default "";
 	FeatureType featureType() default FeatureType.NULL;
+	boolean isRoot() default false;
 }

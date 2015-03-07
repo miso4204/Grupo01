@@ -16,6 +16,8 @@ package uniandes.cupi2.biblioteca.mundo;
 
 import java.util.Observable;
 
+import annotation.Feature;
+import annotation.FeatureType;
 import uniandes.cupi2.biblioteca.mundo.excepciones.CargarBibliotecaException;
 import uniandes.cupi2.biblioteca.mundo.excepciones.CopiasInsuficientesException;
 import uniandes.cupi2.biblioteca.mundo.excepciones.LibroInexistenteException;
@@ -27,6 +29,7 @@ import uniandes.cupi2.collections.iterador.Iterador;
 /**
  * Clase abstracta que modela el comportamiento de una biblioteca.
  */
+@Feature(featureName="Biblioteca",featureType=FeatureType.AND)
 public abstract class AbstractBiblioteca extends Observable
 {
 

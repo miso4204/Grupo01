@@ -12,12 +12,15 @@
  */
 package uniandes.cupi2.biblioteca.mundo;
 
+import annotation.Feature;
+import annotation.FeatureType;
 import uniandes.cupi2.collections.iterador.Iterador;
 import uniandes.cupi2.collections.lista.Lista;
 
 /**
  * Interface que modela el comportamiento de un usuario.
  */
+@Feature(featureName="GestionDeUsuarios",featureType=FeatureType.AND,parentName="Biblioteca")
 public interface IUsuario
 {
 

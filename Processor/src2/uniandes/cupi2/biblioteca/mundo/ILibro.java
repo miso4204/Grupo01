@@ -16,11 +16,14 @@ package uniandes.cupi2.biblioteca.mundo;
 
 import java.io.Serializable;
 
+import annotation.Feature;
+import annotation.FeatureType;
 import uniandes.cupi2.biblioteca.mundo.excepciones.CopiasInsuficientesException;
 
 /**
  * Interfaz que modela el comportamiento de un libro.
  */
+@Feature(featureName="GestionDeLibros",featureType=FeatureType.AND,parentName="Biblioteca")
 public interface ILibro extends Serializable, Comparable<ILibro>
 {
 
