@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-	<featureModel chosenLayoutAlgorithm="4">
+	<featureModel chosenLayoutAlgorithm="1">
 		<struct>
 			<and abstract="true" mandatory="true" name="Inmobiliaria">
 				<and mandatory="true" name="GestionDeActivos">
 					<feature name="RevisionesMercado"/>
-					<alt mandatory="true" name="Reporting">
+					<or mandatory="true" name="Reporting">
 						<feature mandatory="true" name="Operativo"/>
 						<feature mandatory="true" name="Financiero"/>
-					</alt>
+					</or>
 					<feature name="Refinanciacion"/>
 					<feature mandatory="true" name="AdquisicionInmuebles"/>
 					<feature name="Contabilidad"/>
@@ -18,28 +18,47 @@
 				</and>
 				<and name="GestionDeCapital">
 					<or mandatory="true" name="Inversiones">
-						<feature mandatory="true" name="Tradicionales"/>
 						<feature mandatory="true" name="Alternativas"/>
+						<feature mandatory="true" name="Tradicionales"/>
 					</or>
 					<feature mandatory="true" name="Adquisiciones"/>
-					<feature mandatory="true" name="RelacionInversores"/>
+					<feature name="RelacionInversores"/>
 					<feature name="DefinicionGobiernoCorporativo"/>
 					<feature name="AdquisicionYVentaDeActivos"/>
 					<and name="TipoTransferencia">
-						<or name="Seguros">
+						<or mandatory="true" name="Seguros">
 							<feature mandatory="true" name="PatimoniosAutonomos"/>
 							<feature mandatory="true" name="FondosDeCapitalPrivado"/>
 							<feature mandatory="true" name="CarterasColectivas"/>
 						</or>
-						<feature name="Vehiculos"/>
+						<feature mandatory="true" name="Vehiculos"/>
 					</and>
 				</and>
 				<and mandatory="true" name="GestionInmobiliaria">
-					<feature mandatory="true" name="GestionEquipamiento"/>
+					<and mandatory="true" name="GestionOperativa">
+						<feature name="Equipamiento"/>
+						<feature name="Instalaciones"/>
+						<feature name="ActivosFisicos"/>
+					</and>
+					<feature name="ProcesosDeTasaciones"/>
+					<feature name="ProcesosDeReservas"/>
+					<feature name="Sistemas"/>
+					<feature name="RecursosHumanos"/>
 				</and>
 			</and>
 		</struct>
 		<constraints>
+			<rule>
+				<eq>
+					<imp>
+						<var>Auditorias</var>
+						<var>Valoraciones</var>
+					</imp>
+					<not>
+						<var>RevisionesMercado</var>
+					</not>
+				</eq>
+			</rule>
 			<rule>
 				<imp>
 					<var>DefinicionGobiernoCorporativo</var>
@@ -56,12 +75,17 @@
 			</rule>
 			<rule>
 				<imp>
-					<imp>
-						<var>Auditorias</var>
-						<var>Valoraciones</var>
-					</imp>
+					<var>Equipamiento</var>
 					<not>
-						<var>RevisionesMercado</var>
+						<var>ActivosFisicos</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Instalaciones</var>
+					<not>
+						<var>ActivosFisicos</var>
 					</not>
 				</imp>
 			</rule>
@@ -69,20 +93,6 @@
 				<imp>
 					<var>Contabilidad</var>
 					<var>VentaActivos</var>
-				</imp>
-			</rule>
-			<rule>
-				<imp>
-					<var>Auditorias</var>
-					<imp>
-						<conj>
-							<var>Valoraciones</var>
-							<var>RevisionesMercado</var>
-						</conj>
-						<not>
-							<var>Valoraciones</var>
-						</not>
-					</imp>
 				</imp>
 			</rule>
 		</constraints>
