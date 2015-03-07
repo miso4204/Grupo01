@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- prefuse TreeML Writer | Sat Mar 07 14:24:22 COT 2015 -->
+<!-- prefuse TreeML Writer | Sat Mar 07 14:51:11 COT 2015 -->
 <tree>
   <declarations>
     <attributeDecl name="name" type="String"/>
@@ -65,7 +65,7 @@
         <attribute name="solitary" value="0"/>
         <attribute name="group" value="-1"/>
         <branch>
-          <attribute name="name" value="OR151"/>
+          <attribute name="name" value="OR37"/>
           <attribute name="solitary" value="-1"/>
           <attribute name="group" value="8"/>
           <leaf>
@@ -87,7 +87,7 @@
       </leaf>
       <leaf>
         <attribute name="name" value="AdquisicionYVentaDeActivos"/>
-        <attribute name="solitary" value="1"/>
+        <attribute name="solitary" value="0"/>
         <attribute name="group" value="-1"/>
       </leaf>
       <leaf>
@@ -109,7 +109,7 @@
           <attribute name="solitary" value="0"/>
           <attribute name="group" value="-1"/>
           <branch>
-            <attribute name="name" value="OR153"/>
+            <attribute name="name" value="OR39"/>
             <attribute name="solitary" value="-1"/>
             <attribute name="group" value="8"/>
             <leaf>
@@ -150,9 +150,9 @@
         <attribute name="solitary" value="0"/>
         <attribute name="group" value="-1"/>
         <branch>
-          <attribute name="name" value="OR152"/>
+          <attribute name="name" value="XOR38"/>
           <attribute name="solitary" value="-1"/>
-          <attribute name="group" value="8"/>
+          <attribute name="group" value="16"/>
           <leaf>
             <attribute name="name" value="Operativo"/>
             <attribute name="solitary" value="-1"/>
@@ -201,7 +201,7 @@
       <attribute name="solitary" value="-1"/>
       <attribute name="group" value="32"/>
       <branch>
-        <attribute name="name" value="((Auditorias -&gt; Valoraciones) -&gt; !RevisionesMercado)"/>
+        <attribute name="name" value="((Auditorias -&gt; Valoraciones) &lt;-&gt; !RevisionesMercado)"/>
         <attribute name="solitary" value="32"/>
         <attribute name="group" value="-1"/>
         <branch>
@@ -209,7 +209,7 @@
           <attribute name="solitary" value="32"/>
           <attribute name="group" value="-1"/>
           <branch>
-            <attribute name="name" value="(0 -&gt; !0)"/>
+            <attribute name="name" value="(DefinicionGobiernoCorporativo -&gt; !RelacionInversores)"/>
             <attribute name="solitary" value="32"/>
             <attribute name="group" value="-1"/>
             <branch>
