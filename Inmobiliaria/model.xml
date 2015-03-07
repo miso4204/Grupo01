@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="4">
+		<struct>
+			<and abstract="true" mandatory="true" name="Inmobiliaria">
+				<and mandatory="true" name="GestionDeActivos">
+					<feature name="RevisionesMercado"/>
+					<alt mandatory="true" name="Reporting">
+						<feature mandatory="true" name="Operativo"/>
+						<feature mandatory="true" name="Financiero"/>
+					</alt>
+					<feature name="Refinanciacion"/>
+					<feature mandatory="true" name="AdquisicionInmuebles"/>
+					<feature name="Contabilidad"/>
+					<feature mandatory="true" name="Alquileres"/>
+					<feature name="Auditorias"/>
+					<feature name="VentaActivos"/>
+					<feature name="Valoraciones"/>
+				</and>
+				<and name="GestionDeCapital">
+					<or mandatory="true" name="Inversiones">
+						<feature mandatory="true" name="Tradicionales"/>
+						<feature mandatory="true" name="Alternativas"/>
+					</or>
+					<feature mandatory="true" name="Adquisiciones"/>
+					<feature mandatory="true" name="RelacionInversores"/>
+					<feature name="DefinicionGobiernoCorporativo"/>
+					<feature name="AdquisicionYVentaDeActivos"/>
+					<and name="TipoTransferencia">
+						<or name="Seguros">
+							<feature mandatory="true" name="PatimoniosAutonomos"/>
+							<feature mandatory="true" name="FondosDeCapitalPrivado"/>
+							<feature mandatory="true" name="CarterasColectivas"/>
+						</or>
+						<feature name="Vehiculos"/>
+					</and>
+				</and>
+				<and mandatory="true" name="GestionInmobiliaria">
+					<feature mandatory="true" name="GestionEquipamiento"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>DefinicionGobiernoCorporativo</var>
+					<not>
+						<var>RelacionInversores</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Alternativas</var>
+					<var>TipoTransferencia</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<imp>
+						<var>Auditorias</var>
+						<var>Valoraciones</var>
+					</imp>
+					<not>
+						<var>RevisionesMercado</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Contabilidad</var>
+					<var>VentaActivos</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Auditorias</var>
+					<imp>
+						<conj>
+							<var>Valoraciones</var>
+							<var>RevisionesMercado</var>
+						</conj>
+						<not>
+							<var>Valoraciones</var>
+						</not>
+					</imp>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
