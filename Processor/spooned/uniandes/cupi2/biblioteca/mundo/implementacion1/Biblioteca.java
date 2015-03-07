@@ -91,7 +91,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         numeroCopiasPrestamo = 0;
     }
     
-    @annotation.Feature(featureName = "agregarCopia")
+    @annotation.Feature(featureName = "AgregarCopia", parentName = "GestionDeLibros")
     public void agregarCopia(java.lang.String referencia) throws uniandes.cupi2.biblioteca.mundo.excepciones.LibroInexistenteException {
         uniandes.cupi2.biblioteca.mundo.ILibro libro = tablaLibroReferencia.dar(referencia);
         if (libro == null)
@@ -104,30 +104,30 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         notifyObservers(arreglo);
     }
     
-    @annotation.Feature(featureName = "darLibroPorReferencia")
+    @annotation.Feature(featureName = "DarLibro", parentName = "GestionDeLibros")
     public uniandes.cupi2.biblioteca.mundo.ILibro darLibro(java.lang.String referencia) {
         return tablaLibroReferencia.dar(referencia);
     }
     
-    @annotation.Feature(featureName = "autenticar")
+    @annotation.Feature(featureName = "AutenticarUsuario", parentName = "GestionDeUsuarios")
     public boolean autenticar(java.lang.String login, java.lang.String clave) {
         uniandes.cupi2.biblioteca.mundo.implementacion1.Usuario usuario = tablaUsuario.dar(login);
         return (usuario != null) && (usuario.darClave().equals(clave));
     }
     
-    @annotation.Feature(featureName = "insertarUsuario")
+    @annotation.Feature(featureName = "InsertarUsuario", parentName = "GestionDeUsuarios")
     public void insertarUsuario(java.lang.String login, java.lang.String clave, java.lang.String nombre) throws uniandes.cupi2.biblioteca.mundo.excepciones.UsuarioPreexistenteException {
         uniandes.cupi2.biblioteca.mundo.implementacion1.Usuario usuario = new uniandes.cupi2.biblioteca.mundo.implementacion1.Usuario(login , clave , nombre);
         insertarUsuario(usuario);
     }
     
-    @annotation.Feature(featureName = "insertarLibro")
+    @annotation.Feature(featureName = "InsertarLibro", parentName = "GestionDeLibros")
     public void insertarLibro(java.lang.String titulo, java.lang.String[] autores, java.lang.String[] descriptores, int ejemplares, java.lang.String ref) throws uniandes.cupi2.biblioteca.mundo.excepciones.LibroYaExisteException {
         uniandes.cupi2.biblioteca.mundo.implementacion1.Libro libro = new uniandes.cupi2.biblioteca.mundo.implementacion1.Libro(titulo , autores , descriptores , ejemplares , ref);
         insertarLibro(libro);
     }
     
-    @annotation.Feature(featureName = "buscarPorTituloExacto", optional = true)
+    @annotation.Feature(featureName = "buscarPorTituloExacto", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorTituloExacto(java.lang.String titulo) {
         uniandes.cupi2.collections.lista.Lista<uniandes.cupi2.biblioteca.mundo.ILibro>  libros = tablaLibrosTitulo.dar(titulo);
         if (libros == null)
@@ -136,7 +136,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return libros.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorTitulo", optional = false)
+    @annotation.Feature(featureName = "Titulo", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorTitulo(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
         for (int i = 0 ; i < (datos.length) ; i++) {
@@ -150,13 +150,13 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return resultados.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorAutoresExacto", optional = true)
+    @annotation.Feature(featureName = "AutorExacto", mandatory = false, parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorAutoresExacto(java.lang.String nombreAutor) {
         uniandes.cupi2.collections.lista.Lista<uniandes.cupi2.biblioteca.mundo.ILibro>  libros = tablaLibrosAutor.dar(nombreAutor);
         return libros.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorAutores")
+    @annotation.Feature(featureName = "Atutor", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorAutores(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
         for (int i = 0 ; i < (datos.length) ; i++) {
@@ -170,7 +170,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return resultados.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorDescriptoresExacto")
+    @annotation.Feature(featureName = "DescriptorExacto", mandatory = false, parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorDescriptoresExacto(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
         if ((datos.length) > 0) {
@@ -190,7 +190,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return resultados.darIterador();
     }
     
-    @annotation.Feature(featureName = "buscarPorDescriptores")
+    @annotation.Feature(featureName = "Descriptor", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorDescriptores(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
         for (int i = 0 ; i < (datos.length) ; i++) {
@@ -204,7 +204,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return resultados.darIterador();
     }
     
-    @annotation.Feature(featureName = "alquilarLibro")
+    @annotation.Feature(featureName = "AlquilarLibro", parentName = "GestionDeLibros")
     public void alquilarLibro(java.lang.String elUsuario, java.lang.String referencia) throws uniandes.cupi2.biblioteca.mundo.excepciones.CopiasInsuficientesException {
         uniandes.cupi2.biblioteca.mundo.IUsuario usuario = tablaUsuario.dar(elUsuario);
         uniandes.cupi2.biblioteca.mundo.ILibro libro = tablaLibroReferencia.dar(referencia);
@@ -217,7 +217,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         notifyObservers(arreglo);
     }
     
-    @annotation.Feature(featureName = "devolverLibro")
+    @annotation.Feature(featureName = "DevolverLibro", parentName = "GestionDeLibros")
     public void devolverLibro(java.lang.String elUsuario, java.lang.String referencia) {
         uniandes.cupi2.biblioteca.mundo.implementacion1.Usuario usuario = tablaUsuario.dar(elUsuario);
         uniandes.cupi2.biblioteca.mundo.ILibro libro = tablaLibroReferencia.dar(referencia);
@@ -230,17 +230,17 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         notifyObservers(arreglo);
     }
     
-    @annotation.Feature(featureName = "darTotalLibros")
+    @annotation.Feature(featureName = "NumeroTotalLibros", parentName = "GestionDeLibros")
     public int darTotalLibros() {
         return numeroTotalCopias;
     }
     
-    @annotation.Feature(featureName = "darTotalLibrosEnPrestamo")
+    @annotation.Feature(featureName = "NumeroTotalLibrosPrestados", parentName = "GestionDeLibros")
     public int darTotalLibrosEnPrestamo() {
         return numeroCopiasPrestamo;
     }
     
-    @annotation.Feature(featureName = "darAlquilados")
+    @annotation.Feature(featureName = "DarAlquilados", parentName = "GestionDeLibros")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  darAlquilados(java.lang.String elUsuario) {
         uniandes.cupi2.biblioteca.mundo.implementacion1.Usuario usuario = tablaUsuario.dar(elUsuario);
         return usuario.darLibrosAlquilados();

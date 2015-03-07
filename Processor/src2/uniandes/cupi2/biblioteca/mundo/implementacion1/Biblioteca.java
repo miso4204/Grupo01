@@ -275,7 +275,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorAutoresExacto(java.lang.String)
      */
-    @Feature(featureName="AutorExacto",parentName="Buscar")  
+    @Feature(featureName="AutorExacto",parentName="Buscar", mandatory=false)  
     public Iterador<ILibro> buscarPorAutoresExacto( String nombreAutor )
     {
         Lista<ILibro> libros = tablaLibrosAutor.dar( nombreAutor );
@@ -309,7 +309,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorDescriptoresExacto(java.lang.String[])
      */
-    @Feature(featureName="DescriptorExacto",parentName="Buscar")
+    @Feature(featureName="DescriptorExacto",parentName="Buscar", mandatory=false)
     public Iterador<ILibro> buscarPorDescriptoresExacto( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -396,7 +396,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#darTotalLibros()
      */
-    @Feature(featureName="NumeroTotalLibros",parentName="GestionDeLibros",mandatory=false)
+    @Feature(featureName="NumeroTotalLibros",parentName="GestionDeLibros")
     public int darTotalLibros( )
     {
         return numeroTotalCopias;
@@ -407,7 +407,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#darTotalLibrosEnPrestamo()
      */
-    @Feature(featureName="NumeroTotalLibrosPrestados",parentName="GestionDeLibros",mandatory=false)
+    @Feature(featureName="NumeroTotalLibrosPrestados",parentName="GestionDeLibros")
     public int darTotalLibrosEnPrestamo( )
     {
         return numeroCopiasPrestamo;

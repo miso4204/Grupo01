@@ -2,22 +2,28 @@
 <featureModel xsi:schemaLocation="./resources/featureide.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <struct>
         <and mandatory="true" name="Biblioteca">
-            <feature mandatory="true" name="autenticar"/>
-            <feature mandatory="true" name="darTotalLibros"/>
-            <feature mandatory="true" name="darTotalLibrosEnPrestamo"/>
-            <feature mandatory="true" name="darLibroPorReferencia"/>
-            <feature mandatory="true" name="buscarPorAutores"/>
-            <feature name="buscarPorAutoresExacto"/>
-            <feature mandatory="true" name="buscarPorDescriptores"/>
-            <feature mandatory="true" name="buscarPorDescriptoresExacto"/>
-            <feature mandatory="true" name="buscarPorTitulo"/>
-            <feature name="buscarPorTituloExacto"/>
-            <feature mandatory="true" name="darAlquilados"/>
-            <feature mandatory="true" name="agregarCopia"/>
-            <feature mandatory="true" name="alquilarLibro"/>
-            <feature mandatory="true" name="devolverLibro"/>
-            <feature mandatory="true" name="insertarLibro"/>
-            <feature mandatory="true" name="insertarUsuario"/>
+            <and mandatory="true" name="GestionDeLibros">
+                <feature mandatory="true" name="NumeroTotalLibros"/>
+                <feature mandatory="true" name="NumeroTotalLibrosPrestados"/>
+                <feature mandatory="true" name="DarLibro"/>
+                <feature mandatory="true" name="DarAlquilados"/>
+                <feature mandatory="true" name="AgregarCopia"/>
+                <feature mandatory="true" name="AlquilarLibro"/>
+                <feature mandatory="true" name="DevolverLibro"/>
+                <feature mandatory="true" name="InsertarLibro"/>
+                <or mandatory="true" name="Buscar">
+                    <feature mandatory="true" name="Atutor"/>
+                    <feature mandatory="false" name="AutorExacto"/>
+                    <feature mandatory="true" name="Descriptor"/>
+                    <feature mandatory="false" name="DescriptorExacto"/>
+                    <feature mandatory="true" name="Titulo"/>
+                    <feature mandatory="true" name="buscarPorTituloExacto"/>
+                </or>
+            </and>
+            <and mandatory="true" name="GestionDeUsuarios">
+                <feature mandatory="true" name="AutenticarUsuario"/>
+                <feature mandatory="true" name="InsertarUsuario"/>
+            </and>
         </and>
     </struct>
 </featureModel>
