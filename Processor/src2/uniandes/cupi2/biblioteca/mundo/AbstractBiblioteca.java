@@ -29,7 +29,7 @@ import uniandes.cupi2.collections.iterador.Iterador;
 /**
  * Clase abstracta que modela el comportamiento de una biblioteca.
  */
-@Feature(featureName="Biblioteca",featureType=FeatureType.AND)
+@Feature(featureName="Biblioteca",featureType=FeatureType.AND,isRoot=true)
 public abstract class AbstractBiblioteca extends Observable
 {
 
