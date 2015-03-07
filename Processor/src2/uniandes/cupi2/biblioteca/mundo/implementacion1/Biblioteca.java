@@ -174,7 +174,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#agregarCopia(java.lang.String)
      */
-    @Feature(featureName="AgregarCopia")
+    @Feature(featureName="AgregarCopia",parentName="GestionDeLibros")
     public void agregarCopia( String referencia ) throws LibroInexistenteException
     {
         ILibro libro = tablaLibroReferencia.dar( referencia );
@@ -192,7 +192,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#darLibro(java.lang.String)
      */
-    @Feature(featureName="DarLibro")
+    @Feature(featureName="DarLibro",parentName="GestionDeLibros")
     public ILibro darLibro( String referencia )
     {
         return tablaLibroReferencia.dar( referencia );
@@ -203,7 +203,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#autenticar(java.lang.String, java.lang.String)
      */
-    @Feature(featureName="AutenticarUsuario")
+    @Feature(featureName="AutenticarUsuario",parentName="GestionDeUsuarios")
     public boolean autenticar( String login, String clave )
     {
         Usuario usuario = tablaUsuario.dar( login );
@@ -215,7 +215,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#insertarUsuario(java.lang.String, java.lang.String, java.lang.String)
      */
-    @Feature(featureName="InsertarUsuario")
+    @Feature(featureName="InsertarUsuario",parentName="GestionDeUsuarios")
     public void insertarUsuario( String login, String clave, String nombre ) throws UsuarioPreexistenteException
     {
         Usuario usuario = new Usuario( login, clave, nombre );
@@ -227,7 +227,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#insertarLibro(java.lang.String, java.lang.String[], java.lang.String[], int, java.lang.String)
      */
-    @Feature(featureName="InsertarLibro")
+    @Feature(featureName="InsertarLibro",parentName="GestionDeLibros")
     public void insertarLibro( String titulo, String[] autores, String[] descriptores, int ejemplares, String ref ) throws LibroYaExisteException
     {
         Libro libro = new Libro( titulo, autores, descriptores, ejemplares, ref );
@@ -239,7 +239,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorTituloExacto(java.lang.String)
      */
-//    @Feature(featureName="buscarPorTituloExacto", optional=true)
+    @Feature(featureName="buscarPorTituloExacto",parentName="Buscar")
     public Iterador<ILibro> buscarPorTituloExacto( String titulo )
     {
         Lista<ILibro> libros = tablaLibrosTitulo.dar( titulo );
@@ -253,7 +253,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorTitulo(java.lang.String[])
      */
-    @Feature(featureName="Titulo",mandatory=true)    
+    @Feature(featureName="Titulo",parentName="Buscar")    
     public Iterador<ILibro> buscarPorTitulo( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -275,7 +275,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorAutoresExacto(java.lang.String)
      */
-//    @Feature(featureName="buscarPorAutoresExacto", optional=true)
+    @Feature(featureName="AutorExacto",parentName="Buscar")  
     public Iterador<ILibro> buscarPorAutoresExacto( String nombreAutor )
     {
         Lista<ILibro> libros = tablaLibrosAutor.dar( nombreAutor );
@@ -287,8 +287,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorAutores(java.lang.String[])
      */
-    @Feature(featureName="Autor",mandatory=false)
-    @VariationPoint(parentName="BuscarTitulo",variationName="CriterioBusqueda",variationType=FeatureType.ALT,mandatory=false)
+    @Feature(featureName="Atutor",parentName="Buscar")      
     public Iterador<ILibro> buscarPorAutores( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -310,8 +309,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorDescriptoresExacto(java.lang.String[])
      */
-    @Feature(featureName="Descriptor", mandatory=false)
-    @VariationPoint(parentName="BuscarTitulo",variationName="CriterioBusqueda",variationType=FeatureType.ALT,mandatory=false)
+    @Feature(featureName="DescriptorExacto",parentName="Buscar")
     public Iterador<ILibro> buscarPorDescriptoresExacto( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -337,7 +335,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorDescriptores(java.lang.String[])
      */
-//    @Feature(featureName="buscarPorDescriptores")
+    @Feature(featureName="Descriptor",parentName="Buscar")  
     public Iterador<ILibro> buscarPorDescriptores( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -359,7 +357,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#alquilarLibro(java.lang.String, java.lang.String)
      */
-    @Feature(featureName="AlquilarLibro")
+    @Feature(featureName="AlquilarLibro",parentName="GestionDeLibros")  
     public void alquilarLibro( String elUsuario, String referencia ) throws CopiasInsuficientesException
     {
         IUsuario usuario = tablaUsuario.dar( elUsuario );
@@ -379,7 +377,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#devolverLibro(java.lang.String, java.lang.String)
      */
-    @Feature(featureName="DevolverLibro")
+    @Feature(featureName="DevolverLibro",parentName="GestionDeLibros")
     public void devolverLibro( String elUsuario, String referencia )
     {
         Usuario usuario = tablaUsuario.dar( elUsuario );
@@ -398,7 +396,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#darTotalLibros()
      */
-    @Feature(featureName="NumeroTotalLibros",parentName="ConsultarLibro",mandatory=false)
+    @Feature(featureName="NumeroTotalLibros",parentName="GestionDeLibros",mandatory=false)
     public int darTotalLibros( )
     {
         return numeroTotalCopias;
@@ -409,7 +407,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#darTotalLibrosEnPrestamo()
      */
-    @Feature(featureName="NumeroTotalLibrosPrestados",parentName="ConsultarLibro",mandatory=false)
+    @Feature(featureName="NumeroTotalLibrosPrestados",parentName="GestionDeLibros",mandatory=false)
     public int darTotalLibrosEnPrestamo( )
     {
         return numeroCopiasPrestamo;
@@ -420,7 +418,7 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#darAlquilados(java.lang.String)
      */
-//    @Feature(featureName="darAlquilados")
+    @Feature(featureName="DarAlquilados",parentName="GestionDeLibros")
     public Iterador<ILibro> darAlquilados( String elUsuario )
     {
         Usuario usuario = tablaUsuario.dar( elUsuario );

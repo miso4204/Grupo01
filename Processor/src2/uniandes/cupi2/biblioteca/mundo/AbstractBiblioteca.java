@@ -62,6 +62,7 @@ public abstract class AbstractBiblioteca extends Observable
      * @param titulo Título del libro que se está buscando - titulo != null.
      * @return Libros que cumplen con los parámetros de búsqueda.
      */
+    @Feature(featureName="Buscar",parentName="GestionDeLibros",featureType=FeatureType.AND)
     public abstract Iterador<ILibro> buscarPorTituloExacto( String titulo );
 
     /**
@@ -69,6 +70,7 @@ public abstract class AbstractBiblioteca extends Observable
      * @param datos Palabras a buscar en el título - datos != null.
      * @return Libros que cumplen con los parámetros de búsqueda.
      */
+    @Feature(featureName="Buscar",parentName="GestionDeLibros",featureType=FeatureType.AND)
     public abstract Iterador<ILibro> buscarPorTitulo( String datos[] );
 
     /**
@@ -76,6 +78,7 @@ public abstract class AbstractBiblioteca extends Observable
      * @param autor El nombre del autor seleccionado - datos!= null.
      * @return Libros que cumplen con los parámetros de búsqueda.
      */
+    @Feature(featureName="Buscar",parentName="GestionDeLibros",featureType=FeatureType.AND)
     public abstract Iterador<ILibro> buscarPorAutoresExacto( String autor );
 
     /**
@@ -83,6 +86,7 @@ public abstract class AbstractBiblioteca extends Observable
      * @param datos Palabras a buscar en los nombres de los autores - datos != null.
      * @return Libros que cumplen con los parámetros de búsqueda.
      */
+    @Feature(featureName="Buscar",parentName="GestionDeLibros",featureType=FeatureType.AND)
     public abstract Iterador<ILibro> buscarPorAutores( String datos[] );
 
     /**
@@ -90,6 +94,7 @@ public abstract class AbstractBiblioteca extends Observable
      * @param datos Descriptores seleccionados - datos != null.
      * @return Libros que cumplen con los parámetros de búsqueda.
      */
+    @Feature(featureName="Buscar",parentName="GestionDeLibros",featureType=FeatureType.AND)
     public abstract Iterador<ILibro> buscarPorDescriptoresExacto( String datos[] );
 
     /**
@@ -97,6 +102,7 @@ public abstract class AbstractBiblioteca extends Observable
      * @param datos Palabras a buscar en los descriptores del libro - datos != null.
      * @return Libros que cumplen con los parámetros de búsqueda.
      */
+    @Feature(featureName="Buscar",parentName="GestionDeLibros",featureType=FeatureType.AND)
     public abstract Iterador<ILibro> buscarPorDescriptores( String datos[] );
 
     /**
