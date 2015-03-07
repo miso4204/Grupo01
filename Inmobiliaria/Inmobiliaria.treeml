@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- prefuse TreeML Writer | Sat Mar 07 14:14:18 COT 2015 -->
+<!-- prefuse TreeML Writer | Sat Mar 07 14:24:22 COT 2015 -->
 <tree>
   <declarations>
     <attributeDecl name="name" type="String"/>
@@ -65,7 +65,7 @@
         <attribute name="solitary" value="0"/>
         <attribute name="group" value="-1"/>
         <branch>
-          <attribute name="name" value="OR145"/>
+          <attribute name="name" value="OR151"/>
           <attribute name="solitary" value="-1"/>
           <attribute name="group" value="8"/>
           <leaf>
@@ -83,11 +83,6 @@
       <leaf>
         <attribute name="name" value="DefinicionGobiernoCorporativo"/>
         <attribute name="solitary" value="1"/>
-        <attribute name="group" value="-1"/>
-      </leaf>
-      <leaf>
-        <attribute name="name" value="Adquisiciones"/>
-        <attribute name="solitary" value="0"/>
         <attribute name="group" value="-1"/>
       </leaf>
       <leaf>
@@ -114,7 +109,7 @@
           <attribute name="solitary" value="0"/>
           <attribute name="group" value="-1"/>
           <branch>
-            <attribute name="name" value="OR147"/>
+            <attribute name="name" value="OR153"/>
             <attribute name="solitary" value="-1"/>
             <attribute name="group" value="8"/>
             <leaf>
@@ -155,7 +150,7 @@
         <attribute name="solitary" value="0"/>
         <attribute name="group" value="-1"/>
         <branch>
-          <attribute name="name" value="OR146"/>
+          <attribute name="name" value="OR152"/>
           <attribute name="solitary" value="-1"/>
           <attribute name="group" value="8"/>
           <leaf>
