@@ -21,10 +21,9 @@
 						<feature mandatory="true" name="Alternativas"/>
 						<feature mandatory="true" name="Tradicionales"/>
 					</or>
-					<feature mandatory="true" name="Adquisiciones"/>
+					<feature mandatory="true" name="AdquisicionYVentaDeActivos"/>
 					<feature name="RelacionInversores"/>
 					<feature name="DefinicionGobiernoCorporativo"/>
-					<feature name="AdquisicionYVentaDeActivos"/>
 					<and name="TipoTransferencia">
 						<or mandatory="true" name="Seguros">
 							<feature mandatory="true" name="PatimoniosAutonomos"/>
