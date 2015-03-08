@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import annotation.Constraint;
+import annotation.ConstraintType;
 import annotation.Feature;
 import annotation.FeatureType;
 import annotation.VariationPoint;
@@ -254,6 +256,7 @@ public class Biblioteca extends AbstractBiblioteca
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorTitulo(java.lang.String[])
      */
     @Feature(featureName="Titulo",parentName="Buscar")    
+    @Constraint(featureOrigin="Titulo", referencedFeature="buscarPorTituloExacto", constrainType=ConstraintType.EXCLUDES)
     public Iterador<ILibro> buscarPorTitulo( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -287,7 +290,8 @@ public class Biblioteca extends AbstractBiblioteca
      * 
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorAutores(java.lang.String[])
      */
-    @Feature(featureName="Atutor",parentName="Buscar")      
+    @Feature(featureName="Autor",parentName="Buscar")
+    @Constraint(featureOrigin="Autor", referencedFeature="AutorExacto", constrainType=ConstraintType.EXCLUDES)
     public Iterador<ILibro> buscarPorAutores( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );
@@ -336,6 +340,8 @@ public class Biblioteca extends AbstractBiblioteca
      * @see uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca#buscarPorDescriptores(java.lang.String[])
      */
     @Feature(featureName="Descriptor",parentName="Buscar")  
+    @Constraint(featureOrigin="Descriptor", referencedFeature="DescriptorExacto", constrainType=ConstraintType.EXCLUDES)
+    
     public Iterador<ILibro> buscarPorDescriptores( String[] datos )
     {
         Conjunto<ILibro> resultados = new Conjunto<ILibro>( );

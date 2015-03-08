@@ -136,6 +136,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return libros.darIterador();
     }
     
+    @annotation.Constraint(constrainType = annotation.ConstraintType.EXCLUDES, featureOrigin = "Titulo", referencedFeature = "buscarPorTituloExacto")
     @annotation.Feature(featureName = "Titulo", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorTitulo(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
@@ -156,7 +157,8 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return libros.darIterador();
     }
     
-    @annotation.Feature(featureName = "Atutor", parentName = "Buscar")
+    @annotation.Constraint(constrainType = annotation.ConstraintType.EXCLUDES, featureOrigin = "Autor", referencedFeature = "AutorExacto")
+    @annotation.Feature(featureName = "Autor", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorAutores(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();
         for (int i = 0 ; i < (datos.length) ; i++) {
@@ -190,6 +192,7 @@ public class Biblioteca extends uniandes.cupi2.biblioteca.mundo.AbstractBibliote
         return resultados.darIterador();
     }
     
+    @annotation.Constraint(constrainType = annotation.ConstraintType.EXCLUDES, featureOrigin = "Descriptor", referencedFeature = "DescriptorExacto")
     @annotation.Feature(featureName = "Descriptor", parentName = "Buscar")
     public uniandes.cupi2.collections.iterador.Iterador<uniandes.cupi2.biblioteca.mundo.ILibro>  buscarPorDescriptores(java.lang.String[] datos) {
         uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro>  resultados = new uniandes.cupi2.collections.conjunto.Conjunto<uniandes.cupi2.biblioteca.mundo.ILibro> ();

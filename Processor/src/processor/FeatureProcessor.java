@@ -2,10 +2,14 @@ package processor;
 
 import generated.Alt;
 import generated.And;
+import generated.Constraints;
 import generated.FeatureModel;
+import generated.Imp;
+import generated.Not;
 import generated.ObjectFactory;
 import generated.Or;
 import generated.Parent;
+import generated.Rule;
 import generated.Struct;
 
 import java.io.FileWriter;
@@ -18,6 +22,8 @@ import javax.xml.bind.Marshaller;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtAnnotation;
+import annotation.Constraint;
+import annotation.ConstraintType;
 import annotation.Feature;
 import annotation.FeatureType;
 /**
@@ -25,13 +31,15 @@ import annotation.FeatureType;
  * @author harold
  *
  */
-public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
+public class FeatureProcessor extends AbstractProcessor<CtAnnotation<?>> {
 	FeatureModel fm;
 	Struct struct;
 	And root;
 	ObjectFactory factory;
 	ArrayList<FeatureLoadEntity> tempo;
+	ArrayList<ConstraintLoadEntity> tempoConstraint;
 	FeatureLoadEntity fea;
+	ConstraintLoadEntity cons;
 
 
 	@Override
@@ -49,55 +57,74 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
 		struct.setAnd(root);
 
 		tempo=new ArrayList<FeatureLoadEntity>();
+		tempoConstraint=new ArrayList<ConstraintLoadEntity>();
 		super.init();
 	}
 
 	@Override
-	public void process(CtAnnotation<Feature> annotation) {
+	public void process(CtAnnotation<?> annotation) {
 
-		//Log
-		System.out.println("Constructor Found "+annotation.getElementValue("featureName"));
-
-		//Load features in temp array
-		if(!ExisteFeature(annotation.getElementValue("featureName")+""))
+		if((annotation.getSignature()+"").equals("@annotation.Feature"))
 		{
-			fea=new FeatureLoadEntity();
 
-			//fea= factory.createAnd();
-			fea.setName(annotation.getElementValue("featureName")+"");
-			fea.setParentName(annotation.getElementValue("parentName")+"");
-			if((annotation.getElementValue("featureType")+"").equals(FeatureType.AND.toString()))
+			//Log
+			//System.out.println("Constructor Found "+annotation.getElementValue("featureName"));
+
+			//Load features in temp array
+			if(!ExisteFeature(annotation.getElementValue("featureName")+""))
 			{
-				fea.setFeatureType(FeatureType.AND);
-			}else if((annotation.getElementValue("featureType")+"").equals(FeatureType.OR.toString()))
-			{
-				fea.setFeatureType(FeatureType.OR);
-			}else if((annotation.getElementValue("featureType")+"").equals(FeatureType.ALT.toString()))
-			{
-				fea.setFeatureType(FeatureType.ALT);
-			}else{
-				fea.setFeatureType(FeatureType.NULL);
+				fea=new FeatureLoadEntity();
+
+				//fea= factory.createAnd();
+				fea.setName(annotation.getElementValue("featureName")+"");
+				fea.setParentName(annotation.getElementValue("parentName")+"");
+				if((annotation.getElementValue("featureType")+"").equals(FeatureType.AND.toString()))
+				{
+					fea.setFeatureType(FeatureType.AND);
+				}else if((annotation.getElementValue("featureType")+"").equals(FeatureType.OR.toString()))
+				{
+					fea.setFeatureType(FeatureType.OR);
+				}else if((annotation.getElementValue("featureType")+"").equals(FeatureType.ALT.toString()))
+				{
+					fea.setFeatureType(FeatureType.ALT);
+				}else{
+					fea.setFeatureType(FeatureType.NULL);
+				}
+
+				if((boolean) annotation.getElementValue("mandatory"))
+				{
+					//set mandatory property
+					fea.setMandatory(true);
+				}
+
+				//Add to temporal array
+				tempo.add(fea);
 			}
-
-			if((boolean) annotation.getElementValue("mandatory"))
+		}else if((annotation.getSignature()+"").equals("@annotation.Constraint")){
+			//Log
+			//System.out.println("Constructor Found "+annotation.getElementValue("featureOrigin")+"---"+annotation.getElementValue("referencedFeature"));
+			cons=new ConstraintLoadEntity();
+			if((annotation.getElementValue("constrainType")+"").equals(ConstraintType.REQUIRES.toString()))
 			{
-				//set mandatory property
-				fea.setMandatory(true);
+				cons.setConstrainType(ConstraintType.REQUIRES);
+			}else if((annotation.getElementValue("constrainType")+"").equals(ConstraintType.EXCLUDES.toString()))
+			{
+				cons.setConstrainType(ConstraintType.EXCLUDES);
 			}
-
-			//Add to temporal array
-			tempo.add(fea);
+			cons.setFeatureOrigin(annotation.getElementValue("featureOrigin")+"");
+			cons.setReferencedFeature(annotation.getElementValue("referencedFeature")+"");
+			tempoConstraint.add(cons);
 		}
+
 	}	
 
 	@Override
 	public void processingDone() {
-		//root.getAndOrAltOrOr().add(fea);
-
-		//Cargar arbol
-		//Para cada nodo crearlo, buscar al papa y agregarselo, si no existe el
-		//papa crearlo
+		//Cargar arbol features
 		crearNodos(root);
+
+		//Cargar constraint
+		crearContraints(root);
 
 
 		fm.setStruct(struct);
@@ -151,7 +178,7 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
 		//Obtener nodos con padre = nodo
 		for (int i = 0; i < tempo.size(); i++) {
 
-			System.out.println(tempo.get(i).getParentName());
+			//System.out.println(tempo.get(i).getParentName());
 			if(nodo.getName().equals(tempo.get(i).getParentName()))
 			{
 				Parent par=null;
@@ -186,6 +213,42 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<Feature>> {
 		}
 
 	}
+
+	private void crearContraints(Parent nodo)
+	{
+		Constraints cons= factory.createConstraints();;
+		Rule rul;
+		Imp imp;
+		Not no;
+
+		for (int i = 0; i < tempoConstraint.size(); i++) {
+			rul=factory.createRule();
+			imp=factory.createImp();
+			if(tempoConstraint.get(i).getConstrainType().equals(ConstraintType.REQUIRES))
+			{
+				imp.getVarOrNot().add(tempoConstraint.get(i).getFeatureOrigin());
+				imp.getVarOrNot().add(tempoConstraint.get(i).getReferencedFeature());
+				
+			}
+			else if(tempoConstraint.get(i).getConstrainType().equals(ConstraintType.EXCLUDES))
+			{
+				imp.getVarOrNot().add(tempoConstraint.get(i).getFeatureOrigin());
+				no=factory.createNot();
+				no.setVar(tempoConstraint.get(i).getReferencedFeature());
+				imp.getVarOrNot().add(no);
+			}
+			rul.getImp().add(imp);
+			cons.getRule().add(rul);
+		}
+		
+		if(!tempoConstraint.isEmpty())
+		{
+			fm.setConstraints(cons);
+		}
+
+
+	}
+
 
 	private boolean tieneHijos(String featureName)
 	{

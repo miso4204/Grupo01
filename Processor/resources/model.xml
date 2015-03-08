@@ -12,7 +12,7 @@
                 <feature mandatory="true" name="DevolverLibro"/>
                 <feature mandatory="true" name="InsertarLibro"/>
                 <or mandatory="true" name="Buscar">
-                    <feature mandatory="true" name="Atutor"/>
+                    <feature mandatory="true" name="Autor"/>
                     <feature mandatory="false" name="AutorExacto"/>
                     <feature mandatory="true" name="Descriptor"/>
                     <feature mandatory="false" name="DescriptorExacto"/>
@@ -26,4 +26,30 @@
             </and>
         </and>
     </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>Autor</var>
+                <not>
+                    <var>AutorExacto</var>
+                </not>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>Descriptor</var>
+                <not>
+                    <var>DescriptorExacto</var>
+                </not>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>Titulo</var>
+                <not>
+                    <var>buscarPorTituloExacto</var>
+                </not>
+            </imp>
+        </rule>
+    </constraints>
 </featureModel>
