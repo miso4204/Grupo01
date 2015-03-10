@@ -22,26 +22,33 @@ import javax.xml.bind.Marshaller;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtAnnotation;
-import annotation.Constraint;
 import annotation.ConstraintType;
-import annotation.Feature;
 import annotation.FeatureType;
 /**
- * 
+ * Clase principal del procesor, encargada de cargar en memoria el arbol y crear
+ * los obketos necesarios para trasladarlo al modelo por medio de Jaxb
  * @author harold
- *
  */
 public class FeatureProcessor extends AbstractProcessor<CtAnnotation<?>> {
+	//Feature main
 	FeatureModel fm;
+	//Main struc of feature model
 	Struct struct;
+	//Root del model
 	And root;
+	//Object factory constructor
 	ObjectFactory factory;
+	//Temporal array of feature entitys
 	ArrayList<FeatureLoadEntity> tempo;
+	//Temporal array of constraints entitys
 	ArrayList<ConstraintLoadEntity> tempoConstraint;
+	//Temporal Entitys
 	FeatureLoadEntity fea;
 	ConstraintLoadEntity cons;
 
-
+	/**
+	 * Initialize method 
+	 */
 	@Override
 	public void init() {
 		//Inicializar factory
@@ -60,7 +67,9 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<?>> {
 		tempoConstraint=new ArrayList<ConstraintLoadEntity>();
 		super.init();
 	}
-
+	/**
+	 * Main method that process all annotation, loads on memory all model
+	 */
 	@Override
 	public void process(CtAnnotation<?> annotation) {
 
@@ -117,7 +126,9 @@ public class FeatureProcessor extends AbstractProcessor<CtAnnotation<?>> {
 		}
 
 	}	
-
+	/**
+	 * Method that pass from memory to model and writes with Jaxb
+	 */
 	@Override
 	public void processingDone() {
 		//Cargar arbol features
