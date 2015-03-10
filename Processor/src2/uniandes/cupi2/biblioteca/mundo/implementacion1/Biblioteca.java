@@ -26,7 +26,6 @@ import annotation.Constraint;
 import annotation.ConstraintType;
 import annotation.Feature;
 import annotation.FeatureType;
-import annotation.VariationPoint;
 import uniandes.cupi2.biblioteca.mundo.AbstractBiblioteca;
 import uniandes.cupi2.biblioteca.mundo.ILibro;
 import uniandes.cupi2.biblioteca.mundo.IUsuario;
