@@ -1,9 +1,16 @@
 package processor;
 
 import spoon.Launcher;
-
+/**
+ * Main class that invokes th processor
+ * @author harold
+ *
+ */
 public class Invoker {
-
+/**
+ * Main method
+ * @param args
+ */
 	public static void main(String[] args){
 		Invoker invoker = new Invoker();
 		invoker.invokeSpoon("./src2", "processor.FeatureProcessor");
