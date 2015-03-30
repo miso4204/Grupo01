@@ -18,10 +18,10 @@ public class MockController {
 	@RequestMapping(value="/mock",method=RequestMethod.GET)
 	public Resultado darClientes(){
 		Resultado ro = new Resultado();	
-		String cliente = mockService.findOne("1");
+		String mock = mockService.findOne("1");
 		
-		ro.setResultado(cliente);
-		ro.setMensajeConsulta("No hay clientes registrados!");
+		ro.setResultado(mock);
+		ro.setMensajeConsulta("Este es el resultado!");
 		
 		
 		return ro;
