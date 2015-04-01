@@ -52,6 +52,6 @@ Pasos para la instalación de la aplicación de stampidia
 
 * Diego Agudelo <die-agud@uniandes.edu.co>
 * Lorena Salamanca <>
-* Harold Murcia <>
+* Harold Murcia <hl.murcia222@uniandes.edu.co>
 * Sebastián Gamba <>
 * Mauricio Cajamarca <>
