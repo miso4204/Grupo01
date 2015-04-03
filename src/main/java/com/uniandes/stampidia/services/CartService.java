@@ -18,6 +18,15 @@ public class CartService {
     @Autowired
     private OrderRepository orderRepository;
 
+    public StmpOrder updateOrder(StmpOrder order){
+        StmpOrder answer = null;
+        if(order != null){
+            answer = orderRepository.save(order);
+        }
+        // TODO :: implementar cuando order es null
+        return answer;
+    }
+
     public void addItemToCart(StmpShirt shirt, StmpOrder order){
         if(order != null && shirt != null &&
                 order.getId() != null && shirt.getId() != null){

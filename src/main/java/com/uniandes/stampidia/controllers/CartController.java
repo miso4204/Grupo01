@@ -41,4 +41,21 @@ public class CartController {
 
         return resultado;
     }
+
+    @RequestMapping(value="/cart/{order}",method= RequestMethod.PUT)
+    public Resultado updateCartItems(
+            @RequestParam("order")StmpOrder order){
+        Resultado resultado = null;
+
+        if(order != null){
+            resultado = new Resultado();
+
+            resultado.setResultado(cartService.updateOrder(order));
+
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }
+        // TODO :: implementar en caso de parametros invalidos
+
+        return resultado;
+    }
 }
