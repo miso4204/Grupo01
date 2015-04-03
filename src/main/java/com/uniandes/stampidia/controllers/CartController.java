@@ -25,8 +25,6 @@ public class CartController {
         Resultado resultado = null;
 
         if(orderId != null && shirtId != null){
-            //TODO :: traer la orden y la camiseta de BD
-
             cartService.addItemToCart(shirtId, orderId);
 
             resultado = new Resultado();
