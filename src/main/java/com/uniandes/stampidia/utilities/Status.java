@@ -9,6 +9,11 @@ public class Status {
     private EStatusType type;
     private String description;
 
+    public Status(EStatusType type, String description) {
+        this.type = type;
+        this.description = description;
+    }
+
     public EStatusType getType() {
         return type;
     }
