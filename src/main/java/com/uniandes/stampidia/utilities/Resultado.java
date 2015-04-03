@@ -11,8 +11,10 @@ public class Resultado {
 	private String mensajeAccion;
 	
 	private String mensajeConsulta;
-	
-	public Object getResultado() {
+
+    private Status estado;
+
+    public Object getResultado() {
 		return resultado;
 	}
 
@@ -51,4 +53,12 @@ public class Resultado {
 	public void setMensajeConsulta(String mensajeConsulta) {
 		this.mensajeConsulta = mensajeConsulta;
 	}
+
+    public Status getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Status estado) {
+        this.estado = estado;
+    }
 }

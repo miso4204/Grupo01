@@ -16,7 +16,7 @@ import com.uniandes.stampidia.utilities.Resultado;
 public class SizeController {
 
 	@Autowired
-	private SizeService sizeService;
+    private SizeService sizeService;
 	
 	@RequestMapping(value="/sizeService",method=RequestMethod.GET)
 	public Resultado getSizes(){

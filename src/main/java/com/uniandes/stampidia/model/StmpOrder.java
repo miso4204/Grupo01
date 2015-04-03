@@ -7,6 +7,7 @@ package com.uniandes.stampidia.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -139,6 +140,9 @@ public class StmpOrder implements Serializable {
     }
 
     public List<StmpOrderDetail> getStmpOrderDetailList() {
+        if(this.stmpOrderDetailList == null){
+            this.stmpOrderDetailList = new ArrayList<StmpOrderDetail>();
+        }
         return stmpOrderDetailList;
     }
 
