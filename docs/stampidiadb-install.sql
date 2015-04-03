@@ -1,4 +1,4 @@
--- Role: stampidia
+﻿-- Role: stampidia
 
 -- DROP ROLE stampidia;
 
@@ -683,8 +683,8 @@ ALTER SEQUENCE stamp_rating_id_seq OWNED BY stmp_stamp_rating.id;
 CREATE TABLE stmp_user (
     id integer NOT NULL,
     username character(256) NOT NULL,
-    password character(1) NOT NULL,
-    email character(1) NOT NULL,
+    password character(64) NOT NULL,
+    email character(100) NOT NULL,
     facebook_email character(256),
     twitter_email character(256),
     is_seller boolean DEFAULT false NOT NULL,

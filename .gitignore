@@ -13,3 +13,5 @@ target/m2e-wtp
 target/maven-archiver
 target/classes
 .DS_STORE
+.idea/
+stampidia.iml
