@@ -3,6 +3,7 @@ package com.uniandes.stampidia.services;
 import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
+import com.uniandes.stampidia.repos.OrderDetailRepository;
 import com.uniandes.stampidia.repos.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class CartService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
+
     public StmpOrder updateOrder(StmpOrder order){
         StmpOrder answer = null;
         if(order != null){
@@ -27,15 +31,19 @@ public class CartService {
         return answer;
     }
 
-    public void addItemToCart(StmpShirt shirt, StmpOrder order){
-        if(order != null && shirt != null &&
-                order.getId() != null && shirt.getId() != null){
-
+    public void addItemToCart(Integer shirtId, Integer orderId){
+        if(orderId != null && shirtId != null ){
             boolean contained = false;
+
+            StmpOrder order = orderRepository.findOne(orderId);
+
+            //TODO :: traer camiseta de base de datos
+            StmpShirt shirt = new StmpShirt();
+            shirt.setId(shirtId);
 
             if(order.getStmpOrderDetailList() != null && !order.getStmpOrderDetailList().isEmpty()){
                 for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
-                    if(detail.getIdShirt().equals(shirt.getId())){
+                    if(detail.getIdShirt().getId().equals(shirt.getId())){
                         contained = true;
                         detail.setQuantity(detail.getQuantity() + 1);
                         break;
@@ -53,8 +61,34 @@ public class CartService {
 
                 order.getStmpOrderDetailList().add(newDetail);
             }
+            orderRepository.save(order);
         }
+    }
 
-        orderRepository.save(order);
+    public StmpOrder deleteItemFromCart(Integer orderId, Integer itemId){
+        if(itemId != null && orderId != null){
+            StmpOrder order = orderRepository.findOne(orderId);
+
+            for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
+                if(detail.getIdShirt().getId().equals(itemId)){
+                    order.getStmpOrderDetailList().remove(detail);
+                    orderDetailRepository.delete(detail);
+                    break;
+                }
+            }
+
+            return orderRepository.save(order);
+        }
+        // TODO :: implementar cuando else
+        return null;
+    }
+
+    public StmpOrder getCartProducts(Integer userId){
+        StmpOrder answer = null;
+
+        // TODO :: manejar errores posibles
+        answer = orderRepository.findStmpOrderByUserId(userId);
+
+        return answer;
     }
 }

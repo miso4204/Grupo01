@@ -27,12 +27,7 @@ public class CartController {
         if(orderId != null && shirtId != null){
             //TODO :: traer la orden y la camiseta de BD
 
-            StmpOrder order = new StmpOrder();
-            order.setId(orderId);
-            StmpShirt shirt = new StmpShirt();
-            shirt.setId(shirtId);
-
-            cartService.addItemToCart(shirt, order);
+            cartService.addItemToCart(shirtId, orderId);
 
             resultado = new Resultado();
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
@@ -42,7 +37,7 @@ public class CartController {
         return resultado;
     }
 
-    @RequestMapping(value="/cart/{order}",method= RequestMethod.PUT)
+    @RequestMapping(value="/cart/",method= RequestMethod.PUT)
     public Resultado updateCartItems(
             @RequestParam("order")StmpOrder order){
         Resultado resultado = null;
@@ -51,6 +46,41 @@ public class CartController {
             resultado = new Resultado();
 
             resultado.setResultado(cartService.updateOrder(order));
+
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }
+        // TODO :: implementar en caso de parametros invalidos
+
+        return resultado;
+    }
+
+    @RequestMapping(value="/cart/{orderId}/item/{shirtId}",method= RequestMethod.DELETE)
+    public Resultado deleteItemFromCart(
+            @PathVariable("orderId")Integer orderId,
+            @PathVariable("shirtId")Integer shirtId){
+        Resultado resultado = null;
+
+        if(orderId != null && shirtId != null){
+            resultado = new Resultado();
+
+            resultado.setResultado(cartService.deleteItemFromCart(orderId, shirtId));
+
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }
+        // TODO :: implementar en caso de parametros invalidos
+
+        return resultado;
+    }
+
+    @RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
+    public Resultado getCartProducts(
+            @PathVariable("userId")Integer userId){
+        Resultado resultado = null;
+
+        if(userId != null){
+            resultado = new Resultado();
+
+            resultado.setResultado(cartService.getCartProducts(userId));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }

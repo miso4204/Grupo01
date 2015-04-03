@@ -8,4 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface OrderDetailRepository extends CrudRepository<StmpOrderDetail,Integer> {
     StmpOrderDetail save(StmpOrderDetail detail);
+
+    @Override
+    void delete(StmpOrderDetail detail);
 }
