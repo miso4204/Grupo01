@@ -5,6 +5,7 @@ import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.repos.OrderDetailRepository;
 import com.uniandes.stampidia.repos.OrderRepository;
+import com.uniandes.stampidia.repos.ShirtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,9 @@ public class CartService {
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+
+    @Autowired
+    private ShirtRepository shirtRepository;
 
     public StmpOrder updateOrder(StmpOrder order){
         StmpOrder answer = null;
@@ -48,9 +52,7 @@ public class CartService {
             }
             // Si la Orden no contiene la camiseta
             if(!contained){
-                //TODO :: traer camiseta de base de datos
-                StmpShirt shirt = new StmpShirt();
-                shirt.setId(shirtId);
+                StmpShirt shirt = shirtRepository.findOne(shirtId);
                 StmpOrderDetail newDetail = new StmpOrderDetail();
                 newDetail.setQuantity(1);
                 // TODO :: harold :: que valor deberia asignar aca?
