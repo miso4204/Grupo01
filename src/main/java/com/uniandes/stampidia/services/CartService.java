@@ -41,28 +41,29 @@ public class CartService {
 
             StmpOrder order = orderRepository.findOne(orderId);
 
-            if(order.getStmpOrderDetailList() != null && !order.getStmpOrderDetailList().isEmpty()){
-                for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
-                    if(detail.getIdShirt().getId().equals(shirtId)){
-                        contained = true;
-                        detail.setQuantity(detail.getQuantity() + 1);
-                        break;
+            if(order != null){
+                if(order.getStmpOrderDetailList() != null && !order.getStmpOrderDetailList().isEmpty()){
+                    for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
+                        if(detail.getIdShirt().getId().equals(shirtId)){
+                            contained = true;
+                            detail.setQuantity(detail.getQuantity() + 1);
+                            break;
+                        }
                     }
                 }
-            }
-            // Si la Orden no contiene la camiseta
-            if(!contained){
-                StmpShirt shirt = shirtRepository.findOne(shirtId);
-                StmpOrderDetail newDetail = new StmpOrderDetail();
-                newDetail.setQuantity(1);
-                // TODO :: harold :: que valor deberia asignar aca?
-//                newDetail.setUnitValue(shirt.get);
-                newDetail.setIdOrder(order);
-                newDetail.setIdShirt(shirt);
+                // Si la Orden no contiene la camiseta
+                if(!contained){
+                    StmpShirt shirt = shirtRepository.findOne(shirtId);
+                    StmpOrderDetail newDetail = new StmpOrderDetail();
+                    newDetail.setQuantity(1);
+                    newDetail.setUnitValue(shirt.getIdStamp().getPrice().add(shirt.getIdStyle().getPrice()));
+                    newDetail.setIdOrder(order);
+                    newDetail.setIdShirt(shirt);
 
-                order.getStmpOrderDetailList().add(newDetail);
+                    order.getStmpOrderDetailList().add(newDetail);
+                }
+                orderRepository.save(order);
             }
-            orderRepository.save(order);
         }
     }
 
