@@ -50,8 +50,8 @@ public class StmpPaymentType implements Serializable {
     @NotNull
     @Column(name = "status")
     private boolean status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaymentType")
-    private List<StmpOrder> stmpOrderList;
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaymentType")
+    //private List<StmpOrder> stmpOrderList;
 
     public StmpPaymentType() {
     }
@@ -99,13 +99,13 @@ public class StmpPaymentType implements Serializable {
         this.status = status;
     }
 
-    public List<StmpOrder> getStmpOrderList() {
+    /*public List<StmpOrder> getStmpOrderList() {
         return stmpOrderList;
     }
 
     public void setStmpOrderList(List<StmpOrder> stmpOrderList) {
         this.stmpOrderList = stmpOrderList;
-    }
+    }*/
 
     @Override
     public int hashCode() {
