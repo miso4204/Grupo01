@@ -22,15 +22,15 @@ public class CartController {
     public Resultado addItemToCart(
             @PathVariable("orderId")Integer orderId,
             @PathVariable("shirtId")Integer shirtId){
-        Resultado resultado = null;
+        Resultado resultado = new Resultado();
 
         if(orderId != null && shirtId != null){
             cartService.addItemToCart(shirtId, orderId);
 
-            resultado = new Resultado();
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
         }
-        // TODO :: implementar en caso de parametros invalidos
 
         return resultado;
     }
@@ -38,16 +38,15 @@ public class CartController {
     @RequestMapping(value="/cart/",method= RequestMethod.PUT)
     public Resultado updateCartItems(
             @RequestParam("order")StmpOrder order){
-        Resultado resultado = null;
+        Resultado resultado = new Resultado();
 
         if(order != null){
-            resultado = new Resultado();
-
             resultado.setResultado(cartService.updateOrder(order));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
         }
-        // TODO :: implementar en caso de parametros invalidos
 
         return resultado;
     }
@@ -56,16 +55,15 @@ public class CartController {
     public Resultado deleteItemFromCart(
             @PathVariable("orderId")Integer orderId,
             @PathVariable("shirtId")Integer shirtId){
-        Resultado resultado = null;
+        Resultado resultado = new Resultado();
 
         if(orderId != null && shirtId != null){
-            resultado = new Resultado();
-
             resultado.setResultado(cartService.deleteItemFromCart(orderId, shirtId));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
         }
-        // TODO :: implementar en caso de parametros invalidos
 
         return resultado;
     }
@@ -73,16 +71,15 @@ public class CartController {
     @RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
     public Resultado getCartProducts(
             @PathVariable("userId")Integer userId){
-        Resultado resultado = null;
+        Resultado resultado = new Resultado();
 
         if(userId != null){
-            resultado = new Resultado();
-
             resultado.setResultado(cartService.getCartProducts(userId));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
         }
-        // TODO :: implementar en caso de parametros invalidos
 
         return resultado;
     }
