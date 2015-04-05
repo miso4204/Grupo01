@@ -9,7 +9,7 @@ import com.uniandes.stampidia.model.StmpUser;
 @RestController
 @RequestMapping("/rest")
 public class SecurityController {
-	
+
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	public StmpUser user(StmpUser user){
 		return user;
