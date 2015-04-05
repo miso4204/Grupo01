@@ -20,7 +20,7 @@ public class SizeController {
 	@Autowired
     private SizeService sizeService;
 	
-	@Secured("ROLE_BUYER")
+//	@Secured("ROLE_BUYER")
 	@RequestMapping(value="/sizeServiceBuyer",method=RequestMethod.GET)
 	public Resultado getSizesForBuyer(){
 		Resultado ro = new Resultado();	
@@ -31,7 +31,7 @@ public class SizeController {
 		return ro;
 	}
 	
-	@Secured("ROLE_SELLER")
+//	@Secured("ROLE_SELLER")
 	@RequestMapping(value="/sizeServiceSeller",method=RequestMethod.GET)
 	public Resultado getSizesForSeller(){
 		Resultado ro = new Resultado();	

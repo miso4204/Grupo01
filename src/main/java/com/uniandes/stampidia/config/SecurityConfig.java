@@ -14,6 +14,7 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.uniandes.stampidia.filters.CorsFilter;
 import com.uniandes.stampidia.filters.CsrfHeaderFilter;
 import com.uniandes.stampidia.services.security.UserDetailService;
 
@@ -36,24 +37,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.httpBasic()
-				.and()
-			.authorizeRequests()
-				.antMatchers("/index.html","/").permitAll()
-				.anyRequest().authenticated()
-				.and()
-			.logout()
+//		http
+//			.httpBasic()
+//				.and()
+//			.authorizeRequests()
+//				.antMatchers("/index.html", "/").permitAll()
+//			.anyRequest().authenticated()
+//				.and()
+//			.logout()
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/")
+//				.logoutSuccessUrl("/")
 //	            .deleteCookies("XSRF-TOKEN")
 //	            .deleteCookies("JSESSIONID")
 //	            .invalidateHttpSession(true)
-				.and()
-			.csrf()//.disable();
-				.csrfTokenRepository(csrfTokenRepository())
-				.and()
-			.addFilterAfter(new CsrfHeaderFilter(),CsrfFilter.class);
+//				.and()
+//			.csrf().disable();
+//				.csrfTokenRepository(csrfTokenRepository())
+//				.and()			
+//			.addFilterAfter(new CsrfHeaderFilter(),CsrfFilter.class)
+//			.addFilterBefore(new CorsFilter(), CorsFilter.class);
 	}
 	
 	private CsrfTokenRepository csrfTokenRepository(){
