@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uniandes.stampidia.model.StmpUser;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping(value="/rest")
 public class SecurityController {
 
-	@RequestMapping(value="/user",method=RequestMethod.GET)
+	@RequestMapping(value="/loggedUser",method=RequestMethod.GET)
 	public StmpUser user(StmpUser user){
 		return user;
 	}
