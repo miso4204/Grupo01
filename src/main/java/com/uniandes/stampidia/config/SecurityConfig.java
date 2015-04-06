@@ -2,20 +2,16 @@ package com.uniandes.stampidia.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
-import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.uniandes.stampidia.filters.CorsFilter;
-import com.uniandes.stampidia.filters.CsrfHeaderFilter;
 import com.uniandes.stampidia.services.security.UserDetailService;
 
 @Configuration
@@ -37,25 +33,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//			.httpBasic()
-//				.and()
-//			.authorizeRequests()
-//				.antMatchers("/index.html", "/").permitAll()
-//			.anyRequest().authenticated()
-//				.and()
-//			.logout()
+		http				
+			.antMatcher("/rest/**")
+			.authorizeRequests()				
+				.anyRequest().authenticated()
+				.and()			
+			.logout()
+				.permitAll()
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 //				.logoutSuccessUrl("/")
 //	            .deleteCookies("XSRF-TOKEN")
 //	            .deleteCookies("JSESSIONID")
-//	            .invalidateHttpSession(true)
-//				.and()
-//			.csrf().disable();
+//	            .invalidateHttpSession(true)				
+				.and()
+			.csrf().disable()	
+			 .addFilterBefore(new CorsFilter(),ChannelProcessingFilter.class)
+			.httpBasic();
 //				.csrfTokenRepository(csrfTokenRepository())
 //				.and()			
-//			.addFilterAfter(new CsrfHeaderFilter(),CsrfFilter.class)
-//			.addFilterBefore(new CorsFilter(), CorsFilter.class);
+//			.addFilterAfter(new CsrfHeaderFilter(),CsrfFilter.class)			
 	}
 	
 	private CsrfTokenRepository csrfTokenRepository(){
