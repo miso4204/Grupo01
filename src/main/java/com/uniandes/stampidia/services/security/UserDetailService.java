@@ -27,9 +27,13 @@ public class UserDetailService implements UserDetailsService {
 			throw new UsernameNotFoundException(username + INVALID_USER);
 		}
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_BUYER")); 	
+		if(user.getIsSeller()){
+			authorities.add(new SimpleGrantedAuthority("ROLE_SELLER"));
+		}else{
+			authorities.add(new SimpleGrantedAuthority("ROLE_BUYER"));	
+		}		 	
 		
-		return new User(username,"password",authorities);
+		return new User(username,user.getPassword().toString(),authorities);
 	}
 
 }
