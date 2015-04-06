@@ -31,14 +31,14 @@ public class CorsFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpServletRequest request = (HttpServletRequest) req;
 		System.out.println("WTF");
-		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Origin", "http://localhost:8088");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-		response.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+		response.setHeader("Access-Control-Allow-Headers", "X-Requested-With,Authorization,Content-Type");
 		response.setHeader("Access-Control-Max-Age", "3600");
-		if (request.getMethod() != "OPTIONS") {
+//		if (request.getMethod() != "OPTIONS") {
 			filterChain.doFilter(request, response);
-		} else {
-		}
+//		} else {
+//		}
 		
 	}
 
