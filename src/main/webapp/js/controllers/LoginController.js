@@ -7,7 +7,10 @@
 	$scope.login = function(){
 	    loginService.login($scope.credentials).then(
 	    function(response){
-		console.log(response.data);
+		$scope.error = false;
+	    },function(response){
+		$scope.error = true;
+		$scope.mensaje = 'Este usuario y/o contraseña no es válido!';
 	    });
 	};
 
