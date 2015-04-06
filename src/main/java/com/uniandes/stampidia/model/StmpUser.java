@@ -7,6 +7,7 @@ package com.uniandes.stampidia.model;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +23,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -158,7 +161,7 @@ public class StmpUser implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
+    @JsonIgnore
     public List<StmpShirt> getStmpShirtList() {
         return stmpShirtList;
     }
@@ -166,7 +169,7 @@ public class StmpUser implements Serializable {
     public void setStmpShirtList(List<StmpShirt> stmpShirtList) {
         this.stmpShirtList = stmpShirtList;
     }
-
+    @JsonIgnore
     public List<StmpStamp> getStmpStampList() {
         return stmpStampList;
     }
@@ -174,7 +177,7 @@ public class StmpUser implements Serializable {
     public void setStmpStampList(List<StmpStamp> stmpStampList) {
         this.stmpStampList = stmpStampList;
     }
-
+    @JsonIgnore
     public List<StmpShirtRating> getStmpShirtRatingList() {
         return stmpShirtRatingList;
     }
@@ -182,7 +185,7 @@ public class StmpUser implements Serializable {
     public void setStmpShirtRatingList(List<StmpShirtRating> stmpShirtRatingList) {
         this.stmpShirtRatingList = stmpShirtRatingList;
     }
-
+    @JsonIgnore
     public List<StmpOrder> getStmpOrderList() {
         return stmpOrderList;
     }
@@ -198,7 +201,7 @@ public class StmpUser implements Serializable {
     public void setIdPlan(SmtpPlan idPlan) {
         this.idPlan = idPlan;
     }
-
+    @JsonIgnore
     public List<StmpStampRating> getStmpStampRatingList() {
         return stmpStampRatingList;
     }
