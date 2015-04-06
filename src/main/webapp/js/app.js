@@ -14,6 +14,9 @@
 	$routeProvider.when('/', {
 	    templateUrl : 'partials/home.html',
 	    controller : 'HomeController'
+	}).when('/products', {
+	    templateUrl : 'partials/products/products.html',
+	    controller : 'ProductsController'
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
 	    controller : 'LoginController'
