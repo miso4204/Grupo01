@@ -7,8 +7,10 @@ package com.uniandes.stampidia.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,6 +23,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -65,7 +68,7 @@ public class StmpOrder implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrder")
     private List<StmpOrderDetail> stmpOrderDetailList;
     @JoinColumn(name = "id_payment_type", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private StmpPaymentType idPaymentType;
     @JoinColumn(name = "id_shipping_type", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -139,6 +142,9 @@ public class StmpOrder implements Serializable {
     }
 
     public List<StmpOrderDetail> getStmpOrderDetailList() {
+        if(this.stmpOrderDetailList == null){
+            this.stmpOrderDetailList = new ArrayList<StmpOrderDetail>();
+        }
         return stmpOrderDetailList;
     }
 
