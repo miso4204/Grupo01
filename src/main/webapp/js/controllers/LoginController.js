@@ -8,6 +8,7 @@
 	    loginService.login($scope.credentials).then(
 	    function(response){
 		$scope.error = false;
+		$location.url("/");
 	    },function(response){
 		$scope.error = true;
 		$scope.mensaje = 'Este usuario y/o contraseña no es válido!';
