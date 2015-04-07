@@ -49,11 +49,11 @@ public class StmpUser implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "password")
-    private Character password;
+    private String password;
     @Basic(optional = false)
     @NotNull
     @Column(name = "email")
-    private Character email;
+    private String email;
     @Size(max = 256)
     @Column(name = "facebook_email")
     private String facebookEmail;
@@ -89,7 +89,7 @@ public class StmpUser implements Serializable {
         this.id = id;
     }
 
-    public StmpUser(Integer id, String username, Character password, Character email, boolean isSeller, boolean status) {
+    public StmpUser(Integer id, String username, String password, String email, boolean isSeller, boolean status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -114,19 +114,19 @@ public class StmpUser implements Serializable {
         this.username = username;
     }
 
-    public Character getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Character password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Character getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Character email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
