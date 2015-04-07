@@ -134,5 +134,4 @@ public class StmpShippingType implements Serializable {
     public String toString() {
         return "com.uniandes.stampidia.model.StmpShippingType[ id=" + id + " ]";
     }
-    
-}
+ }
