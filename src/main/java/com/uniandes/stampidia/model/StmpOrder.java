@@ -5,27 +5,15 @@
  */
 package com.uniandes.stampidia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -73,7 +61,7 @@ public class StmpOrder implements Serializable {
     @OneToOne(optional = false)
     private StmpShippingType idShippingType;
     @JoinColumn(name = "id_user", referencedColumnName = "id")
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private StmpUser idUser;
 
     public StmpOrder() {
@@ -140,10 +128,8 @@ public class StmpOrder implements Serializable {
         this.totalAmount = totalAmount;
     }
 
+    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
-        if(this.stmpOrderDetailList == null){
-            this.stmpOrderDetailList = new ArrayList<StmpOrderDetail>();
-        }
         return stmpOrderDetailList;
     }
 

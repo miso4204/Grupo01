@@ -5,6 +5,8 @@
  */
 package com.uniandes.stampidia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Basic;
@@ -87,6 +89,7 @@ public class StmpOrderDetail implements Serializable {
         this.unitValue = unitValue;
     }
 
+    @JsonIgnore
     public StmpOrder getIdOrder() {
         return idOrder;
     }
