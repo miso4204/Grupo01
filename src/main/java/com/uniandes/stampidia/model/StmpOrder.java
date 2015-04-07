@@ -16,6 +16,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author harold
@@ -127,7 +129,6 @@ public class StmpOrder implements Serializable {
     public void setTotalAmount(BigInteger totalAmount) {
         this.totalAmount = totalAmount;
     }
-
     @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,6 +25,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -151,7 +154,7 @@ public class StmpShirt implements Serializable {
     public void setStmpOrderDetailList(List<StmpOrderDetail> stmpOrderDetailList) {
         this.stmpOrderDetailList = stmpOrderDetailList;
     }
-
+    @JsonIgnore
     public List<StmpShirtRating> getStmpShirtRatingList() {
         return stmpShirtRatingList;
     }
