@@ -28,6 +28,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author harold
@@ -139,7 +141,7 @@ public class StmpOrder implements Serializable {
     public void setTotalAmount(BigInteger totalAmount) {
         this.totalAmount = totalAmount;
     }
-
+    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         if(this.stmpOrderDetailList == null){
             this.stmpOrderDetailList = new ArrayList<StmpOrderDetail>();

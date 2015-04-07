@@ -100,7 +100,6 @@ public class SmtpPlan implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
     @JsonIgnore
     public List<StmpUser> getStmpUserList() {
         return stmpUserList;

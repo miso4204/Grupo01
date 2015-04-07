@@ -161,7 +161,6 @@ public class StmpUser implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
     @JsonIgnore
     public List<StmpShirt> getStmpShirtList() {
         return stmpShirtList;
@@ -170,7 +169,6 @@ public class StmpUser implements Serializable {
     public void setStmpShirtList(List<StmpShirt> stmpShirtList) {
         this.stmpShirtList = stmpShirtList;
     }
-
     @JsonIgnore
     public List<StmpStamp> getStmpStampList() {
         return stmpStampList;
@@ -179,7 +177,6 @@ public class StmpUser implements Serializable {
     public void setStmpStampList(List<StmpStamp> stmpStampList) {
         this.stmpStampList = stmpStampList;
     }
-
     @JsonIgnore
     public List<StmpShirtRating> getStmpShirtRatingList() {
         return stmpShirtRatingList;
@@ -188,7 +185,7 @@ public class StmpUser implements Serializable {
     public void setStmpShirtRatingList(List<StmpShirtRating> stmpShirtRatingList) {
         this.stmpShirtRatingList = stmpShirtRatingList;
     }
-
+    
     @JsonIgnore
     public List<StmpOrder> getStmpOrderList() {
         return stmpOrderList;
@@ -205,7 +202,6 @@ public class StmpUser implements Serializable {
     public void setIdPlan(SmtpPlan idPlan) {
         this.idPlan = idPlan;
     }
-
     @JsonIgnore
     public List<StmpStampRating> getStmpStampRatingList() {
         return stmpStampRatingList;
