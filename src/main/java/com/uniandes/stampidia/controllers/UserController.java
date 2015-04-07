@@ -54,4 +54,36 @@ public class UserController {
 
         return resultado;
     }
+    
+    @RequestMapping(value="/user/buyer",method= RequestMethod.PUT)
+    public Resultado createBuyerProfile(
+            @RequestParam("buyer") StmpUser buyer){
+        Resultado resultado = new Resultado();
+
+        if(buyer != null){
+            resultado.setResultado(userService.createBuyerProfile(buyer));
+
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else{
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+        }
+
+        return resultado;
+    }
+
+    @RequestMapping(value="/user/seller",method= RequestMethod.PUT)
+    public Resultado createSellerProfile(
+            @RequestParam("seller") StmpUser seller){
+        Resultado resultado = new Resultado();
+
+        if(seller != null){
+            resultado.setResultado(userService.createSellerProfile(seller));
+
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else{
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+        }
+
+        return resultado;
+    }
 }

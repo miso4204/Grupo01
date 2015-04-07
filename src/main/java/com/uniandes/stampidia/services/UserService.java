@@ -40,13 +40,13 @@ public class UserService {
         return null;
     }
     
-    public void createBuyerProfile(StmpUser user){
-        userRepository.save(user);
+    public StmpUser createBuyerProfile(StmpUser user){
+        return userRepository.save(user);
 
     }
 
-    public void createSellerProfile(StmpUser user){
-        userRepository.save(user);
+    public StmpUser createSellerProfile(StmpUser user){
+        return userRepository.save(user);
             
     }
 }
