@@ -71,15 +71,16 @@ public class CartService {
         if(itemId != null && orderId != null){
             StmpOrder order = orderRepository.findOne(orderId);
 
-            for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
-                if(detail.getIdShirt().getId().equals(itemId)){
-                    order.getStmpOrderDetailList().remove(detail);
-                    orderDetailRepository.delete(detail);
-                    break;
+            if(order != null && order.getStmpOrderDetailList() != null){
+                for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
+                    if(detail.getIdShirt().getId().equals(itemId)){
+                        order.getStmpOrderDetailList().remove(detail);
+                        orderDetailRepository.delete(detail);
+                        break;
+                    }
                 }
+                return orderRepository.save(order);
             }
-
-            return orderRepository.save(order);
         }
         // TODO :: implementar cuando else
         return null;

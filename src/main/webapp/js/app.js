@@ -7,16 +7,20 @@
 
     var Configuration = function($routeProvider, $compileProvider, $locationProvider,$httpProvider) {
 
-//	$httpProvider.interceptors.push('httpInterceptor');
-	
-//	$locationProvider.html5Mode(true);
+	$httpProvider.interceptors.push('httpInterceptor');
 	
 	$routeProvider.when('/', {
 	    templateUrl : 'partials/home.html',
 	    controller : 'HomeController'
+	}).when('/products', {
+	    templateUrl : 'partials/products/products.html',
+	    controller : 'ProductsController'
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
 	    controller : 'LoginController'
+	}).when('/select_payment', {
+		templateUrl : 'partials/pay/select_payment.html',
+		controller : 'SelectPaymentController'
 	}).otherwise({
 	    redirectTo : '/'
 	});
@@ -24,8 +28,7 @@
 	// remueve clases css inecesarias
 	$compileProvider.debugInfoEnabled(false);
 	
-//	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-//	$httpProvider.defaults.headers.common["Content-Type"] = 'application/x-www-form-urlencoded';
+	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     };
     angular.module('stampidia').config([ '$routeProvider', '$compileProvider', '$locationProvider', '$httpProvider', Configuration ]);
 
