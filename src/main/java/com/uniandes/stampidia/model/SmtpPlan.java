@@ -7,6 +7,7 @@ package com.uniandes.stampidia.model;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -97,7 +100,7 @@ public class SmtpPlan implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
+    @JsonIgnore
     public List<StmpUser> getStmpUserList() {
         return stmpUserList;
     }

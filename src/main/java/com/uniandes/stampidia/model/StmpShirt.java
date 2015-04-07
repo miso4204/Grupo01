@@ -5,23 +5,16 @@
  */
 package com.uniandes.stampidia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -58,11 +51,11 @@ public class StmpShirt implements Serializable {
     @ManyToOne(optional = false)
     private StmpStamp idStamp;
     @JoinColumn(name = "id_artist_user", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private StmpUser idArtistUser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idShirt")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idShirt", fetch = FetchType.LAZY)
     private List<StmpOrderDetail> stmpOrderDetailList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idShirt")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idShirt", fetch = FetchType.LAZY)
     private List<StmpShirtRating> stmpShirtRatingList;
 
     public StmpShirt() {
@@ -141,6 +134,7 @@ public class StmpShirt implements Serializable {
         this.idArtistUser = idArtistUser;
     }
 
+    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;
     }
@@ -148,7 +142,7 @@ public class StmpShirt implements Serializable {
     public void setStmpOrderDetailList(List<StmpOrderDetail> stmpOrderDetailList) {
         this.stmpOrderDetailList = stmpOrderDetailList;
     }
-
+    @JsonIgnore
     public List<StmpShirtRating> getStmpShirtRatingList() {
         return stmpShirtRatingList;
     }

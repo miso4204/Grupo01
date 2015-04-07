@@ -1,7 +1,6 @@
 package com.uniandes.stampidia.config;
 
 import java.util.Properties;
-
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;

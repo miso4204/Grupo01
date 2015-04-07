@@ -5,9 +5,12 @@ import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.repos.OrderDetailRepository;
 import com.uniandes.stampidia.repos.OrderRepository;
+import com.uniandes.stampidia.repos.ShirtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by SEBASTIAN on 02/04/2015.
@@ -21,6 +24,9 @@ public class CartService {
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+
+    @Autowired
+    private ShirtRepository shirtRepository;
 
     public StmpOrder updateOrder(StmpOrder order){
         StmpOrder answer = null;
@@ -37,30 +43,29 @@ public class CartService {
 
             StmpOrder order = orderRepository.findOne(orderId);
 
-            if(order.getStmpOrderDetailList() != null && !order.getStmpOrderDetailList().isEmpty()){
-                for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
-                    if(detail.getIdShirt().getId().equals(shirtId)){
-                        contained = true;
-                        detail.setQuantity(detail.getQuantity() + 1);
-                        break;
+            if(order != null){
+                if(order.getStmpOrderDetailList() != null && !order.getStmpOrderDetailList().isEmpty()){
+                    for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
+                        if(detail.getIdShirt().getId().equals(shirtId)){
+                            contained = true;
+                            detail.setQuantity(detail.getQuantity() + 1);
+                            break;
+                        }
                     }
                 }
-            }
-            // Si la Orden no contiene la camiseta
-            if(!contained){
-                //TODO :: traer camiseta de base de datos
-                StmpShirt shirt = new StmpShirt();
-                shirt.setId(shirtId);
-                StmpOrderDetail newDetail = new StmpOrderDetail();
-                newDetail.setQuantity(1);
-                // TODO :: harold :: que valor deberia asignar aca?
-//                newDetail.setUnitValue(shirt.get);
-                newDetail.setIdOrder(order);
-                newDetail.setIdShirt(shirt);
+                // Si la Orden no contiene la camiseta
+                if(!contained){
+                    StmpShirt shirt = shirtRepository.findOne(shirtId);
+                    StmpOrderDetail newDetail = new StmpOrderDetail();
+                    newDetail.setQuantity(1);
+                    newDetail.setUnitValue(shirt.getIdStamp().getPrice().add(shirt.getIdStyle().getPrice()));
+                    newDetail.setIdOrder(order);
+                    newDetail.setIdShirt(shirt);
 
-                order.getStmpOrderDetailList().add(newDetail);
+                    order.getStmpOrderDetailList().add(newDetail);
+                }
+                orderRepository.save(order);
             }
-            orderRepository.save(order);
         }
     }
 
@@ -68,15 +73,16 @@ public class CartService {
         if(itemId != null && orderId != null){
             StmpOrder order = orderRepository.findOne(orderId);
 
-            for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
-                if(detail.getIdShirt().getId().equals(itemId)){
-                    order.getStmpOrderDetailList().remove(detail);
-                    orderDetailRepository.delete(detail);
-                    break;
+            if(order != null && order.getStmpOrderDetailList() != null){
+                for(StmpOrderDetail detail : order.getStmpOrderDetailList()){
+                    if(detail.getIdShirt().getId().equals(itemId)){
+                        order.getStmpOrderDetailList().remove(detail);
+                        orderDetailRepository.delete(detail);
+                        break;
+                    }
                 }
+                return orderRepository.save(order);
             }
-
-            return orderRepository.save(order);
         }
         // TODO :: implementar cuando else
         return null;
@@ -86,7 +92,8 @@ public class CartService {
         StmpOrder answer = null;
 
         // TODO :: manejar errores posibles
-        answer = orderRepository.findStmpOrderByUserId(userId);
+        answer = (StmpOrder) orderRepository.findStmpOrderByUserId(userId);
+        answer.getStmpOrderDetailList().size();
 
         return answer;
     }

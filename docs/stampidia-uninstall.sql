@@ -1,9 +1,6 @@
 
 -- Database: stampidia
-
 DROP DATABASE stampidia;
 
--- Role: stampidia
-
+﻿-- Role: stampidia
 DROP ROLE stampidia;
-

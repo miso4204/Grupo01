@@ -7,6 +7,7 @@ package com.uniandes.stampidia.model;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +23,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -46,11 +49,11 @@ public class StmpUser implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "password")
-    private Character password;
+    private String password;
     @Basic(optional = false)
     @NotNull
     @Column(name = "email")
-    private Character email;
+    private String email;
     @Size(max = 256)
     @Column(name = "facebook_email")
     private String facebookEmail;
@@ -86,7 +89,7 @@ public class StmpUser implements Serializable {
         this.id = id;
     }
 
-    public StmpUser(Integer id, String username, Character password, Character email, boolean isSeller, boolean status) {
+    public StmpUser(Integer id, String username, String password, String email, boolean isSeller, boolean status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -111,19 +114,19 @@ public class StmpUser implements Serializable {
         this.username = username;
     }
 
-    public Character getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Character password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Character getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Character email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -158,7 +161,7 @@ public class StmpUser implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
+    @JsonIgnore
     public List<StmpShirt> getStmpShirtList() {
         return stmpShirtList;
     }
@@ -166,7 +169,7 @@ public class StmpUser implements Serializable {
     public void setStmpShirtList(List<StmpShirt> stmpShirtList) {
         this.stmpShirtList = stmpShirtList;
     }
-
+    @JsonIgnore
     public List<StmpStamp> getStmpStampList() {
         return stmpStampList;
     }
@@ -174,7 +177,7 @@ public class StmpUser implements Serializable {
     public void setStmpStampList(List<StmpStamp> stmpStampList) {
         this.stmpStampList = stmpStampList;
     }
-
+    @JsonIgnore
     public List<StmpShirtRating> getStmpShirtRatingList() {
         return stmpShirtRatingList;
     }
@@ -182,7 +185,8 @@ public class StmpUser implements Serializable {
     public void setStmpShirtRatingList(List<StmpShirtRating> stmpShirtRatingList) {
         this.stmpShirtRatingList = stmpShirtRatingList;
     }
-
+    
+    @JsonIgnore
     public List<StmpOrder> getStmpOrderList() {
         return stmpOrderList;
     }
@@ -198,7 +202,7 @@ public class StmpUser implements Serializable {
     public void setIdPlan(SmtpPlan idPlan) {
         this.idPlan = idPlan;
     }
-
+    @JsonIgnore
     public List<StmpStampRating> getStmpStampRatingList() {
         return stmpStampRatingList;
     }
