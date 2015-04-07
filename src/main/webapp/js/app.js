@@ -15,6 +15,9 @@
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
 	    controller : 'LoginController'
+	}).when('/select_payment', {
+		templateUrl : 'partials/pay/select_payment.html',
+		controller : 'SelectPaymentController'
 	}).otherwise({
 	    redirectTo : '/'
 	});

@@ -48,9 +48,20 @@ public class StmpPaymentType implements Serializable {
     @NotNull
     @Column(name = "status")
     private boolean status;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 512)
+    @Column(name = "success_url")
+    private String successUrl;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 512)
+    @Column(name = "error_url")
+    private String errorUrl;
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaymentType")
     //private List<StmpOrder> stmpOrderList;
 
+    
     public StmpPaymentType() {
     }
 
@@ -105,7 +116,23 @@ public class StmpPaymentType implements Serializable {
         this.stmpOrderList = stmpOrderList;
     }*/
 
-    @Override
+    public String getSuccessUrl() {
+		return successUrl;
+	}
+
+	public void setSuccessUrl(String successUrl) {
+		this.successUrl = successUrl;
+	}
+
+	public String getErrorUrl() {
+		return errorUrl;
+	}
+
+	public void setErrorUrl(String errorUrl) {
+		this.errorUrl = errorUrl;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
