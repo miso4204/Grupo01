@@ -6,11 +6,7 @@
 package com.uniandes.stampidia.model;
 
 import java.io.Serializable;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> dev
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
