@@ -9,10 +9,10 @@
 
 	$httpProvider.interceptors.push('httpInterceptor');
 	
-	$routeProvider.when('/', {
+	$routeProvider.when('/home', {
 	    templateUrl : 'partials/home.html',
 	    controller : 'HomeController'
-	}).when('/products', {
+	}).when('/', {
 	    templateUrl : 'partials/products/products.html',
 	    controller : 'ProductsController'
 	}).when('/login', {
