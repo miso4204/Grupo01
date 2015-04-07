@@ -17,7 +17,7 @@
 		    listSizes : function(){
 //			return $http.get(stampidia/*,{headers:heads}*/);
 			return stampidia.list();
-		    }
+            }
 		}
 	};
 	angular.module('stampidia.services').factory('homeService',['$resource', '$http',HomeService]);
