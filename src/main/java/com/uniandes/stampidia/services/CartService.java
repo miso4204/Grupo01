@@ -93,6 +93,7 @@ public class CartService {
 
         // TODO :: manejar errores posibles
         answer = (StmpOrder) orderRepository.findStmpOrderByUserId(userId);
+        answer.getStmpOrderDetailList().size();
 
         return answer;
     }

@@ -17,6 +17,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
 
 /**
  *
@@ -54,7 +55,7 @@ public class StmpOrder implements Serializable {
     @NotNull
     @Column(name = "total_amount")
     private BigInteger totalAmount;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrder")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrder", fetch = FetchType.LAZY)
     private List<StmpOrderDetail> stmpOrderDetailList;
     @JoinColumn(name = "id_payment_type", referencedColumnName = "id")
     @OneToOne(optional = true)
@@ -129,7 +130,7 @@ public class StmpOrder implements Serializable {
     public void setTotalAmount(BigInteger totalAmount) {
         this.totalAmount = totalAmount;
     }
-    @JsonIgnore
+
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;
     }
