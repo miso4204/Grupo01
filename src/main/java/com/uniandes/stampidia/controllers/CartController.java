@@ -37,10 +37,10 @@ public class CartController {
 
     @RequestMapping(value="/cart/",method= RequestMethod.PUT)
     public Resultado updateCartItems(
-            @RequestParam("order")StmpOrder order){
+            @RequestBody StmpOrder order){
         Resultado resultado = new Resultado();
 
-        if(order != null){
+        if(order != null && order.getId() != null){
             resultado.setResultado(cartService.updateOrder(order));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));

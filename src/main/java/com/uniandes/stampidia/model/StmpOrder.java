@@ -19,7 +19,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -70,13 +69,13 @@ public class StmpOrder implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrder")
     private List<StmpOrderDetail> stmpOrderDetailList;
     @JoinColumn(name = "id_payment_type", referencedColumnName = "id")
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private StmpPaymentType idPaymentType;
     @JoinColumn(name = "id_shipping_type", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private StmpShippingType idShippingType;
     @JoinColumn(name = "id_user", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private StmpUser idUser;
 
     public StmpOrder() {

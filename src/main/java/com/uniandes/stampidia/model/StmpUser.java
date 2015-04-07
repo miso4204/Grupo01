@@ -185,6 +185,7 @@ public class StmpUser implements Serializable {
     public void setStmpShirtRatingList(List<StmpShirtRating> stmpShirtRatingList) {
         this.stmpShirtRatingList = stmpShirtRatingList;
     }
+    
     @JsonIgnore
     public List<StmpOrder> getStmpOrderList() {
         return stmpOrderList;

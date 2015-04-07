@@ -3,8 +3,8 @@
 -- DROP ROLE stampidia;
 
 CREATE ROLE stampidia LOGIN
-  ENCRYPTED PASSWORD 'md58dbe35c3ea027ecd1004e6660d48d135'
-  SUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION;
+ENCRYPTED PASSWORD 'md58dbe35c3ea027ecd1004e6660d48d135'
+SUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION;
 
   
   -- Database: stampidia
@@ -177,7 +177,9 @@ ALTER SEQUENCE det_order_id_seq OWNED BY stmp_order_detail.id;
 CREATE TABLE stmp_payment_type (
     id integer NOT NULL,
     name character(256) NOT NULL,
-    description character(512) NOT NULL,
+    description character(512),
+    success_url character(512),
+    error_url character(512),
     status boolean DEFAULT true NOT NULL
 );
 
@@ -216,7 +218,7 @@ ALTER SEQUENCE id_type_payment_id_seq OWNED BY stmp_payment_type.id;
 CREATE TABLE stmp_order (
     id integer NOT NULL,
     id_user integer NOT NULL,
-    id_payment_type integer NOT NULL,
+    id_payment_type integer,
     id_shipping_type integer DEFAULT 1 NOT NULL,
     date date DEFAULT ('now'::text)::date NOT NULL,
     shipping_status boolean DEFAULT true NOT NULL,
