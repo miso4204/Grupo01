@@ -75,7 +75,6 @@ public class CartController {
 
         if(userId != null){
             resultado.setResultado(cartService.getCartProducts(userId));
-
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
             resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
