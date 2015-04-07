@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var SelectPaymentController = function($scope, selectPaymentService, appSettings) {
+    var SelectPaymentController = function($scope, $location, selectPaymentService, appSettings) {
 	
     selectPaymentService.listPaymentTypes().$promise.then(function(response){
 	    console.log(response);
@@ -10,6 +10,15 @@
 	},function(response){
 	    console.log('bad' + response);
 	});
+    $scope.changeRoute = function(url, forceReload) {
+        $scope = $scope || angular.element(document).scope();
+        if(forceReload || $scope.$$phase) { // that's right TWO dollar signs: $$phase
+            window.location = url;
+        } else {
+            $location.path(url);
+            $scope.$apply();
+        }
+    };
 	$scope.submit = function(){
 		var paymentMethod;
 		if ($scope.paymenttype == 1){
@@ -21,6 +30,8 @@
 		}
     	selectPaymentService.pay(paymentMethod, 6).$promise.then(function(response){
     	    console.log(response);
+    	    $scope.changeRoute('#/' + response.mensajeAccion);
+    	    console.log($location);
     	},function(response){
     	    console.log('bad' + response);
     	})
@@ -29,7 +40,7 @@
     
     
     angular.module('stampidia.controllers').controller('SelectPaymentController',
-	    [ '$scope', 'selectPaymentService', 'appSettings', SelectPaymentController ]);
+	    [ '$scope', '$location', 'selectPaymentService', 'appSettings', SelectPaymentController ]);
 }());
 
 

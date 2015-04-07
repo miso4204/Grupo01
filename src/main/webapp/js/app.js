@@ -18,6 +18,24 @@
 	}).when('/select_payment', {
 		templateUrl : 'partials/pay/select_payment.html',
 		controller : 'SelectPaymentController'
+	}).when('/cash_success', {
+		templateUrl : 'partials/pay/cash_success.html',
+		controller : 'SelectPaymentController'
+	}).when('/cash_error', {
+		templateUrl : 'partials/pay/cash_error.html',
+		controller : 'SelectPaymentController'
+	}).when('/pse_success', {
+		templateUrl : 'partials/pay/pse_success.html',
+		controller : 'SelectPaymentController'
+	}).when('/pse_error', {
+		templateUrl : 'partials/pay/pse_error.html',
+		controller : 'SelectPaymentController'
+	}).when('/credit_success', {
+		templateUrl : 'partials/pay/credit_success.html',
+		controller : 'SelectPaymentController'
+	}).when('/credit_error', {
+		templateUrl : 'partials/pay/credit_error.html',
+		controller : 'SelectPaymentController'
 	}).otherwise({
 	    redirectTo : '/'
 	});
