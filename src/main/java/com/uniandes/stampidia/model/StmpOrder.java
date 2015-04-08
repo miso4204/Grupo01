@@ -131,6 +131,7 @@ public class StmpOrder implements Serializable {
         this.totalAmount = totalAmount;
     }
 
+    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;
     }
