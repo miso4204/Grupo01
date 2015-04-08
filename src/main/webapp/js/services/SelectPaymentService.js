@@ -8,9 +8,20 @@
 		    }
 		});
 		
+		var paymentServices = $resource('http://localhost:8080/stampidia/rest/pay/:method/:orderId',{
+			method:'@method',orderId:'@orderId'
+		},{
+		    pay:{
+			method:'POST'
+		    }
+		});
+		
 		return {
 		    listPaymentTypes : function(){
-			return stampidia.list();
+		    	return stampidia.list();
+		    }, 
+		    pay : function(type, orderId){
+		    	return paymentServices.pay({method:type, orderId:orderId});
 		    }
 		}
 	};
