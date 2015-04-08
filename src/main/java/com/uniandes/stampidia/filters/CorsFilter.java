@@ -16,15 +16,14 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+/**
+ * Filtro utilizado para "filtrar" las solicitudes hechas por fuera del servidor
+ * @author Diego Agudelo
+ *
+ */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
-
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
@@ -38,13 +37,18 @@ public class CorsFilter implements Filter {
 		if (request.getMethod() != "OPTIONS") {
 			filterChain.doFilter(request, response);
 		} else {
+			// TODO se debe añadir una cabecera en el caso de options para el preflight de angular
 		}
 		
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void destroy() {
 		
 	}
 }
