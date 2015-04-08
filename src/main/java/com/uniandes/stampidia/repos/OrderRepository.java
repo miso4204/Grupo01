@@ -19,6 +19,6 @@ public interface OrderRepository extends CrudRepository<StmpOrder,Integer> {
 
     void delete(StmpOrder order);
 
-    @Query(value="select s from StmpOrder s where s.id_user = :userId ",nativeQuery=true)
-    StmpOrder findStmpOrderByUserId(@Param("userId") Integer userId);
+    @Query(value="select s from StmpOrder s where s.idUser.id = :userId and s.orderStatus = true")
+    Object findStmpOrderByUserId(@Param("userId") Integer userId);
 }

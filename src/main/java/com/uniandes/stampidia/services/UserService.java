@@ -39,4 +39,10 @@ public class UserService {
         // TODO :: implementar el camino alterno
         return null;
     }
+    
+    public StmpUser createProfile(StmpUser user){
+        return userRepository.save(user);
+
+    }
+
 }
