@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html data-ng-app="stampidia">
 <head>
-	<base href="/stampidia/">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Stampidia - Think it, stamp it</title>
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
-    <link href="lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/bootstrap/css/prettyPhoto.css" rel="stylesheet">
-    <link href="lib/bootstrap/css/price-range.css" rel="stylesheet">
-    <link href="lib/bootstrap/css/animate.css" rel="stylesheet">
-	<link href="lib/bootstrap/css/main.css" rel="stylesheet">
-	<link href="lib/bootstrap/css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
+<base href="/stampidia/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Stampidia - Think it, stamp it</title>
+<link rel="stylesheet" type="text/css"
+	href="lib/bootstrap/css/bootstrap.min.css">
+<link href="lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+<link href="lib/bootstrap/css/prettyPhoto.css" rel="stylesheet">
+<link href="lib/bootstrap/css/price-range.css" rel="stylesheet">
+<link href="lib/bootstrap/css/animate.css" rel="stylesheet">
+<link href="lib/bootstrap/css/main.css" rel="stylesheet">
+<link href="lib/bootstrap/css/responsive.css" rel="stylesheet">
+<!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="lib/bootstrap/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="lib/bootstrap/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="lib/bootstrap/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="lib/bootstrap/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="lib/bootstrap/images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+    <![endif]-->
+<link rel="shortcut icon" href="lib/bootstrap/images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="lib/bootstrap/images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="lib/bootstrap/images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="lib/bootstrap/images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="lib/bootstrap/images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<!--/head-->
 
 <body ng-cloak>
-	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
+	<header id="header" ng-controller="LoginController">
+		<!--header-->
+		<div class="header_top">
+			<!--header_top-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +57 280 2166</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> stampidia@gmail.com</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> +57 280
+										2166</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i>
+										stampidia@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -51,73 +61,82 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/header_top-->
-		
-		<div class="header-middle"><!--header-middle-->
+		</div>
+		<!--/header_top-->
+
+		<div class="header-middle">
+			<!--header-middle-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="lib/bootstrap/images/home/logo.png" alt="" /></a>
+							<a href="index.html"><img
+								src="lib/bootstrap/images/home/logo.png" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="#/login"><i class="fa fa-lock"></i> Login</a></li>
+
+								<li><a href="#/products">Products</a></li>
+								<li><a href="#/product-details">Product Details</a></li>
+								<li><a href="#/checkout">Checkout</a></li>
+								<li><a href="#/cart">Cart</a></li>
+								<li><a href="#/login" ng-show="isAuthenticated">Login</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><!--/header-middle-->
-	
-		<div class="header-bottom"><!--header-bottom-->
+		</div>
+		<!--/header-middle-->
+
+		<div class="header-bottom">
+			<!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
 						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
 							</button>
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="#/products">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="#/login">Login</a></li> 
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li class="dropdown"><a href="#">Shop<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="#/products">Products</a></li>
+										<li><a href="#/product-details">Product Details</a></li>
+										<li><a href="#/checkout">Checkout</a></li>
+										<li><a href="#/cart">Cart</a></li>
+										<li><a href="#/login">Login</a></li>
+									</ul></li>								
+								<li><a href="#/contact-us">Contact</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" placeholder="Search" />
 						</div>
 					</div>
 				</div>
 			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
-	
+		</div>
+		<!--/header-bottom-->
+	</header>
+	<!--/header-->
+
 	<!-- SPA view-->
 	<div ng-view></div>
-	
-	<footer id="footer"><!--Footer-->
+
+	<footer id="footer">
+		<!--Footer-->
 		<div class="footer-top">
 			<div class="container">
 				<div class="row">
@@ -144,7 +163,7 @@
 								<h2>Lider del Grupo</h2>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-2">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -153,10 +172,11 @@
 									</div>
 								</a>
 								<p>Harold Murcia</p>
-								<h2>Lider del desarrollo de la administracion de la configuracion</h2>
+								<h2>Lider del desarrollo de la administracion de la
+									configuracion</h2>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-2">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -168,7 +188,7 @@
 								<h2>Lider de desarrollo de activos</h2>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-2">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -177,37 +197,44 @@
 									</div>
 								</a>
 								<p>Mauricio Cajamarca</p>
-								<h2>Lider de </h2>
+								<h2>Lider de</h2>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="address">
 							<img src="lib/bootstrap/images/home/map.png" alt="" />
-							<p>Universidad de los Andes<br/>Bogota, Colombia</p>
+							<p>
+								Universidad de los Andes<br />Bogota, Colombia
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights
+						reserved.</p>
+					<p class="pull-right">
+						Designed by <span><a target="_blank"
+							href="http://www.themeum.com">Themeum</a></span>
+					</p>
 				</div>
 			</div>
 		</div>
-		
-	</footer><!--/Footer-->
-  
-    <script src="lib/bootstrap/js/jquery.js"></script>
+
+	</footer>
+	<!--/Footer-->
+
+	<script src="lib/bootstrap/js/jquery.js"></script>
 	<script src="lib/bootstrap/js/jquery.scrollUp.min.js"></script>
 	<script src="lib/bootstrap/js/price-range.js"></script>
-    <script src="lib/bootstrap/js/jquery.prettyPhoto.js"></script>
-    <script src="lib/bootstrap/js/main.js"></script>
-	
+	<script src="lib/bootstrap/js/jquery.prettyPhoto.js"></script>
+	<script src="lib/bootstrap/js/main.js"></script>
+
 	<script src="lib/jquery/jquery-2.1.1.min.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/angular/angular.min.js"></script>
@@ -224,6 +251,7 @@
 	<script src="js/controllers/LoginController.js"></script>
 	<script src="js/controllers/SelectPaymentController.js"></script>
 	<script src="js/services/LoginService.js"></script>
+	<script src="js/services/SessionService.js"></script>
 	<script src="js/services/SelectPaymentService.js"></script>
 	<script src="js/services/values.js"></script>
 </body>
