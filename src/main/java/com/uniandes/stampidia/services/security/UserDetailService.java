@@ -13,13 +13,29 @@ import org.springframework.stereotype.Service;
 import com.uniandes.stampidia.model.StmpUser;
 import com.uniandes.stampidia.repos.UserRepository;
 
+/**
+ * Servicio utilizado para consultar la informacion de un usuario contra la base de datos
+ * 
+ * @author Diego Agudelo
+ *
+ */
 @Service
 public class UserDetailService implements UserDetailsService {
 
+	/**
+	 * Constante utilizada para denotar que el usuario consultado no es valido
+	 */
 	private static final String INVALID_USER = " is not registered!";
+	
+	/**
+	 * Repositorio de consulta 
+	 */
 	@Autowired
 	private UserRepository userRepository;
 	
+	/**
+	 * Metodo que carga la informacion de un usuario dado el 'nombre de usuario'
+	 */
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		StmpUser user = userRepository.findUserByName(username);
