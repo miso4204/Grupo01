@@ -43,6 +43,12 @@
 		    return response.data;
 		});
 		return promise;
+	    },
+	    logout : function() {
+		var promise = $http.post(stampidiaEndpoint + '/rest/logout', {}).then(function(response) {
+		    return response.data;
+		});
+		return promise;
 	    }
 	};
 

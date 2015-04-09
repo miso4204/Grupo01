@@ -41,4 +41,10 @@ public class SecurityController {
 		return result;
 	}
 	
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String index(){
+		
+		return "STAMPIDIA API";
+	}
+	
 }

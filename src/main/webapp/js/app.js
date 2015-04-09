@@ -49,7 +49,7 @@
 	});
 
 	// remueve clases css inecesarias
-	$compileProvider.debugInfoEnabled(false);
+	$compileProvider.debugInfoEnabled(true);
 
 	//Anexa por defecto a todas las llamadas el encabezado
 	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';

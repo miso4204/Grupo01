@@ -13,22 +13,35 @@
 
 	$scope.login = function() {
 	    loginService.login($scope.credentials).then(function(response) {
-		var resp = response.resultado
-		sessionService.create(resp.username, 'asdasdasdasdasd', 'ROLE_BUYER');
-		$scope.error = false;		
+		var resp = response.resultado;
+		//TODO Obtener el rol y el token de sesion
+		sessionService.create(resp.username, 'asdasdasdasdasd', 'ROLE_BUYER');		
+		$scope.error = false;
 		$location.url("/");
 	    }, function(response) {
 		$scope.error = true;
+		sessionService.destroy();
 		$scope.mensaje = 'Este usuario y/o contraseña no es válido!';
 	    });
 	};
 	
+	$scope.logout = function() {
+	    loginService.logout($scope.credentials).then(function(response) {
+		var resp = response.resultado;
+		sessionService.destroy();
+	    }, function(response) {
+		sessionService.destroy();
+		$scope.mensaje = 'Vuelva pronto!';
+	    });
+	};
+	
 	/**
-	 * Variable para definir si el usuario está logeado
+	 * Funcion para definir si el usuario está logeado o no
 	 */
-	$scope.isAuthenticated = function() {
+	$scope.isAuthenticated = function(){
 	    return !!sessionService.authId;
 	}
+	
 
     };
 
