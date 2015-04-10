@@ -33,11 +33,11 @@ public class UploadController {
 			try {
 				byte[] bytes = file.getBytes();
 				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(new File(name + "-uploaded")));
+						new FileOutputStream(new File(name)));
 				stream.write(bytes);
 				stream.close();
 				ro.setMensajeConsulta("You successfully uploaded " + name
-						+ " into " + name + "-uploaded !");
+						+ " into " + name);
 			} catch (Exception e) {
 				ro.setMensajeConsulta("You failed to upload " + name + " => "
 						+ e.getMessage());
