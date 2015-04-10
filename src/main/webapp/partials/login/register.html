@@ -1,0 +1,28 @@
+{{error}}
+{{mensaje}}
+
+<section id="form"><!--form-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-1">
+				<div class="login-form"><!--login form-->
+					<h2>Register Now</h2>
+					<form action="#">
+						<input type="text" placeholder="User" ng-model="signupData.username" />
+						<input type="password" placeholder="Password" ng-model="signupData.password"/>
+						<input type="text" placeholder="Email" ng-model="signupData.email"/>
+						<input type="text" placeholder="Facebook" ng-model="signupData.facebook_email"/>
+						<input type="text" placeholder="Twitter" ng-model="signupData.twitter_email"/>
+						<input type="text" placeholder="Is Seller" ng-model="signupData.is_seller"/>
+						<input type="text" placeholder="Status" ng-model="signupData.status"/>
+<!-- 						<span> -->
+<!-- 							<input type="checkbox" class="checkbox">  -->
+<!-- 							Keep me signed in -->
+<!-- 						</span> -->
+						<button type="button" class="btn btn-default" ng-click="signup()">Register</button>
+					</form>
+				</div><!--/login form-->
+			</div>
+		</div>
+	</div>
+</section>

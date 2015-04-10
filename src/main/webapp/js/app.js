@@ -18,6 +18,9 @@
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
 	    controller : 'LoginController'
+	}).when('/register', {
+	    templateUrl : 'partials/login/register.html',
+	    controller : 'RegisterController'
 	}).when('/select_payment', {
 		templateUrl : 'partials/pay/select_payment.html',
 		controller : 'SelectPaymentController'
