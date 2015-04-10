@@ -13,12 +13,13 @@
 						<input type="text" placeholder="Email" ng-model="signupData.email"/>
 						<input type="text" placeholder="Facebook" ng-model="signupData.facebook_email"/>
 						<input type="text" placeholder="Twitter" ng-model="signupData.twitter_email"/>
-						<input type="text" placeholder="Is Seller" ng-model="signupData.is_seller"/>
-						<input type="text" placeholder="Status" ng-model="signupData.status"/>
-<!-- 						<span> -->
-<!-- 							<input type="checkbox" class="checkbox">  -->
-<!-- 							Keep me signed in -->
-<!-- 						</span> -->
+						<span>
+							<label>Is Seller</label>
+							<input type="checkbox" ng-model="signupData.is_seller" style="height: 15px;"> <br/>
+							<label>Status</label>
+							<input type="checkbox" ng-model="signupData.status" style="height: 15px;">
+						</span>
+						
 						<button type="button" class="btn btn-default" ng-click="signup()">Register</button>
 					</form>
 				</div><!--/login form-->
