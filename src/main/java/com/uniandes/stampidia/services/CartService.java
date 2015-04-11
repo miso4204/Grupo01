@@ -61,7 +61,6 @@ public class CartService {
                     newDetail.setUnitValue(shirt.getIdStamp().getPrice().add(shirt.getIdStyle().getPrice()));
                     newDetail.setIdOrder(order);
                     newDetail.setIdShirt(shirt);
-
                     order.getStmpOrderDetailList().add(newDetail);
                 }
                 orderRepository.save(order);

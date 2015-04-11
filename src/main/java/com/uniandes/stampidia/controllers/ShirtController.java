@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.services.ShirtService;
+import com.uniandes.stampidia.utilities.Constantes;
 import com.uniandes.stampidia.utilities.Resultado;
+import com.uniandes.stampidia.utilities.Status;
+import com.uniandes.stampidia.utilities.enums.EStatusType;
 
 @RestController
 @RequestMapping(value="/rest")
@@ -44,4 +48,19 @@ public class ShirtController {
 		ro.setTotalObjetos(shirts.size());
 		return ro;	
 	}
+	
+	@RequestMapping(value="/shirtService/{shirtText}/{shirtIdColor}/{shirtIdStyle}/{shirtIdSize}/{shirtIdStamp}/{shirtIdUser}",method= RequestMethod.PUT)
+    public Resultado addItemToCart(
+            @PathVariable("shirtText") String shirtText,
+            @PathVariable("shirtIdColor")Integer shirtIdColor,
+            @PathVariable("shirtIdStyle")Integer shirtIdStyle,
+            @PathVariable("shirtIdSize")Integer shirtIdSize,
+            @PathVariable("shirtIdStamp")Integer shirtIdStamp,
+            @PathVariable("shirtIdUser")Integer shirtIdUser){
+        Resultado resultado = new Resultado();
+        StmpShirt shirt = new StmpShirt();
+        shirt = shirtService.addShirt(shirtText, shirtIdColor, shirtIdStyle, shirtIdSize, shirtIdStamp, shirtIdUser);
+        resultado.setResultado(shirt);
+        return resultado;
+    }
 }
