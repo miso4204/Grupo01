@@ -2,7 +2,7 @@
 
 -- DROP ROLE stampidia;
 
-CREATE ROLE stampidia LOGIN ENCRYPTED PASSWORD 'md5a7cdfd7cde0783fd041883660a03a875' 
+CREATE ROLE stampidia LOGIN ENCRYPTED PASSWORD 'md58dbe35c3ea027ecd1004e6660d48d135' 
 VALID UNTIL 'infinity';
    
 --Database: stampidia
