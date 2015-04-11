@@ -77,12 +77,12 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-
 								<li><a href="#/products">Products</a></li>
 								<li><a href="#/product-details">Product Details</a></li>
 								<li><a href="#/checkout">Checkout</a></li>
 								<li><a href="#/cart">Cart</a></li>
 								<li><a href="#/login" ng-show="isAuthenticated">Login</a></li>
+								<li><a href="#/register"><i class="fa fa-user"></i> Register Now</a></li>
 							</ul>
 						</div>
 					</div>
@@ -115,7 +115,7 @@
 										<li><a href="#/checkout">Checkout</a></li>
 										<li><a href="#/cart">Cart</a></li>
 										<li><a href="#/login">Login</a></li>
-									</ul></li>								
+									</ul></li>
 								<li><a href="#/contact-us">Contact</a></li>
 							</ul>
 						</div>
@@ -229,14 +229,12 @@
 	</footer>
 	<!--/Footer-->
 
-	<script src="lib/bootstrap/js/jquery.js"></script>
+	<script src="lib/jquery/jquery-2.1.1.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/bootstrap/js/jquery.scrollUp.min.js"></script>
 	<script src="lib/bootstrap/js/price-range.js"></script>
 	<script src="lib/bootstrap/js/jquery.prettyPhoto.js"></script>
 	<script src="lib/bootstrap/js/main.js"></script>
-
-	<script src="lib/jquery/jquery-2.1.1.min.js"></script>
-	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/angular/angular.min.js"></script>
 	<script src="lib/angular/angular-route.min.js"></script>
 	<script src="lib/angular/angular-resource.min.js"></script>
@@ -249,6 +247,8 @@
 	<script src="js/services/ProductsService.js"></script>
 	<script src="js/services/CategoriesService.js"></script>
 	<script src="js/controllers/LoginController.js"></script>
+	<script src="js/controllers/RegisterController.js"></script>
+	<script src="js/services/RegisterService.js"></script>
 	<script src="js/controllers/SelectPaymentController.js"></script>
 	<script src="js/services/LoginService.js"></script>
 	<script src="js/services/SessionService.js"></script>

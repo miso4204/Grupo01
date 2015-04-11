@@ -5,7 +5,7 @@
  */
 (function() {
     'use strict';
-    
+
     var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers' ]);
     var stampidiaControllers = angular.module('stampidia.controllers', []);
     var stampidiaServices = angular.module('stampidia.services', []);
@@ -13,16 +13,18 @@
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
 
 	$httpProvider.interceptors.push('httpInterceptor');
-	
-	$routeProvider.when('/home', {
+	$routeProvider.when('/', {
 	    templateUrl : 'partials/home.html',
 	    controller : 'HomeController'
-	}).when('/', {
+	}).when('/products', {
 	    templateUrl : 'partials/products/products.html',
 	    controller : 'ProductsController'
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
 	    controller : 'LoginController'
+	}).when('/register', {
+	    templateUrl : 'partials/login/register.html',
+	    controller : 'RegisterController'
 	}).when('/select_payment', {
 	    templateUrl : 'partials/pay/select_payment.html',
 	    controller : 'SelectPaymentController'
@@ -54,7 +56,7 @@
 	//Anexa por defecto a todas las llamadas el encabezado
 	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     };
-    
+
     angular.module('stampidia').config([ '$routeProvider', '$compileProvider', '$locationProvider', '$httpProvider', Configuration ]);
 
 }());

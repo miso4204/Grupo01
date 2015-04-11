@@ -55,7 +55,7 @@ public class UserController {
     @RequestMapping(value="/user/buyer",method= RequestMethod.POST)
     public Resultado createBuyerProfile(
             @RequestParam("username") String username,
-            @RequestParam("username") String password,
+            @RequestParam("password") String password,
             @RequestParam("email") String email,
             @RequestParam("facebook_email") String face,
             @RequestParam("twitter_email") String twitter,
