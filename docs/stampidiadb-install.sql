@@ -183,9 +183,6 @@ CREATE TABLE stmp_payment_type (
     status boolean DEFAULT true NOT NULL
 );
 
-INSERT INTO stmp_payment_type VALUES (1, 'CoD', 'Cash on Delivery', 'cash_success', 'cash_error', true);
-INSERT INTO stmp_payment_type VALUES (2, 'PSE', 'PSE', 'pse_success', 'pse_error', true);
-INSERT INTO stmp_payment_type VALUES (3, 'CREDIT CARD', 'Credit Card', 'credit_success', 'credit_error', true);
 
 ALTER TABLE stmp_payment_type OWNER TO stampidia;
 

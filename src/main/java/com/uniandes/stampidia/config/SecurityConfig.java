@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.uniandes.stampidia.filters.CorsFilter;
 import com.uniandes.stampidia.services.security.UserDetailService;
@@ -38,9 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()				
 				.anyRequest().authenticated()
 				.and()			
-			.logout()
-				.permitAll()
+			.logout()				
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutUrl("/rest/logout")
+				.logoutSuccessUrl("/rest/doLogin").permitAll()
 //				.logoutSuccessUrl("/")
 //	            .deleteCookies("XSRF-TOKEN")
 //	            .deleteCookies("JSESSIONID")

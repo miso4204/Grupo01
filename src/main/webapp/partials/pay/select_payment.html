@@ -1,141 +1,174 @@
-<div id="paymenttypesselector" >
-<div ng-repeat="type in paymentTypes">
-    {{ type.description }}<input type="radio" name="types" ng-model="paymenttype" value="{{type.id}}" />
-<!--     PSE<input type="radio" name="paymenttypes" value="pse" ng-model="paymenttype" /> -->
-<!-- 	Cash on delivery<input type="radio" name="paymenttypes" value="cash" ng-model="paymenttype" /> -->
-</div>
+<section id="form">
+	<!--form-->
+	<div class="container">
+		<div class="row">
+				<div class="review-payment">
+				<h2>Select your payment method</h2>
+			</div>
+			<div id="paymenttypesselector">
+				<div ng-repeat="type in paymentTypes">
+					<input type="radio" name="paymenttype"
+						ng-model="$parent.paymenttype" value="{{type.id}}"> {{
+					type.description }} </input>
+				</div>
+	
+				<div id="creditcard" ng-show="paymenttype==3">
+					<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Pay by Credit Card</legend>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="card-holder-name">Name
+									on Card</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="card-holder-name"
+										id="card-holder-name" placeholder="Card Holder's Name">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="card-number">Card
+									Number</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" name="card-number"
+										id="card-number" placeholder="Card Number" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="expiry-month">Expiration
+									Date</label>
+								<div class="col-sm-9">
+									<div class="row">
+										<div class="col-xs-2">
+											<select class="form-control col-sm-2" name="expiry-month"
+												id="expiry-month">
+												<option>Month</option>
+												<option value="01">(01) January</option>
+												<option value="02">(02) February</option>
+												<option value="03">(03) March</option>
+												<option value="04">(04) April</option>
+												<option value="05">(05) May</option>
+												<option value="06">(06) June</option>
+												<option value="07">(07) July</option>
+												<option value="08">(08) August</option>
+												<option value="09">(09) September</option>
+												<option value="10">(10) October</option>
+												<option value="11">(11) November</option>
+												<option value="12">(12) December</option>
+											</select>
+										</div>
+										<div class="col-xs-2">
+											<select class="form-control" name="expiry-year">
+												<option value="15">2015</option>
+												<option value="16">2016</option>
+												<option value="17">2017</option>
+												<option value="18">2018</option>
+												<option value="19">2019</option>
+												<option value="20">2020</option>
+												<option value="21">2021</option>
+												<option value="22">2022</option>
+												<option value="23">2023</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="cvv">Security
+									Code</label>
+								<div class="col-sm-1">
+									<input type="text" class="form-control" name="cvv" id="cvv"
+										placeholder="CVV" ng-minlength=3 ng-maxlength=3>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-9">
+									<button type="button" class="btn btn-success"
+										ng-click="submit()">Pay Now</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
 
-<div id="creditcard" class="desc" ng-show="paymenttype == 3">
-  <form class="form-horizontal" role="form">
-    <fieldset>
-      <legend>Pay by Credit Card</legend>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-holder-name">Name on Card</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-number">Card Number</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Card Number">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-xs-2">
-              <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
-                <option>Month</option>
-                <option value="01">(01) January</option>
-                <option value="02">(02) February</option>
-                <option value="03">(03) March</option>
-                <option value="04">(04) April</option>
-                <option value="05">(05) May</option>
-                <option value="06">(06) June</option>
-                <option value="07">(07) July</option>
-                <option value="08">(08) August</option>
-                <option value="09">(09) September</option>
-                <option value="10">(10) October</option>
-                <option value="11">(11) November</option>
-                <option value="12">(12) December</option>
-              </select>
-            </div>
-            <div class="col-xs-2">
-              <select class="form-control" name="expiry-year">
-                <option value="15">2015</option>
-                <option value="16">2016</option>
-                <option value="17">2017</option>
-                <option value="18">2018</option>
-                <option value="19">2019</option>
-                <option value="20">2020</option>
-                <option value="21">2021</option>
-                <option value="22">2022</option>
-                <option value="23">2023</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="cvv">Security Code</label>
-        <div class="col-sm-1">
-          <input type="text" class="form-control" name="cvv" id="cvv" placeholder="CVV">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9">
-          <button type="button" class="btn btn-success">Pay Now</button>
-        </div>
-      </div>
-    </fieldset>
-  </form>
-</div>	
+				<div id="pse" ng-show="paymenttype==2">
+					<form class="form-horizontal" role="form">
+						<fieldset>
+							<legend>Pay by PSE</legend>
+							<div class="row">
+								<div class="col-xs-1">
+									<img src="lib/bootstrap/images/pay/pse.png" height="140"
+										width="140" />
+								</div>
+								<div class="col-md-9">
+									<div class="form-group">
+										<label class="col-sm-3 control-label" for="card-holder-name">Buyer
+											name</label>
+										<div class="col-sm-4">
+											<input type="text" class="form-control"
+												name="card-holder-name" id="card-holder-name"
+												placeholder="Buyer full name" ng-model="buyer.name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label" for="card-number">Buyer
+											Id</label>
+										<div class="col-sm-2">
+											<input type="text" class="form-control" name="card-number"
+												id="card-number" placeholder="Buyer Id" ng-model="buyer.id">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label" for="card-number">Cell
+											phone</label>
+										<div class="col-sm-2">
+											<input type="text" class="form-control" name="card-number"
+												id="card-number" placeholder="No dashes or spaces"
+												ng-model="buyer.phone">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label" for="expiry-month">Bank</label>
+										<div class="col-sm-9">
+											<div class="row">
+												<div class="col-xs-3">
+													<select class="form-control col-sm-9" name="bank" id="bank"
+														ng-model="buyer.bank">
+														<option></option>
+														<option value="01">BANCO AV VILLAS</option>
+														<option value="02">BANCO CAJA SOCIAL</option>
+														<option value="03">BANCO COLPATRIA</option>
+														<option value="04">BANCO DAVIVIENDA</option>
+														<option value="05">BANCO DE BOGOTA</option>
+														<option value="06">BANCO DE OCCIDENTE</option>
+														<option value="07">BANCO FALABELLA</option>
+														<option value="08">BANCO PICHINCHA S.A.</option>
+														<option value="09">BANCOLOMBIA</option>
+														<option value="10">BBVA COLOMBIA S.A.</option>
+														<option value="11">CITIBANK</option>
+														<option value="12">HELM BANK S.A.</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-3 col-sm-9">
+											<button type="button" class="btn btn-success"
+												ng-click="submit()">Pay Now</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
 
-<div id="pse" class="desc" ng-show="paymenttype == 2"> 
-  <form class="form-horizontal" role="form">
-    <fieldset>
-      <legend>Pay by PSE</legend>
-	  <div class="row">
-    <div class="col-xs-1">
-	<img src="lib/bootstrap/images/pay/pse.png" height="140" width="140" />
+				<div id="cash" ng-show="paymenttype==1">
+					Cash on delivery
+					<button type="button" class="btn btn-success" ng-click="submit()">Pay
+						Now</button>
+				</div>
+			</div>
+		</div>
 	</div>
-    <div class="col-md-9">
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-holder-name">Buyer name</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Buyer full name" ng-model="buyer.name">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-number">Buyer Id</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Buyer Id" ng-model="buyer.id">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="card-number">Cell phone</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" name="card-number" id="card-number" placeholder="No dashes or spaces" ng-model="buyer.phone">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label" for="expiry-month">Bank</label>
-        <div class="col-sm-9">
-          <div class="row">
-            <div class="col-xs-3">
-              <select class="form-control col-sm-9" name="bank" id="bank" ng-model="buyer.bank">
-                <option></option>
-                <option value="01">BANCO AV VILLAS</option>
-                <option value="02">BANCO CAJA SOCIAL</option>
-                <option value="03">BANCO COLPATRIA</option>
-                <option value="04">BANCO DAVIVIENDA</option>
-                <option value="05">BANCO DE BOGOTA</option>
-                <option value="06">BANCO DE OCCIDENTE</option>
-                <option value="07">BANCO FALABELLA</option>
-                <option value="08">BANCO PICHINCHA S.A.</option>
-                <option value="09">BANCOLOMBIA</option>
-                <option value="10">BBVA COLOMBIA S.A.</option>
-                <option value="11">CITIBANK</option>
-                <option value="12">HELM BANK S.A.</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-9">
-          <button type="button" class="btn btn-success" ng-click="submitPse()">Pay Now</button>
-        </div>
-      </div>
-	  	</div>
-	</div>
-    </fieldset>
-  </form>
-</div>	
-    
-<div id="cash" class="desc" ng-show="paymenttype == 1">
-    Cash on delivery
-</div>
-</div>
+	
+</section>

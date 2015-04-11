@@ -125,7 +125,7 @@ public class StmpShirt implements Serializable {
     public void setIdStamp(StmpStamp idStamp) {
         this.idStamp = idStamp;
     }
-
+    @JsonIgnore
     public StmpUser getIdArtistUser() {
         return idArtistUser;
     }

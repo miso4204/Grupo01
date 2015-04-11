@@ -14,6 +14,13 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
+/**
+ * Clase utilizada para adicionar un token para la proteccion de ataques de tipo CSRF
+ *
+ * @note No se esta utilizando de momento
+ * @author Diego Agudelo
+ *
+ */
 @Order(Ordered.LOWEST_PRECEDENCE)
 public class CsrfHeaderFilter extends OncePerRequestFilter {
 
@@ -26,7 +33,7 @@ public class CsrfHeaderFilter extends OncePerRequestFilter {
 			String token = csrf.getToken();
 			if (cookie == null || token != null && !token.equals(cookie.getValue())) {
 				cookie = new Cookie("XSRF-TOKEN", token);
-//				cookie.setPath("/");
+				cookie.setPath("/");
 				response.addCookie(cookie);
 			}
 		}
