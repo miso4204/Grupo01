@@ -182,7 +182,7 @@ public class StmpStamp implements Serializable {
     public void setIdCategory(StmpCategory idCategory) {
         this.idCategory = idCategory;
     }
-
+    @JsonIgnore
     public StmpUser getIdArtistUser() {
         return idArtistUser;
     }

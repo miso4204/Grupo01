@@ -13,7 +13,6 @@
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
 
 	$httpProvider.interceptors.push('httpInterceptor');
-
 	$routeProvider.when('/', {
 	    templateUrl : 'partials/home.html',
 	    controller : 'HomeController'
