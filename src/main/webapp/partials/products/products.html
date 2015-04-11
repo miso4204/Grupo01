@@ -8,6 +8,9 @@
 						<!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="" ng-click="listProducts()">All</a>
+								</h4>
 								<h4 class="panel-title" data-ng-repeat="category in categories">
 									<a href="" ng-click="selectCategory(category.id)">{{category.name}}</a>
 								</h4>
