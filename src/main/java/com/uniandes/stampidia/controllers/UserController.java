@@ -54,22 +54,11 @@ public class UserController {
     
     @RequestMapping(value="/user/buyer",method= RequestMethod.POST)
     public Resultado createBuyerProfile(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
-            @RequestParam("email") String email,
-            @RequestParam("facebook_email") String face,
-            @RequestParam("twitter_email") String twitter,
-            @RequestParam("is_seller") boolean isSeller,
-            @RequestParam("status") boolean status){
+            @RequestBody StmpUser user
+            ){
         Resultado resultado = new Resultado();
 
-        if(username != null){
-        	StmpUser user = new StmpUser(null, username, password, email, isSeller, status);
-        	user.setFacebookEmail(face);
-        	user.setTwitterEmail(twitter);
-        	user.setIsSeller(isSeller);
-        	user.setStatus(status);
-        	
+        if(user != null){        	
             resultado.setResultado(userService.createProfile(user));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));

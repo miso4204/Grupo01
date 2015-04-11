@@ -6,11 +6,15 @@
 		$scope.signupData = {};
 		$scope.signup = function(){
 			var res=registerService.listUsers($scope.signupData).$promise.then(function(response){
-				console.log(response);
-				if(response['estado']['type']=='OK')
+				console.log('OK: '+response);
+				if(response.estado.type=='OK')
 				{
 					$location.url("/");
+				}else{
+				    //TODO send error
 				}
+			}, function(response) {
+			    	console.log('Error: ' +response);
 			})
 		};
 	};

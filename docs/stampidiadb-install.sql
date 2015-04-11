@@ -49,8 +49,8 @@ SET client_min_messages = warning;
 
 CREATE TABLE stmp_category (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    description character(512) NOT NULL,
+    name charactervarying(256) NOT NULL,
+    description charactervarying(512) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 
@@ -97,8 +97,8 @@ ALTER SEQUENCE category_id_seq OWNED BY stmp_category.id;
 
 CREATE TABLE stmp_color (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    hex_value character(512) NOT NULL,
+    name charactervarying(256) NOT NULL,
+    hex_value charactervarying(512) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 
@@ -176,10 +176,10 @@ ALTER SEQUENCE det_order_id_seq OWNED BY stmp_order_detail.id;
 
 CREATE TABLE stmp_payment_type (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    description character(512),
-    success_url character(512),
-    error_url character(512),
+    name charactervarying(256) NOT NULL,
+    description charactervarying(512),
+    success_url charactervarying(512),
+    error_url charactervarying(512),
     status boolean DEFAULT true NOT NULL
 );
 
@@ -306,8 +306,8 @@ ALTER SEQUENCE order_id_seq OWNED BY stmp_order.id;
 
 CREATE TABLE stmp_shipping_type (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    description character(512) NOT NULL,
+    name charactervarying(256) NOT NULL,
+    description charactervarying(512) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 
@@ -347,7 +347,7 @@ CREATE TABLE stmp_shirt (
     id integer NOT NULL,
     id_size integer NOT NULL,
     id_color integer NOT NULL,
-    text character(512),
+    text charactervarying(512),
     id_style integer DEFAULT 1 NOT NULL,
     sales_number integer DEFAULT 0 NOT NULL,
     id_artist_user integer NOT NULL,
@@ -389,7 +389,7 @@ ALTER SEQUENCE shirt_id_seq OWNED BY stmp_shirt.id;
 CREATE TABLE stmp_shirt_rating (
     id integer NOT NULL,
     valoration integer NOT NULL,
-    comment character(512),
+    comment charactervarying(512),
     id_shirt integer NOT NULL,
     id_user integer NOT NULL
 );
@@ -437,8 +437,8 @@ ALTER SEQUENCE shirt_rating_id_seq OWNED BY stmp_shirt_rating.id;
 
 CREATE TABLE stmp_shirt_style (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    description character(512) NOT NULL,
+    name charactervarying(256) NOT NULL,
+    description charactervarying(512) NOT NULL,
     price numeric NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
@@ -495,7 +495,7 @@ ALTER SEQUENCE shirt_style_id_seq OWNED BY stmp_shirt_style.id;
 
 CREATE TABLE stmp_size (
     id integer NOT NULL,
-    name character(256) NOT NULL,
+    name charactervarying(256) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 
@@ -533,8 +533,8 @@ ALTER SEQUENCE size_id_seq OWNED BY stmp_size.id;
 
 CREATE TABLE smtp_plan (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    description character(512) NOT NULL,
+    name charactervarying(256) NOT NULL,
+    description charactervarying(512) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 
@@ -572,10 +572,10 @@ ALTER SEQUENCE smtp_plan_id_seq OWNED BY smtp_plan.id;
 
 CREATE TABLE stmp_stamp (
     id integer NOT NULL,
-    name character(256) NOT NULL,
-    description character(512) NOT NULL,
-    image character(512) NOT NULL,
-    tags character(512) NOT NULL,
+    name charactervarying(256) NOT NULL,
+    description charactervarying(512) NOT NULL,
+    image charactervarying(512) NOT NULL,
+    tags charactervarying(512) NOT NULL,
     id_artist_user integer NOT NULL,
     sales_number integer DEFAULT 0 NOT NULL,
     id_category integer NOT NULL,
@@ -636,7 +636,7 @@ ALTER SEQUENCE stamp_id_seq OWNED BY stmp_stamp.id;
 CREATE TABLE stmp_stamp_rating (
     id integer NOT NULL,
     valoration integer NOT NULL,
-    comment character(512),
+    comment charactervarying(512),
     id_stamp integer NOT NULL,
     id_user integer NOT NULL
 );
@@ -684,11 +684,11 @@ ALTER SEQUENCE stamp_rating_id_seq OWNED BY stmp_stamp_rating.id;
 
 CREATE TABLE stmp_user (
     id integer NOT NULL,
-    username character(256) NOT NULL,
-    password character(64) NOT NULL,
-    email character(100) NOT NULL,
-    facebook_email character(256),
-    twitter_email character(256),
+    username charactervarying(256) NOT NULL,
+    password charactervarying(64) NOT NULL,
+    email charactervarying(100) NOT NULL,
+    facebook_email charactervarying(256),
+    twitter_email charactervarying(256),
     is_seller boolean DEFAULT false NOT NULL,
     id_plan integer,
     status boolean DEFAULT true NOT NULL
