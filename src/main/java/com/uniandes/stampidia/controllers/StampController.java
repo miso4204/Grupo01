@@ -83,11 +83,17 @@ public class StampController {
 		
     }
 	
+	@RequestMapping("/stampService/{stampId}")
+    public Resultado getStampById(
+            @PathVariable("stampId")Integer stampId){
+		Resultado ro = new Resultado();
+		StmpStamp stamp;
+		stamp = stampService.getStampById(stampId);
+		ro.setResultado(stamp);
+		ro.setMensajeConsulta("Stamp:");
+		return ro;	
+	}
+	
 	
 }
-/*
- *   Resultado resultado = new Resultado();
-        StmpStamp stamp = new StmpStamp();
-        stamp = stampService.addStamp(stampName, stampDescription,stampImage,shirtTags,stampArtist,stampSalesNumber,stampCategory,stampPrice);
-        resultado.setResultado(stamp);
- * */
+

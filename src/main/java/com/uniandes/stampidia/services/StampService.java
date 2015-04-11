@@ -84,4 +84,11 @@ public class StampService {
 		return entity;
 		
 	}
+	
+	/*
+	 * Method that returns stamp by id
+	 */
+	public StmpStamp getStampById(Integer stampId){		
+		return stampRepository.findOne(stampId);
+	}
 }

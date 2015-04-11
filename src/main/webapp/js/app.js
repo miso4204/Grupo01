@@ -46,6 +46,9 @@
 	}).when('/credit_error', {
 	    templateUrl : 'partials/pay/credit_error.html',
 	    controller : 'SelectPaymentController'
+	}).when('/create-product/:stampId', {
+	    templateUrl : 'partials/products/createProduct.html',
+	    controller : 'CreateProductController'
 	}).otherwise({
 	    redirectTo : '/'
 	});
