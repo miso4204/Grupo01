@@ -1,6 +1,3 @@
-
--- Database: stampidia
+-- UNINSTALL
 DROP DATABASE stampidia;
-
-﻿-- Role: stampidia
 DROP ROLE stampidia;
