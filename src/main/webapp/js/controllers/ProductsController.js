@@ -26,6 +26,7 @@
 	}
 	
 	var init = function(){
+	    console.log("init");
 	    $scope.listCategories();
 	    $scope.listProducts();
 	}
