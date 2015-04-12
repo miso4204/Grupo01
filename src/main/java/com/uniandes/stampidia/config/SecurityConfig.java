@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http				
 			.antMatcher("/rest/**")
 			.authorizeRequests()				
-				.antMatchers("/rest/user/buyer").permitAll()
+				.antMatchers("/rest/user/buyer","/rest/shirtService","/rest/categoryService").permitAll()
 				.anyRequest().authenticated()
 				.and()			
 			.logout()				
