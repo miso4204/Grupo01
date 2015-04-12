@@ -1,22 +1,42 @@
 <div class="product-details"><!--product-details-->
 	<div class="col-sm-5">
 		<div class="view-product">
-			<img ng-src="{{product.resultado.image}}" alt="" /> 
+			<img ng-src="{{product.stamp.image}}" alt="" /> 
 		</div>
 	</div>
-	<div class="col-sm-7">
-		<div class="product-information"><!--/product-information-->
-			<h2>{{product.resultado.name}}</h2>
-			<div class="form-group">
-		  <label for="size">Talla</label>
-		  <select class="form-control" id="size">
-		    <option>S</option>
-		    <option>M</option>
-		    <option>L</option>
-		    <option>XL</option>
-		  </select>
-		</div>
+	<form name = "createProductForm" novalidate >
+	   
+		<div class="col-sm-7">
+			<div class="product-information"><!--/product-information-->
+				<h2>{{product.stamp.name}}</h2>
+				<div class="form-group">
+			  		<label for="size">Talla</label>
+			 		<select ng-options="size.name for size in sizes track by size.id" ng-model="product.size">
+			  		</select>
+			   </div>
+			   <div class="form-group">
+			        <label for="color">color</label>
+			  		<select ng-options="color.name for color in colorsShirt track by color.id" ng-model="product.color">
+			  		</select>
+		       </div>
 			
-		</div><!--/product-information-->
-	</div>
+			<div class="form-group">
+			  <label for="style">Styles</label>
+			  <select ng-options="style.name for style in shirtStyles track by style.id" ng-model="product.styleShirt">
+			  </select>
+			</div>
+			
+			<div class="form-group">
+			  <label>Text</label>
+			  <input name = "product.text" type="text" ng-model = "product.text" required>
+			</div>
+			
+			
+			<button class="btn btn-fefault cart" type="button" ng-click="createProduct()">
+										Create
+									</button>
+				
+			</div><!--/product-information-->
+		</div>
+	</form>
 </div><!--/product-details-->
