@@ -6,7 +6,7 @@
 (function() {
     'use strict';
 
-    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers' ]);
+    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng' ]);
     var stampidiaControllers = angular.module('stampidia.controllers', []);
     var stampidiaServices = angular.module('stampidia.services', []);
 
@@ -49,6 +49,9 @@
 	}).when('/create-product/:stampId', {
 	    templateUrl : 'partials/products/createProduct.html',
 	    controller : 'CreateProductController'
+	}).when('/reports',{
+	    templateUrl : 'partials/reports/reports.html',
+	    controller : 'ReportsController'
 	}).otherwise({
 	    redirectTo : '/'
 	});

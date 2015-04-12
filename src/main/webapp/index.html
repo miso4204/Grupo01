@@ -79,6 +79,7 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#/products">Products</a></li>
 								<li><a href="#/product-details">Product Details</a></li>
+								<li><a href="#/reports">Reports</a></li>
 								<li><a href="#/checkout">Checkout</a></li>
 								<li><a href="#/cart">Cart</a></li>
 								<li><a href="#/register"><i class="fa fa-user"></i> Register Now</a></li>
@@ -113,6 +114,7 @@
 									<ul role="menu" class="sub-menu">
 										<li><a href="#/products">Products</a></li>
 										<li><a href="#/product-details">Product Details</a></li>
+										<li><a href="#/reports">Reports</a></li>
 										<li><a href="#/checkout">Checkout</a></li>
 										<li><a href="#/register"><i class="fa fa-user"></i> Register Now</a></li>
 										<li><a href="#/login" ng-hide="isAuthenticated()">Login</a></li>
@@ -231,7 +233,7 @@
 	</footer>
 	<!--/Footer-->
 
-	<script src="lib/jquery/jquery-2.1.1.min.js"></script>
+	<script src="lib/jquery/jquery-2.1.1.min.js"></script>	
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/bootstrap/js/jquery.scrollUp.min.js"></script>
 	<script src="lib/bootstrap/js/price-range.js"></script>
@@ -252,11 +254,15 @@
 	<script src="js/services/CategoriesService.js"></script>
 	<script src="js/controllers/LoginController.js"></script>
 	<script src="js/controllers/RegisterController.js"></script>
+	<script src="js/controllers/ReportsController.js"></script>
+	<script src="js/services/ReportsService.js"></script>
 	<script src="js/services/RegisterService.js"></script>
 	<script src="js/controllers/SelectPaymentController.js"></script>
 	<script src="js/services/LoginService.js"></script>
 	<script src="js/services/SessionService.js"></script>
 	<script src="js/services/SelectPaymentService.js"></script>
 	<script src="js/services/values.js"></script>
+	<script src="http://code.highcharts.com/stock/highstock.src.js"></script>
+    <script src="lib/highcharts/highcharts-ng.js"></script>
 </body>
 </html>
