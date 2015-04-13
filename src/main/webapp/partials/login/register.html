@@ -10,25 +10,25 @@
 					<h2>Register Now</h2>
 					<form name="form">
 						<input name="username" type="text" placeholder="User"
-							ng-model="signupData.username" required />
-						<div ng-if="form.$touched">
-							<div ng-if="form.username.$error.required">You did not enter
-							a password
-							</div>
-						</div>
-						<input type="password" placeholder="Password"
-							ng-model="signupData.password" /> <input type="text"
+							ng-model="signupData.username" required /> <input
+							type="password" placeholder="Password"
+							ng-model="signupData.password" required /> <input type="text"
 							placeholder="Email" ng-model="signupData.email" required /> <input
 							type="text" placeholder="Facebook"
-							ng-model="signupData.facebook_email" /> <input type="text"
-							placeholder="Twitter" ng-model="signupData.twitter_email" /> <span>
-							<label>Is Seller</label> <input type="checkbox"
-							ng-model="signupData.is_seller" style="height: 15px;"> <br />
-							<label>Status</label> <input type="checkbox"
-							ng-model="signupData.status" style="height: 15px;">
-						</span>
+							ng-model="signupData.facebookEmail" /> <input type="text"
+							placeholder="Twitter" ng-model="signupData.twitterEmail" /> <input
+							type="checkbox" ng-model="signupData.isSeller"
+							style="height: 15px;" /> Is Seller </br> 
+							<select ng-model="signupData.id_plan" ng-show="signupData.isSeller">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+							</select> 
+							<input type="checkbox" ng-model="signupData.status"
+							style="height: 15px;" /> Status </br>
 
-						<button type="button" class="btn btn-default" ng-click="signup()" ng-disabled="form.$invalid">Register</button>
+						<button type="button" class="btn btn-default" ng-click="signup()"
+							ng-disabled="form.$invalid">Register</button>
 					</form>
 				</div>
 				<!--/login form-->
