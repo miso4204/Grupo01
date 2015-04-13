@@ -18,6 +18,8 @@
 			})
 		};
 	};
+	
+	
 
 	angular.module('stampidia.controllers').controller('RegisterController',
 			[ '$rootScope', '$scope', '$location', 'registerService', 'appSettings', RegisterController ]);
