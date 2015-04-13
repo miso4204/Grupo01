@@ -44,5 +44,9 @@ public class UserService {
         return userRepository.save(user);
 
     }
+    
+    public StmpUser findUserByName(String username){
+    	return userRepository.findUserByName(username);
+    }
 
 }

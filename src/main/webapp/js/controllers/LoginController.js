@@ -14,7 +14,7 @@
 	$scope.login = function() {
 	    loginService.login($scope.credentials).then(function(response) {
 		var resp = response.resultado;
-		//TODO Obtener el rol y el token de sesion
+		console.log(response);
 		sessionService.create(resp.username, 'asdasdasdasdasd', 'ROLE_BUYER');		
 		$scope.error = false;
 		$location.url("/");

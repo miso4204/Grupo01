@@ -13,10 +13,7 @@
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
 
 	$httpProvider.interceptors.push('httpInterceptor');
-	$routeProvider.when('/', {
-	    templateUrl : 'partials/home.html',
-	    controller : 'HomeController'
-	}).when('/products', {
+	$routeProvider.when('/products', {
 	    templateUrl : 'partials/products/products.html',
 	    controller : 'ProductsController'
 	}).when('/login', {
@@ -53,7 +50,7 @@
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
 	}).otherwise({
-	    redirectTo : '/'
+	    redirectTo : '/products'
 	});
 
 	// remueve clases css inecesarias
