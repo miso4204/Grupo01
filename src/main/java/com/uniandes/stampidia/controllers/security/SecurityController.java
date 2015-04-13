@@ -1,6 +1,7 @@
 package com.uniandes.stampidia.controllers.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +32,12 @@ public class SecurityController {
 	 * Servicio que recibe un nombre de usuario 
 	 * @param username
 	 * @return user - la informacion del usuario solicitado
-	 */
+	 */	
 	@RequestMapping(value="/loggedUser/{username}",method=RequestMethod.GET)
 	public Resultado user(@PathVariable String username){
 		Resultado result = new Resultado();
-		StmpUser user = new StmpUser();
-		user.setUsername(username);
+		StmpUser user = userService.findUserByName(username);
+		user.setPassword(null);
 		result.setResultado(user);
 		return result;
 	}
