@@ -26,10 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		super.configure(auth);
-//		auth.userDetailsService(userDetailsService);
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("BUYER");
-		auth.inMemoryAuthentication().withUser("user2").password("password").roles("SELLER");
+		auth.userDetailsService(userDetailsService);
 	}
 
 	@Override
