@@ -49,6 +49,9 @@
 	}).when('/create-product/:stampId', {
 	    templateUrl : 'partials/products/createProduct.html',
 	    controller : 'CreateProductController'
+	}).when('/create-stamp', {
+	    templateUrl : 'partials/products/createStamp.html',
+	    controller : 'CreateStampController'
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'

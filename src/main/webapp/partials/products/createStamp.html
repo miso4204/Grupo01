@@ -1,0 +1,41 @@
+<div  id="reviews" class="product-details"><!--product-details-->
+	<div class="col-sm-5">
+		<div class="view-product">
+			<img src="/stampidia/lib/bootstrap/images/stamps/stamp.jpg" alt="" />
+		</div>
+	</div>
+	<form name = "createStampForm" novalidate >
+	<div class="col-sm-7">
+	   <div class="product-information"><!--/product-information-->
+		   	<p><b>Name</b></p>
+		    <span>
+		       	<input name = "stamp.name" type="text" ng-model = "stamp.name" required>
+		    </span>  	  
+	        <p><b>Description</b></p>
+		    <span>
+		       	<input name = "stamp.description" type="text" ng-model = "stamp.description" required>
+		    </span>  	  
+	       <p><b>Image</b></p>
+		   <span>
+				<input name = "stamp.image" type="text" ng-model = "stamp.image" required>
+		   </span>	
+	       <p><b>Tags</b></p>
+		   <span>
+				<input name = "stamp.tags" type="text" ng-model = "stamp.tags" required>
+		   </span>	
+		   <p><b>Category</b></p>
+			    <select ng-options="category.name for category in categories track by category.id" ng-model="stamp.category">
+			  	</select>
+	       <p><b>Sales Number</b></p>
+		   <span>
+				<input name = "stamp.salesNumber" type="text" ng-model = "stamp.salesNumber" required>
+		   </span>	
+	       <p><b>Price</b></p>
+		   <span>
+				<input name = "stamp.price" type="text" ng-model = "stamp.price" required>
+		   </span>	
+		   <button class="btn btn-fefault cart" type="button" ng-click="createStamp()">Create</button>
+		 </div><!--/product-information-->
+		</div>
+	</form>
+</div><!--/product-details-->
