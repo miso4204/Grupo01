@@ -22,12 +22,12 @@
 	    listProducts : function(category,stamp) {
 		if (category != null  &&  stamp != null ){
 		}else if(category != null ){
-		    console.log('CATEGORY '+category);
+		    console.log('ProductsService - CATEGORY '+category);
 		    return products.listByCategory({
 			categoryId : category
 		    });
 		}else if (stamp != null ){
-		    console.log('STAMP '+stamp);
+		    console.log('ProductsService - STAMP '+stamp);
 		    return products.listByStamp({
 			stampId : stamp
 		    });

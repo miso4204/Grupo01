@@ -46,11 +46,12 @@ public class StampService {
 	}
 
 	public StmpStamp addStamp(String stampName, String stampDescription,String stampImage, String shirtTags, Integer stampArtist,Integer stampSalesNumber, Integer stampCategory, BigInteger stampPrice) {
+		Integer id = null;
 		StmpStamp stamp   = new StmpStamp();
 		StmpStamp entity  = new StmpStamp();
 		StmpUser user = userRepository.findOne(stampArtist);
 		StmpCategory category = categoryRepository.findOne(stampCategory);
-		//stamp.setId(id);
+		stamp.setId(id);
 		stamp.setName(stampName);
 		stamp.setDescription(stampDescription);
 		stamp.setImage(stampImage);

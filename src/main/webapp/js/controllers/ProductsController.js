@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-
     var ProductsController = function($scope, productsService, categoriesService, appSettings) {
 	$scope.listProducts = function(id){	    
 	    productsService.listProducts(id).$promise.then(
