@@ -1,4 +1,16 @@
 <section>
+	<div class="header-bottom">
+			<!--header-bottom-->
+			<div class="container">
+				<div class="row">					
+					<div class="col-sm">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search" ng-model="search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
@@ -19,7 +31,8 @@
 					</div>
 					<div class="shipping text-center">
 						<!--shipping-->
-						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg" alt="" />
+						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg"
+							alt="" />
 					</div>
 				</div>
 			</div>
@@ -27,7 +40,7 @@
 				<div class="features_items">
 					<!--features_items-->
 					<h2 class="title text-center">Features Items</h2>
-					<div class="col-sm-4" data-ng-repeat="product in products">
+					<div class="col-sm-4" data-ng-repeat="product in products | filter: search">
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">

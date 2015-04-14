@@ -2,6 +2,7 @@
 	'use strict';
 
 	var ReportsController = function($rootScope, $scope, $location, appSettings) {
+	    
 	    $scope.addPoints = function () {
 	        var seriesArray = $scope.highchartsNG.series
 	        var rndIdx = Math.floor(Math.random() * seriesArray.length);
@@ -43,13 +44,28 @@
 	            }
 	        },
 	        series: [{
-	            data: [10, 15, 12, 8, 7]
+	            data: []
 	        }],
 	        title: {
 	            text: 'Hello'
 	        },
 	        loading: false
 	    }
+	    
+	    $scope.highchartsNG2 = {
+		        options: {
+		            chart: {
+		                type: 'line'
+		            }
+		        },
+		        series: [{
+		            data: [1,2,3,4,5,6,7,7]
+		        }],
+		        title: {
+		            text: 'Ventas por Producto'
+		        },
+		        loading: false
+		    }
 	};
 
 	angular.module('stampidia.controllers').controller('ReportsController',
