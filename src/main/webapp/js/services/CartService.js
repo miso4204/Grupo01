@@ -4,8 +4,15 @@
         function saveOrder(order) {
             localStorage.setItem('order', order);
         };
+
+        function loadOrderFromLocalStorage(){
+            return localStorage.getItem('order');
+        }
+
+
         return {
-            saveOrder : saveOrder
+            saveOrder : saveOrder,
+            loadOrderFromLocalStorage : loadOrderFromLocalStorage
         }
     };
     angular.module('stampidia.services').factory('cartService', [ '$resource', '$window', CartService ]);

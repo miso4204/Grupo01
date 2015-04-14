@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var ProductsController = function($scope, productsService, categoriesService, appSettings) {
+    var ProductsController = function($rootScope, $scope, productsService, categoriesService, cartService, appSettings) {
 	$scope.listProducts = function(id){
 	    productsService.listProducts(id).$promise.then(
 		    function(response){
@@ -29,15 +29,15 @@
         console.log('Entra en CartController');
         var detail;
 
-        if ($scope.order) {
+        if ($rootScope.order != null) {
         } else {
-            $scope.order = {};
-            $scope.order.stmpOrderDetailList = [];
+            $rootScope.order = {};
+            $rootScope.order.stmpOrderDetailList = [];
         }
 
         console.log('ITEM =>' +  item.id);
 
-        var detList = $scope.order.stmpOrderDetailList.filter(function(element){
+        var detList = $rootScope.order.stmpOrderDetailList.filter(function(element){
             return element.idShirt.id === item.id;
         });
 
@@ -51,9 +51,10 @@
                 unitValue : item.idStyle.price + item.idStamp.price,
                 idShirt : item
             };
-            $scope.order.stmpOrderDetailList.push(detail);
+            $rootScope.order.stmpOrderDetailList.push(detail);
         }
-        console.log('RESULT ORDER =>' + $scope.order.stmpOrderDetailList.length);
+        console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
+        cartService.saveOrder($rootScope.order);
 
     }
 
@@ -69,6 +70,6 @@
 	init();
 
     };
-    angular.module('stampidia.controllers').controller('ProductsController', [ '$scope', 'productsService', 'categoriesService', 'appSettings', ProductsController ]);
+    angular.module('stampidia.controllers').controller('ProductsController', [ '$rootScope','$scope', 'productsService', 'categoriesService','cartService', 'appSettings', ProductsController ]);
 
 }());
