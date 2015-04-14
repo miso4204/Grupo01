@@ -44,7 +44,7 @@
 	            }
 	        },
 	        series: [{
-	            data: []
+	            data: [5,15,3,32,25,60,7,5,0]
 	        }],
 	        title: {
 	            text: 'Hello'
