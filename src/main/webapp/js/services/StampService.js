@@ -2,7 +2,7 @@
     'use strict';
     var StampService = function($resource) {
 	console.log('StampService');
-	var stamps = $resource('http://localhost:8080/stampidia/rest/stampService/', {
+	var stamps = $resource('http://localhost:8080/stampidia/rest/stampService/:stampId', {
 	    stampId:'@stampId'
 	}, {
 	query : {
