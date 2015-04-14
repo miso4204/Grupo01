@@ -52,6 +52,9 @@
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
+    }).when('/cart',{
+	    templateUrl : 'partials/cart/cart.html',
+	    controller : 'CartController'
 	}).otherwise({
 	    redirectTo : '/products'
 	});
