@@ -23,7 +23,7 @@ Pasos para la instalación de la aplicación de stampidia
 
 **psql -U postgres -W -f stampidiadb-install.sql**
 **psql -U postgres -W -f stampidia-uninstall.sql**
-**psql -U stampidia -W -f inserts.sql**
+**psql -U stampidia -W -f stampidia-inserts.sql**
 
 2. La aplicación utilizará la siguiente base de datos: jdbc:postgresql://localhost:5432/stampidiadb
 
