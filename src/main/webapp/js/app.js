@@ -55,6 +55,9 @@
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
+    }).when('/cart',{
+	    templateUrl : 'partials/cart/cart.html',
+	    controller : 'CartController'
 	}).otherwise({
 	    redirectTo : '/products'
 	});
@@ -64,7 +67,10 @@
 
 	//Anexa por defecto a todas las llamadas el encabezado
 	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+		//$rootScope.order = cartService.loadOrderFromLocalStorage;
     };
+
 
     angular.module('stampidia').config([ '$routeProvider', '$compileProvider', '$locationProvider', '$httpProvider', Configuration ]);
 

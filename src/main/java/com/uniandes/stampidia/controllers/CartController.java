@@ -18,49 +18,21 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping(value="/cart/{orderId}/shirt/{shirtId}",method= RequestMethod.PUT)
-    public Resultado addItemToCart(
-            @PathVariable("orderId")Integer orderId,
-            @PathVariable("shirtId")Integer shirtId){
-        Resultado resultado = new Resultado();
-
-        if(orderId != null && shirtId != null){
-            cartService.addItemToCart(shirtId, orderId);
-
-            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
-        }
-
-        return resultado;
-    }
-
     @RequestMapping(value="/cart/",method= RequestMethod.PUT)
-    public Resultado updateCartItems(
+    public Resultado saveCart(
             @RequestBody StmpOrder order){
         Resultado resultado = new Resultado();
 
-        if(order != null && order.getId() != null){
-            resultado.setResultado(cartService.updateOrder(order));
+        if(order != null ){
+            StmpOrder newOrder = cartService.updateOrder(order);
 
-            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
-        }
+            if(newOrder != null){
+                resultado.setResultado(newOrder);
+                resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+            }else {
+                resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
+            }
 
-        return resultado;
-    }
-
-    @RequestMapping(value="/cart/{orderId}/item/{shirtId}",method= RequestMethod.DELETE)
-    public Resultado deleteItemFromCart(
-            @PathVariable("orderId")Integer orderId,
-            @PathVariable("shirtId")Integer shirtId){
-        Resultado resultado = new Resultado();
-
-        if(orderId != null && shirtId != null){
-            resultado.setResultado(cartService.deleteItemFromCart(orderId, shirtId));
-
-            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
             resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
         }

@@ -1,24 +1,19 @@
 (function() {
     'use strict';
-    var CartService = function($resource,$http) {
+    var CartService = function($resource, $window) {
+        function saveOrder(order) {
+            localStorage.setItem('order', order);
+        };
 
-        var stampidia = $resource('http://localhost:8080/stampidia/rest/cart/',{},{
-            list:{
-                method:'GET'
-            }
-        });
+        function loadOrderFromLocalStorage(){
+            return localStorage.getItem('order');
+        }
 
-//		var heads = {
-//		    'X-Requested-With':'XMLHttpRequest',
-//		    'Content-Type':'application/x-www-form-urlencoded',
-//		    'Authorization':'Basic dXNlcjpwYXNzd29yZA=='
-//		}
+
         return {
-            listSizes : function(){
-//			return $http.get(stampidia/*,{headers:heads}*/);
-                return stampidia.list();
-            }
+            saveOrder : saveOrder,
+            loadOrderFromLocalStorage : loadOrderFromLocalStorage
         }
     };
-    angular.module('stampidia.services').factory('homeService',['$resource', '$http',HomeService]);
+    angular.module('stampidia.services').factory('cartService', [ '$resource', '$window', CartService ]);
 }());
