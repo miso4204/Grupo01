@@ -6,7 +6,8 @@
 	    stampService.createStamp($scope.stamp.name,$scope.stamp.description,
 		    $scope.stamp.image,$scope.stamp.tags,1,$scope.stamp.salesNumber,1,$scope.stamp.price,true).$promise.then(
 		    function(response){
-			$scope.stamp = response.resultado;
+			$scope.stamps = response.resultado;
+			$scope.createStampForm.$setPristine();
 		    }, function(response){
 			console.log(response);
 		    }    

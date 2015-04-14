@@ -1,12 +1,25 @@
 (function() {
     'use strict';
     var StampService = function($resource) {
-	var stamp = $resource('http://localhost:8080/stampidia/rest/stampService/:stampId', {
+	console.log('StampService');
+	var stamps = $resource('http://localhost:8080/stampidia/rest/stampService/:stampId', {
 	    stampId:'@stampId'
 	}, {
 	query : {
 	  method : "GET",
 	  isArray : false
+	}
+	});
+	var list_stamps = $resource('http://localhost:8080/stampidia/rest/stampService/', {
+	    categoryId : '@categoryId'
+	}, {
+	query : {
+	   method : "GET",
+	   isArray : false
+	},
+	listByCategory : {
+	    method : "GET",
+	    isArray : false
 	}
 	});
         var create_stamp = $resource('http://localhost:8080/stampidia/rest/stampService/:stampName/:stampDescription/:stampImage/:stampTags/:stampArtist/:stampSalesNumber/:stampCategory/:stampPrice', {
@@ -27,10 +40,11 @@
 	});
 	return {
 	    getStamp : function(p_stamp) {
-		console.log('STAMP '+p_stamp);
-		return stamp.query({
+		console.log('getStamp STAMP '+p_stamp);
+		return stamps.query({
 			stampId : p_stamp
 		});
+		console.log('getStamp despues ');
 	    },
 	    createStamp: function(p_stampName,p_stampDescription,p_stampImage,p_stampTags,p_stampArtist,p_stampSalesNumber,p_stampCategory,p_stampPrice) {
 		console.log('p_stampDescription '+p_stampDescription);
@@ -44,7 +58,17 @@
 		    stampCategory: p_stampCategory,
 		    stampPrice: p_stampPrice
 		});
-            }
+            },
+            getAllStamps : function(p_category) {
+		console.log('CATEGORY '+p_category);
+		if(p_category){
+		    return list_stamps.listByCategory({
+			categoryId : p_category
+		    });
+		}else{
+		    return list_stamps.query();
+		}
+	    },
 	}	
     };
     angular.module('stampidia.services').factory('stampService', [ '$resource', StampService ]);

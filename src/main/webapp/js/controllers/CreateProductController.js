@@ -45,6 +45,7 @@
 	    console.log($scope.product);
 	    shirtService.createShirt($scope.product.text,$scope.product.color.id,$scope.product.styleShirt.id,$scope.product.size.id, $scope.product.stamp.id,1).$promise.then(
 		    function(response){
+			console.log('Create Camiseta');
 			$scope.product = {stamp: ''};
 			$scope.product.stamp = response.resultado;
 		    }, function(response){

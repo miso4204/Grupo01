@@ -60,8 +60,6 @@ public class UserController {
     @RequestMapping(value="/user/buyer",method= RequestMethod.POST)
     public Resultado createBuyerProfile(
             @RequestBody StmpUser user
-//            ,
-//            @RequestParam(value = "id_plan", required=false) String idPlan
             ){
         Resultado resultado = new Resultado();
 
@@ -69,7 +67,7 @@ public class UserController {
 //        	System.out.println("ojhhhhhh"+idPlan);
 //        	
 //        	System.out.println(planService.getPlan(Integer.parseInt(idPlan)).getName());
-        	
+ 	
             resultado.setResultado(userService.createProfile(user));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
