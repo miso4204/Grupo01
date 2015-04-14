@@ -78,13 +78,13 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#/products">Products</a></li>
-								<li><a href="#/product-details">Product Details</a></li>
 								<li><a href="#/reports">Reports</a></li>
 								<li><a href="#/checkout">Checkout</a></li>
 								<li><a href="#/cart">Cart</a></li>
-								<li><a href="#/register"><i class="fa fa-user"></i> Register Now</a></li>
-								<li><a href="#/login" ng-hide="isAuthenticated()">Login</a></li>
-								<li><a href="" ng-show="isAuthenticated()" ng-click="logout()">Logout</a></li>								
+								<li><a href="#/register" ng-hide="isAuthenticated()"><i class="fa fa-user"></i> Register Now</a></li>
+								<li><a href="#/register" ng-show="isAuthenticated()"><i class="fa fa-user"></i> Profile</a></li>
+								<li><a href="#/login" ng-hide="isAuthenticated()"><i class="fa fa-lock"></i>Login</a></li>
+								<li><a href="" ng-show="isAuthenticated()" ng-click="logout()"><i class="fa fa-lock"></i>Logout</a></li>								
 							</ul>
 						</div>
 					</div>
@@ -113,20 +113,15 @@
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
 										<li><a href="#/products">Products</a></li>
-										<li><a href="#/product-details">Product Details</a></li>
 										<li><a href="#/reports">Reports</a></li>
 										<li><a href="#/checkout">Checkout</a></li>
 										<li><a href="#/register"><i class="fa fa-user"></i> Register Now</a></li>
+										<li><a href="#/register" ng-show="isAuthenticated()"><i class="fa fa-user"></i> Profile</a></li>
 										<li><a href="#/login" ng-hide="isAuthenticated()">Login</a></li>
 										<li><a href="" ng-show="isAuthenticated()" ng-click="logout()">Logout</a></li>										
 									</ul></li>
 								<li><a href="#/contact-us">Contact</a></li>
 							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search" />
 						</div>
 					</div>
 				</div>
