@@ -82,6 +82,7 @@
 								<li><a href="#/checkout">Checkout</a></li>
 								<li><a href="#/cart">Cart</a></li>
 								<li><a href="#/register" ng-hide="isAuthenticated()"><i class="fa fa-user"></i> Register Now</a></li>
+								<li><a href="#/register" ng-show="isAuthenticated()"><i class="fa fa-user"></i> Profile</a></li>
 								<li><a href="#/login" ng-hide="isAuthenticated()"><i class="fa fa-lock"></i>Login</a></li>
 								<li><a href="" ng-show="isAuthenticated()" ng-click="logout()"><i class="fa fa-lock"></i>Logout</a></li>								
 							</ul>
@@ -115,6 +116,7 @@
 										<li><a href="#/reports">Reports</a></li>
 										<li><a href="#/checkout">Checkout</a></li>
 										<li><a href="#/register"><i class="fa fa-user"></i> Register Now</a></li>
+										<li><a href="#/register" ng-show="isAuthenticated()"><i class="fa fa-user"></i> Profile</a></li>
 										<li><a href="#/login" ng-hide="isAuthenticated()">Login</a></li>
 										<li><a href="" ng-show="isAuthenticated()" ng-click="logout()">Logout</a></li>										
 									</ul></li>
