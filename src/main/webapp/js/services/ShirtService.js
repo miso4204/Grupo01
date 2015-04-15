@@ -11,7 +11,7 @@
 	    
 	}, {
 	query : {
-	  method : "PUT",
+	  method : "GET",
 	  isArray : false
 	}
 	});
