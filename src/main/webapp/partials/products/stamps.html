@@ -1,0 +1,62 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<h2>Category</h2>
+					<div class="panel-group category-products" id="accordian">
+						<!--category-productsr-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="" ng-click="listStamps()">All</a>
+								</h4>
+								<h4 class="panel-title" data-ng-repeat="category in categories">
+									<a href="" ng-click="selectCategory(category.id)">{{category.name}}</a>
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div class="shipping text-center">
+						<!--shipping-->
+						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9 padding-right">
+				<div class="features_items">
+					<!--features_items-->
+					<h2 class="title text-center">Stamps</h2>
+					<div class="col-sm-4" data-ng-repeat="stamp in stamps">
+						<div class="product-image-wrapper">
+							<div class="single-products">
+								<div class="productinfo text-center">
+									<img ng-src="{{stamp.image}}" alt="" />
+									   <h2>{{stamp.price }}</h2> 
+									   <p>{{stamp.text }}</p>
+									   <a href="#/create-product/{{stamp.id}}"class="btn btn-default add-to-cart">Create product</a> 
+								</div>
+								<div class="product-overlay">
+									<div class="overlay-content">
+									   <h2>{{stamp.price }}</h2> 
+									   <p>{{stamp.text }}</p> 
+									   <a href="#/create-product/{{stamp.id}}" ng-click="loadCreateProduct(stamp.id)" class="btn btn-default add-to-cart">Create product</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="clear: both; display: block">
+						<ul class="pagination">
+							<li class="active"><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--features_items-->
+			</div>
+		</div>
+	</div>
+</section>
