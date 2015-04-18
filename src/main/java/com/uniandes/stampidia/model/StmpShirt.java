@@ -27,7 +27,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class StmpShirt implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "shirt_sequence", sequenceName = "shirt_id_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shirt_sequence")
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;

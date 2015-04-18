@@ -42,7 +42,7 @@ public class ShirtController {
 		return ro;	
 	}
 	
-	@RequestMapping(value="/shirtService/{shirtText}/{shirtIdColor}/{shirtIdStyle}/{shirtIdSize}/{shirtIdStamp}/{shirtIdUser}",method= RequestMethod.PUT)
+	@RequestMapping(value="/shirtService/{shirtText}/{shirtIdColor}/{shirtIdStyle}/{shirtIdSize}/{shirtIdStamp}/{shirtIdUser}",method= RequestMethod.GET)
     public Resultado addIShirt(
             @PathVariable("shirtText") String shirtText,
             @PathVariable("shirtIdColor")Integer shirtIdColor,
