@@ -5,7 +5,6 @@
 		var signup = $resource('http://localhost:8080/stampidia/rest/user/buyer', {}, {});
 		return {
 			listUsers : function(signupData) {
-			    console.log(signupData);
 				return  signup.save(signupData);
 			}
 		}
