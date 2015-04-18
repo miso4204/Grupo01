@@ -1,0 +1,73 @@
+<section>
+	<div class="header-bottom">
+	     <div class="container">
+	   		  <div class="row">					
+				   <div class="col-sm">
+						<div class="search_box pull-right">
+							 <input type="text" placeholder="Search" ng-model="search"/>
+						</div>
+					</div>
+			  </div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<div class="panel-group category-products" id="accordian">
+					<img src="/stampidia/lib/bootstrap/images/stamps/stamp.jpg" alt="" height="250" width="250" />
+						<!--category-productsr-->
+						<div class="panel panel-default">
+						
+							<div class="panel-heading">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9 padding-right">
+				<div class="features_items">
+					<div class="features_items">
+		                <h2 class="title text-center">Create Stamps</h2>
+						<form name = "createStampForm"  >
+						<div class="col-sm-7">
+						   <div  id="reviews" class="product-details"><!--product-details-->
+							   	<p><b>Name</b></p>
+							    <span>
+							       	<input name = "stamp.name" type="text" ng-model = "stamp.name" required>
+							    </span>  	  
+						        <p><b>Description</b></p>
+							    <span>
+							       	<input name = "stamp.description" type="text" ng-model = "stamp.description" required>
+							    </span>  	  
+						       <p><b>Image</b></p>
+							   <span>
+									<input name = "stamp.image" type="text" ng-model = "stamp.image" required>
+							   </span>	
+						       <p><b>Tags</b></p>
+							   <span>
+									<input name = "stamp.tags" type="text" ng-model = "stamp.tags" required>
+							   </span>	
+							   <p><b>Category</b></p>
+								    <select ng-options="category.name for category in categories track by category.id" ng-model="stamp.category">
+								  	</select>
+						       <p><b>Sales Number</b></p>
+							   <span>
+									<input name = "stamp.salesNumber" type="text" ng-model = "stamp.salesNumber" required>
+							   </span>	
+						       <p><b>Price</b></p>
+							   <span>
+									<input id="price" name="price" type="text" ng-model = "stamp.price" required>
+							   </span>	
+							   <br><br><br>
+							   <button class="btn btn-fefault cart" type="button" ng-click="createStamp()">Create</button>
+							 </div><!--/product-information-->
+							</div>
+						</form>
+		          </div>
+			 </div>
+		</div>
+	</div>
+</div>
+</section>

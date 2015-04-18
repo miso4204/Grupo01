@@ -1,0 +1,41 @@
+<div class="product-details"><!--product-details-->
+	<div class="col-sm-5">
+		<div class="view-product">
+			<img ng-src="{{product.stamp.image}}" alt="" /> 
+		</div>
+	</div>
+	<form name = "createProductForm"  >   
+		 <div class="col-sm-7">
+		     <div  id="reviews" class="product-details"><!--product-details-->
+				 <h2>{{product.stamp.name}}</h2>
+				    <div class="form-group">
+				        <p><b>Talla</b></p>
+			 		    <select ng-options="size.name for size in sizes track by size.id" ng-model="product.size">
+			  		    </select>
+			        </div>
+			 <div class="form-group">
+			        <p><b>Color</b></p>
+			  		<select ng-options="color.name for color in colorsShirt track by color.id" ng-model="product.color">
+			  		</select>
+		     </div>
+			
+			<div class="form-group">
+			  <p><b>Styles</b></p>
+			  <select ng-options="style.name for style in shirtStyles track by style.id" ng-model="product.styleShirt" required="required">
+			  </select>
+			</div>
+			
+			<div class="form-group">
+			  <p><b>Text</b></p>
+			  <input name = "product.text" type="text" ng-model = "product.text" required>
+			</div>
+			
+			
+			<button class="btn btn-fefault cart" type="button" ng-click="createProduct()">
+										Create
+									</button>
+				
+			</div><!--/product-details-->
+		</div>
+	</form>
+</div><!--/product-details-->

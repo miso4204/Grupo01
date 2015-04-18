@@ -1,57 +1,75 @@
 <section>
+	<div class="header-bottom">
+			<!--header-bottom-->
+			<div class="container">
+				<div class="row">					
+					<div class="col-sm">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search" ng-model="search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	<div class="container">
 		<div class="row">
-		<div class="col-sm-3">
+			<div class="col-sm-3">
 				<div class="left-sidebar">
 					<h2>Category</h2>
 					<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h4 class="panel-title" data-ng-repeat="category in categories.resultado">>
-									<a data-ng-href="#/products?categoryId={{category.id}}">{{category.name }}</a>
+								<h4 class="panel-title">
+									<a href="" ng-click="listProducts()">All</a>
+								</h4>
+								<h4 class="panel-title" data-ng-repeat="category in categories">
+									<a href="" ng-click="selectCategory(category.id)">{{category.name}}</a>
 								</h4>
 							</div>
 						</div>
 					</div>
 					<div class="shipping text-center">
 						<!--shipping-->
-						<img src="images/home/shipping.jpg" alt="" />
+						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg"
+							alt="" />
 					</div>
 				</div>
-			</div>	
-			<div class="col-sm-9 padding-right" data-ng-controller="ProductsController">
+			</div>
+			<div class="col-sm-9 padding-right">
 				<div class="features_items">
 					<!--features_items-->
-					<h2 class="title text-center">Features Items</h2>
-					<div class="col-sm-4" data-ng-repeat="product in products.resultado">
+					<h2 class="title text-center">Products</h2>
+					<div class="col-sm-4" data-ng-repeat="product in products | filter: search">
 						<div class="product-image-wrapper">
-							<div class="single-products">
+							<div class="single-products" ng-click="addItemToCart(product)">
 								<div class="productinfo text-center">
-									<img ng-src ="{{product.idStamp.image}}" alt="" />
-									<h2>{{product.idStamp.price + product.idStyle.price }}</h2>
+									<img ng-src="{{product.idStamp.image}}" alt="" />
+									<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
 									<p>{{product.text }}</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
+									<a href="#" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)"><i
 										class="fa fa-shopping-cart"></i>Add to cart</a>
 								</div>
 								<div class="product-overlay">
 									<div class="overlay-content">
-										<h2>{{product.idStamp.price + product.idStyle.price }}</h2>
+										<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
 										<p>{{product.text }}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i
+										<!--<a  class="btn btn-default add-to-cart"><i-->
+											<!--class="fa fa-shopping-cart" ng-click="addItemToCart(product)"></i>Add to cart</a>-->
+										<a href="" ng-click="selectCategory(category.id)"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div style="clear:both;display:block">
-					<ul class="pagination">
-						<li class="active"><a href="">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">&raquo;</a></li>
-					</ul>
+					<div style="clear: both; display: block" ng-hide="true">
+						<ul class="pagination">
+							<li class="active"><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">&raquo;</a></li>
+						</ul>
 					</div>
 				</div>
 				<!--features_items-->

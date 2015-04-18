@@ -6,19 +6,11 @@
 	selectPaymentService.listPaymentTypes().$promise.then(function(response) {
 	    console.log(response);
 	    $scope.paymentTypes = response.resultado;
-	    console.log($scope.paymentTypes);
 	}, function(response) {
 	    console.log('bad' + response);
 	});
-	$scope.changeRoute = function(url, forceReload) {
-	    $scope = $scope || angular.element(document).scope();
-	    if (forceReload || $scope.$$phase) { // that's right TWO dollar
-						    // signs: $$phase
-		window.location = url;
-	    } else {
-		$location.path(url);
-		$scope.$apply();
-	    }
+	$scope.goHome = function() {
+	    $location.url('/');
 	};
 	$scope.deliveryDay = function() {
 	    var month = new Array();
@@ -52,8 +44,7 @@
 	    }
 	    selectPaymentService.pay(paymentMethod, 1).$promise.then(function(response) {
 		console.log(response);
-		$scope.changeRoute('#/' + response.mensajeAccion);
-		console.log($location);
+		$location.url('/'+response.mensajeAccion);
 	    }, function(response) {
 		console.log('bad' + response);
 	    })

@@ -1,11 +1,13 @@
 package com.uniandes.stampidia.controllers;
 
 import com.uniandes.stampidia.model.StmpUser;
+import com.uniandes.stampidia.services.PlanService;
 import com.uniandes.stampidia.services.UserService;
 import com.uniandes.stampidia.utilities.Constantes;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private PlanService planService;
 
     @RequestMapping(value="/user/buyer",method= RequestMethod.PUT)
     public Resultado updateBuyerProfile(
@@ -54,22 +59,15 @@ public class UserController {
     
     @RequestMapping(value="/user/buyer",method= RequestMethod.POST)
     public Resultado createBuyerProfile(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
-            @RequestParam("email") String email,
-            @RequestParam("facebook_email") String face,
-            @RequestParam("twitter_email") String twitter,
-            @RequestParam("is_seller") boolean isSeller,
-            @RequestParam("status") boolean status){
+            @RequestBody StmpUser user
+            ){
         Resultado resultado = new Resultado();
 
-        if(username != null){
-        	StmpUser user = new StmpUser(null, username, password, email, isSeller, status);
-        	user.setFacebookEmail(face);
-        	user.setTwitterEmail(twitter);
-        	user.setIsSeller(isSeller);
-        	user.setStatus(status);
-        	
+        if(user != null){        
+//        	System.out.println("ojhhhhhh"+idPlan);
+//        	
+//        	System.out.println(planService.getPlan(Integer.parseInt(idPlan)).getName());
+ 	
             resultado.setResultado(userService.createProfile(user));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));

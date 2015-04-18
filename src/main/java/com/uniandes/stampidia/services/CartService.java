@@ -31,9 +31,12 @@ public class CartService {
     public StmpOrder updateOrder(StmpOrder order){
         StmpOrder answer = null;
         if(order != null){
-            answer = orderRepository.save(order);
+            try {
+                answer = orderRepository.save(order);
+            }catch (Exception ex){
+                return null;
+            }
         }
-        // TODO :: implementar cuando order es null
         return answer;
     }
 
@@ -95,5 +98,10 @@ public class CartService {
 //        answer.getStmpOrderDetailList().size();
 
         return answer;
+    }
+
+
+    public StmpOrder getOrderById(Integer orderId){
+        return orderRepository.findOne(orderId);
     }
 }

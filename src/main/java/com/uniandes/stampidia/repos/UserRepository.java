@@ -13,6 +13,6 @@ public interface UserRepository extends CrudRepository<StmpUser,Integer>{
     @Override
     StmpUser findOne(Integer integer);
     
-    @Query(value="select s from StmpUser s where s.username = :username ",nativeQuery=true) 
+    @Query(value="select s from StmpUser s where s.username = :username ") 
 	StmpUser findUserByName(@Param("username") String username);
 }

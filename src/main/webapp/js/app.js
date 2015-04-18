@@ -6,19 +6,19 @@
 (function() {
     'use strict';
 
-    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers' ]);
+    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng' ]);
     var stampidiaControllers = angular.module('stampidia.controllers', []);
     var stampidiaServices = angular.module('stampidia.services', []);
 
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
 
 	$httpProvider.interceptors.push('httpInterceptor');
-	$routeProvider.when('/', {
-	    templateUrl : 'partials/home.html',
-	    controller : 'HomeController'
-	}).when('/products', {
+	$routeProvider.when('/products', {
 	    templateUrl : 'partials/products/products.html',
 	    controller : 'ProductsController'
+	}).when('/stamps', {
+	    templateUrl : 'partials/products/stamps.html',
+	    controller : 'StampsController'
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
 	    controller : 'LoginController'
@@ -46,8 +46,20 @@
 	}).when('/credit_error', {
 	    templateUrl : 'partials/pay/credit_error.html',
 	    controller : 'SelectPaymentController'
+	}).when('/create-product/:stampId', {
+	    templateUrl : 'partials/products/createProduct.html',
+	    controller : 'CreateProductController'
+	}).when('/create-stamp', {
+	    templateUrl : 'partials/products/createStamp.html',
+	    controller : 'CreateStampController'
+	}).when('/reports',{
+	    templateUrl : 'partials/reports/reports.html',
+	    controller : 'ReportsController'
+    }).when('/cart',{
+	    templateUrl : 'partials/cart/cart.html',
+	    controller : 'CartController'
 	}).otherwise({
-	    redirectTo : '/'
+	    redirectTo : '/products'
 	});
 
 	// remueve clases css inecesarias
@@ -55,7 +67,10 @@
 
 	//Anexa por defecto a todas las llamadas el encabezado
 	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+		//$rootScope.order = cartService.loadOrderFromLocalStorage;
     };
+
 
     angular.module('stampidia').config([ '$routeProvider', '$compileProvider', '$locationProvider', '$httpProvider', Configuration ]);
 

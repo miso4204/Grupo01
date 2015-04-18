@@ -32,6 +32,11 @@ public class PaymentTypeController {
 	@Autowired
 	private PaymentTypeRepository paymentTypeRepository;
     
+	/**
+	 * @desc Metodo que busca todos los medios de pago
+	 * @author Lorena Salamanca
+	 * @return
+	 */
 	@RequestMapping(value="/pay/methods",method=RequestMethod.GET)
 	public Resultado getPaymentTypes(){
 		Resultado ro = new Resultado();	
@@ -42,6 +47,11 @@ public class PaymentTypeController {
 		return ro;
 	}
 	
+	/**
+	 * @desc Metodo que realiza el pago por CashOnDelivery
+	 * @author Lorena Salamanca
+	 * @return
+	 */
 	@Secured("ROLE_BUYER")
 	@RequestMapping(value="/pay/cash/{orderId}",method= RequestMethod.POST)
     public Resultado payByCashOnDelivery(@PathVariable("orderId")Integer orderId){
@@ -64,6 +74,11 @@ public class PaymentTypeController {
         return resultado;
     }
 	
+	/**
+	 * @desc Metodo que realiza el pago por PSE
+	 * @author Lorena Salamanca
+	 * @return
+	 */
 	@Secured("ROLE_BUYER")
 	@RequestMapping(value="/pay/pse/{orderId}",method= RequestMethod.POST)
     public Resultado payByPSE(@PathVariable("orderId")Integer orderId){
@@ -86,6 +101,11 @@ public class PaymentTypeController {
         return resultado;
     }
 	
+	/**
+	 * @desc Metodo que realiza el pago por CreditCard
+	 * @author Lorena Salamanca
+	 * @return
+	 */
 	@Secured("ROLE_BUYER")
 	@RequestMapping(value="/pay/credit/{orderId}",method= RequestMethod.POST)
     public Resultado payByCreditCard(@PathVariable("orderId")Integer orderId){

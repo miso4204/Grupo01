@@ -26,10 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		super.configure(auth);
-//		auth.userDetailsService(userDetailsService);
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("BUYER");
-		auth.inMemoryAuthentication().withUser("user2").password("password").roles("SELLER");
+		auth.userDetailsService(userDetailsService);
 	}
 
 	@Override
@@ -37,12 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http				
 			.antMatcher("/rest/**")
 			.authorizeRequests()				
+				.antMatchers("/rest/user/buyer","/rest/shirtService","/rest/categoryService").permitAll()
 				.anyRequest().authenticated()
 				.and()			
 			.logout()				
 //				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutUrl("/rest/logout")
-				.logoutSuccessUrl("/rest/doLogin").permitAll()
+				.logoutSuccessUrl("/rest/doLogin").permitAll()				
 //				.logoutSuccessUrl("/")
 //	            .deleteCookies("XSRF-TOKEN")
 //	            .deleteCookies("JSESSIONID")
