@@ -13,7 +13,7 @@
 				</div>
 	
 				<div id="creditcard" ng-show="paymenttype==3">
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" name="creditform">
 						<fieldset>
 							<legend>Pay by Credit Card</legend>
 							<div class="form-group">
@@ -21,7 +21,7 @@
 									on Card</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="card-holder-name"
-										id="card-holder-name" placeholder="Card Holder's Name">
+										id="card-holder-name" placeholder="Card Holder's Name" ng-model="card.name" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -29,7 +29,7 @@
 									Number</label>
 								<div class="col-sm-4">
 									<input type="text" class="form-control" name="card-number"
-										id="card-number" placeholder="Card Number" required>
+										id="card-number" placeholder="Card Number" ng-model="card.number" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -37,9 +37,9 @@
 									Date</label>
 								<div class="col-sm-9">
 									<div class="row">
-										<div class="col-xs-2">
+										<div class="col-sm-3">
 											<select class="form-control col-sm-2" name="expiry-month"
-												id="expiry-month">
+												id="expiry-month" ng-model="card.month" required>
 												<option>Month</option>
 												<option value="01">(01) January</option>
 												<option value="02">(02) February</option>
@@ -56,7 +56,7 @@
 											</select>
 										</div>
 										<div class="col-xs-2">
-											<select class="form-control" name="expiry-year">
+											<select class="form-control" name="expiry-year" ng-model="card.year" required>
 												<option value="15">2015</option>
 												<option value="16">2016</option>
 												<option value="17">2017</option>
@@ -76,21 +76,22 @@
 									Code</label>
 								<div class="col-sm-1">
 									<input type="text" class="form-control" name="cvv" id="cvv"
-										placeholder="CVV" ng-minlength=3 ng-maxlength=3>
+										placeholder="CVV" ng-model="card.cvv" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<button type="button" class="btn btn-success"
-										ng-click="submit()">Pay Now</button>
+										ng-disabled="creditform.$invalid" ng-click="submit()">Pay Now</button>
 								</div>
 							</div>
 						</fieldset>
 					</form>
 				</div>
 
+
 				<div id="pse" ng-show="paymenttype==2">
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" name="form">
 						<fieldset>
 							<legend>Pay by PSE</legend>
 							<div class="row">
@@ -105,33 +106,33 @@
 										<div class="col-sm-4">
 											<input type="text" class="form-control"
 												name="card-holder-name" id="card-holder-name"
-												placeholder="Buyer full name" ng-model="buyer.name">
+												placeholder="Buyer full name" ng-model="buyer.name" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label" for="card-number">Buyer
 											Id</label>
-										<div class="col-sm-2">
+										<div class="col-sm-4">
 											<input type="text" class="form-control" name="card-number"
-												id="card-number" placeholder="Buyer Id" ng-model="buyer.id">
+												id="card-number" placeholder="Buyer Id" ng-model="buyer.id" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label" for="card-number">Cell
 											phone</label>
-										<div class="col-sm-2">
+										<div class="col-sm-4">
 											<input type="text" class="form-control" name="card-number"
 												id="card-number" placeholder="No dashes or spaces"
-												ng-model="buyer.phone">
+												ng-model="buyer.phone" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label" for="expiry-month">Bank</label>
 										<div class="col-sm-9">
 											<div class="row">
-												<div class="col-xs-3">
+												<div class="col-sm-5">
 													<select class="form-control col-sm-9" name="bank" id="bank"
-														ng-model="buyer.bank">
+														ng-model="buyer.bank" required>
 														<option></option>
 														<option value="01">BANCO AV VILLAS</option>
 														<option value="02">BANCO CAJA SOCIAL</option>
@@ -153,7 +154,7 @@
 									<div class="form-group">
 										<div class="col-sm-offset-3 col-sm-9">
 											<button type="button" class="btn btn-success"
-												ng-click="submit()">Pay Now</button>
+												ng-disabled="form.$invalid" ng-click="submit()">Pay Now</button>
 										</div>
 									</div>
 								</div>
@@ -164,8 +165,6 @@
 
 				<div id="cash" ng-show="paymenttype==1">
 					Cash on delivery
-					<button type="button" class="btn btn-success" ng-click="submit()">Pay
-						Now</button>
 				</div>
 			</div>
 		</div>
