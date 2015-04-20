@@ -165,7 +165,23 @@
 				</div>
 
 				<div id="cash" ng-show="paymenttype==1">
-					Cash on delivery
+					<form class="form-horizontal" role="form" name="cashform">
+						<fieldset>
+							<legend>Pay by Cash on Delivery</legend>
+							<div class="form-group">
+								<div class="col-sm-4">
+									<input type="checkbox" ng-model="cash.confirmation"
+										style="height: 15px;" required/> I am going to pay when I get my shirt(s)</br>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-9">
+									<button type="button" class="btn btn-success"
+										ng-disabled="cashform.$invalid" ng-click="submit()">Pay Now</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</div>
