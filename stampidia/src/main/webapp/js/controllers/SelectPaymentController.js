@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var SelectPaymentController = function($scope, $location, selectPaymentService, appSettings) {
+    var SelectPaymentController = function($rootScope, $scope, $location, $dialogs, $timeout, selectPaymentService, appSettings) {
 
 	selectPaymentService.listPaymentTypes().$promise.then(function(response) {
 	    console.log(response);
@@ -49,6 +49,38 @@
 		console.log('bad' + response);
 	    })
 	};
+	$scope.launch = function(which){
+	    var dlg = null;
+	    switch(which){
+	      // Wait / Progress Dialog
+	      case 'wait':
+		console.log('bad');
+	        dlg = $dialogs.wait(msgs[i++],progress);
+	        //fakeProgress();
+	        break;
+	    };
+	};
+	// for faking the progress bar in the wait dialog
+	  var progress = 25;
+	  var msgs = [
+	    'Hey! I\'m waiting here...',
+	    'About half way done...',
+	    'Almost there?',
+	    'Woo Hoo! I made it!'
+	  ];
+	  var i = 0;
+	  
+	  var fakeProgress = function(){
+	    $timeout(function(){
+	      if(progress < 100){
+	        progress += 25;
+	        $rootScope.$broadcast('dialogs.wait.progress',{msg: msgs[i++],'progress': progress});
+	        fakeProgress();
+	      }else{
+		  $rootScope.$broadcast('dialogs.wait.complete');
+	      }
+	    },1000);
+	  }; // end fakeProgress 
     }
-    angular.module('stampidia.controllers').controller('SelectPaymentController', [ '$scope', '$location', 'selectPaymentService', 'appSettings', SelectPaymentController ]);
+    angular.module('stampidia.controllers').controller('SelectPaymentController', [ '$rootScope', '$scope', '$location', '$dialogs', '$timeout', 'selectPaymentService', 'appSettings', SelectPaymentController ]);
 }());

@@ -7,7 +7,7 @@
     'use strict';
 
     var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng' ]);
-    var stampidiaControllers = angular.module('stampidia.controllers', []);
+    var stampidiaControllers = angular.module('stampidia.controllers', ['ui.bootstrap','dialogs']);
     var stampidiaServices = angular.module('stampidia.services', []);
 
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
