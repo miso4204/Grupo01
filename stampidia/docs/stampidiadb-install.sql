@@ -65,6 +65,7 @@ CREATE TABLE stmp_color (
     id integer NOT NULL,
     name character varying(256) NOT NULL,
     hex_value character varying(512) NOT NULL,
+    path_shirt character varying(256) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 ALTER TABLE stmp_color OWNER TO stampidia;
