@@ -23,7 +23,15 @@
 		    
 	    );
 	}
-	
+	$scope.cleanFrom = function() {
+	    $scope.stamp.name = "";
+		$scope.stamp.description = "";
+		$scope.stamp.image = "";
+		$scope.stamp.tags = "";
+		$scope.stamp.category = "";
+		$scope.stamp.salesNumber = "";
+		$scope.stamp.price = "";
+	}	
 	var init = function(){
 	    $scope.listCategories();
 	}
