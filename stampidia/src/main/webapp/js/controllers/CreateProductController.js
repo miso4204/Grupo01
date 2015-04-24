@@ -2,6 +2,7 @@
     'use strict';
 
     var CreateProductController = function($scope,$routeParams,stampService,shirtService,sizeService,colorService,shirtStyleService,appSettings) {
+	
 	$scope.getProduct = function(){	    
 	    stampService.getStamp($routeParams.stampId).$promise.then(
 		    function(response){
@@ -45,14 +46,22 @@
 	    console.log($scope.product);
 	    shirtService.createShirt($scope.product.text,$scope.product.color.id,$scope.product.styleShirt.id,$scope.product.size.id, $scope.product.stamp.id,1).$promise.then(
 		    function(response){
-			console.log('Create Camiseta');
 			$scope.product = {stamp: ''};
 			$scope.product.stamp = response.resultado;
+			$scope.createProductForm.$setPristine();
+			$scope.cleanFrom();
 		    }, function(response){
 			console.log(response);
 		    }    
 	    );
 	    
+        }
+	$scope.cleanFrom = function() {
+	    $scope.product.size = "";
+	    $scope.product.color = "";
+	    $scope.product.styleShirt = "";
+	    $scope.product.text = "";
+	    $scope.createProductForm.product_text.$dirty = false;
         }
 	var init = function(){
 	    $scope.getProduct();
