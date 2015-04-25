@@ -3,6 +3,11 @@ package com.uniandes.stampidia.controllers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +18,13 @@ import com.uniandes.stampidia.utilities.Resultado;
 
 @RestController
 @RequestMapping(value = "/rest")
-public class UploadController {
-
+public class UploadController {	
+	
+	@Resource
+    private Environment env;
+	
+	private static final String RESOURCES_PATH = "resources.path";
+	
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public Resultado darClientes() {
 		Resultado ro = new Resultado();
@@ -31,10 +41,11 @@ public class UploadController {
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(name)));
+				File newFile = new File(env.getRequiredProperty(RESOURCES_PATH) + name);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newFile));
 				stream.write(bytes);
 				stream.close();
-				ro.setMensajeConsulta("You successfully uploaded " + name + " into " + name);
+				ro.setMensajeConsulta("You successfully uploaded " + name + " into " + newFile.getName());
 			} catch (Exception e) {
 				ro.setMensajeConsulta("You failed to upload " + name + " => " + e.getMessage());
 			}

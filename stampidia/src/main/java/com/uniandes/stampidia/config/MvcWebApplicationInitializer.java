@@ -36,7 +36,7 @@ public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispat
 	
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		MultipartConfigElement mpp = new MultipartConfigElement("/tmp", 25 * 1024 * 1024, 125 * 1024 * 1024, 1 * 1024 * 1024); 
+		MultipartConfigElement mpp = new MultipartConfigElement("/", 25 * 1024 * 1024, 125 * 1024 * 1024, 1 * 1024 * 1024); 
 		registration.setMultipartConfig(mpp);
 	}
 
