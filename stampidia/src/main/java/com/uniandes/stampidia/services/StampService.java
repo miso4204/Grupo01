@@ -20,6 +20,7 @@ import com.uniandes.stampidia.services.StampService;
 @Transactional
 public class StampService {
 	
+	private static String RESOURCE_SERVER = "http://localhost:8889/";
 	@Autowired
 	private StampRepository stampRepository;
 	
@@ -54,13 +55,12 @@ public class StampService {
 		stamp.setId(id);
 		stamp.setName(stampName);
 		stamp.setDescription(stampDescription);
-		stamp.setImage(stampImage);
+		stamp.setImage(RESOURCE_SERVER+stampImage);
 		stamp.setTags(shirtTags);
 		stamp.setSalesNumber(stampSalesNumber);
 		stamp.setPrice(stampPrice);
 		stamp.setIdArtistUser(user);
 		stamp.setIdCategory(category);
-		System.out.print("addStamp");
 		entity = stampRepository.save(stamp);
 		         
 		return entity;
@@ -74,7 +74,7 @@ public class StampService {
 		stamp.setId(id);
 		stamp.setName(stampName);
 		stamp.setDescription(stampDescription);
-		stamp.setImage(stampImage);
+		stamp.setImage(RESOURCE_SERVER+stampImage);
 		stamp.setTags(shirtTags);
 		stamp.setSalesNumber(stampSalesNumber);
 		stamp.setPrice(stampPrice);

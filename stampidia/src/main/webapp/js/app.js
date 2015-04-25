@@ -6,7 +6,7 @@
 (function() {
     'use strict';
 
-    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng' ]);
+    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng','ngFileUpload' ]);
     var stampidiaControllers = angular.module('stampidia.controllers', []);
     var stampidiaServices = angular.module('stampidia.services', []);
 

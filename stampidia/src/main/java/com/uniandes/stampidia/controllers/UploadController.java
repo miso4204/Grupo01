@@ -15,6 +15,8 @@ import com.uniandes.stampidia.utilities.Resultado;
 @RequestMapping(value = "/rest")
 public class UploadController {
 
+	private static final String RESOURCES_PATH = "C:/Users/dham/Software/nginx-1.7.12/html/";
+	
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public Resultado darClientes() {
 		Resultado ro = new Resultado();
@@ -31,10 +33,11 @@ public class UploadController {
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(name)));
+				File newFile = new File(RESOURCES_PATH + name);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newFile));
 				stream.write(bytes);
 				stream.close();
-				ro.setMensajeConsulta("You successfully uploaded " + name + " into " + name);
+				ro.setMensajeConsulta("You successfully uploaded " + name + " into " + newFile.getName());
 			} catch (Exception e) {
 				ro.setMensajeConsulta("You failed to upload " + name + " => " + e.getMessage());
 			}
