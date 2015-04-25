@@ -56,4 +56,16 @@ public class ShirtController {
         resultado.setResultado(shirt);
         return resultado;
     }
+	
+	@RequestMapping("/shirtService/{shirtId}")
+    public Resultado getShirtById(
+            @PathVariable("shirtId")Integer shirtId){
+		Resultado ro = new Resultado();
+		StmpShirt shirt;
+		shirt = shirtService.getShirtById(shirtId);
+		ro.setResultado(shirt);
+		ro.setMensajeConsulta("shirtId:");
+		System.out.print("GetShirtById");
+		return ro;	
+	}
 }
