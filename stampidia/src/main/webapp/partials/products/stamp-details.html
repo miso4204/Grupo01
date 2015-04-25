@@ -1,0 +1,33 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 padding-right">
+				<div class="product-details"><!--product-details-->
+					<div class="col-sm-5">
+						<div class="view-product">
+							<img  ng-src="{{stamp.image}}"  alt="" />
+
+						</div>
+
+					</div>
+					<div class="col-sm-7">
+						<div class="product-information"><!--/product-information-->
+							<h2>{{stamp.name}}</h2>
+							<p>Web ID: {{stamp.id}} </p>
+							<span>
+								<span>US ${{stamp.price + stamp.idStyle.price}}</span>
+								<a href="#/create-product/{{stamp.id}}"><button type="button" class="btn btn-fefault cart">
+									Create Product
+								</button></a>
+							</span>
+							<p><b>Descripcion:</b> {{stamp.description}}</p>
+							<p><b>Availability:</b> In Stock</p>
+							<p><b>Author:</b> </p>
+							<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+						</div><!--/product-information-->
+					</div>
+				</div><!--/product-details-->
+			</div>
+		</div>
+	</div>
+</section>

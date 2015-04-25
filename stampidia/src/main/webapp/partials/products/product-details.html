@@ -1,0 +1,41 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 padding-right">
+				<div class="product-details"><!--product-details-->
+					<div class="col-sm-5">
+						<div class="view-product">
+							<img src="{{product.idStamp.image}}" alt="" />
+
+						</div>
+
+					</div>
+					<div class="col-sm-7">
+						<div class="product-information"><!--/product-information-->
+							<img src="images/product-details/new.jpg" class="newarrival" alt="" />
+							<h2>{{product.idStamp.name}}</h2>
+							<p>Web ID: {{product.id}} </p>
+							<img src="images/product-details/rating.png" alt="" />
+							<span>
+								<span>US ${{product.idStamp.price + product.idStyle.price}}</span>
+								<label>Quantity:</label>
+								<input type="text" value="3" />
+								<button type="button" class="btn btn-fefault cart">
+									<i class="fa fa-shopping-cart"></i>
+									Add to cart
+								</button>
+							</span>
+							<p><b>Size:</b> {{product.idSize.name}}</p>
+							<p><b>Color:</b> {{product.idColor.name}}</p>
+							<p><b>Style:</b> {{product.idStyle.name}}</p>
+							<p><b>Category:</b> {{product.idStamp.idCategory.name}}</p>
+							<p><b>Availability:</b> In Stock</p>
+							<p><b>Author:</b> </p>
+							<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+						</div><!--/product-information-->
+					</div>
+				</div><!--/product-details-->
+			</div>
+		</div>
+	</div>
+</section>

@@ -55,7 +55,13 @@
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
-    }).when('/cart',{
+        }).when('/product-details/:shirtId', {
+	    templateUrl : 'partials/products/product-details.html',
+	    controller : 'ProductDetailsController'
+	}).when('/stamp-details/:stampId', {
+	    templateUrl : 'partials/products/stamp-details.html',
+	    controller : 'StampDetailsController'
+	}).when('/cart',{
 	    templateUrl : 'partials/cart/cart.html',
 	    controller : 'CartController'
 	}).otherwise({
