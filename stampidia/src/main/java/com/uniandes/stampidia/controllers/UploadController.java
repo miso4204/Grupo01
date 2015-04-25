@@ -3,6 +3,11 @@ package com.uniandes.stampidia.controllers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,9 +18,12 @@ import com.uniandes.stampidia.utilities.Resultado;
 
 @RestController
 @RequestMapping(value = "/rest")
-public class UploadController {
-
-	private static final String RESOURCES_PATH = "C:/Users/dham/Software/nginx-1.7.12/html/";
+public class UploadController {	
+	
+	@Resource
+    private Environment env;
+	
+	private static final String RESOURCES_PATH = "resources.path";
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public Resultado darClientes() {
@@ -33,7 +41,7 @@ public class UploadController {
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
-				File newFile = new File(RESOURCES_PATH + name);
+				File newFile = new File(env.getRequiredProperty(RESOURCES_PATH) + name);
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newFile));
 				stream.write(bytes);
 				stream.close();
