@@ -4,7 +4,7 @@ Pasos para la instalación de la aplicación de stampidia
 
 ### Para que es esta aplicación? ###
 
-* Aplicación desarrollada para la clase de FABRICAS DE SOFTWARE	
+* Aplicación desarrollada para la clase de FABRICAS DE SOFTWARE	2015-10
 * Versión 1.0.0
 
 ### Instalación y dependencias ###
@@ -53,7 +53,7 @@ Pasos para la instalación de la aplicación de stampidia
 ### Autores ###
 
 * Diego Agudelo <die-agud@uniandes.edu.co>
-* Lorena Salamanca <>
+* Lorena Salamanca <l.salamanca10@uniandes.edu.co>
 * Harold Murcia <hl.murcia222@uniandes.edu.co>
 * Sebastián Gamba <fs.gamba10@uniandes.edu.co>
-* Mauricio Cajamarca <>
+* Mauricio Cajamarca <lm.cajamarca10@uniandes.edu.co>
