@@ -27,6 +27,18 @@
             return true;
         }
 
+        $scope.saveOrder = function(){
+            if($rootScope.order != null){
+                cartService.saveOrder($rootScope.order).$promise.then(
+                function(response){
+                        console.log('Save Order' + response);
+                    }, function(response){
+                        console.log(response);
+                    }
+                );
+            }
+        }
+
     }
     angular.module('stampidia.controllers').controller('CartController', [ '$rootScope', '$scope', 'cartService', CartController ]);
 })();
