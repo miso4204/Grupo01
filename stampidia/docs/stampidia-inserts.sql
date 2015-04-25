@@ -9,11 +9,11 @@ INSERT INTO stmp_category VALUES (3, 'Love', 'Love', true);
 INSERT INTO stmp_category VALUES (4, 'Sports ', 'Sports', true);
 INSERT INTO stmp_category VALUES (5, 'Animals', 'Animals', true);
 
-INSERT INTO stmp_color VALUES (1, 'Black', '000000', true);
-INSERT INTO stmp_color VALUES (2, 'Blue', '0000FF', true);
-INSERT INTO stmp_color VALUES (3, 'Red', 'FF0000', true);
-INSERT INTO stmp_color VALUES (4, 'Green', '008000', true);
-INSERT INTO stmp_color VALUES (5, 'Yellow', 'FFFF00', true);
+INSERT INTO stmp_color VALUES (1, 'Black', '000000', 'http://image9.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/2?width=450&height=450&mediaType=webp', true);
+INSERT INTO stmp_color VALUES (2, 'Blue', '0000FF', 'http://image1.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/4?width=450&height=450&mediaType=webp',true);
+INSERT INTO stmp_color VALUES (3, 'Red', 'FF0000', 'http://image2.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/5?width=450&height=450&mediaType=webp', true);
+INSERT INTO stmp_color VALUES (4, 'Green', '008000', 'http://image5.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/388?width=450&height=450&mediaType=webp', true);
+INSERT INTO stmp_color VALUES (5, 'White', 'FFFF00', 'http://image8.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/1?width=450&height=450&mediaType=webp', true);
 
 
 INSERT INTO stmp_payment_type VALUES (1, 'CoD', 'Cash on Delivery', 'cash_success', 'cash_error', true);

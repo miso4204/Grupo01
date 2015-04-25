@@ -65,6 +65,7 @@ CREATE TABLE stmp_color (
     id integer NOT NULL,
     name character varying(256) NOT NULL,
     hex_value character varying(512) NOT NULL,
+    path_shirt character varying(256) NOT NULL,
     status boolean DEFAULT true NOT NULL
 );
 ALTER TABLE stmp_color OWNER TO stampidia;
@@ -173,7 +174,7 @@ CREATE TABLE stmp_shirt (
 );
 ALTER TABLE stmp_shirt OWNER TO stampidia;
 CREATE SEQUENCE shirt_id_seq
-    START WITH 1
+    START WITH 6
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -256,7 +257,7 @@ ALTER TABLE stmp_stamp OWNER TO stampidia;
 COMMENT ON COLUMN stmp_stamp.image IS 'image path';
 COMMENT ON COLUMN stmp_stamp.tags IS 'search tags';
 CREATE SEQUENCE stamp_id_seq
-    START WITH 1
+    START WITH 12
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -297,7 +298,7 @@ CREATE TABLE stmp_user (
 );
 ALTER TABLE stmp_user OWNER TO stampidia;
 CREATE SEQUENCE user_id_seq
-    START WITH 1
+    START WITH 3
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
