@@ -14,6 +14,14 @@
 	  method : "GET",
 	  isArray : false
 	}
+	}),
+	shirtbyId = $resource('http://localhost:8080/stampidia/rest/shirtService/:shirtId', {
+	    shirtId:'@shirtId'
+	}, {
+	query : {
+	  method : "GET",
+	  isArray : false
+	}
 	});
 	return {
 	    createShirt : function(p_shirtText,p_shirtIdColor,p_shirtIdStyle,p_shirtIdSize,p_shirtIdStamp,p_shirtIdUser) {
@@ -26,6 +34,13 @@
 		    shirtIdStamp: p_shirtIdStamp,
 		    shirtIdUser: p_shirtIdUser
 		});
+	    },
+	    getShirt : function(p_shirt) {
+		console.log('getShirt Shirt '+p_shirt);
+		return shirtbyId.query({
+		    shirtId : p_shirt
+		});
+		console.log('getStamp despues ');
 	    }
 	}
     };
