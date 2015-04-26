@@ -5,7 +5,7 @@
 
 		$scope.signupData = {};
 		$scope.signup = function(){
-			var res=registerService.listUsers($scope.signupData).$promise.then(function(response){
+			var res=registerService.addUser($scope.signupData).$promise.then(function(response){
 				console.log('OK: '+response);
 				if(response.estado.type=='OK')
 				{

@@ -29,8 +29,9 @@ INSERT INTO stmp_size VALUES (3, 'L', true);
 INSERT INTO stmp_size VALUES (4, 'XL', true);
 INSERT INTO stmp_size VALUES (5, 'XXL', true);
 
-INSERT INTO stmp_user VALUES (2, 'diego', 'diego', 'die-agud@uniandes.edu.co', NULL, NULL, false, NULL, true);
-INSERT INTO stmp_user VALUES (1, 'lore', 'lore', 'tachu.salamanca@gmail.com', 'probabas@hotmail.com ', 'probabas@hotmail.com', true, 1, true);
+INSERT INTO stmp_user VALUES (1, 'lore', 'lore', 'tachu.salamanca@gmail.com', 'address1', 'probabas@hotmail.com ', 'probabas@hotmail.com', true, 1, true);
+INSERT INTO stmp_user VALUES (2, 'diego', 'diego', 'die-agud@uniandes.edu.co','address1', NULL, NULL, false, NULL, true);
+INSERT INTO stmp_user VALUES (3, 'harold', 'harold', 'hl.murcia222@uniandes.edu.co', 'address1', NULL, NULL, false, NULL, true);
 
 INSERT INTO stmp_stamp VALUES (1, 'Bitchachos', 'Adios Bitchachos', 'http://image19.spreadshirtmedia.com/image-server/v1/compositions/111665151/views/1,width=235,height=235,appearanceId=1/Adios-Bitchachos-T-Shirts.jpg         ', 'mustache', 1, 0, 2, 10, true);
 INSERT INTO stmp_stamp VALUES (2, 'Big Guns Black Backing', 'Big Guns Black Backing  ', 'http://image1.spreadshirtmedia.com/image-server/v1/compositions/109073810/views/1,width=235,height=235,appearanceId=66/Big-Guns-Black-Backing-T-Shirts.jpg   ', 'dinosaur', 1, 0, 5, 10, true);
