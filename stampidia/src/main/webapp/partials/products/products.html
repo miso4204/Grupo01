@@ -45,17 +45,24 @@
 									<div class="productinfo text-center">
 										<img ng-src="{{product.idStamp.image}}" alt="" />
 										<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
-										<p>{{product.text }}</p>
+										<p>Text:{{product.text }}</p>
+										<p>Size:{{product.idSize.name}}</p>
+										<p>Style:{{product.idStyle.name}}</p>
+										<p>Color:{{product.idColor.name}}</p>
 										<a href="#" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)">
 										<i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 											<div class="overlay-content">
 												 <h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
-												 <a href="#/product-details/{{product.id}}" >
+												<p>Text:{{product.text }}</p>
+												<p>Size:{{product.idSize.name}}</p>
+												<p>Style:{{product.idStyle.name}}</p>
+												<p>Color:{{product.idColor.name}}</p>
+												<p><a href="#/product-details/{{product.id}}" >
 												  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 												</a>
-												<p>{{product.text }}</p>
+												</p>
 												<!--<a  class="btn btn-default add-to-cart"><i-->
 												<!--class="fa fa-shopping-cart" ng-click="addItemToCart(product)"></i>Add to cart</a>-->
 												<a href="" ng-click="selectCategory(category.id)">
