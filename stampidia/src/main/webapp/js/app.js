@@ -25,6 +25,9 @@
 	}).when('/register', {
 	    templateUrl : 'partials/login/register.html',
 	    controller : 'RegisterController'
+	}).when('/edit_account', {
+	    templateUrl : 'partials/login/edit_account.html',
+	    controller : 'RegisterController'
 	}).when('/select_payment', {
 	    templateUrl : 'partials/pay/select_payment.html',
 	    controller : 'SelectPaymentController'
@@ -55,7 +58,13 @@
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
-    }).when('/cart',{
+        }).when('/product-details/:shirtId', {
+	    templateUrl : 'partials/products/product-details.html',
+	    controller : 'ProductDetailsController'
+	}).when('/stamp-details/:stampId', {
+	    templateUrl : 'partials/products/stamp-details.html',
+	    controller : 'StampDetailsController'
+	}).when('/cart',{
 	    templateUrl : 'partials/cart/cart.html',
 	    controller : 'CartController'
 	}).otherwise({

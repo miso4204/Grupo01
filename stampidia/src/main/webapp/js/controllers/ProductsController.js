@@ -28,13 +28,11 @@
     $scope.addItemToCart = function(item) {
         console.log('Entra en CartController');
         var detail;
-
         if ($rootScope.order != null) {
         } else {
             $rootScope.order = {};
             $rootScope.order.stmpOrderDetailList = [];
         }
-
         console.log('ITEM =>' +  item.id);
 
         var detList = $rootScope.order.stmpOrderDetailList.filter(function(element){
@@ -54,15 +52,22 @@
             $rootScope.order.stmpOrderDetailList.push(detail);
         }
         console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
-
-        var itemCount = 0;
-        for(var i = 0 ; i < $rootScope.order.stmpOrderDetailList.length;i++){
-            itemCount = itemCount + $rootScope.order.stmpOrderDetailList[i].quantity;
-        }
-        $rootScope.itemCount = itemCount;
-        //cartService.saveOrder($rootScope.order);
+        cartService.saveOrder($rootScope.order);
 
     }
+
+	$scope.loadViewMore = function(ShirtId){
+	    console.log("loadViewMore" + ShirtId);
+	}
+	$scope.modeView = function(mode){
+	    if(mode=="list"){
+		$('#list-products .features_items').hide();
+		$('#list-products .features_list').show();
+	    }else{
+		$('#list-products .features_list').hide();
+		$('#list-products .features_items').show();
+	    }
+	}
 
     function getDetailByShirtId(element, shirtId){
         return element.idShirt.id === shirtId;
@@ -70,6 +75,7 @@
 
 	var init = function(){
 	    console.log("init");
+	    $('#list-products .features_list').hide();
 	    $scope.listCategories();
 	    $scope.listProducts();
 	}

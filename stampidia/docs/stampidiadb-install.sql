@@ -290,6 +290,7 @@ CREATE TABLE stmp_user (
     username character varying(256) NOT NULL,
     password character varying(64) NOT NULL,
     email character varying(100) NOT NULL,
+    address character varying(256) NOT NULL,
     facebook_email character varying(256),
     twitter_email character varying(256),
     is_seller boolean DEFAULT false NOT NULL,
