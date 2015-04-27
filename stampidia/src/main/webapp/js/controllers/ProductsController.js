@@ -58,6 +58,15 @@
 	$scope.loadViewMore = function(ShirtId){
 	    console.log("loadViewMore" + ShirtId);
 	}
+	$scope.modeView = function(mode){
+	    if(mode=="list"){
+		$('#list-products .features_items').hide();
+		$('#list-products .features_list').show();
+	    }else{
+		$('#list-products .features_list').hide();
+		$('#list-products .features_items').show();
+	    }
+	}
 
     function getDetailByShirtId(element, shirtId){
         return element.idShirt.id === shirtId;
@@ -65,6 +74,7 @@
 
 	var init = function(){
 	    console.log("init");
+	    $('#list-products .features_list').hide();
 	    $scope.listCategories();
 	    $scope.listProducts();
 	}

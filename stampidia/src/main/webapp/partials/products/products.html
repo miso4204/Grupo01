@@ -1,21 +1,19 @@
 <section>
-	<div class="header-bottom">
-			<!--header-bottom-->
-			<div class="container">
-				<div class="row">					
-					<div class="col-sm">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search" ng-model="search"/>
-						</div>
-					</div>
+    <div class="container">
+		<div class="row">					
+			<div class="col-sm">
+				<div class="search_box pull-right">
+					<input type="text" placeholder="Search" ng-model="search"/>
 				</div>
 			</div>
 		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="left-sidebar">
 					<h2>Category</h2>
+					<a></a>
 					<div class="panel-group category-products" id="accordian">
 						<!--category-productsr-->
 						<div class="panel panel-default">
@@ -31,51 +29,84 @@
 					</div>
 					<div class="shipping text-center">
 						<!--shipping-->
-						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg"
-							alt="" />
+						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg" alt="" />
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-9 padding-right">
-				<div class="features_items">
-					<!--features_items-->
-					<h2 class="title text-center">Products</h2>
-					<div class="col-sm-4" data-ng-repeat="product in products | filter: search">
-						<div class="product-image-wrapper">
-							<div class="single-products" ng-click="addItemToCart(product)">
-								<div class="productinfo text-center">
-									<img src="http://cosmicbobo.com/images/PLAIN_WHT_01.jpg" class="img-responsive" />
-									<div class="project-overlay-small">
-										<img ng-src="{{product.idStamp.image}}" alt="" class="img-responsive" />										
-									</div>								
-									<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
-									<a href="#" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
+			<div id="list-products">
+			 	<a class="glyphicon glyphicon-th" ng-click="modeView('grid')" align="right"></a>
+				<a class="glyphicon glyphicon-th-list"  ng-click="modeView('list')" align="right"></a>
+				<div class="col-sm-9 padding-right" >
+			    	<div class="features_items">
+			    	    <h2 class="title text-center">Products</h2>
+				    	<div class="col-sm-4" data-ng-repeat="product in products | filter: search">
+							<div class="product-image-wrapper">
+								<div class="single-products" ng-click="addItemToCart(product)">
+									<div class="productinfo text-center">
+										<img ng-src="{{product.idStamp.image}}" alt="" />
 										<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
-										<p><strong>Texto adicional: </strong>{{product.text }}</p>
-										<!--<a  class="btn btn-default add-to-cart"><i-->
-											<!--class="fa fa-shopping-cart" ng-click="addItemToCart(product)"></i>Add to cart</a>-->
-										<a href="" ng-click="selectCategory(category.id)"><i
-											class="fa fa-shopping-cart"></i>Add to cart</a>
+										<p>{{product.text }}</p>
+										<a href="#" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)">
+										<i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
+									<div class="product-overlay">
+											<div class="overlay-content">
+												 <h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
+												 <a href="#/product-details/{{product.id}}" >
+												  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												</a>
+												<p>{{product.text }}</p>
+												<!--<a  class="btn btn-default add-to-cart"><i-->
+												<!--class="fa fa-shopping-cart" ng-click="addItemToCart(product)"></i>Add to cart</a>-->
+												<a href="" ng-click="selectCategory(category.id)">
+												<i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+									</div>
+									</a>
 								</div>
 							</div>
-							<a href="#/product-details/{{product.id}}" class="btn btn-default add-to-cart">View More</a>
 						</div>
 					</div>
-					<div style="clear: both; display: block" ng-hide="true">
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
-					</div>
+			    <div class="features_list" id="cart_items">
+					<div class="table-responsive cart_info">
+						<table class="table table-condensed">
+					  	  <thead>
+							<tr class="cart_menu">
+							  <td class="image">Image</td>
+							  <td class="description">Text</td>
+							  <td class="size">Size</td>
+						      <td class="style">Style</td>
+						   	  <td class="price">Price</td>
+							  <td class="total"></td>
+							  <td></td>
+							</tr>
+						  </thead>		
+					      <tbody>
+					       <tr data-ng-repeat="product in products | filter: search">
+				   		    <td class="cart_product">
+								<a href="#/product-details/{{product.id}}" ><img ng-src="{{product.idStamp.image}}" height="100" width="100" alt="" /></a>
+	  					  	</td>
+						  	<td class="">
+								{{product.text }}
+	  					  	</td>
+	  					  	<td class="cart_price">
+								{{product.idSize.name}}
+	 					  	</td>
+				   		  	<td class="cart_price">
+								{{product.idStyle.name}}
+	 					  	</td>
+				   		    <td class="cart_total">
+								<p class="cart_total_price">{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</p>
+	  					  	</td>
+	  					  	 <td class="cart_total">
+								<a href="" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)">
+										<i class="fa fa-shopping-cart"></i>Add to cart</a>
+	  					  	</td>
+					  	   </tr>
+					  	</tbody>
+						</table>
+			    	 </div>
 				</div>
-				<!--features_items-->
 			</div>
 		</div>
 	</div>
