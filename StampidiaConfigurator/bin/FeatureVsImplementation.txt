@@ -1,0 +1,6 @@
+RateProducts;RateProductsController.java
+RateDesigns;RateDesignsController.java
+ChangePassword;SizeController.java
+ChangeAddress;ColorController.java
+Reports;ReportController.java
+SpecialOffers;SpecialOffersController.java
