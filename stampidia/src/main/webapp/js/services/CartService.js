@@ -2,32 +2,19 @@
     'use strict';
     var CartService = function($resource, $window) {
 
-
-        function saveOrder(order) {
-            console.log(order);
-            var cartSaveRsrc = $resource('http://localhost:8080/stampidia/rest/cart', {}, {
-                query : {
-                    method : "PUT",
-                    isArray : false
+        var saveOrder = $resource('http://localhost:8080/stampidia/rest/cart', null,
+            {
+                updateOrder : {
+                    method : "PUT"
                 }
-            });
-
-            cartSaveRsrc.save(order);
-
-            console.log('servicio de cart '+cartSaveRsrc);
-            return cartSaveRsrc.query({});
-
-            //localStorage.setItem('order', order);
-        };
-
-        function loadOrderFromLocalStorage(){
-            return localStorage.getItem('order');
-        }
-
+            }
+        );
 
         return {
-            saveOrder : saveOrder,
-            loadOrderFromLocalStorage : loadOrderFromLocalStorage
+            update : function(order){
+                console.log(order);
+                return saveOrder.updateOrder(order);
+            }
         }
     };
     angular.module('stampidia.services').factory('cartService', [ '$resource', '$window', CartService ]);

@@ -29,7 +29,7 @@
 
         $scope.saveOrder = function(){
             if($rootScope.order != null){
-                cartService.saveOrder($rootScope.order).$promise.then(
+                cartService.update($rootScope.order).$promise.then(
                 function(response){
                         console.log('Save Order' + response);
                     }, function(response){
