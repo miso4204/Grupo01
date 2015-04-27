@@ -1,6 +1,7 @@
 package com.uniandes.stampidia.controllers;
 
 import com.uniandes.stampidia.model.StmpOrder;
+import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.services.CartService;
 import com.uniandes.stampidia.utilities.Constantes;
@@ -9,6 +10,8 @@ import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -41,7 +44,7 @@ public class CartController {
     }
 
     @RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
-    public Resultado getCartProducts(
+    public Resultado getCart(
             @PathVariable("userId")Integer userId){
         Resultado resultado = new Resultado();
 
@@ -53,5 +56,59 @@ public class CartController {
         }
 
         return resultado;
+    }
+
+    @RequestMapping(value="/cart/{oderId}/details",method= RequestMethod.GET)
+    public Resultado getCartProducts(
+            @PathVariable("oderId")Integer oderId){
+        Resultado resultado = new Resultado();
+
+        if(oderId != null){
+            List<StmpOrderDetail> detalles = cartService.getOrderDetailsByOrderId(oderId);
+            if(detalles != null) {
+                resultado.setResultado(detalles);
+                resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+            }else{
+                resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
+            }
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+        }
+
+        return resultado;
+    }
+
+    @RequestMapping(value="/cart/{oderId}/details",method= RequestMethod.PUT)
+    public Resultado saveCartProducts(
+            @PathVariable("oderId")Integer oderId,
+            @RequestBody List<StmpOrderDetail> details){
+        Resultado resultado = new Resultado();
+
+        if(oderId != null && details != null && !details.isEmpty()){
+            try {
+                validateDetailsByOrderId(oderId, details);
+                cartService.saveOrderDetails(details);
+                resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+            }catch (Exception e){
+                resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
+
+            }
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+        }
+
+        return resultado;
+    }
+
+    private boolean validateDetailsByOrderId(Integer orderId, List<StmpOrderDetail> details) throws Exception {
+        if(orderId != null && details != null && !details.isEmpty()){
+            for(StmpOrderDetail det : details){
+                if (!det.getIdOrder().getId().equals(orderId)){
+                    throw new Exception();
+                }
+            }
+            return true;
+        }
+        throw new Exception();
     }
 }

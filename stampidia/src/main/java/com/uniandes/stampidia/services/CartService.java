@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
@@ -103,5 +104,21 @@ public class CartService {
 
     public StmpOrder getOrderById(Integer orderId){
         return orderRepository.findOne(orderId);
+    }
+
+    public List<StmpOrderDetail> getOrderDetailsByOrderId(Integer orderId){
+        try {
+            return orderDetailRepository.getOrderDetailsByOrderId(orderId);
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public void saveOrderDetails(List<StmpOrderDetail> details){
+        if(details != null && !details.isEmpty()){
+            for(StmpOrderDetail det : details){
+                orderDetailRepository.save(det);
+            }
+        }
     }
 }
