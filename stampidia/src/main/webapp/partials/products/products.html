@@ -44,16 +44,18 @@
 						<div class="product-image-wrapper">
 							<div class="single-products" ng-click="addItemToCart(product)">
 								<div class="productinfo text-center">
-									<img ng-src="{{product.idStamp.image}}" alt="" />
+									<img src="http://cosmicbobo.com/images/PLAIN_WHT_01.jpg" class="img-responsive" />
+									<div class="project-overlay-small">
+										<img ng-src="{{product.idStamp.image}}" alt="" class="img-responsive" />										
+									</div>								
 									<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
-									<p>{{product.text }}</p>
 									<a href="#" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)"><i
 										class="fa fa-shopping-cart"></i>Add to cart</a>
 								</div>
 								<div class="product-overlay">
 									<div class="overlay-content">
 										<h2>{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</h2>
-										<p>{{product.text }}</p>
+										<p><strong>Texto adicional: </strong>{{product.text }}</p>
 										<!--<a  class="btn btn-default add-to-cart"><i-->
 											<!--class="fa fa-shopping-cart" ng-click="addItemToCart(product)"></i>Add to cart</a>-->
 										<a href="" ng-click="selectCategory(category.id)"><i
