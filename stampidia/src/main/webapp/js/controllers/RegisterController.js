@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var RegisterController = function($rootScope, $scope, $location, registerService, appSettings) {
+    var RegisterController = function($rootScope, $scope, $location, registerService, sessionService, appSettings) {
 
 	$scope.signupData = {};
 	$scope.signup = function(){
@@ -19,10 +19,12 @@
 	};
 
 	$scope.editAccount=function(){
-	    console.log($scope.idUserIn);
+	    console.log(sessionService);
+	    
 	    $scope.user = registerService.get({ id: 1 }, function() {
 		// $scope.entry is fetched from server and is an instance of Entry
-		$scope.user.resultado.address = 'something else';
+		$scope.user.resultado.address = $scope.signupData.address;
+		$scope.user.resultado.password = $scope.signupData.password;
 		registerService.update($scope.user.resultado);
 	    });
 	}
@@ -35,5 +37,5 @@
 
 
     angular.module('stampidia.controllers').controller('RegisterController',
-	    [ '$rootScope', '$scope', '$location', 'registerService', 'appSettings', RegisterController ]);
+	    [ '$rootScope', '$scope', '$location', 'registerService', 'appSettings', 'sessionService', RegisterController ]);
 }());
