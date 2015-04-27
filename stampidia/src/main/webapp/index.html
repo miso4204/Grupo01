@@ -15,6 +15,7 @@
 <link href="lib/bootstrap/css/animate.css" rel="stylesheet">
 <link href="lib/bootstrap/css/main.css" rel="stylesheet">
 <link href="lib/bootstrap/css/responsive.css" rel="stylesheet">
+<link href="css/stampidia.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -82,12 +83,17 @@
 								<li><a href="#/create-stamp">Create Stamps</a></li>
 								<li><a href="#/reports">Reports</a></li>
 								<li><a href="#/checkout">Checkout</a></li>
-
 								<li><a href="#/cart">Cart<span class="badge">{{order.stmpOrderDetailList.length}}</span></a></li>
 								<li><a href="#/register" ng-hide="isAuthenticated()"><i class="fa fa-user"></i> Register Now</a></li>
-								<li><a href="#/register" ng-show="isAuthenticated()"><i class="fa fa-user"></i> Profile</a></li>
-								<li><a href="#/login" ng-hide="isAuthenticated()"><i class="fa fa-lock"></i>Login</a></li>
-								<li><a href="" ng-show="isAuthenticated()" ng-click="logout()"><i class="fa fa-lock"></i>Logout</a></li>								
+								<li ng-show="isAuthenticated()" class="dropdown">
+									<a href="#">User<i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="#/edit_account"><i class="fa fa-user"></i>My account</a></li>
+										<li><a href="#/myOrders"><i class="fa fa-list-alt"></i>My orders</a></li>
+										<li><a href="" ng-show="isAuthenticated()" ng-click="logout()"><i class="fa fa-lock"></i>Logout</a></li>
+									</ul>
+								</li>
+								<li><a href="#/login" ng-hide="isAuthenticated()"><i class="fa fa-lock"></i>Login</a></li>								
 							</ul>
 						</div>
 					</div>
