@@ -64,10 +64,13 @@
 	    console.log("loadViewMore" + ShirtId);
 	}
 	$scope.modeView = function(mode){
+	    $("#list-products .icons-mode-view a").removeClass("active");
 	    if(mode=="list"){
+		$("#list-products .icons-mode-view .glyphicon-th-list").addClass("active");
 		$('#list-products .features_items').hide();
 		$('#list-products .features_list').show();
 	    }else{
+		$("#list-products .icons-mode-view .glyphicon-th").addClass("active");
 		$('#list-products .features_list').hide();
 		$('#list-products .features_items').show();
 	    }

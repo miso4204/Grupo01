@@ -3,7 +3,6 @@ package com.uniandes.stampidia.services;
 import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
-import com.uniandes.stampidia.model.StmpUser;
 import com.uniandes.stampidia.repos.OrderDetailRepository;
 import com.uniandes.stampidia.repos.OrderRepository;
 import com.uniandes.stampidia.repos.ShirtRepository;
@@ -124,11 +123,15 @@ public class CartService {
         }
     }
 
-    public void saveOrderDetails(List<StmpOrderDetail> details){
-        if(details != null && !details.isEmpty()){
-            for(StmpOrderDetail det : details){
+    public void saveOrderDetails(List<StmpOrderDetail> details) {
+        if (details != null && !details.isEmpty()) {
+            for (StmpOrderDetail det : details) {
                 orderDetailRepository.save(det);
             }
         }
+    }
+
+    public List<StmpOrder> getOrdersByUser(Integer userId){
+		return orderRepository.findStmpOrderClosedByUserId(userId);
     }
 }
