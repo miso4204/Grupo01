@@ -24,14 +24,16 @@ public class UserController {
     
     @Autowired
     private PlanService planService;
-
-    @RequestMapping(value="/user/buyer",method= RequestMethod.PUT)
-    public Resultado updateBuyerProfile(
-            @RequestBody StmpUser buyer){
+    
+  //--------------------------------------------Seller------------------------------------------------//
+    
+    @RequestMapping(value="/user/seller",method= RequestMethod.PUT)
+    public Resultado updateSellerProfile(
+            @RequestBody StmpUser seller){
         Resultado resultado = new Resultado();
 
-        if(buyer != null && buyer.getId() != null){
-            resultado.setResultado(userService.updateBuyerProfile(buyer));
+        if(seller != null && seller.getId() != null){
+            resultado.setResultado(userService.updateSellerProfile(seller));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else{
@@ -41,13 +43,31 @@ public class UserController {
         return resultado;
     }
 
-    @RequestMapping(value="/user/seller",method= RequestMethod.PUT)
-    public Resultado updateSellerProfile(
-            @RequestBody StmpUser seller){
+    //--------------------------------------------Buyer------------------------------------------------//
+    @RequestMapping(value="/user/buyer",method= RequestMethod.GET)
+    public Resultado getBuyerProfile(@RequestParam(value="id", required = true) Integer id){
         Resultado resultado = new Resultado();
 
-        if(seller != null && seller.getId() != null){
-            resultado.setResultado(userService.updateSellerProfile(seller));
+        if(id != null ){
+            resultado.setResultado(userService.findUserById(id));
+
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        }else{
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+        }
+
+        return resultado;
+    }
+    
+    
+    @RequestMapping(value="/user/buyer",method= RequestMethod.PUT)
+    public Resultado updateBuyerProfile(
+            @RequestBody StmpUser buyer){
+    	System.out.println(buyer.getAddress());
+        Resultado resultado = new Resultado();
+
+        if(buyer != null && buyer.getId() != null){
+            resultado.setResultado(userService.updateBuyerProfile(buyer));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else{
@@ -64,9 +84,6 @@ public class UserController {
         Resultado resultado = new Resultado();
 
         if(user != null){        
-//        	System.out.println("ojhhhhhh"+idPlan);
-//        	
-//        	System.out.println(planService.getPlan(Integer.parseInt(idPlan)).getName());
  	
             resultado.setResultado(userService.createProfile(user));
 

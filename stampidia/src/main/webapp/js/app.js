@@ -67,6 +67,9 @@
 	}).when('/cart',{
 	    templateUrl : 'partials/cart/cart.html',
 	    controller : 'CartController'
+	}).when('/myOrders',{
+	    templateUrl : 'partials/orders/order.html',
+	    controller : 'OrderController'
 	}).otherwise({
 	    redirectTo : '/products'
 	});

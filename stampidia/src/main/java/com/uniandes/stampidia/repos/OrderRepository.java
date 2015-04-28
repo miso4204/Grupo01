@@ -1,6 +1,7 @@
 package com.uniandes.stampidia.repos;
 
 import com.uniandes.stampidia.model.StmpOrder;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -21,4 +22,7 @@ public interface OrderRepository extends CrudRepository<StmpOrder,Integer> {
 
     @Query(value="select s from StmpOrder s where s.idUser.id = :userId and s.orderStatus = true")
     Object findStmpOrderByUserId(@Param("userId") Integer userId);
+    
+    @Query(value="select s from StmpOrder s where s.idUser.id = :userId and s.orderStatus = false")
+    List<StmpOrder> findStmpOrderClosedByUserId(@Param("userId") Integer userId);
 }

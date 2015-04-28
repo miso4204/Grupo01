@@ -125,5 +125,12 @@ public class StmpShirtRating implements Serializable {
     public String toString() {
         return "com.uniandes.stampidia.model.StmpShirtRating[ id=" + id + " ]";
     }
-    
+
+    public boolean isNull(){
+        return this.id == null &&
+                this.comment == null &&
+                this.idShirt == null &&
+                this.idUser == null &&
+                this.valoration < 1;
+    }
 }
