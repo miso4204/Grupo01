@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var SelectPaymentController = function($scope, $location, selectPaymentService, appSettings) {
+    var SelectPaymentController = function($rootScope, $scope, $location, $dialogs, $timeout, selectPaymentService, appSettings) {
 
 	selectPaymentService.listPaymentTypes().$promise.then(function(response) {
 	    console.log(response);
@@ -27,14 +27,22 @@
 	    month[10] = "November";
 	    month[11] = "December";
 	    var d = new Date();
-	    var n = month[d.getMonth()];
-	    var deliveryDay = d.getDate() + 5;
+	    var n = month[d.getMonth() + 1];
+	    var deliveryDay = d.getDate() -15;
 	    console.log(deliveryDay);
 	    var fullDeliveryDate = n + " " + deliveryDay + ", " + d.getFullYear();
 	    return fullDeliveryDate;
 	};
-	$scope.submit = function() {
-	    var paymentMethod;
+	$scope.launch = function(which){
+	    var dlg = null;
+	    switch(which){
+	      // Wait / Progress Dialog
+	      case 'wait':
+	        dlg = $dialogs.wait(msgs[i++],progress);
+	        fakeProgress();
+	        break;
+	    };
+		var paymentMethod;
 	    if ($scope.paymenttype == 1) {
 		paymentMethod = "cash"
 	    } else if ($scope.paymenttype == 2) {
@@ -49,6 +57,27 @@
 		console.log('bad' + response);
 	    })
 	};
+	// for faking the progress bar in the wait dialog
+	  var progress = 25;
+	  var msgs = [
+	    'Hey! I\'m waiting here...',
+	    'About half way done...',
+	    'Almost there?',
+	    'Woo Hoo! I made it!'
+	  ];
+	  var i = 0;
+	  
+	  var fakeProgress = function(){
+	    $timeout(function(){
+	      if(progress < 100){
+	        progress += 25;
+	        $rootScope.$broadcast('dialogs.wait.progress',{msg: msgs[i++],'progress': progress});
+	        fakeProgress();
+	      }else{
+		  $rootScope.$broadcast('dialogs.wait.complete');
+	      }
+	    },1000);
+	  }; // end fakeProgress 
     }
-    angular.module('stampidia.controllers').controller('SelectPaymentController', [ '$scope', '$location', 'selectPaymentService', 'appSettings', SelectPaymentController ]);
+    angular.module('stampidia.controllers').controller('SelectPaymentController', [ '$rootScope', '$scope', '$location', '$dialogs', '$timeout', 'selectPaymentService', 'appSettings', SelectPaymentController ]);
 }());
