@@ -10,19 +10,16 @@
 		if(response.estado.type=='OK')
 		{
 		    $scope.orderData=response.resultado;
-		    console.log($scope.orderData);
-		    console.log($scope.orderData.length)
+		    console.log('orden -> ' + $scope.orderData);
+		    console.log($scope.orderData.length);
 		}else{
 		    //TODO send error
 		}
 	    }, function(response) {
 		console.log('Error: ' +response);
 	    })
-	
 
-    };
-
-
+	};
 
     angular.module('stampidia.controllers').controller('OrderController',
 	    [ '$rootScope', '$scope', '$location', 'orderService', 'sessionService', 'appSettings',  OrderController ]);

@@ -20,6 +20,7 @@
 	    this.authId = null;
 	    this.authToken = null;
 	    this.authPermission = null;
+		this.userId = null;
 	};
 	return this;
     };

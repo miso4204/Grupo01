@@ -13,6 +13,7 @@
 							<th>PAY METHOD</th>
 							<th>DATE</th>
 							<th>TOTAL AMOUNT</th>
+							<th>PRODUCT RATING</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -21,6 +22,12 @@
 							<td>{{ order.idShippingType.name}}</td>
 							<td>{{ order.date }}</td>
 							<td>{{ order.totalAmount }}</td>
+							<td>
+								<input id="input-2d" class="rating" min="0" max="5" step="1" data-size="sm"
+									   data-symbol="&#xf0fc;" data-glyphicon="false"
+									   data-rating-class="rating-fa" data-default-caption="{rating} drinks"
+									   data-star-captions="{}">
+							</td>
 						</tr>
 					</tbody>
 				</table>

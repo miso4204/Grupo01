@@ -120,5 +120,10 @@ public class StmpOfert implements Serializable {
    public String toString() {
        return "com.uniandes.stampidia.model.StmpOfert[ id=" + id + " ]";
    }
-   
+
+    public boolean isNull(){
+        return this.id == null &&
+                this.name == null &&
+                this.discount == null;
+    }
 }
