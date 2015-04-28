@@ -15,6 +15,7 @@
 <link href="lib/bootstrap/css/animate.css" rel="stylesheet">
 <link href="lib/bootstrap/css/main.css" rel="stylesheet">
 <link href="lib/bootstrap/css/responsive.css" rel="stylesheet">
+<link href="css/stampidia.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -82,7 +83,8 @@
 								<li><a href="#/create-stamp">Create Stamps</a></li>
 								<li><a href="#/reports">Reports</a></li>
 								<li><a href="#/checkout">Checkout</a></li>
-								<li><a href="#/cart">Cart<span class="badge">{{order.stmpOrderDetailList.length}}</span></a></li>
+
+								<li><a href="#/cart">Cart<span class="badge">{{itemCount}}</span></a></li>
 								<li><a href="#/register" ng-hide="isAuthenticated()"><i class="fa fa-user"></i> Register Now</a></li>
 								<li ng-show="isAuthenticated()" class="dropdown">
 									<a href="#">User<i class="fa fa-angle-down"></i></a>

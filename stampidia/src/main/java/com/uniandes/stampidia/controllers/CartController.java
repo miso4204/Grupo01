@@ -18,12 +18,12 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping(value="/cart/",method= RequestMethod.PUT)
+    @RequestMapping(value="/cart",method= RequestMethod.PUT)
     public Resultado saveCart(
             @RequestBody StmpOrder order){
         Resultado resultado = new Resultado();
 
-        if(order != null ){
+        if(!order.isNull()){
             StmpOrder newOrder = cartService.updateOrder(order);
 
             if(newOrder != null){
