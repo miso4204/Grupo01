@@ -83,6 +83,22 @@ public class Mapping {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public static void scaleDynos(String repositoryPath){
+		System.out.println(Util.getCurrentTime() + "Escalando 1 dyno para feature 'Performance'...");
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec("cmd.exe /c heroku ps:scale web=2");
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+			String line = null;
+
+			while ((line = input.readLine()) != null) {
+			System.out.println(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

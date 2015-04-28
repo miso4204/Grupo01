@@ -8,9 +8,7 @@ public class MavenDeploy {
 	public static void compileAndDeployToTomcat(String localRepoPath){
 		Process p;
 		try {
-			p = Runtime.getRuntime().exec(
-				"cmd.exe /c cd " + localRepoPath + "/stampidia && mvn clean install tomcat7:run");
-//			"cmd.exe /c cd " + "D:/Users/Tachu.Tachu-PC/AppData/Local/Temp/TestGitRepository3146357209237167845" + "/stampidia && mvn clean install tomcat7:run");
+			p = Runtime.getRuntime().exec("cmd.exe /c cd " + localRepoPath + "/stampidia && mvn clean install tomcat7:run");
 		BufferedReader input = new BufferedReader(new InputStreamReader(
 				p.getInputStream()));
 

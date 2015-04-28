@@ -16,8 +16,6 @@ public class Main {
 			 * Lee el .config de FeatureIDE, busca la clase implementación de
 			 * los features encontrados y la ubica en el paquete indicado.
 			 */
-//			String gui = Mapping.mapFeatureImplementation("D:/Users/Tachu.Tachu-PC/AppData/Local/Temp/TestGitRepository4323020804163188494/stampidia",
-//					"D:/features");
 			String gui = Mapping.mapFeatureImplementation(localDeployablePath + "/stampidia",localDeployablePath + "/optional_features");
 			
 			/**
@@ -28,8 +26,7 @@ public class Main {
 			if (gui.equalsIgnoreCase(EProducts.STARTUP.toString()) || gui.equalsIgnoreCase(EProducts.BUSINESS.toString())){
 				System.out.println(Util.getCurrentTime() + "GUI :::" + gui);
 				Mapping.updatePom(localDeployablePath);
-				
-//				System.out.println(Util.getCurrentTime() + "GUI :::" + gui + "::: Modificando Procfile para feature 'Performance'...");
+				Mapping.scaleDynos(localDeployablePath);
 			}
 			
 			/**
