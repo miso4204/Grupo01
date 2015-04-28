@@ -27,14 +27,22 @@
 	    month[10] = "November";
 	    month[11] = "December";
 	    var d = new Date();
-	    var n = month[d.getMonth()];
-	    var deliveryDay = d.getDate() + 5;
+	    var n = month[d.getMonth() + 1];
+	    var deliveryDay = d.getDate() -15;
 	    console.log(deliveryDay);
 	    var fullDeliveryDate = n + " " + deliveryDay + ", " + d.getFullYear();
 	    return fullDeliveryDate;
 	};
-	$scope.submit = function() {
-	    var paymentMethod;
+	$scope.launch = function(which){
+	    var dlg = null;
+	    switch(which){
+	      // Wait / Progress Dialog
+	      case 'wait':
+	        dlg = $dialogs.wait(msgs[i++],progress);
+	        fakeProgress();
+	        break;
+	    };
+		var paymentMethod;
 	    if ($scope.paymenttype == 1) {
 		paymentMethod = "cash"
 	    } else if ($scope.paymenttype == 2) {
@@ -48,16 +56,6 @@
 	    }, function(response) {
 		console.log('bad' + response);
 	    })
-	};
-	$scope.launch = function(which){
-	    var dlg = null;
-	    switch(which){
-	      // Wait / Progress Dialog
-	      case 'wait':
-	        dlg = $dialogs.wait(msgs[i++],progress);
-	        fakeProgress();
-	        break;
-	    };
 	};
 	// for faking the progress bar in the wait dialog
 	  var progress = 25;
