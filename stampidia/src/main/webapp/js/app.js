@@ -68,6 +68,12 @@
 	}).when('/cart',{
 	    templateUrl : 'partials/cart/cart.html',
 	    controller : 'CartController'
+	}).when('/myOrders',{
+	    templateUrl : 'partials/orders/order.html',
+	    controller : 'OrderController'
+	}).when('/order-details',{
+	    templateUrl : 'partials/orders/order_detail.html',
+	    controller : 'OrderController'
 	}).otherwise({
 	    redirectTo : '/products'
 	});

@@ -15,6 +15,7 @@ INSERT INTO stmp_color VALUES (3, 'Red', 'FF0000', 'http://image2.spreadshirtmed
 INSERT INTO stmp_color VALUES (4, 'Green', '008000', 'http://image5.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/388?width=450&height=450&mediaType=webp', true);
 INSERT INTO stmp_color VALUES (5, 'White', 'FFFF00', 'http://image8.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/1?width=450&height=450&mediaType=webp', true);
 
+INSERT INTO stmp_ofert VALUES (1, 'Ofert1', 50, true);
 
 INSERT INTO stmp_payment_type VALUES (1, 'CoD', 'Cash on Delivery', 'cash_success', 'cash_error', true);
 INSERT INTO stmp_payment_type VALUES (3, 'CREDIT CARD', 'Credit Card', 'credit_success', 'credit_error', true);
@@ -62,7 +63,19 @@ INSERT INTO stmp_shirt_rating VALUES (2, 4, 'cool', 2, 2);
 
 
 INSERT INTO stmp_order VALUES (1, 2, 3, 1, '2015-04-06', true, true, true, 3);
-INSERT INTO stmp_order_detail VALUES (1, 1, 1, 1, 1);
+INSERT INTO stmp_order_detail VALUES (1, 1, 1, 3, 1);
+
+INSERT INTO stmp_order VALUES (2, 2, 3, 1, '2015-04-06', true, true, false, 2);
+INSERT INTO stmp_order_detail VALUES (2, 2, 1, 2, 1);
+
+INSERT INTO stmp_order VALUES (3, 2, 3, 1, '2015-04-06', true, true, false, 3);
+INSERT INTO stmp_order_detail VALUES (3, 3, 1, 3, 1);
+
+INSERT INTO stmp_order VALUES (4, 3, 3, 1, '2015-04-06', true, true, false, 2);
+INSERT INTO stmp_order_detail VALUES (4, 4, 1, 2, 1);
+
+INSERT INTO stmp_order VALUES (5, 3, 3, 1, '2015-04-06', true, true, false, 3);
+INSERT INTO stmp_order_detail VALUES (5, 5, 1, 3, 1);
 
 
 

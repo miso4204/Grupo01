@@ -79,6 +79,24 @@ ALTER TABLE color_id_seq OWNER TO stampidia;
 ALTER SEQUENCE color_id_seq OWNED BY stmp_color.id;
 
 
+-- SMTP-OFERT
+CREATE TABLE stmp_ofert (
+    id integer NOT NULL,
+    name character varying(256) NOT NULL,
+    discount numeric DEFAULT 0 NOT NULL,
+    status boolean DEFAULT true NOT NULL
+);
+ALTER TABLE stmp_ofert OWNER TO stampidia;
+CREATE SEQUENCE ofert_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+ALTER TABLE ofert_id_seq OWNER TO stampidia;
+ALTER SEQUENCE ofert_id_seq OWNED BY stmp_ofert.id;
+
+
 --STMP-ORDER
 CREATE TABLE stmp_order (
     id integer NOT NULL,
@@ -309,6 +327,7 @@ ALTER SEQUENCE user_id_seq OWNED BY stmp_user.id;
 ALTER TABLE ONLY smtp_plan ALTER COLUMN id SET DEFAULT nextval('smtp_plan_id_seq'::regclass);
 ALTER TABLE ONLY stmp_category ALTER COLUMN id SET DEFAULT nextval('category_id_seq'::regclass);
 ALTER TABLE ONLY stmp_color ALTER COLUMN id SET DEFAULT nextval('color_id_seq'::regclass);
+ALTER TABLE ONLY stmp_ofert ALTER COLUMN id SET DEFAULT nextval('ofert_id_seq'::regclass);
 ALTER TABLE ONLY stmp_order ALTER COLUMN id SET DEFAULT nextval('order_id_seq'::regclass);
 ALTER TABLE ONLY stmp_order_detail ALTER COLUMN id SET DEFAULT nextval('det_order_id_seq'::regclass);
 ALTER TABLE ONLY stmp_payment_type ALTER COLUMN id SET DEFAULT nextval('id_type_payment_id_seq'::regclass);
@@ -320,20 +339,7 @@ ALTER TABLE ONLY stmp_size ALTER COLUMN id SET DEFAULT nextval('size_id_seq'::re
 ALTER TABLE ONLY stmp_stamp ALTER COLUMN id SET DEFAULT nextval('stamp_id_seq'::regclass);
 ALTER TABLE ONLY stmp_stamp_rating ALTER COLUMN id SET DEFAULT nextval('stamp_rating_id_seq'::regclass);
 ALTER TABLE ONLY stmp_user ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regclass);
-SELECT pg_catalog.setval('category_id_seq', 4, true);
-SELECT pg_catalog.setval('color_id_seq', 5, true);
-SELECT pg_catalog.setval('det_order_id_seq', 1, false);
-SELECT pg_catalog.setval('id_type_payment_id_seq', 3, true);
-SELECT pg_catalog.setval('order_id_seq', 1, false);
-SELECT pg_catalog.setval('shipping_type_id_seq', 1, true);
-SELECT pg_catalog.setval('shirt_id_seq', 1, false);
-SELECT pg_catalog.setval('shirt_rating_id_seq', 1, false);
-SELECT pg_catalog.setval('shirt_style_id_seq', 2, true);
-SELECT pg_catalog.setval('size_id_seq', 5, true);
-SELECT pg_catalog.setval('smtp_plan_id_seq', 1, false);
-SELECT pg_catalog.setval('stamp_id_seq', 1, true);
-SELECT pg_catalog.setval('stamp_rating_id_seq', 1, false);
-SELECT pg_catalog.setval('user_id_seq', 1, false);
+
 
 
 ALTER TABLE ONLY stmp_category
@@ -341,6 +347,9 @@ ALTER TABLE ONLY stmp_category
 
 ALTER TABLE ONLY stmp_color
     ADD CONSTRAINT color_pk PRIMARY KEY (id);
+    
+ALTER TABLE ONLY stmp_ofert
+    ADD CONSTRAINT ofert_pk PRIMARY KEY (id);    
 
 ALTER TABLE ONLY stmp_order_detail
     ADD CONSTRAINT det_order_pk PRIMARY KEY (id);

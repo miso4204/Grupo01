@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.query.Param;
 
 import com.uniandes.stampidia.model.StmpShirt;
-
 
 public interface ShirtRepository extends CrudRepository<StmpShirt,Integer>{
 

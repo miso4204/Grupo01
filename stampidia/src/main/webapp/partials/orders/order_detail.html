@@ -1,0 +1,30 @@
+{{error}} {{mensaje}}
+
+<section id="form">
+	<!--form-->
+	<div class="container">
+		<div class="row">
+			<h2 class="title text-center">Summary Order</h2>
+			<h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>QUANTITY</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="orderSel in orderSelectedDetail">
+							<td>{{ orderSel.id }}</td>
+							<td>{{ orderSel.name}}</td>
+							<td>
+							    <a href="#"><span class="glyphicon glyphicon-list-alt"></span></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</h5>
+
+		</div>
+	</div>
+</section>

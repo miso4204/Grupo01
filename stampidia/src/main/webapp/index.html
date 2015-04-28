@@ -15,6 +15,7 @@
 <link href="lib/bootstrap/css/animate.css" rel="stylesheet">
 <link href="lib/bootstrap/css/main.css" rel="stylesheet">
 <link href="lib/bootstrap/css/responsive.css" rel="stylesheet">
+
 <link href="css/stampidia.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -83,10 +84,11 @@
 								<li><a href="#/create-stamp">Create Stamps</a></li>
 								<li><a href="#/reports">Reports</a></li>
 								<li><a href="#/checkout">Checkout</a></li>
-								<li><a href="#/cart">Cart<span class="badge">{{order.stmpOrderDetailList.length}}</span></a></li>
+
+								<li><a href="#/cart">Cart<span class="badge">{{itemCount}}</span></a></li>
 								<li><a href="#/register" ng-hide="isAuthenticated()"><i class="fa fa-user"></i> Register Now</a></li>
 								<li ng-show="isAuthenticated()" class="dropdown">
-									<a href="#">User<i class="fa fa-angle-down"></i></a>
+									<a href="">User<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
 										<li><a href="#/edit_account"><i class="fa fa-user"></i>My account</a></li>
 										<li><a href="#/myOrders"><i class="fa fa-list-alt"></i>My orders</a></li>
@@ -281,9 +283,12 @@
 	<script src="js/services/SelectPaymentService.js"></script>
 	<script src="js/services/values.js"></script>
 	<script src="js/services/CartService.js"></script>
+	<script src="js/services/OrderService.js"></script>
+	<script src="js/controllers/OrderController.js"></script>
 	<script src="http://code.highcharts.com/stock/highstock.src.js"></script>
     <script src="lib/highcharts/highcharts-ng.js"></script>
 	<script src="lib/dialogs/dialogs.min.js"></script>
 	<script src="lib/dialogs/ui-bootstrap-tpls-0.6.0.js"></script>
+
 </body>
 </html>
