@@ -15,4 +15,3 @@ target/classes
 .DS_STORE
 .idea/
 stampidia.iml
-src/main/resources/application.properties

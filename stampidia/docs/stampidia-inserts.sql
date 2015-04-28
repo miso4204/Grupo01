@@ -9,11 +9,11 @@ INSERT INTO stmp_category VALUES (3, 'Love', 'Love', true);
 INSERT INTO stmp_category VALUES (4, 'Sports ', 'Sports', true);
 INSERT INTO stmp_category VALUES (5, 'Animals', 'Animals', true);
 
-INSERT INTO stmp_color VALUES (1, 'Black', '000000', true);
-INSERT INTO stmp_color VALUES (2, 'Blue', '0000FF', true);
-INSERT INTO stmp_color VALUES (3, 'Red', 'FF0000', true);
-INSERT INTO stmp_color VALUES (4, 'Green', '008000', true);
-INSERT INTO stmp_color VALUES (5, 'Yellow', 'FFFF00', true);
+INSERT INTO stmp_color VALUES (1, 'Black', '000000', 'http://image9.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/2?width=450&height=450&mediaType=webp', true);
+INSERT INTO stmp_color VALUES (2, 'Blue', '0000FF', 'http://image1.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/4?width=450&height=450&mediaType=webp',true);
+INSERT INTO stmp_color VALUES (3, 'Red', 'FF0000', 'http://image2.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/5?width=450&height=450&mediaType=webp', true);
+INSERT INTO stmp_color VALUES (4, 'Green', '008000', 'http://image5.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/388?width=450&height=450&mediaType=webp', true);
+INSERT INTO stmp_color VALUES (5, 'White', 'FFFF00', 'http://image8.spreadshirtmedia.net/image-server/v1/productTypes/6/views/1/appearances/1?width=450&height=450&mediaType=webp', true);
 
 
 INSERT INTO stmp_payment_type VALUES (1, 'CoD', 'Cash on Delivery', 'cash_success', 'cash_error', true);
@@ -29,8 +29,9 @@ INSERT INTO stmp_size VALUES (3, 'L', true);
 INSERT INTO stmp_size VALUES (4, 'XL', true);
 INSERT INTO stmp_size VALUES (5, 'XXL', true);
 
-INSERT INTO stmp_user VALUES (2, 'diego', 'diego', 'die-agud@uniandes.edu.co', NULL, NULL, false, NULL, true);
-INSERT INTO stmp_user VALUES (1, 'lore', 'lore', 'tachu.salamanca@gmail.com', 'probabas@hotmail.com ', 'probabas@hotmail.com', true, 1, true);
+INSERT INTO stmp_user VALUES (1, 'lore', 'lore', 'tachu.salamanca@gmail.com', 'address1', 'probabas@hotmail.com ', 'probabas@hotmail.com', true, 1, true);
+INSERT INTO stmp_user VALUES (2, 'diego', 'diego', 'die-agud@uniandes.edu.co','address1', NULL, NULL, false, NULL, true);
+INSERT INTO stmp_user VALUES (3, 'harold', 'harold', 'hl.murcia222@uniandes.edu.co', 'address1', NULL, NULL, false, NULL, true);
 
 INSERT INTO stmp_stamp VALUES (1, 'Bitchachos', 'Adios Bitchachos', 'http://image19.spreadshirtmedia.com/image-server/v1/compositions/111665151/views/1,width=235,height=235,appearanceId=1/Adios-Bitchachos-T-Shirts.jpg         ', 'mustache', 1, 0, 2, 10, true);
 INSERT INTO stmp_stamp VALUES (2, 'Big Guns Black Backing', 'Big Guns Black Backing  ', 'http://image1.spreadshirtmedia.com/image-server/v1/compositions/109073810/views/1,width=235,height=235,appearanceId=66/Big-Guns-Black-Backing-T-Shirts.jpg   ', 'dinosaur', 1, 0, 5, 10, true);

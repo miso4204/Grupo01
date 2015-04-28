@@ -55,6 +55,11 @@ public class StmpUser implements Serializable {
 	@NotNull
 	@Column(name = "email")
 	private String email;
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 256)
+	@Column(name = "address")
+	private String address;
 	@Size(max = 256)
 	@Column(name = "facebook_email")
 	private String facebookEmail;
@@ -129,6 +134,14 @@ public class StmpUser implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getFacebookEmail() {

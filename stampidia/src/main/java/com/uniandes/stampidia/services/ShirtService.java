@@ -89,6 +89,10 @@ public class ShirtService {
 		return entity;
 	}
 	
+	public StmpShirt getShirtById(Integer shirtId){		
+		return shirtRepository.findOne(shirtId);
+	}
+	
 	
 
 }

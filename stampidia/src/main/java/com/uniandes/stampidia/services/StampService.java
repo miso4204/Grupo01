@@ -3,7 +3,11 @@ package com.uniandes.stampidia.services;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +23,11 @@ import com.uniandes.stampidia.services.StampService;
 @Service
 @Transactional
 public class StampService {
+	
+	@Resource
+    private Environment env;
+	
+	private static final String RESOURCES_SERVER = "resources.server";	
 	
 	@Autowired
 	private StampRepository stampRepository;
@@ -54,13 +63,12 @@ public class StampService {
 		stamp.setId(id);
 		stamp.setName(stampName);
 		stamp.setDescription(stampDescription);
-		stamp.setImage(stampImage);
+		stamp.setImage(env.getRequiredProperty(RESOURCES_SERVER)+stampImage);
 		stamp.setTags(shirtTags);
 		stamp.setSalesNumber(stampSalesNumber);
 		stamp.setPrice(stampPrice);
 		stamp.setIdArtistUser(user);
 		stamp.setIdCategory(category);
-		System.out.print("addStamp");
 		entity = stampRepository.save(stamp);
 		         
 		return entity;
@@ -74,7 +82,7 @@ public class StampService {
 		stamp.setId(id);
 		stamp.setName(stampName);
 		stamp.setDescription(stampDescription);
-		stamp.setImage(stampImage);
+		stamp.setImage(env.getRequiredProperty(RESOURCES_SERVER)+stampImage);
 		stamp.setTags(shirtTags);
 		stamp.setSalesNumber(stampSalesNumber);
 		stamp.setPrice(stampPrice);

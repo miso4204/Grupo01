@@ -6,8 +6,9 @@
 (function() {
     'use strict';
 
-    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng' ]);
+    var stampidia = angular.module('stampidia', [ 'ngCookies', 'ngRoute', 'ngResource', 'stampidia.services', 'stampidia.controllers','highcharts-ng','ngFileUpload' ]);
     var stampidiaControllers = angular.module('stampidia.controllers', ['ui.bootstrap','dialogs']);
+    
     var stampidiaServices = angular.module('stampidia.services', []);
 
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
@@ -24,6 +25,9 @@
 	    controller : 'LoginController'
 	}).when('/register', {
 	    templateUrl : 'partials/login/register.html',
+	    controller : 'RegisterController'
+	}).when('/edit_account', {
+	    templateUrl : 'partials/login/edit_account.html',
 	    controller : 'RegisterController'
 	}).when('/select_payment', {
 	    templateUrl : 'partials/pay/select_payment.html',
@@ -55,7 +59,13 @@
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
-    }).when('/cart',{
+        }).when('/product-details/:shirtId', {
+	    templateUrl : 'partials/products/product-details.html',
+	    controller : 'ProductDetailsController'
+	}).when('/stamp-details/:stampId', {
+	    templateUrl : 'partials/products/stamp-details.html',
+	    controller : 'StampDetailsController'
+	}).when('/cart',{
 	    templateUrl : 'partials/cart/cart.html',
 	    controller : 'CartController'
 	}).otherwise({
