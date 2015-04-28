@@ -25,36 +25,41 @@
 	    $scope.listProducts(productId);
 	}
 
-        $scope.addItemToCart = function(item) {
-            console.log('Entra en CartController');
-            var detail;
-            if ($rootScope.order != null) {
-            } else {
-                $rootScope.order = {};
-                $rootScope.order.stmpOrderDetailList = [];
-            }
-            console.log('ITEM =>' +  item.id);
-
-            var detList = $rootScope.order.stmpOrderDetailList.filter(function(element){
-                return element.idShirt.id === item.id;
-            });
-    
-            console.log('LIST SIZE =>' +  detList);
-            if( detList.length > 0){
-                detail =  detList[0];
-                detail.quantity = detail.quantity + 1;
-            }else{
-                detail = {
-                    quantity : 1,
-                    unitValue : item.idStyle.price + item.idStamp.price,
-                    idShirt : item
-                };
-                $rootScope.order.stmpOrderDetailList.push(detail);
-            }
-            console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
-            cartService.saveOrder($rootScope.order);
-    
+    $scope.addItemToCart = function(item) {
+        console.log('Entra en CartController');
+        var detail;
+        if ($rootScope.order != null) {
+        } else {
+            $rootScope.order = {};
+            $rootScope.order.stmpOrderDetailList = [];
         }
+        console.log('ITEM =>' +  item.id);
+
+        var detList = $rootScope.order.stmpOrderDetailList.filter(function(element){
+            return element.idShirt.id === item.id;
+        });
+
+        console.log('LIST SIZE =>' +  detList);
+        if( detList.length > 0){
+            detail =  detList[0];
+            detail.quantity = detail.quantity + 1;
+        }else{
+            detail = {
+                quantity : 1,
+                unitValue : item.idStyle.price + item.idStamp.price,
+                idShirt : item
+            };
+            $rootScope.order.stmpOrderDetailList.push(detail);
+        }
+        console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
+		var itemCount = 0;
+		for(var i = 0 ; i < $rootScope.order.stmpOrderDetailList.length;i++){
+			itemCount = itemCount + $rootScope.order.stmpOrderDetailList[i].quantity;
+		}
+		$rootScope.itemCount = itemCount;
+
+    }
+
 	$scope.loadViewMore = function(ShirtId){
 	    console.log("loadViewMore" + ShirtId);
 	}
