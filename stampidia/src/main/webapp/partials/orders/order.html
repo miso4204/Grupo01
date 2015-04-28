@@ -1,0 +1,31 @@
+{{error}} {{mensaje}}
+
+<section id="form">
+	<!--form-->
+	<div class="container">
+		<div class="row">
+			<h2 class="title text-center">My Orders</h2>
+			<h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>PAY METHOD</th>
+							<th>DATE</th>
+							<th>TOTAL AMOUNT</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="order in orderData">
+							<td>{{ order.id }}</td>
+							<td>{{ order.idShippingType.name}}</td>
+							<td>{{ order.date }}</td>
+							<td>{{ order.totalAmount }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</h5>
+
+		</div>
+	</div>
+</section>

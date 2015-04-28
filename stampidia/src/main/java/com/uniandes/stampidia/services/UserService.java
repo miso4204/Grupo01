@@ -20,7 +20,10 @@ public class UserService {
         // TODO :: implementar la actualizacion propia del seller
         StmpUser storedUser = userRepository.findOne(user.getId());
         if(storedUser != null){
-            storedUser.setUsername(user.getUsername());
+        	if(user.getAddress()!=null)
+        		storedUser.setAddress(user.getAddress());
+        	if(user.getPassword()!=null)
+        		storedUser.setPassword(user.getPassword());
 
             return userRepository.save(storedUser);
         }
@@ -47,6 +50,10 @@ public class UserService {
     
     public StmpUser findUserByName(String username){
     	return userRepository.findUserByName(username);
+    }
+    
+    public StmpUser findUserById(Integer id){
+    	return userRepository.findOne(id);
     }
 
 }
