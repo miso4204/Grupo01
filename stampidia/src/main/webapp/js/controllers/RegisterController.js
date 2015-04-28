@@ -19,7 +19,6 @@
 	};
 
 	$scope.editAccount=function(){
-	    console.log(sessionService);
 	    
 	    $scope.user = registerService.get({ id: sessionService.id }, function() {
 		// $scope.entry is fetched from server and is an instance of Entry

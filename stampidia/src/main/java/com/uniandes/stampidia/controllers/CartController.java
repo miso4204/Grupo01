@@ -15,43 +15,60 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/rest")
 public class CartController {
 
-    @Autowired
-    private CartService cartService;
+	@Autowired
+	private CartService cartService;
 
-    @RequestMapping(value="/cart/",method= RequestMethod.PUT)
-    public Resultado saveCart(
-            @RequestBody StmpOrder order){
-        Resultado resultado = new Resultado();
+	@RequestMapping(value="/cart/",method= RequestMethod.PUT)
+	public Resultado saveCart(
+			@RequestBody StmpOrder order){
+		Resultado resultado = new Resultado();
 
-        if(order != null ){
-            StmpOrder newOrder = cartService.updateOrder(order);
+		if(order != null ){
+			StmpOrder newOrder = cartService.updateOrder(order);
 
-            if(newOrder != null){
-                resultado.setResultado(newOrder);
-                resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-            }else {
-                resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
-            }
+			if(newOrder != null){
+				resultado.setResultado(newOrder);
+				resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+			}else {
+				resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
+			}
 
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
-        }
+		}else {
+			resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+		}
 
-        return resultado;
-    }
+		return resultado;
+	}
 
-    @RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
-    public Resultado getCartProducts(
-            @PathVariable("userId")Integer userId){
-        Resultado resultado = new Resultado();
+	@RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
+	public Resultado getCartProducts(
+			@PathVariable("userId")Integer userId){
+		Resultado resultado = new Resultado();
 
-        if(userId != null){
-            resultado.setResultado(cartService.getCartProducts(userId));
-            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
-        }
+		if(userId != null){
+			resultado.setResultado(cartService.getCartProducts(userId));
+			resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+		}else {
+			resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+		}
 
-        return resultado;
-    }
+		return resultado;
+	}
+
+	@RequestMapping(value="/order/{userId}",method= RequestMethod.GET)
+	public Resultado getCartOrdersByUser(
+			@PathVariable("userId")Integer userId){
+		Resultado resultado = new Resultado();
+
+		if(userId != null){
+			resultado.setResultado(cartService.getOrdersByUser(userId));
+			resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+			resultado.setMensajeConsulta("Este es el resultado!");
+			resultado.setTotalObjetos(cartService.getOrdersByUser(userId).size());
+		}else {
+			resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+		}
+
+		return resultado;
+	}
 }
