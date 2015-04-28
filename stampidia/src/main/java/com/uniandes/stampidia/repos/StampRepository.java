@@ -18,11 +18,5 @@ public interface StampRepository extends CrudRepository<StmpStamp,Integer>{
 	List<Object[]> findStampByName(@Param("name") String name);
 	
     @Query(value="select s from StmpStamp s where s.idCategory.id = :categoryId")
-    List<StmpStamp> findStampsByCategory(@Param("categoryId") Integer categoryId);
-    
-    @Query(value="select s.idStamp,count(1) from StmpOrder o, StmpOrderDetail d, StmpShirt s where o.id = d.idOrder and d.idShirt = s.id and o.orderStatus = false group by s.idStamp")
-    List<Object[]> reportBySales();
-    
-    @Query(value="select to_char(o.date,'Mon'), extract(year from o.date), SUM(o.totalAmount) from StmpOrder o where o.orderStatus = false group by 1,2")
-    List<Object[]> reportByPeriod();
+    List<StmpStamp> findStampsByCategory(@Param("categoryId") Integer categoryId);    
 }

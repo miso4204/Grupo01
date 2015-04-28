@@ -125,5 +125,13 @@ public class StmpStampRating implements Serializable {
     public String toString() {
         return "com.uniandes.stampidia.model.StmpStampRating[ id=" + id + " ]";
     }
+
+    public boolean isNull(){
+        return this.id == null &&
+                this.comment == null &&
+                this.idStamp == null &&
+                this.idUser == null &&
+                this.valoration < 1;
+    }
     
 }

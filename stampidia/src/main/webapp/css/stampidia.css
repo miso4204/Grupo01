@@ -37,3 +37,29 @@
   width: 120px;
   word-wrap: break-word;
 }
+
+
+/*Estilos para productos en forma de lista*/
+
+.features_list .cart_info table tr td {
+    border-top: 0 none;
+    position: relative;
+    vertical-align: inherit;
+}
+.features_list .project-overlay-small{
+	height: 41px;
+    left: 19%;
+    position: absolute;
+    top: 9%;
+    width: 75px;
+	
+}
+
+#list-products .icons-mode-view .active{
+	color:#FE980F;
+}
+
+#list-products .icons-mode-view{
+	 left: 30px;
+    position: relative;
+}

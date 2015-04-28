@@ -1,18 +1,17 @@
 package com.uniandes.stampidia.services;
 
-import com.uniandes.stampidia.model.StmpColor;
 import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.repos.OrderDetailRepository;
 import com.uniandes.stampidia.repos.OrderRepository;
 import com.uniandes.stampidia.repos.ShirtRepository;
-import com.uniandes.stampidia.utilities.Resultado;
-
+import com.uniandes.stampidia.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
@@ -31,12 +30,20 @@ public class CartService {
     @Autowired
     private ShirtRepository shirtRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+
     public StmpOrder updateOrder(StmpOrder order){
         StmpOrder answer = null;
         if(order != null){
             try {
-                answer = orderRepository.save(order);
+                if(order.getIdUser() != null && order.getIdUser().getId() != null){
+                    order.setIdUser(userRepository.findOne(order.getIdUser().getId()));
+                    answer = orderRepository.save(order);
+                }
             }catch (Exception ex){
+                ex.printStackTrace();
                 return null;
             }
         }
@@ -107,11 +114,25 @@ public class CartService {
     public StmpOrder getOrderById(Integer orderId){
         return orderRepository.findOne(orderId);
     }
-    
+
+    public List<StmpOrderDetail> getOrderDetailsByOrderId(Integer orderId){
+        try {
+            return orderDetailRepository.getOrderDetailsByOrderId(orderId);
+        }catch (NoResultException e){
+            return null;
+        }
+    }
+
+    public void saveOrderDetails(List<StmpOrderDetail> details) {
+        if (details != null && !details.isEmpty()) {
+            for (StmpOrderDetail det : details) {
+                orderDetailRepository.save(det);
+            }
+        }
+    }
+
     public List<StmpOrder> getOrdersByUser(Integer userId){
 
 		return orderRepository.findStmpOrderClosedByUserId(userId);
-
-        
     }
 }

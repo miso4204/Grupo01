@@ -188,5 +188,32 @@ public class StmpOrder implements Serializable {
     public String toString() {
         return "com.uniandes.stampidia.model.StmpOrder[ id=" + id + " ]";
     }
-    
+
+    /**
+     * Metodo que retorna true cuando TODOS los atributos de la instancia son nulos
+     * @return
+     */
+    public boolean isNull(){
+        return this.id == null &&
+                this.date == null &&
+                this.idPaymentType == null &&
+                this.stmpOrderDetailList == null &&
+                this.idShippingType == null &&
+                this.idUser == null &&
+                this.totalAmount == null;
+    }
+
+    /**
+     * Metodo para calcular la cantidad total
+     */
+    public void calcTotalAmount(){
+        if(this.stmpOrderDetailList != null
+                && !this.stmpOrderDetailList.isEmpty()){
+            for(StmpOrderDetail det : this.stmpOrderDetailList){
+                BigInteger quantity = BigInteger.valueOf(det.getQuantity());
+                this.totalAmount.add(det.getUnitValue().multiply(quantity));
+            }
+        }
+        this.totalAmount = BigInteger.ZERO;
+    }
 }
