@@ -14,7 +14,7 @@
 	$scope.login = function() {
 	    loginService.login($scope.credentials).then(function(response) {
 		var resp = response.resultado;
-		//$scope.usernameIn = resp.username;
+		$scope.usernameIn = resp.username;
 		sessionService.create(resp.username, 'asdasdasdasdasd', 'ROLE_BUYER', resp.id);		
 		$scope.error = false;
 		$location.url("/");

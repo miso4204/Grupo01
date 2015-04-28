@@ -109,6 +109,7 @@ public class CartService {
     }
     
     public List<StmpOrder> getOrdersByUser(Integer userId){
+
 		return orderRepository.findStmpOrderClosedByUserId(userId);
 
         

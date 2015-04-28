@@ -56,7 +56,7 @@ public class StmpOrder implements Serializable {
     @Column(name = "total_amount")
     private BigInteger totalAmount;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idOrder", fetch = FetchType.LAZY)
-        private List<StmpOrderDetail> stmpOrderDetailList;
+    private List<StmpOrderDetail> stmpOrderDetailList;
     @JoinColumn(name = "id_payment_type", referencedColumnName = "id")
     @OneToOne(optional = true)
     private StmpPaymentType idPaymentType;

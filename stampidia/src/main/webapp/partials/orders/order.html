@@ -13,6 +13,7 @@
 							<th>PAY METHOD</th>
 							<th>DATE</th>
 							<th>TOTAL AMOUNT</th>
+							<th>DETAILS</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -21,6 +22,9 @@
 							<td>{{ order.idShippingType.name}}</td>
 							<td>{{ order.date }}</td>
 							<td>{{ order.totalAmount }}</td>
+							<td>
+							    <a href="#/order-details" ng-click="filterOrder(order.idShippingType)"><span class="glyphicon glyphicon-list-alt"></span></a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
