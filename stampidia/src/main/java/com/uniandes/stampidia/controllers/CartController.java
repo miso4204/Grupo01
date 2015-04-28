@@ -118,6 +118,23 @@ public class CartController {
         return resultado;
     }
 
+    @RequestMapping(value="/order/{userId}",method= RequestMethod.GET)
+    public Resultado getCartOrdersByUser(
+            @PathVariable("userId")Integer userId){
+        Resultado resultado = new Resultado();
+
+        if(userId != null){
+            resultado.setResultado(cartService.getOrdersByUser(userId));
+            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+            resultado.setMensajeConsulta("Este es el resultado!");
+            resultado.setTotalObjetos(cartService.getOrdersByUser(userId).size());
+        }else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+        }
+
+        return resultado;
+    }
+
     private boolean validateDetailsByOrderId(Integer orderId, List<StmpOrderDetail> details) throws Exception {
         if(orderId != null && details != null && !details.isEmpty()){
             for(StmpOrderDetail det : details){
