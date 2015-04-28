@@ -13,19 +13,16 @@ public class CloneRemoteRepository {
 	public static String cloneRemoteRepository(String branch) throws IOException,
 			InvalidRemoteException, TransportException, GitAPIException {
 		// prepare a new folder for the cloned repository
-		File localPath = File.createTempFile("TestGitRepository", "");
+		File localPath = File.createTempFile("StampidiaTempRepository", "");
 		localPath.delete();
 
 		// then clone
-		System.out.println(Util.getCurrentTime());
-		System.out.println("Cloning from " + REMOTE_URL + " to " + localPath);
+		System.out.println(Util.getCurrentTime() + "Clonando repositorio " + REMOTE_URL + " ---> branch: " + branch);
 		
-		Git result = Git.cloneRepository().setURI(REMOTE_URL)
-				.setDirectory(localPath).setBranch(branch).call();
+		Git result = Git.cloneRepository().setURI(REMOTE_URL).setDirectory(localPath).setBranch(branch).call();
 
 		try {
-			System.out.println(Util.getCurrentTime());
-			System.out.println(localPath);			
+			System.out.println(Util.getCurrentTime() + "Repositorio disponible en: " + localPath);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
