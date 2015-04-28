@@ -54,9 +54,8 @@
 	    switch(which){
 	      // Wait / Progress Dialog
 	      case 'wait':
-		console.log('bad');
 	        dlg = $dialogs.wait(msgs[i++],progress);
-	        //fakeProgress();
+	        fakeProgress();
 	        break;
 	    };
 	};
