@@ -3,9 +3,11 @@ package com.uniandes.stampidia.services;
 import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.model.StmpShirt;
+import com.uniandes.stampidia.model.StmpUser;
 import com.uniandes.stampidia.repos.OrderDetailRepository;
 import com.uniandes.stampidia.repos.OrderRepository;
 import com.uniandes.stampidia.repos.ShirtRepository;
+import com.uniandes.stampidia.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,12 +31,20 @@ public class CartService {
     @Autowired
     private ShirtRepository shirtRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+
     public StmpOrder updateOrder(StmpOrder order){
         StmpOrder answer = null;
         if(order != null){
             try {
-                answer = orderRepository.save(order);
+                if(order.getIdUser() != null && order.getIdUser().getId() != null){
+                    order.setIdUser(userRepository.findOne(order.getIdUser().getId()));
+                    answer = orderRepository.save(order);
+                }
             }catch (Exception ex){
+                ex.printStackTrace();
                 return null;
             }
         }

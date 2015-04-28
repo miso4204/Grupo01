@@ -202,4 +202,18 @@ public class StmpOrder implements Serializable {
                 this.idUser == null &&
                 this.totalAmount == null;
     }
+
+    /**
+     * Metodo para calcular la cantidad total
+     */
+    public void calcTotalAmount(){
+        if(this.stmpOrderDetailList != null
+                && !this.stmpOrderDetailList.isEmpty()){
+            for(StmpOrderDetail det : this.stmpOrderDetailList){
+                BigInteger quantity = BigInteger.valueOf(det.getQuantity());
+                this.totalAmount.add(det.getUnitValue().multiply(quantity));
+            }
+        }
+        this.totalAmount = BigInteger.ZERO;
+    }
 }

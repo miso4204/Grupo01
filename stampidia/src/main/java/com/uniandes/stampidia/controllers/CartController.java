@@ -27,6 +27,8 @@ public class CartController {
         Resultado resultado = new Resultado();
 
         if(!order.isNull()){
+
+            order.calcTotalAmount();
             StmpOrder newOrder = cartService.updateOrder(order);
 
             if(newOrder != null){
@@ -43,13 +45,29 @@ public class CartController {
         return resultado;
     }
 
-    @RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
-    public Resultado getCart(
-            @PathVariable("userId")Integer userId){
+    // TODO :: sebastian.gamba :: validar si este servicios si se va a necesitar
+//    @RequestMapping(value="/cart/{userId}",method= RequestMethod.GET)
+//    public Resultado getCart(
+//            @PathVariable("userId")Integer userId){
+//        Resultado resultado = new Resultado();
+//
+//        if(userId != null){
+//            resultado.setResultado(cartService.getCartProducts(userId));
+//            resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+//        }else {
+//            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
+//        }
+//
+//        return resultado;
+//    }
+
+    @RequestMapping(value="/cart/{orderId}",method= RequestMethod.GET)
+    public Resultado getCartByOrderId(
+            @PathVariable("orderId")Integer orderId){
         Resultado resultado = new Resultado();
 
-        if(userId != null){
-            resultado.setResultado(cartService.getCartProducts(userId));
+        if(orderId != null){
+            resultado.setResultado(cartService.getOrderById(orderId));
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
             resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));

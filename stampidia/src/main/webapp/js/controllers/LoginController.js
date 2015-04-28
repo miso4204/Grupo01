@@ -15,7 +15,7 @@
 	    loginService.login($scope.credentials).then(function(response) {
 		var resp = response.resultado;
 		console.log(response);
-		sessionService.create(resp.username, 'asdasdasdasdasd', 'ROLE_BUYER');		
+		sessionService.create(resp.username, 'asdasdasdasdasd', 'ROLE_BUYER', resp.id);
 		$scope.error = false;
 		$location.url("/");
 	    }, function(response) {

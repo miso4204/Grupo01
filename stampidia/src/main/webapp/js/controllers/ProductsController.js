@@ -52,7 +52,11 @@
             $rootScope.order.stmpOrderDetailList.push(detail);
         }
         console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
-        cartService.saveOrder($rootScope.order);
+		var itemCount = 0;
+		for(var i = 0 ; i < $rootScope.order.stmpOrderDetailList.length;i++){
+			itemCount = itemCount + $rootScope.order.stmpOrderDetailList[i].quantity;
+		}
+		$rootScope.itemCount = itemCount;
 
     }
 
