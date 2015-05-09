@@ -1,13 +1,21 @@
 (function() {
     'use strict';
-    var ShirtService = function($resource) {
+   var ShirtService = function($resource) {
+       var shirt_2 = function($resource) {
+		return $resource('http://localhost:8080/stampidia/rest/shirtService', {}, {
+		    update: {
+			      method: 'PUT' // this method issues a PUT request
+			    }
+		});
+
+	};
 	var shirt = $resource('http://localhost:8080/stampidia/rest/shirtService/:shirtText/:shirtIdColor/:shirtIdStyle/:shirtIdSize/:shirtIdStamp/:shirtIdUser', {
 	    shirtText:'@shirtText',
-            shirtIdColor: '@shirtIdColor',
-            shirtIdStyle: '@shirtIdStyle',
-            shirtIdSize: '@shirtIdSize',
-            shirtIdStamp:'@shirtIdStamp', 
-            shirtIdUser: '@shirtIdUser'	
+           shirtIdColor: '@shirtIdColor',
+           shirtIdStyle: '@shirtIdStyle',
+           shirtIdSize: '@shirtIdSize',
+           shirtIdStamp:'@shirtIdStamp', 
+           shirtIdUser: '@shirtIdUser'	
 	    
 	}, {
 	query : {
@@ -43,6 +51,6 @@
 		console.log('getStamp despues ');
 	    }
 	}
-    };
-    angular.module('stampidia.services').factory('shirtService', [ '$resource', ShirtService ]);
+   };
+   angular.module('stampidia.services').factory('shirtService', [ '$resource', ShirtService ]);
 }());

@@ -44,20 +44,25 @@
 							<div class="single-products">
 								<div class="productinfo text-center">
 									<img ng-src="{{stamp.image}}" alt="" />
-									   <h2>{{stamp.price }}</h2> 
+									   <h2>{{stamp.price | currency : symbol : fractionSize}}</h2> 
 									   <p>{{stamp.text }}</p>
 									   <a href="#/create-product/{{stamp.id}}"class="btn btn-default add-to-cart">Create product</a> 
 								</div>
 								<div class="product-overlay">
 									<div class="overlay-content">
-									   <h2>{{stamp.price }}</h2> 
+									   <h2>{{stamp.price | currency : symbol : fractionSize}}</h2> 
 									   <p>{{stamp.text }}</p> 
 									   <a href="#/create-product/{{stamp.id}}" ng-click="loadCreateProduct(stamp.id)" class="btn btn-default add-to-cart">Create product</a>
+									   	<p>
+									   		<a href="#/stamp-details/{{stamp.id}}" >
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+										    </a>
+										</p>
 									</div>
 								</div>
 							</div>
 						</div>
-						<a href="#/stamp-details/{{stamp.id}}" class="btn btn-default add-to-cart">View More</a>
+						<!-- <a href="#/stamp-details/{{stamp.id}}" class="btn btn-default add-to-cart">View More</a> -->
 					</div>
 					<div style="clear: both; display: block">
 						<ul class="pagination">
