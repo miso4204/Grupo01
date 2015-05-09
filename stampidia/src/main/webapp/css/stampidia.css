@@ -38,6 +38,26 @@
   word-wrap: break-word;
 }
 
+/* Fix for Bootstrap 3 with Angular UI Bootstrap */
+
+.modal { 
+	display: block;
+}
+
+/* Custom dialog/modal headers */
+
+.dialog-header-error { background-color: #d2322d; }
+.dialog-header-wait { background-color: #FE980F; }
+.dialog-header-notify { background-color: #eeeeee; }
+.dialog-header-confirm { background-color: #333333; }
+.progress-bar { background-color: #FE980F;}
+.dialog-header-error span, .dialog-header-error h4,
+.dialog-header-wait span, .dialog-header-wait h4,
+.dialog-header-confirm span, .dialog-header-confirm h4 { color: #ffffff; }
+
+/* Ease Display */
+
+.pad { padding: 25px; }
 
 /*Estilos para productos en forma de lista*/
 
@@ -48,18 +68,31 @@
 }
 .features_list .project-overlay-small{
 	height: 41px;
-    left: 19%;
+    left: 22%;
     position: absolute;
-    top: 9%;
+    top: 33%;
     width: 75px;
 	
 }
 
-#list-products .icons-mode-view .active{
+
+/*Estilos pagina productos*/
+
+#list-products .icons-mode-view .icons-wrapper .active{
 	color:#FE980F;
 }
 
 #list-products .icons-mode-view{
-	 left: 30px;
     position: relative;
+    overflow:hidden;
+    right:16px;
+    bottom: 5px;
 }
+#list-products .icons-mode-view .icons-wrapper{
+	 float: right;
+}
+
+#list-products h2.title{
+	 margin: 0 15px 10px;
+}
+
