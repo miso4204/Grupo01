@@ -1,7 +1,8 @@
 (function() {
     'use strict';
 
-    var CreateProductController = function($scope,$routeParams,stampService,shirtService,sizeService,colorService,shirtStyleService,appSettings) {
+    var CreateProductController = function($rootScope,$scope,$location,$dialogs,$timeout,$routeParams,stampService,shirtService,sizeService,colorService,shirtStyleService,sessionService,appSettings) {
+	$scope.animationsEnabled = true;
 	
 	$scope.getProduct = function(){	    
 	    stampService.getStamp($routeParams.stampId).$promise.then(
@@ -49,9 +50,13 @@
 			$scope.product = {stamp: ''};
 			$scope.product.stamp = response.resultado;
 			$scope.createProductForm.$setPristine();
+			$scope.launch('wait');
+			$scope.error = false;
 			$scope.cleanFrom();
 		    }, function(response){
 			console.log(response);
+			$scope.error = true;
+			$scope.launch('error');
 		    }    
 	    );
 	    
@@ -63,7 +68,47 @@
 	    $scope.product.text = "";
 	    $scope.createProductForm.product_text.$dirty = false;
         }
+	$scope.launch = function(which){
+	    var dlg = null;
+	    switch(which){
+	      // Notify Dialog
+	      case 'notify':
+	        dlg = $dialogs.notify('Something Happened!','Something happened that I need to tell you.');
+	        break; 
+	        // Error Dialog
+	      case 'error':
+	        dlg = $dialogs.error('This is my error message','');
+	        break;
+	      case 'wait':
+		dlg = $dialogs.wait(msgs[i++],progress);
+		fakeProgress();
+		break;
+	    }; // end switch
+	} // end launch
+	var progress = 25;
+	  var msgs = [
+	    'Hey! I\'m waiting here...',
+	    'About half way done...',
+	    'Almost there?',
+	    'Woo Hoo! I made it!'
+	  ];
+	  var i = 0;
+	  
+	  var fakeProgress = function(){
+	    $timeout(function(){
+	      if(progress < 100){
+	        progress += 25;
+	        $rootScope.$broadcast('dialogs.wait.progress',{msg: msgs[i++],'progress': progress});
+	        fakeProgress();
+	      }else{
+		  $rootScope.$broadcast('dialogs.wait.complete');
+		  $location.url("/");
+	      }
+	    },1000);
+	    
+	  }
 	var init = function(){
+	    console.log(sessionService);
 	    $scope.getProduct();
 	    $scope.listSizes();
 	    $scope.listColors();
@@ -71,6 +116,6 @@
 	}
 	init();
     };
-    angular.module('stampidia.controllers').controller('CreateProductController', [ '$scope' ,'$routeParams','stampService','shirtService','sizeService','colorService','shirtStyleService','appSettings', CreateProductController ]);
+    angular.module('stampidia.controllers').controller('CreateProductController', ['$rootScope', '$scope','$location','$dialogs','$timeout','$routeParams','stampService','shirtService','sizeService','colorService','shirtStyleService','sessionService','appSettings', CreateProductController ]);
 
 }());
