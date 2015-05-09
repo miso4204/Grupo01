@@ -12,7 +12,6 @@
 	    );
 	}
 	$scope.listStamp = function(id){
-	    console.log('***list stamp ***' + id );
 	    stampService.getStamp(id).$promise.then(
 		    function(response){
 			$scope.stamps= response.resultado;		    
@@ -39,6 +38,18 @@
 	    console.log("init" + StampId);
 	    $scope.listStamp(StampId);
 	    
+	}
+	$scope.modeView = function(mode){
+	    $("#list-stamps .icons-mode-view a").removeClass("active");
+	    if(mode=="list"){
+		$("#list-stamps .icons-mode-view .glyphicon-th-list").addClass("active");
+		$('#list-stamps .features_items').hide();
+		$('#list-stamps .features_list').show();
+	    }else{
+		$("#list-stamps .icons-mode-view .glyphicon-th").addClass("active");
+		$('#list-stamps .features_list').hide();
+		$('#list-stamps .features_items').show();
+	    }
 	}
 	
 	var init = function(){
