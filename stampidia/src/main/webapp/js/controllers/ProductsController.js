@@ -85,6 +85,15 @@
 	    $('#list-products .features_list').hide();
 	    $scope.listCategories();
 	    $scope.listProducts();
+	    /*
+	     if (Modernizr.canvas) {
+		  // Browser supports native HTML5 canvas.
+		 console.log("Browser supports native HTML5 canvas");
+	    } else {
+		  // Fallback to another solution, such as Flash, static image, download link, and so on.
+		 console.log(" // Fallback to another solution, such as Flash, static image, download link, and so on");
+	    }
+	    */
 	}
 	init();
 
