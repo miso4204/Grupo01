@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uniandes.stampidia.model.StmpSize;
 import com.uniandes.stampidia.services.SizeService;
+import com.uniandes.stampidia.utilities.Constantes;
 import com.uniandes.stampidia.utilities.Resultado;
+import com.uniandes.stampidia.utilities.Status;
+import com.uniandes.stampidia.utilities.enums.EStatusType;
 
 @RestController
 @RequestMapping(value="/rest")
@@ -26,7 +29,8 @@ public class SizeController {
 		Resultado ro = new Resultado();	
 		List<StmpSize> sizes = sizeService.getAllSizes();
 		ro.setResultado(sizes);
-		ro.setMensajeConsulta("Este es el resultado para compradores!");
+		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
+		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(sizes.size());
 		return ro;
 	}
@@ -37,7 +41,8 @@ public class SizeController {
 		Resultado ro = new Resultado();	
 		List<StmpSize> sizes = sizeService.getAllSizes();
 		ro.setResultado(sizes);
-		ro.setMensajeConsulta("Este es el resultado para vendedores!");
+		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
+		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(sizes.size());
 		return ro;
 	}
