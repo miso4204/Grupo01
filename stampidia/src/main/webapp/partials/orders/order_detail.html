@@ -9,13 +9,19 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>QUANTITY</th>
+							<th>Shirt Name</th>
+							<th>Shirt Style</th>
+							<th>Shirt Color</th>
+							<th>Shirt Size</th>
+							<th>Quantity</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="orderSel in selectedOrderDetail">
-							<td>{{ orderSel.id }}</td>
+							<td>{{ orderSel.idShirt.idStamp.name }}</td>
+							<td>{{ orderSel.idShirt.idStyle.name }}</td>
+							<td>{{ orderSel.idShirt.idColor.name}}</td>
+							<td>{{ orderSel.idShirt.idSize.name}}</td>
 							<td>{{ orderSel.quantity}}</td>
 						</tr>
 					</tbody>
