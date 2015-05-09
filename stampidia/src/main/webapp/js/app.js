@@ -73,7 +73,7 @@
 	    controller : 'OrderController'
 	}).when('/order-details',{
 	    templateUrl : 'partials/orders/order_detail.html',
-	    controller : 'OrderController'
+	    controller : 'OrderDetailController'
 	}).otherwise({
 	    redirectTo : '/products'
 	});

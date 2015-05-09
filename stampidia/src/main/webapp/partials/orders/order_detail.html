@@ -9,17 +9,20 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>QUANTITY</th>
+							<th>Shirt Name</th>
+							<th>Shirt Style</th>
+							<th>Shirt Color</th>
+							<th>Shirt Size</th>
+							<th>Quantity</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="orderSel in orderSelectedDetail">
-							<td>{{ orderSel.id }}</td>
-							<td>{{ orderSel.name}}</td>
-							<td>
-							    <a href="#"><span class="glyphicon glyphicon-list-alt"></span></a>
-							</td>
+						<tr ng-repeat="orderSel in selectedOrderDetail">
+							<td>{{ orderSel.idShirt.idStamp.name }}</td>
+							<td>{{ orderSel.idShirt.idStyle.name }}</td>
+							<td>{{ orderSel.idShirt.idColor.name}}</td>
+							<td>{{ orderSel.idShirt.idSize.name}}</td>
+							<td>{{ orderSel.quantity}}</td>
 						</tr>
 					</tbody>
 				</table>
