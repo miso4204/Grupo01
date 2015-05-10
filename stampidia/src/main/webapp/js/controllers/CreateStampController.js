@@ -17,6 +17,9 @@
 		    $scope.launch('error');
 	    }); 
 	}
+	$scope.createOwnStamp = function() {
+	    $location.url('/create-own-stamp');
+	}
 	$scope.listCategories = function() {
 	    categoriesService.listCategories().$promise.then(function(response) {
 		$scope.categories = response.resultado;
