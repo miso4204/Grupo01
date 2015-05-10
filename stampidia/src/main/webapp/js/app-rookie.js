@@ -14,10 +14,10 @@
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
 
 	$httpProvider.interceptors.push('httpInterceptor');
-	$routeProvider.when('/products-rookie', {
-	    templateUrl : 'partials/products/products--rookie.html',
+	$routeProvider.when('/products', {
+	    templateUrl : 'partials/products/products_rookie.html',
 	    controller : 'ProductsController'
-	}).when('/stamps-rookie', {
+	}).when('/stamps', {
 	    templateUrl : 'partials/products/stamps-rookie.html',
 	    controller : 'StampsController'
 	}).when('/login', {
@@ -51,7 +51,7 @@
 	    templateUrl : 'partials/pay/credit_error.html',
 	    controller : 'SelectPaymentController'
 	}).when('/create-product/:stampId', {
-	    templateUrl : 'partials/products/createProduct.html',
+	    templateUrl : 'partials/products/createProduct_rookie.html',
 	    controller : 'CreateProductController'
 	}).when('/create-stamp', {
 	    templateUrl : 'partials/products/createStamp.html',

@@ -15,10 +15,10 @@
 
 	$httpProvider.interceptors.push('httpInterceptor');
 	$routeProvider.when('/products', {
-	    templateUrl : 'partials/products/products.html',
+	    templateUrl : 'partials/products/products_business.html',
 	    controller : 'ProductsController'
 	}).when('/stamps', {
-	    templateUrl : 'partials/products/stamps.html',
+	    templateUrl : 'partials/products/stamps-business.html',
 	    controller : 'StampsController'
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
@@ -51,7 +51,7 @@
 	    templateUrl : 'partials/pay/credit_error.html',
 	    controller : 'SelectPaymentController'
 	}).when('/create-product/:stampId', {
-	    templateUrl : 'partials/products/createProduct.html',
+	    templateUrl : 'partials/products/createProduct_business.html',
 	    controller : 'CreateProductController'
 	}).when('/create-stamp', {
 	    templateUrl : 'partials/products/createStamp.html',
