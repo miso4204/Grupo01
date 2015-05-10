@@ -67,41 +67,22 @@ public class SpecialOffersController {
         return resultado;
     }
 
-    @RequestMapping(value="/specialoffers/{id}",method= RequestMethod.GET)
-    public Resultado checkPromo(
-            @RequestParam(value = "id") Integer id){
+    @RequestMapping(value="/specialoffer/{plan}",method= RequestMethod.GET)
+    public Resultado getSpecialOfferAvailable(@PathVariable("plan") String plan){
         Resultado resultado = new Resultado();
 
-        if(id != null){
+        if(plan != null && plan.equals(Constantes.PLAN_BUSSINESS.getDescription())) {
 
-            StmpOfert offer = offerService.getSpecialOffer(id);
+            Object offer = offerService.getActiveSpecialOffer();
 
-            if(offer != null){
+            if (offer != null) {
                 resultado.setResultado(offer);
                 resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-            }else {
+            } else {
                 resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
             }
-
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
-        }
-
-        return resultado;
-    }
-
-    @RequestMapping(value="/specialoffers",method= RequestMethod.GET)
-    public Resultado checkAllPromos(
-            @RequestParam(value = "id") Integer id){
-        Resultado resultado = new Resultado();
-
-        List<StmpOfert> offers = offerService.listAllOffers();
-
-        if(offers != null){
-            resultado.setResultado(offers);
+        }else{
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
         }
 
         return resultado;

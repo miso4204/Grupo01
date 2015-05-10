@@ -8,12 +8,14 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 
 public class ConvertObjetHelper {
 
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	static {
+		MAPPER.registerModule(new Hibernate4Module());
 		MAPPER.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false)
 				.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
 				.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,
@@ -21,7 +23,7 @@ public class ConvertObjetHelper {
 				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
 						false)
 				.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES,
-						false);
+						false);		
 	}
 
 	@SuppressWarnings("unchecked")

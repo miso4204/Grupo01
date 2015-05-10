@@ -35,7 +35,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "stmp_user")
 @NamedQueries({ @NamedQuery(name = "StmpUser.findAll", query = "SELECT s FROM StmpUser s") })
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -178,7 +177,6 @@ public class StmpUser implements Serializable {
 		this.status = status;
 	}
 
-	@JsonIgnore
 	public List<StmpShirt> getStmpShirtList() {
 		return stmpShirtList;
 	}
@@ -187,7 +185,6 @@ public class StmpUser implements Serializable {
 		this.stmpShirtList = stmpShirtList;
 	}
 
-	@JsonIgnore
 	public List<StmpStamp> getStmpStampList() {
 		return stmpStampList;
 	}
@@ -196,7 +193,6 @@ public class StmpUser implements Serializable {
 		this.stmpStampList = stmpStampList;
 	}
 
-	@JsonIgnore
 	public List<StmpShirtRating> getStmpShirtRatingList() {
 		return stmpShirtRatingList;
 	}
@@ -205,7 +201,6 @@ public class StmpUser implements Serializable {
 		this.stmpShirtRatingList = stmpShirtRatingList;
 	}
 
-	@JsonIgnore
 	public List<StmpOrder> getStmpOrderList() {
 		return stmpOrderList;
 	}
@@ -222,7 +217,6 @@ public class StmpUser implements Serializable {
 		this.idPlan = idPlan;
 	}
 
-	@JsonIgnore
 	public List<StmpStampRating> getStmpStampRatingList() {
 		return stmpStampRatingList;
 	}
