@@ -27,11 +27,7 @@ public class OfferService {
         return offerRepository.save(offer);
     }
 
-    public StmpOfert getSpecialOffer(Integer offerId){
-        return offerRepository.findOne(offerId);
-    }
-
-    public List<StmpOfert> listAllOffers(){
-        return (List<StmpOfert>) offerRepository.findAll();
+    public StmpOfert getActiveSpecialOffer() {
+        return null;
     }
 }

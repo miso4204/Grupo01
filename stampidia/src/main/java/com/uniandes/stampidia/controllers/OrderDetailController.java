@@ -8,6 +8,7 @@ import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.services.OrderDetailService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -41,18 +42,7 @@ public class OrderDetailController {
             List<StmpOrderDetail> newItems = detailService.saveItems(items);
 
             if(newItems != null){
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-                // do various things, perhaps:
-                String someJsonString = null;
-                try {
-                    someJsonString = mapper.writeValueAsString(newItems);
-                    resultado.setResultado(mapper.readValue(someJsonString, Map.class));
-                } catch (JsonProcessingException e ) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                resultado.setResultado(ConvertObjetHelper.listToMap(newItems));
                 resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
             }else {
                 resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
