@@ -1,2 +1,0 @@
-ChangePassword;SizeController.java
-ChangeAddress;ColorController.java
