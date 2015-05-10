@@ -1,16 +1,35 @@
 <section>
 	<div class="container">
 		<div class="row">
-				<input ng-model="highchartsNG.title.text">
-				<button ng-click="addSeries()">Add Series</button>
-				<button ng-click="addPoints()">Add Points to Random Series</button>
-				<button ng-click="removeRandomSeries()">Remove Random
-					Series</button>
-				<button ng-click="swapChartType()">Line/Bar</button>
-				<highchart id="chart1" config="highchartsNG"></highchart>
+				<highchart id="chart1" config="highchartsNGPeriod"></highchart>
 		</div>
-<!-- 		<div class="row"> -->
-<!-- 				<highchart id="chart2" config="highchartsNG2"></highchart> -->
-<!-- 		</div> -->
+
+		<div class="row">
+			<h2 class="title text-center">My Orders</h2>
+			<h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>PAY METHOD</th>
+							<th>DATE</th>
+							<th>TOTAL AMOUNT</th>
+							<th>DETAILS</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="order in orderData">
+							<td>{{ order.id }}</td>
+							<td>{{ order.idShippingType.name}}</td>
+							<td>{{ order.date }}</td>
+							<td>{{ order.totalAmount }}</td>
+							<td>
+							    <a ng-click="selectOrder(order.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</h5>
+		</div>
 	</div>
 </section>
