@@ -3,7 +3,13 @@
 
     var RateProductService = function($resource) {
 
-		return $resource('http://localhost:8080/stampidia/rest/product/rate', {}, {});
+		return $resource('http://localhost:8080/stampidia/rest/product/rate', {}, {
+		    
+		    update: {
+			      method: 'PUT' // this method issues a PUT request
+			    }
+		    
+		});
 	
 	};
 

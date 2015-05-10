@@ -20,12 +20,38 @@
 	    
 	    //rating
 	    
-	    $scope.rating1 = 5;
-	    $scope.rating2 = 2;
-	    $scope.isReadonly = true;
-	    $scope.rateFunction = function(rating) {
-		//TODO SERVICE RATING
-	      console.log("Rating selected: " + rating);
+	    $scope.rating = {};
+	    $scope.comment;
+	    $scope.hideComment = true;
+	    
+	    $scope.valorationFunction = function(rating) {
+		$scope.hideComment = false;
+		$scope.rating=rating;
+	    };
+	    
+	    $scope.rateFunction = function(comment, shirt) {
+	      
+	      rateProductService.update({  valoration : $scope.rating,
+		  comment : comment,
+		  idShirt : {
+		    id : shirt
+		  }, 
+		  idUser : {
+		    id : sessionService.id
+		  } }).$promise.then(function(response){
+		      
+		      $scope.hideComment = true;
+
+			if(response.estado.type=='OK')
+			{
+			   
+			}else{
+			    //TODO send error
+			}
+
+		    }, function(response) {
+			console.log('Error: ' +response);
+		    })
 	    };
     };
     
