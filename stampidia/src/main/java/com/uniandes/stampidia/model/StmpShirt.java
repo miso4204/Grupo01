@@ -6,6 +6,7 @@
 package com.uniandes.stampidia.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "stmp_shirt")
 @NamedQueries({
     @NamedQuery(name = "StmpShirt.findAll", query = "SELECT s FROM StmpShirt s")})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class StmpShirt implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -126,7 +128,7 @@ public class StmpShirt implements Serializable {
     public void setIdStamp(StmpStamp idStamp) {
         this.idStamp = idStamp;
     }
-    @JsonIgnore
+//    @JsonIgnore
     public StmpUser getIdArtistUser() {
         return idArtistUser;
     }

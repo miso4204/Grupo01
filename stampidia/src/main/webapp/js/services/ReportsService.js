@@ -14,19 +14,28 @@
 	/**
 	 * Endpoint base del api 
 	 * TODO se debe cambiar para produccion a la url definitiva
-	 */
-	var stampidiaEndpoint = 'http://localhost:8080/stampidia';
-
-	/**
-	 * Objeto loginService encargado de enviar la petición de autenticación 
-	 */
-	var reportService = {
-	    report : function(data) {		
-		return undefined;
+	 */	
+	var reportByPeriod = $resource('/stampidia/rest/report_by_period',{},{
+	    period:{
+		method:'GET'
 	    }
-	};
-
-	return reportService;
+	});
+	var reportBySales = $resource('/stampidia/rest/report_by_sales',{},{
+	    sales:{
+		method:'GET'
+	    }
+	});
+	
+	return {
+	    sales : function(username){
+		console.log(username);
+	    	return reportBySales.sales({username:username});
+	    }, 
+	    period : function(username){
+		console.log(username);
+	    	return reportByPeriod.period({username:username});
+	    }
+	}
     };
 
     angular.module('stampidia.services').factory('reportService', [ '$resource', '$http', ReportService ]);
