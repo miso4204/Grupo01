@@ -94,9 +94,10 @@
 					<complianceLevel>1.7</complianceLevel>
 					<source>1.7</source>
 					<target>1.7</target>
-				    <excludes>
-				    	<exclude>**/SocialNetworks.aj</exclude>
-				    </excludes>
+<!-- 				    <includes> -->
+<!-- 				    	<include>**/LoggerAspect.aj</include> -->
+<!-- 				    	<include>**/SocialNetworks.aj</include> -->
+<!-- 				    </includes> -->
 				</configuration>
 				<executions>
 					<execution>
@@ -192,6 +193,12 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>1.7.0</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
 
 
 		<!-- Other Web dependencies -->
