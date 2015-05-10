@@ -20,7 +20,6 @@ import java.io.Serializable;
 @Table(name = "stmp_ofert")
 @NamedQueries({
     @NamedQuery(name = "StmpOfert.findAll", query = "SELECT s FROM StmpOfert s WHERE s.status = true")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpOfert implements Serializable {
    private static final long serialVersionUID = 1L;
    @Id
