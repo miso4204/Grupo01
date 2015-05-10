@@ -19,8 +19,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "stmp_ofert")
 @NamedQueries({
-    @NamedQuery(name = "StmpOfert.getActive", query = "SELECT s FROM StmpOfert s WHERE s.status = true")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
+    @NamedQuery(name = "StmpOfert.findAll", query = "SELECT s FROM StmpOfert s WHERE s.status = true")})
 public class StmpOfert implements Serializable {
    private static final long serialVersionUID = 1L;
    @Id

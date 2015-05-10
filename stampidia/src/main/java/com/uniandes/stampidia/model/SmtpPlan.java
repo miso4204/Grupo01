@@ -21,7 +21,6 @@ import java.util.List;
 @Table(name = "smtp_plan")
 @NamedQueries({
    @NamedQuery(name = "SmtpPlan.findAll", query = "SELECT s FROM SmtpPlan s")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class SmtpPlan implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

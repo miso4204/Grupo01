@@ -21,7 +21,6 @@ import java.util.List;
 @Table(name = "stmp_color")
 @NamedQueries({
     @NamedQuery(name = "StmpColor.findAll", query = "SELECT s FROM StmpColor s")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpColor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

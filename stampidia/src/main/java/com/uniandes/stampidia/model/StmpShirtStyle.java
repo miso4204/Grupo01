@@ -22,7 +22,6 @@ import java.util.List;
 @Table(name = "stmp_shirt_style")
 @NamedQueries({
     @NamedQuery(name = "StmpShirtStyle.findAll", query = "SELECT s FROM StmpShirtStyle s")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpShirtStyle implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

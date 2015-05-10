@@ -25,7 +25,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "stmp_shirt")
 @NamedQueries({
     @NamedQuery(name = "StmpShirt.findAll", query = "SELECT s FROM StmpShirt s")})
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class StmpShirt implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -128,7 +127,6 @@ public class StmpShirt implements Serializable {
     public void setIdStamp(StmpStamp idStamp) {
         this.idStamp = idStamp;
     }
-//    @JsonIgnore
     public StmpUser getIdArtistUser() {
         return idArtistUser;
     }
@@ -137,7 +135,6 @@ public class StmpShirt implements Serializable {
         this.idArtistUser = idArtistUser;
     }
 
-    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;
     }
@@ -145,7 +142,7 @@ public class StmpShirt implements Serializable {
     public void setStmpOrderDetailList(List<StmpOrderDetail> stmpOrderDetailList) {
         this.stmpOrderDetailList = stmpOrderDetailList;
     }
-    @JsonIgnore
+
     public List<StmpShirtRating> getStmpShirtRatingList() {
         return stmpShirtRatingList;
     }
