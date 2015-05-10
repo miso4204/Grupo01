@@ -94,10 +94,9 @@
 					<complianceLevel>1.7</complianceLevel>
 					<source>1.7</source>
 					<target>1.7</target>
-<!-- 				    <includes> -->
-<!-- 				    	<include>**/LoggerAspect.aj</include> -->
-<!-- 				    	<include>**/SocialNetworks.aj</include> -->
-<!-- 				    </includes> -->
+				    <excludes>
+				    	<exclude>**/SocialNetworks.aj</exclude>
+				    </excludes>
 				</configuration>
 				<executions>
 					<execution>
