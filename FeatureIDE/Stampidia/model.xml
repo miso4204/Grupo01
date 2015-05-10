@@ -99,36 +99,38 @@
 												<var>Color</var>
 											</not>
 											<conj>
-												<not>
-													<var>CashOnDelivery</var>
-												</not>
+												<var>ProductDesign</var>
 												<conj>
-													<not>
-														<var>ChangePassword</var>
-													</not>
+													<var>Size</var>
 													<conj>
 														<not>
-															<var>ChangeAddress</var>
+															<var>CashOnDelivery</var>
 														</not>
 														<conj>
-															<not>
-																<var>Reports</var>
-															</not>
+															<var>ChangePassword</var>
 															<conj>
-																<not>
-																	<var>SocialNetwork</var>
-																</not>
+																<var>ChangeAddress</var>
 																<conj>
 																	<not>
-																		<var>SpecialOffers</var>
+																		<var>Reports</var>
 																	</not>
 																	<conj>
 																		<not>
-																			<var>Scalability</var>
+																			<var>SocialNetwork</var>
 																		</not>
-																		<not>
-																			<var>Performance</var>
-																		</not>
+																		<conj>
+																			<not>
+																				<var>SpecialOffers</var>
+																			</not>
+																			<conj>
+																				<not>
+																					<var>Scalability</var>
+																				</not>
+																				<not>
+																					<var>Performance</var>
+																				</not>
+																			</conj>
+																		</conj>
 																	</conj>
 																</conj>
 															</conj>
