@@ -6,9 +6,10 @@
 				<h2>Select your payment method</h2>
 			</div>
 			<div id="paymenttypesselector">
+				<div style="vertical-align: middle; display: inline-block;">
 					<input type="radio" ng-model="$parent.paymenttype" value="3">Credit Card</input>
 					<input type="radio" ng-model="$parent.paymenttype" value="2">PSE</input>
-	
+				</div>
 				<div id="creditcard" ng-show="paymenttype==3">
 					<form class="form-horizontal" role="form" name="creditform">
 						<fieldset>
