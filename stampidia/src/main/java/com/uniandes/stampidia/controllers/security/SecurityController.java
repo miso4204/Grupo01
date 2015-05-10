@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uniandes.stampidia.model.StmpUser;
 import com.uniandes.stampidia.services.UserService;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 
 /**
@@ -38,7 +39,7 @@ public class SecurityController {
 		Resultado result = new Resultado();
 		StmpUser user = userService.findUserByName(username);
 		user.setPassword(null);
-		result.setResultado(user);
+		result.setResultado(ConvertObjetHelper.objectToMap(user));
 		return result;
 	}
 	
