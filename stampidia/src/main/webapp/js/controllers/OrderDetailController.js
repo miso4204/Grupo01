@@ -21,18 +21,17 @@
 	    //rating
 	    
 	    //rating shirt data
-	    $scope.rating = {};
+	    $scope.shirtRating = {};
 	    $scope.comment;
 	    $scope.hideComment = true;
 	    
-	    $scope.valorationFunction = function(rating) {
+	    $scope.valorationFunction = function() {
 		$scope.hideComment = false;
-		$scope.rating=rating;
 	    };
 	    
-	    $scope.rateFunction = function(comment, shirt) {
+	    $scope.rateFunction = function(comment, shirt, shirtRating) {
 	      
-	      rateProductService.update({  valoration : $scope.rating,
+	      rateProductService.update({  valoration : shirtRating,
 		  comment : comment,
 		  idShirt : {
 		    id : shirt
@@ -60,23 +59,22 @@
 	    $scope.stampComment;
 	    $scope.hideStampComment = true;
 	    
-	    $scope.valorationStampFunction = function(ratingStamp) {
+	    $scope.valorationStampFunction = function() {
 		$scope.hideStampComment = false;
-		$scope.stampRating=ratingStamp;
 	    };
 	    
-	    $scope.rateStampFunction = function(stampComment, shirt) {
+	    $scope.rateStampFunction = function(stampComment, stamp, stampRating) {
 	      
-	      rateDesignService.update({  valoration : $scope.rating,
+	      rateDesignService.update({  valoration : stampRating,
 		  comment : stampComment,
-		  idShirt : {
-		    id : shirt
+		  idStamp : {
+		    id : stamp
 		  }, 
 		  idUser : {
 		    id : sessionService.id
 		  } }).$promise.then(function(response){
 		      
-		      $scope.hideComment = true;
+		      $scope.hideStampComment = true;
 
 			if(response.estado.type=='OK')
 			{

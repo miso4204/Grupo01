@@ -13,6 +13,7 @@ import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
 import com.uniandes.stampidia.services.CartService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -36,7 +37,7 @@ public class CartController {
 			StmpOrder newOrder = cartService.updateOrder(order);
 
 			if(newOrder != null){
-				resultado.setResultado(newOrder);
+				resultado.setResultado(ConvertObjetHelper.objectToMap(newOrder));
 				resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 			}else {
 				resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
@@ -57,7 +58,7 @@ public class CartController {
 		if(oderId != null){
 			List<StmpOrderDetail> detalles = cartService.getOrderDetailsByOrderId(oderId);
 			if(detalles != null) {
-				resultado.setResultado(detalles);
+				resultado.setResultado(ConvertObjetHelper.listToMap(detalles));
 				resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 			}else{
 				resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
@@ -75,7 +76,7 @@ public class CartController {
 		Resultado resultado = new Resultado();
 
 		if(Id != null){
-			resultado.setResultado(cartService.getOrdersByUser(Id));
+			resultado.setResultado(ConvertObjetHelper.listToMap(cartService.getOrdersByUser(Id)));
 			resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 			resultado.setMensajeConsulta("Este es el resultado!");
 			resultado.setTotalObjetos(cartService.getOrdersByUser(Id).size());
@@ -144,7 +145,7 @@ public class CartController {
 		Resultado resultado = new Resultado();
 
 		if(orderId != null){
-			resultado.setResultado(cartService.getOrderById(orderId));
+			resultado.setResultado(ConvertObjetHelper.objectToMap(cartService.getOrderById(orderId)));
 			resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		}else {
 			resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
