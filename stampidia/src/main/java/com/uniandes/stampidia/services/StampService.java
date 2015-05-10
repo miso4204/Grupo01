@@ -100,4 +100,8 @@ public class StampService {
 	public StmpStamp getStampById(Integer stampId){		
 		return stampRepository.findOne(stampId);
 	}
+	
+	public StmpStamp getSalesById(Integer stampId){		
+		return stampRepository.findOne(stampId);
+	}
 }

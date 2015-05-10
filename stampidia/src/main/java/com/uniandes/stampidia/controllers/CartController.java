@@ -49,8 +49,7 @@ public class CartController {
 		return resultado;
 	}
 
-	@RequestMapping(value="y" +
-            "/cart/{oderId}/details",method= RequestMethod.GET)
+	@RequestMapping(value="/cart/{oderId}/details",method= RequestMethod.GET)
 	public Resultado getCartProducts(
 			@PathVariable("oderId")Integer oderId){
 		Resultado resultado = new Resultado();
