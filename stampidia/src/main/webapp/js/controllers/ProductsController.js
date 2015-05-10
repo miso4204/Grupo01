@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var ProductsController = function($rootScope, $scope, productsService, categoriesService, cartService, appSettings) {
+    var ProductsController = function($rootScope, $scope, $cookieStore, productsService, categoriesService, cartService, appSettings) {
 	$scope.listProducts = function(id){
 	    productsService.listProducts(id).$promise.then(
 		    function(response){
@@ -50,6 +50,7 @@
                 idShirt : item
             };
             $rootScope.order.stmpOrderDetailList.push(detail);
+            $cookieStore.put('order',$rootScope.order);
         }
         console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
 		var itemCount = 0;
@@ -98,6 +99,6 @@
 	init();
 
     };
-    angular.module('stampidia.controllers').controller('ProductsController', [ '$rootScope','$scope', 'productsService', 'categoriesService','cartService', 'appSettings', ProductsController ]);
+    angular.module('stampidia.controllers').controller('ProductsController', [ '$rootScope','$scope', '$cookieStore', 'productsService', 'categoriesService','cartService', 'appSettings', ProductsController ]);
 
 }());
