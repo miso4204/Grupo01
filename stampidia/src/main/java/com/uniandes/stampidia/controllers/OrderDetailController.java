@@ -1,17 +1,25 @@
 package com.uniandes.stampidia.controllers;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpOrderDetail;
+import com.uniandes.stampidia.services.OrderDetailService;
 import com.uniandes.stampidia.utilities.Constantes;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by SEBASTIAN on 09/05/2015.
@@ -20,18 +28,31 @@ import java.util.List;
 @RequestMapping(value="/rest")
 public class OrderDetailController {
 
+    @Autowired
+    private OrderDetailService detailService;
+
     @RequestMapping(value="/cart/items",method= RequestMethod.PUT)
     public Resultado saveItems(
             @RequestBody List<StmpOrderDetail> items){
         Resultado resultado = new Resultado();
 
-        if(!items.isEmpty() && items != null){
+        if(!items.isEmpty()){
 
-            //List<StmpOrderDetail> newItems = cartService.updateOrder(order);
-            List<StmpOrderDetail> newItems = null;
+            List<StmpOrderDetail> newItems = detailService.saveItems(items);
 
             if(newItems != null){
-                resultado.setResultado(newItems);
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+                // do various things, perhaps:
+                String someJsonString = null;
+                try {
+                    someJsonString = mapper.writeValueAsString(newItems);
+                    resultado.setResultado(mapper.readValue(someJsonString, Map.class));
+                } catch (JsonProcessingException e ) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
             }else {
                 resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
