@@ -81,8 +81,16 @@
 #list-products .icons-mode-view .icons-wrapper .active{
 	color:#FE980F;
 }
-
+#list-stamps .icons-mode-view .icons-wrapper .active{
+	color:#FE980F;
+}
 #list-products .icons-mode-view{
+    position: relative;
+    overflow:hidden;
+    right:16px;
+    bottom: 5px;
+}
+#list-stamps .icons-mode-view{
     position: relative;
     overflow:hidden;
     right:16px;
@@ -91,8 +99,47 @@
 #list-products .icons-mode-view .icons-wrapper{
 	 float: right;
 }
-
+#list-stamps .icons-mode-view .icons-wrapper{
+	 float: right;
+}
 #list-products h2.title{
 	 margin: 0 15px 10px;
+}
+#list-stamps h2.title{
+	 margin: 0 15px 10px;
+}
+/*Estilos canvas board*/
+
+#draw-board {
+   border: 3px solid black;
+   display: block;
+   margin: 0 auto;
+   position: relative;
+   width: 800px;
+}
+.drawing-board{
+	margin-bottom:40px;
+	
+}
+
+.rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.rating li {
+  padding: 1px;
+  color: #ddd;
+  font-size: 20px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.rating li.filled {
+  color: #fd0;
+}
+.rating.readonly li.filled {
+  color: #666;
 }
 
