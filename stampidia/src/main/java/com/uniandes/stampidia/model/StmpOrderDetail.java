@@ -5,13 +5,12 @@
  */
 package com.uniandes.stampidia.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.io.Serializable;
-import java.math.BigInteger;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.math.BigInteger;
 
 /**
  *
@@ -21,6 +20,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "stmp_order_detail")
 @NamedQueries({
     @NamedQuery(name = "StmpOrderDetail.findAll", query = "SELECT s FROM StmpOrderDetail s")})
+@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpOrderDetail implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
