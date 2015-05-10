@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, appSettings) {
+    var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, rateProductService, appSettings) {
 
 	$scope.selectedOrderDetail={};
 
@@ -31,7 +31,7 @@
     
     
     angular.module('stampidia.controllers').controller('OrderDetailController',
-	    [ '$rootScope', '$scope', '$location', 'orderService', 'orderDetailService','sessionService', 'appSettings',  OrderDetailController ]).directive("starRating", function() {
+	    [ '$rootScope', '$scope', '$location', 'orderService', 'orderDetailService','sessionService', 'rateProductService', 'appSettings',  OrderDetailController ]).directive("starRating", function() {
 		  return {
 		      restrict : "EA",
 		      template : "<ul class='rating' ng-class='{readonly: readonly}'>" +
