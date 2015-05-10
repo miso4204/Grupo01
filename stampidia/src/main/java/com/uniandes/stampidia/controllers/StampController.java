@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.model.StmpStamp;
 import com.uniandes.stampidia.services.StampService;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 
 //@Controller
@@ -36,7 +37,7 @@ public class StampController {
 			stamps = stampService.getAllStamps();
 		}
 		
-		ro.setResultado(stamps);
+		ro.setResultado(ConvertObjetHelper.listToMap(stamps));
 		ro.setMensajeConsulta("Este es el resultado!");
 		ro.setTotalObjetos(stamps.size());
 		return ro;	
@@ -78,7 +79,7 @@ public class StampController {
 		Resultado resultado = new Resultado();
         StmpStamp stamp = new StmpStamp();
         stamp = stampService.updateStamp(stampId,stampName, stampDescription,stampImage,stampTags,stampArtist,stampSalesNumber,stampCategory,stampPrice);
-        resultado.setResultado(stamp);
+        resultado.setResultado(ConvertObjetHelper.objectToMap(stamp));
         return resultado;
         
 		
@@ -90,7 +91,7 @@ public class StampController {
 		Resultado ro = new Resultado();
 		StmpStamp stamp;
 		stamp = stampService.getStampById(stampId);
-		ro.setResultado(stamp);
+		ro.setResultado(ConvertObjetHelper.objectToMap(stamp));
 		ro.setMensajeConsulta("Stamp:");
 		return ro;	
 	}
@@ -101,7 +102,7 @@ public class StampController {
 		Resultado ro = new Resultado();
 		StmpStamp stamp;
 		stamp = stampService.getSalesById(stampId);
-		ro.setResultado(stamp);
+		ro.setResultado(ConvertObjetHelper.objectToMap(stamp));
 		ro.setMensajeConsulta("Stamp:");
 		return ro;	
 	}
