@@ -18,6 +18,10 @@
 	    this.authPermission = 'ROLE_BUYER';
 	    this.id = user.id;
 	};
+
+        this.validate = function(){
+            return $cookieStore.get('authUser');
+        };
 	this.destroy = function() {
 	    this.authId = null;
 	    this.authToken = null;
