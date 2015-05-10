@@ -25,14 +25,13 @@
 	    $scope.comment;
 	    $scope.hideComment = true;
 	    
-	    $scope.valorationFunction = function(rating) {
+	    $scope.valorationFunction = function() {
 		$scope.hideComment = false;
-		$scope.shirtRating=rating;
 	    };
 	    
-	    $scope.rateFunction = function(comment, shirt) {
+	    $scope.rateFunction = function(comment, shirt, shirtRating) {
 	      
-	      rateProductService.update({  valoration : $scope.shirtRating,
+	      rateProductService.update({  valoration : shirtRating,
 		  comment : comment,
 		  idShirt : {
 		    id : shirt
@@ -60,15 +59,13 @@
 	    $scope.stampComment;
 	    $scope.hideStampComment = true;
 	    
-	    $scope.valorationStampFunction = function(rating) {
-		$scope.stampRating=rating;
+	    $scope.valorationStampFunction = function() {
 		$scope.hideStampComment = false;
-	
 	    };
 	    
-	    $scope.rateStampFunction = function(stampComment, stamp) {
+	    $scope.rateStampFunction = function(stampComment, stamp, stampRating) {
 	      
-	      rateDesignService.update({  valoration : $scope.stampRating,
+	      rateDesignService.update({  valoration : stampRating,
 		  comment : stampComment,
 		  idStamp : {
 		    id : stamp
