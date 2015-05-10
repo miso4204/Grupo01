@@ -61,7 +61,7 @@ public class StmpOrder implements Serializable {
     @OneToOne(optional = true)
     private StmpPaymentType idPaymentType;
     @JoinColumn(name = "id_shipping_type", referencedColumnName = "id")
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private StmpShippingType idShippingType;
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     @ManyToOne(optional = false)

@@ -15,8 +15,18 @@ public class ShirtRatingService {
 	
 	@Autowired
     private ShirtRatingRepository shirtRatingRepository;
+    @Autowired
+    private ShirtRepository shirtRepository;
+    @Autowired
+    private UserRepository userRepository;
 	
 	public StmpShirtRating createShirtRating(StmpShirtRating rating){
-		return shirtRatingRepository.save(rating);
+        if(rating.getIdUser() != null && rating.getIdShirt() != null) {
+            rating.setIdShirt(shirtRepository.findOne(rating.getIdShirt().getId()));
+            rating.setIdUser(userRepository.findOne(rating.getIdUser().getId()));
+
+            return shirtRatingRepository.save(rating);
+        }
+        return null;
 	}
 }
