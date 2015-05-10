@@ -1,6 +1,8 @@
+ 
+
 <section>
    <div class="header-bottom">
-		<!--header-bottom-->
+        <!--header-bottom-->
 		<div class="container">
 			<div class="row">					
 				<div class="col-sm">
@@ -35,40 +37,81 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-9 padding-right">
-				<div class="features_items">
-					<!--features_items-->
+			<div id="list-stamps">			
+				<div class="col-sm-9 padding-right">
 					<h2 class="title text-center">Stamps</h2>
-					<div class="col-sm-4" data-ng-repeat="stamp in stamps | filter: search">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img ng-src="{{stamp.image}}" alt="" />
-									   <h2>{{stamp.price }}</h2> 
-									   <p>{{stamp.text }}</p>
-									   <a href="#/create-product/{{stamp.id}}"class="btn btn-default add-to-cart">Create product</a> 
+						 <div class="icons-mode-view">
+				    	    	<div class="icons-wrapper">
+									<a class="glyphicon glyphicon-th  active" ng-click="modeView('grid')" align="right"></a>
+									<a class="glyphicon glyphicon-th-list"  ng-click="modeView('list')" align="right"></a>
 								</div>
-								<div class="product-overlay">
-									<div class="overlay-content">
-									   <h2>{{stamp.price }}</h2> 
-									   <p>{{stamp.text }}</p> 
-									   <a href="#/create-product/{{stamp.id}}" ng-click="loadCreateProduct(stamp.id)" class="btn btn-default add-to-cart">Create product</a>
+							</div>
+					<div class="features_items">
+						<!--features_items-->
+						 <div class="col-sm-4" data-ng-repeat="stamp in stamps | filter: search">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img ng-src="{{stamp.image}}" alt="" />
+										   <h2>{{stamp.price | currency : symbol : fractionSize}}</h2> 
+										   <p>{{stamp.text }}</p>
+										   <a href="#/create-product/{{stamp.id}}"class="btn btn-default add-to-cart">Create product</a> 
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+										   <h2>{{stamp.price | currency : symbol : fractionSize}}</h2> 
+										   <p>{{stamp.text }}</p> 
+										   <a href="#/create-product/{{stamp.id}}" ng-click="loadCreateProduct(stamp.id)" class="btn btn-default add-to-cart">Create product</a>
+										   	<p>
+										   		<a href="#/stamp-details/{{stamp.id}}" >
+													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											    </a>
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- <a href="#/stamp-details/{{stamp.id}}" class="btn btn-default add-to-cart">View More</a> -->
 						</div>
-						<a href="#/stamp-details/{{stamp.id}}" class="btn btn-default add-to-cart">View More</a>
 					</div>
-					<div style="clear: both; display: block">
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
-					</div>
+					<!--features_items-->
+					<div class="features_list" id="cart_items">
+						<div class="table-responsive cart_info">
+						<table class="table table-condensed">
+					  	  <thead>
+							<tr class="cart_menu">
+							  <td class="image">Image</td>
+							  <td class="description">Name</td>
+							  <td class="size">Category</td>
+						      <td class="price">Price</td>
+							  <td class="total"></td>
+							  <td></td>
+							</tr>
+						  </thead>		
+					      <tbody>
+					       <tr data-ng-repeat="stamp in stamps | filter: search">
+				   		    <td class="cart_product">
+								<a href="#/stamp-details/{{stamp.id}}" >
+								<img ng-src="{{stamp.image}}" height="75" width="75" alt="" class="img-responsive" />											
+	  					  	</td>
+						  	<td class="">
+								{{stamp.name}}
+	  					  	</td>
+	  					  	<td class="cart_price">
+								{{stamp.idCategory.description}}
+	 					  	</td>
+				   		  	<td class="cart_total">
+								<p class="cart_total_price">{{stamp.price | currency : symbol : fractionSize}}</p>
+	  					  	</td>
+	  					  	 <td class="cart_total">
+								<a href="#/create-product/{{stamp.id}}" ng-click="loadCreateProduct(stamp.id)" class="btn btn-default add-to-cart">Create product</a>
+	  					  	</td>
+					  	   </tr>
+					  	</tbody>
+						</table>
+			    	 </div>
 				</div>
-				<!--features_items-->
+				</div>
 			</div>
 		</div>
 	</div>

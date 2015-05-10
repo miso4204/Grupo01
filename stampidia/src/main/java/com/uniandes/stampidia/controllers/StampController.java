@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.model.StmpStamp;
 import com.uniandes.stampidia.services.StampService;
 import com.uniandes.stampidia.utilities.Resultado;
@@ -94,6 +95,15 @@ public class StampController {
 		return ro;	
 	}
 	
-	
+	@RequestMapping("/stampService/social/{stampId}")
+	public Resultado getSalesById(
+			@PathVariable("stampId")Integer stampId){
+		Resultado ro = new Resultado();
+		StmpStamp stamp;
+		stamp = stampService.getSalesById(stampId);
+		ro.setResultado(stamp);
+		ro.setMensajeConsulta("Stamp:");
+		return ro;	
+	}
 }
 

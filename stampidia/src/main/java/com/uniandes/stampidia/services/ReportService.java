@@ -15,11 +15,11 @@ public class ReportService {
 	@Autowired
     private ReportRepository reportRepository;
 	
-	public List<Object[]> reportBySales(){
-		return reportRepository.reportBySales();
+	public List<Object[]> reportBySales(String username){
+		return reportRepository.reportBySales(username);
 	}
         
-    public List<Object[]> reportByPeriod(){
-    	return reportRepository.reportByPeriod();
+    public List<Object[]> reportByPeriod(String username){
+    	return reportRepository.reportByPeriod(username);
     }
 }

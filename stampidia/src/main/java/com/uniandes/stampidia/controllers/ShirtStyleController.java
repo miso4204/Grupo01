@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uniandes.stampidia.model.StmpShirtStyle;
 import com.uniandes.stampidia.services.ShirtStyleService;
+import com.uniandes.stampidia.utilities.Constantes;
 import com.uniandes.stampidia.utilities.Resultado;
+import com.uniandes.stampidia.utilities.Status;
+import com.uniandes.stampidia.utilities.enums.EStatusType;
 
 @RestController
 @RequestMapping(value="/rest")
@@ -23,7 +26,8 @@ public class ShirtStyleController {
 		Resultado ro = new Resultado();	
 		List<StmpShirtStyle> shirtStyle = shirtStyleService.getAllShirtStyles();
 		ro.setResultado(shirtStyle);
-		ro.setMensajeConsulta("Este es el resultado!");
+		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
+		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(shirtStyle.size());
 		return ro;
 	}

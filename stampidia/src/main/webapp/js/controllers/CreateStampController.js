@@ -1,17 +1,24 @@
 (function() {
     'use strict';
-    var CreateStampController = function($scope, $location, stampService, categoriesService, Upload, appSettings) {
+    var CreateStampController = function($rootScope,$scope,$location,$dialogs,$timeout, stampService, categoriesService, Upload, appSettings) {
 
 	var initStamp = $scope.stamp;
 	var initFile = $scope.file;
 	$scope.createStamp = function() {
 	    $scope.uploadStamp();
 	    $scope.stamp.image = $scope.file[0].name;
-	    stampService.createStamp($scope.stamp.name, $scope.stamp.description, $scope.stamp.image, $scope.stamp.tags, 1, $scope.stamp.salesNumber, 1, $scope.stamp.price, true).$promise.then(function(response) {
-		$location.url('/stamps');
-	    }, function(response) {
-		console.log(response);
-	    });
+	    stampService.createStamp($scope.stamp.name, $scope.stamp.description, $scope.stamp.image, $scope.stamp.tags, 1, $scope.stamp.salesNumber, 1, $scope.stamp.price, true).$promise.then(
+		function(response) {
+		    $scope.launch('wait');
+		    $scope.error = false;
+		}, function(response) {
+		    console.log(response);
+		    $scope.error = true;
+		    $scope.launch('error');
+	    }); 
+	}
+	$scope.createOwnStamp = function() {
+	    $location.url('/create-own-stamp');
 	}
 	$scope.listCategories = function() {
 	    categoriesService.listCategories().$promise.then(function(response) {
@@ -66,12 +73,51 @@
 	    $scope.stamp.salesNumber = "";
 	    $scope.stamp.price = "";
 	}
+	$scope.launch = function(which){
+	    var dlg = null;
+	    switch(which){
+	      // Notify Dialog
+	      case 'notify':
+	        dlg = $dialogs.notify('Something Happened!','Something happened that I need to tell you.');
+	        break; 
+	        // Error Dialog
+	      case 'error':
+	        dlg = $dialogs.error('This is my error message','');
+	        break;
+	      case 'wait':
+		dlg = $dialogs.wait(msgs[i++],progress);
+		fakeProgress();
+		break;
+	    }; // end switch
+	} // end launch
+	var progress = 25;
+	  var msgs = [
+	    'Hey! I\'m waiting here...',
+	    'About half way done...',
+	    'Almost there?',
+	    'Woo Hoo! I made it!'
+	  ];
+	  var i = 0;
+	  
+	  var fakeProgress = function(){
+	    $timeout(function(){
+	      if(progress < 100){
+	        progress += 25;
+	        $rootScope.$broadcast('dialogs.wait.progress',{msg: msgs[i++],'progress': progress});
+	        fakeProgress();
+	      }else{
+		  $rootScope.$broadcast('dialogs.wait.complete');
+		  $location.url('/stamps');
+	      }
+	    },1000);
+	    
+	  }
+
 
 	var init = function() {
 	    $scope.listCategories();
 	}
 	init();
     };
-    angular.module('stampidia.controllers').controller('CreateStampController', [ '$scope', '$location', 'stampService', 'categoriesService', 'Upload', 'appSettings', CreateStampController ]);
-
+    angular.module('stampidia.controllers').controller('CreateStampController', [ '$rootScope','$scope', '$location','$dialogs','$timeout','stampService', 'categoriesService', 'Upload', 'appSettings', CreateStampController ]);
 }());

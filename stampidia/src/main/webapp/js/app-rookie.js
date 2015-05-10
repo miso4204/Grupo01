@@ -56,6 +56,9 @@
 	}).when('/create-stamp', {
 	    templateUrl : 'partials/products/createStamp.html',
 	    controller : 'CreateStampController'
+	}).when('/create-own-stamp', {
+	    templateUrl : 'partials/products/createOwnStamp.html',
+	    controller : 'CreateOwnStampController'
 	}).when('/reports',{
 	    templateUrl : 'partials/reports/reports.html',
 	    controller : 'ReportsController'
@@ -73,7 +76,7 @@
 	    controller : 'OrderController'
 	}).when('/order-details',{
 	    templateUrl : 'partials/orders/order_detail.html',
-	    controller : 'OrderController'
+	    controller : 'OrderDetailController'
 	}).otherwise({
 	    redirectTo : '/products'
 	});

@@ -1,13 +1,21 @@
 (function() {
     'use strict';
-    var ShirtService = function($resource) {
+   var ShirtService = function($resource) {
+       var shirt_2 = function($resource) {
+		return $resource('http://localhost:8080/stampidia/rest/shirtService', {}, {
+		    update: {
+			      method: 'PUT' // this method issues a PUT request
+			    }
+		});
+
+	};
 	var shirt = $resource('http://localhost:8080/stampidia/rest/shirtService/:shirtText/:shirtIdColor/:shirtIdStyle/:shirtIdSize/:shirtIdStamp/:shirtIdUser', {
 	    shirtText:'@shirtText',
-            shirtIdColor: '@shirtIdColor',
-            shirtIdStyle: '@shirtIdStyle',
-            shirtIdSize: '@shirtIdSize',
-            shirtIdStamp:'@shirtIdStamp', 
-            shirtIdUser: '@shirtIdUser'	
+           shirtIdColor: '@shirtIdColor',
+           shirtIdStyle: '@shirtIdStyle',
+           shirtIdSize: '@shirtIdSize',
+           shirtIdStamp:'@shirtIdStamp', 
+           shirtIdUser: '@shirtIdUser'	
 	    
 	}, {
 	query : {
@@ -16,6 +24,14 @@
 	}
 	}),
 	shirtbyId = $resource('http://localhost:8080/stampidia/rest/shirtService/:shirtId', {
+	    shirtId:'@shirtId'
+	}, {
+	query : {
+	  method : "GET",
+	  isArray : false
+	}
+	});
+	var sales = $resource('http://localhost:8080/stampidia/rest/shirtService/social/:shirtId', {
 	    shirtId:'@shirtId'
 	}, {
 	query : {
@@ -41,8 +57,15 @@
 		    shirtId : p_shirt
 		});
 		console.log('getStamp despues ');
-	    }
+	    },
+            getSales : function(p_shirt) {
+		console.log('getSales STAMP '+ p_shirt);
+		return sales.query({
+			shirtId : p_shirt
+		});
+		console.log('sales despues ');
+	    },
 	}
-    };
-    angular.module('stampidia.services').factory('shirtService', [ '$resource', ShirtService ]);
+   };
+   angular.module('stampidia.services').factory('shirtService', [ '$resource', ShirtService ]);
 }());

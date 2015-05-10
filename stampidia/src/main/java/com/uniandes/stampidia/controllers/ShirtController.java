@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.services.ShirtService;
+import com.uniandes.stampidia.utilities.Constantes;
 import com.uniandes.stampidia.utilities.Resultado;
+import com.uniandes.stampidia.utilities.Status;
+import com.uniandes.stampidia.utilities.enums.EStatusType;
 
 @RestController
 @RequestMapping(value="/rest")
@@ -37,7 +40,8 @@ public class ShirtController {
 			shirts = shirtService.getAllShirts();
 		}
 		ro.setResultado(shirts);
-		ro.setMensajeConsulta("Este es el resultado!");
+		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
+		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(shirts.size());
 		return ro;	
 	}
@@ -65,7 +69,17 @@ public class ShirtController {
 		shirt = shirtService.getShirtById(shirtId);
 		ro.setResultado(shirt);
 		ro.setMensajeConsulta("shirtId:");
-		System.out.print("GetShirtById");
+		return ro;	
+	}
+	
+	@RequestMapping("/shirtService/social/{shirtId}")
+	public Resultado getSalesById(
+			@PathVariable("shirtId")Integer shirtId){
+		Resultado ro = new Resultado();
+		StmpShirt shirt;
+		shirt = shirtService.getSalesById(shirtId);
+		ro.setResultado(shirt);
+		ro.setMensajeConsulta("shirtId:");
 		return ro;	
 	}
 }
