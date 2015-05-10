@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
@@ -34,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "stmp_user")
 @NamedQueries({ @NamedQuery(name = "StmpUser.findAll", query = "SELECT s FROM StmpUser s") })
+@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

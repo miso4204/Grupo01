@@ -1,73 +1,66 @@
 (function() {
 	'use strict';
 
-	var ReportsController = function($rootScope, $scope, $location, appSettings) {
+	var ReportsController = function($rootScope, $scope, $location, appSettings,sessionService,reportService) {
 	    
-	    $scope.addPoints = function () {
-	        var seriesArray = $scope.highchartsNG.series
-	        var rndIdx = Math.floor(Math.random() * seriesArray.length);
-	        seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
+	    $scope.getReportByPeriod = function(){
+		reportService.period(sessionService.authId).$promise.then(function(response){		   		    
+        		    var result = response.resultado;
+        		    var seriesData = [];
+                	    for(var i = 0;i<result.length;i++){
+                		$scope.highchartsNGPeriod.xAxis.categories.push(result[i][0]);
+                		seriesData.push(result[i][2]);
+                	    }  
+                	    $scope.highchartsNGPeriod.series.push({data:seriesData})
+        	    },function(response){
+        		console.log(response);
+        	    }
+		);
 	    };
-
-	    $scope.addSeries = function () {
-	        var rnd = []
-	        for (var i = 0; i < 10; i++) {
-	            rnd.push(Math.floor(Math.random() * 20) + 1)
-	        }
-	        $scope.highchartsNG.series.push({
-	            data: rnd
-	        })
-	    }
-
-	    $scope.removeRandomSeries = function () {
-	        var seriesArray = $scope.highchartsNG.series
-	        var rndIdx = Math.floor(Math.random() * seriesArray.length);
-	        seriesArray.splice(rndIdx, 1)
-	    }
-
-	    $scope.options = {
-	        type: 'line'
-	    }
-
-	    $scope.swapChartType = function () {
-	        if (this.highchartsNG.options.chart.type === 'line') {
-	            this.highchartsNG.options.chart.type = 'bar'
-	        } else {
-	            this.highchartsNG.options.chart.type = 'line'
-	        }
-	    }
-
-	    $scope.highchartsNG = {
-	        options: {
-	            chart: {
-	                type: 'bar'
-	            }
-	        },
-	        series: [{
-	            data: [5,15,3,32,25,60,7,5,0]
-	        }],
-	        title: {
-	            text: 'Hello'
-	        },
-	        loading: false
+	    $scope.getReportBySales = function(){
+		reportService.sales(sessionService.authId).$promise.then(function(response){		   		            		    
+                	    console.log(response);
+        	    },function(response){
+        		console.log(response);
+        	    }
+		);
+	    };
+	    
+	    $scope.getReportByPeriod();
+	    $scope.getReportBySales();
+	    
+	    	    
+	    $scope.highchartsNGPeriod = {
+		    title: {
+			text: 'Number of shirts sold by month',
+		        x: -20 //center
+		    },		        
+		    xAxis: {
+			categories: []
+		    },
+		    yAxis: {
+			title: {
+			    text: '# Shirts sold'
+		        },
+		        plotLines: [{
+		            value: 0,
+		            width: 1,
+		            color: 'fuccsia'
+		        }]
+		    },
+		    tooltip: {
+			valueSuffix: '°C'
+		    },
+		    legend: {
+			layout: 'vertical',
+		        align: 'right',
+		        verticalAlign: 'middle',
+		        borderWidth: 0
+		    },
+		    series:[]
 	    }
 	    
-	    $scope.highchartsNG2 = {
-		        options: {
-		            chart: {
-		                type: 'line'
-		            }
-		        },
-		        series: [{
-		            data: [1,2,3,4,5,6,7,7]
-		        }],
-		        title: {
-		            text: 'Ventas por Producto'
-		        },
-		        loading: false
-		    }
-	};
+	   };
 
-	angular.module('stampidia.controllers').controller('ReportsController',
-			[ '$rootScope', '$scope', '$location', 'appSettings', ReportsController ]);
+	angular.module('stampidia.controllers').controller('ReportsController',	[ '$rootScope', '$scope', '$location', 'appSettings','sessionService','reportService', ReportsController ]);
 }());
