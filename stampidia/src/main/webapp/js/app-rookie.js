@@ -30,7 +30,7 @@
 	    templateUrl : 'partials/login/edit_account.html',
 	    controller : 'RegisterController'
 	}).when('/select_payment', {
-	    templateUrl : 'partials/pay/select_payment.html',
+	    templateUrl : 'partials/pay/select_payment_rookie.html',
 	    controller : 'SelectPaymentController'
 	}).when('/cash_success', {
 	    templateUrl : 'partials/pay/cash_success.html',
