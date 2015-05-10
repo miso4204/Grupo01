@@ -15,6 +15,7 @@
 							<th>Shirt Size</th>
 							<th>Quantity</th>
 							<th>Rate your Product</th>
+							<th>Rate your Stamp</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,6 +30,12 @@
 									on-rating-selected="valorationFunction(rating)">
 								</div>
 								<input type="text" ng-model="comment" ng-hide="hideComment"  ng-blur="rateFunction(comment, orderSel.idShirt.id)"/>
+							</td>
+							<td>
+								<div star-rating ng-model="stampRating"
+									on-rating-selected="valorationStampFunction(stampRating)">
+								</div>
+								<input type="text" ng-model="stampComment" ng-hide="hideStampComment"  ng-blur="rateStampFunction(stampComment, orderSel.idShirt.id)"/>
 							</td>
 						</tr>
 					</tbody>

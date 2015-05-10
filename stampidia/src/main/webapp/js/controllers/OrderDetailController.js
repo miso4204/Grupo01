@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, rateProductService, appSettings) {
+    var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, rateProductService, rateDesignService, appSettings) {
 
 	$scope.selectedOrderDetail={};
 
@@ -20,6 +20,7 @@
 	    
 	    //rating
 	    
+	    //rating shirt data
 	    $scope.rating = {};
 	    $scope.comment;
 	    $scope.hideComment = true;
@@ -53,11 +54,47 @@
 			console.log('Error: ' +response);
 		    })
 	    };
+	    
+	    //rating stamp data
+	    $scope.stampRating = {};
+	    $scope.stampComment;
+	    $scope.hideStampComment = true;
+	    
+	    $scope.valorationStampFunction = function(ratingStamp) {
+		$scope.hideStampComment = false;
+		$scope.stampRating=ratingStamp;
+	    };
+	    
+	    $scope.rateStampFunction = function(stampComment, shirt) {
+	      
+	      rateDesignService.update({  valoration : $scope.rating,
+		  comment : stampComment,
+		  idShirt : {
+		    id : shirt
+		  }, 
+		  idUser : {
+		    id : sessionService.id
+		  } }).$promise.then(function(response){
+		      
+		      $scope.hideComment = true;
+
+			if(response.estado.type=='OK')
+			{
+			   
+			}else{
+			    //TODO send error
+			}
+
+		    }, function(response) {
+			console.log('Error: ' +response);
+		    })
+	    };
+	    
     };
     
     
     angular.module('stampidia.controllers').controller('OrderDetailController',
-	    [ '$rootScope', '$scope', '$location', 'orderService', 'orderDetailService','sessionService', 'rateProductService', 'appSettings',  OrderDetailController ]).directive("starRating", function() {
+	    [ '$rootScope', '$scope', '$location', 'orderService', 'orderDetailService','sessionService', 'rateProductService', 'rateDesignService', 'appSettings',  OrderDetailController ]).directive("starRating", function() {
 		  return {
 		      restrict : "EA",
 		      template : "<ul class='rating' ng-class='{readonly: readonly}'>" +
