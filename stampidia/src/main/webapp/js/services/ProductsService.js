@@ -34,7 +34,7 @@
 		}else{
 		    return products.query();
 		}
-	    }
+	    },
 	}
     };
     angular.module('stampidia.services').factory('productsService', [ '$resource', ProductsService ]);
