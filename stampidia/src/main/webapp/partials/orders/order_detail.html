@@ -14,6 +14,7 @@
 							<th>Shirt Color</th>
 							<th>Shirt Size</th>
 							<th>Quantity</th>
+							<th>Rate your Product</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -23,11 +24,16 @@
 							<td>{{ orderSel.idShirt.idColor.name}}</td>
 							<td>{{ orderSel.idShirt.idSize.name}}</td>
 							<td>{{ orderSel.quantity}}</td>
+							<td>
+								<div star-rating ng-model="rating"
+									on-rating-selected="valorationFunction(rating)">
+								</div>
+								<input type="text" ng-model="comment" ng-hide="hideComment"  ng-blur="rateFunction(comment, orderSel.idShirt.id)"/>
+							</td>
 						</tr>
 					</tbody>
 				</table>
-			</h5>
-
 		</div>
+
 	</div>
 </section>
