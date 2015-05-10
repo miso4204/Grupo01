@@ -5,20 +5,12 @@
  */
 package com.uniandes.stampidia.model;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
  *
@@ -28,6 +20,7 @@ import javax.validation.constraints.Size;
 @Table(name = "stmp_stamp_rating")
 @NamedQueries({
     @NamedQuery(name = "StmpStampRating.findAll", query = "SELECT s FROM StmpStampRating s")})
+@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpStampRating implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
