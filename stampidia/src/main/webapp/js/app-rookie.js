@@ -14,11 +14,11 @@
     var Configuration = function($routeProvider, $compileProvider, $locationProvider, $httpProvider) {
 
 	$httpProvider.interceptors.push('httpInterceptor');
-	$routeProvider.when('/products', {
-	    templateUrl : 'partials/products/products.html',
+	$routeProvider.when('/products-rookie', {
+	    templateUrl : 'partials/products/products--rookie.html',
 	    controller : 'ProductsController'
-	}).when('/stamps', {
-	    templateUrl : 'partials/products/stamps.html',
+	}).when('/stamps-rookie', {
+	    templateUrl : 'partials/products/stamps-rookie.html',
 	    controller : 'StampsController'
 	}).when('/login', {
 	    templateUrl : 'partials/login/login.html',
