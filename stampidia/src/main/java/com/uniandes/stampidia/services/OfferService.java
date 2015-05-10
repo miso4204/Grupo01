@@ -27,7 +27,8 @@ public class OfferService {
         return offerRepository.save(offer);
     }
 
-    public StmpOfert getActiveSpecialOffer() {
-        return null;
+    public Object getActiveSpecialOffer() {
+        List<Object> activeOffers = offerRepository.listAllActive();
+        return activeOffers.get(0);
     }
 }

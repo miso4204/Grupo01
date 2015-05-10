@@ -9,20 +9,22 @@
     /**
      * Servicio encargado de mantener la información del usuario que se encuentra actualmente logueado
      */
-    var SessionService = function() {
-	this.create = function(authId, authToken, authPermission, id) {
-	    this.authId = authId;
-	    this.authToken = authToken;
-	    this.authPermission = authPermission;
-	    this.id = id;
+    var SessionService = function($cookieStore) {
+	//this.create = function(authId, authToken, authPermission, id) {
+	this.create = function() {
+        var user = $cookieStore.get('authUser');
+	    this.authId = user.username;
+	    this.authToken = 'asdasdasdasdasd';
+	    this.authPermission = 'ROLE_BUYER';
+	    this.id = user.id;
 	};
 	this.destroy = function() {
 	    this.authId = null;
 	    this.authToken = null;
 	    this.authPermission = null;
-		this.userId = null;
+		this.id = null;
 	};
 	return this;
     };
-    angular.module('stampidia.services').factory('sessionService', [ SessionService ]);
+    angular.module('stampidia.services').factory('sessionService', ['$cookieStore', SessionService ]);
 }());
