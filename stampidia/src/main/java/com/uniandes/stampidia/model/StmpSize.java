@@ -21,7 +21,6 @@ import java.util.List;
 @Table(name = "stmp_size")
 @NamedQueries({
     @NamedQuery(name = "StmpSize.findAll", query = "SELECT s FROM StmpSize s")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpSize implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

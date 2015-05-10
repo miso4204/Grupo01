@@ -20,7 +20,6 @@ import java.math.BigInteger;
 @Table(name = "stmp_order_detail")
 @NamedQueries({
     @NamedQuery(name = "StmpOrderDetail.findAll", query = "SELECT s FROM StmpOrderDetail s")})
-@JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
 public class StmpOrderDetail implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
