@@ -3,7 +3,9 @@ package com.uniandes.stampidia.utilities;
 public enum Constantes {
     SUCCESS_RESULT("Resultado exitoso"),
     ERROR_RESULT("Resultado fallido - ocurrió un error al realizar la acción"),
-    INVALID_PARAMS_RESULT("Resultado fallido - parámetros de entrada inválidos");
+    INVALID_PARAMS_RESULT("Resultado fallido - parámetros de entrada inválidos"),
+
+    PLAN_BUSSINESS("Business");
 
     private String description;
 

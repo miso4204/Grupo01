@@ -10,6 +10,14 @@
 	  isArray : false
 	}
 	});
+	var sales = $resource('http://localhost:8080/stampidia/rest/stampService/social/:stampId', {
+	    stampId:'@stampId'
+	}, {
+	query : {
+	  method : "GET",
+	  isArray : false
+	}
+	});
 	var list_stamps = $resource('http://localhost:8080/stampidia/rest/stampService/', {
 	    categoryId : '@categoryId'
 	}, {
@@ -68,6 +76,13 @@
 		}else{
 		    return list_stamps.query();
 		}
+	    },
+            getSales : function(p_stamp) {
+		console.log('getSales STAMP '+p_stamp);
+		return sales.query({
+			stampId : p_stamp
+		});
+		console.log('sales despues ');
 	    },
 	}	
     };

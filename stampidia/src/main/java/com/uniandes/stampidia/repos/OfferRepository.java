@@ -14,5 +14,5 @@ import java.util.List;
 public interface OfferRepository extends CrudRepository<StmpOfert,Integer> {
 
     @Query(value="select s from StmpOfert s where s.status = true ")
-    List<Object[]> listAllActive();
+    List<Object> listAllActive();
 }

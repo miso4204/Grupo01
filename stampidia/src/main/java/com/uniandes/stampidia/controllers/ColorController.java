@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uniandes.stampidia.model.StmpColor;
 import com.uniandes.stampidia.services.ColorService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -25,7 +26,7 @@ public class ColorController {
 	public Resultado getSizes(){
 		Resultado ro = new Resultado();	
 		List<StmpColor> colors = colorService.getAllColors();
-		ro.setResultado(colors);
+		ro.setResultado(ConvertObjetHelper.listToMap(colors));
 		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
 		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(colors.size());

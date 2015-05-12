@@ -6,9 +6,11 @@ import com.uniandes.stampidia.model.StmpStampRating;
 import com.uniandes.stampidia.services.CartService;
 import com.uniandes.stampidia.services.StampRatingService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +34,7 @@ public class RateDesignsController {
             StmpStampRating newRating = ratingService.createStampRating(rating);
 
             if(newRating != null){
-                resultado.setResultado(newRating);
+                resultado.setResultado(ConvertObjetHelper.objectToMap(newRating));
                 resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
             }else {
                 resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));

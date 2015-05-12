@@ -102,7 +102,7 @@ CREATE TABLE stmp_order (
     id integer NOT NULL,
     id_user integer NOT NULL,
     id_payment_type integer,
-    id_shipping_type integer DEFAULT 1 NOT NULL,
+    id_shipping_type integer DEFAULT 1,
     date date DEFAULT ('now'::text)::date NOT NULL,
     shipping_status boolean DEFAULT true NOT NULL,
     payment_status boolean DEFAULT true NOT NULL,

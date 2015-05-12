@@ -31,6 +31,14 @@
 	  isArray : false
 	}
 	});
+	var sales = $resource('http://localhost:8080/stampidia/rest/shirtService/social/:shirtId', {
+	    shirtId:'@shirtId'
+	}, {
+	query : {
+	  method : "GET",
+	  isArray : false
+	}
+	});
 	return {
 	    createShirt : function(p_shirtText,p_shirtIdColor,p_shirtIdStyle,p_shirtIdSize,p_shirtIdStamp,p_shirtIdUser) {
 		console.log('p_shirtText '+p_shirtText);
@@ -49,7 +57,14 @@
 		    shirtId : p_shirt
 		});
 		console.log('getStamp despues ');
-	    }
+	    },
+            getSales : function(p_shirt) {
+		console.log('getSales STAMP '+ p_shirt);
+		return sales.query({
+			shirtId : p_shirt
+		});
+		console.log('sales despues ');
+	    },
 	}
    };
    angular.module('stampidia.services').factory('shirtService', [ '$resource', ShirtService ]);

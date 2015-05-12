@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
@@ -176,7 +177,6 @@ public class StmpUser implements Serializable {
 		this.status = status;
 	}
 
-	@JsonIgnore
 	public List<StmpShirt> getStmpShirtList() {
 		return stmpShirtList;
 	}
@@ -185,7 +185,6 @@ public class StmpUser implements Serializable {
 		this.stmpShirtList = stmpShirtList;
 	}
 
-	@JsonIgnore
 	public List<StmpStamp> getStmpStampList() {
 		return stmpStampList;
 	}
@@ -194,7 +193,6 @@ public class StmpUser implements Serializable {
 		this.stmpStampList = stmpStampList;
 	}
 
-	@JsonIgnore
 	public List<StmpShirtRating> getStmpShirtRatingList() {
 		return stmpShirtRatingList;
 	}
@@ -203,7 +201,6 @@ public class StmpUser implements Serializable {
 		this.stmpShirtRatingList = stmpShirtRatingList;
 	}
 
-	@JsonIgnore
 	public List<StmpOrder> getStmpOrderList() {
 		return stmpOrderList;
 	}
@@ -220,7 +217,6 @@ public class StmpUser implements Serializable {
 		this.idPlan = idPlan;
 	}
 
-	@JsonIgnore
 	public List<StmpStampRating> getStmpStampRatingList() {
 		return stmpStampRatingList;
 	}

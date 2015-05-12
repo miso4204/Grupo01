@@ -36,6 +36,7 @@
                 cartService.update($rootScope.order).$promise.then(
                 function(response){
                         console.log('Save Order' + response);
+                        $rootScope.order.stmpOrderDetailList = setOrderId($rootScope.order.stmpOrderDetailList, response.resultado.id);
                         $location.url("/select_payment");
                     }, function(response){
                         console.log(response);
@@ -58,6 +59,19 @@
             order.idUser.username = sessionService.authId;
 
             return order;
+        }
+
+        var setOrderId = function(items, orderId){
+
+            console.log('Setea los id');
+
+            for(var i = 0 ; i < items.length; i++){
+                items[i].idOrder = {};
+                items[i].idOrder.id = orderId;
+                items[i].idUser = {};
+                items[i].idUser.id = sessionService.id;
+            }
+            return items;
         }
 
         $scope.launch = function(which){

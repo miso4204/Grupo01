@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.uniandes.stampidia.model.StmpColor;
-import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.model.StmpShirtStyle;
 import com.uniandes.stampidia.model.StmpSize;
@@ -93,6 +92,9 @@ public class ShirtService {
 		return shirtRepository.findOne(shirtId);
 	}
 	
+	public StmpShirt getSalesById(Integer shirtId){		
+		return shirtRepository.findOne(shirtId);
+	}
 	
 
 }

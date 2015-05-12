@@ -1,0 +1,66 @@
+<section>
+	<div class="container">
+		<div class="product-details">
+			<!--product-details-->
+			<div class="col-sm-5">
+				<div class="view-product-stamp">
+					<div class="img-overlay">
+						<img src="http://cosmicbobo.com/images/PLAIN_WHT_01.jpg" class="img-responsive" />
+						<div class="project-overlay">
+							<img ng-src="{{product.stamp.image}}" alt="" class="img-responsive" />
+							<div class="col-lg-6">
+								<p class="stamp_text">{{product.text}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form name="createProductForm" role="form">
+				<div class="col-sm-7">
+					<div id="reviews" class="product-details">
+						<!--product-details-->
+						<!--Messages-->
+						<div ng-show="createProductForm.product_text.$dirty">
+							<div ng_show="createProductForm.product_text.$error.required" class="alert alert-danger" role="alert">Campo Obligatorio</div>
+						</div>
+						<h2>{{product.stamp.name}}</h2>
+						<div class="form-group">
+							<p>
+								<b>Talla</b>
+							</p>
+							<select ng-options="size.name for size in sizes track by size.id" ng-model="product.size" required>
+								<option value=''>- Please Choose -</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<p>
+								<b>Color</b>
+							</p>
+							<select name="color_id" ng-options="color.name for color in colorsShirt track by color.id" ng-model="product.color" required>
+								<option value=''>- Please Choose -</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<p>
+								<b>Styles</b>
+							</p>
+							<select ng-options="style.name for style in shirtStyles track by style.id" ng-model="product.styleShirt" required>
+								<option value=''>- Please Choose -</option>
+							</select>
+						</div>
+						<div class="form-group" ng-class="{ 'has-error' : createProductForm.product_text.$invalid,
+													'has-success' : createProductForm.product_text.$valid }">
+							<p>
+								<b>Text</b>
+							</p>
+							<input name="product_text" placeholder="Text" type="text" ng-model="product.text" required>
+						</div>
+						<button ng_disabled="createProductForm.$invalid" class="btn btn-fefault cart" data-toggle = "modal" type="button" ng-click="createProduct()">Create Product</button>
+					</div>
+					<!--/product-details-->
+				</div>
+			</form>
+		</div>
+		<!--/product-details-->
+	</div>
+</section>

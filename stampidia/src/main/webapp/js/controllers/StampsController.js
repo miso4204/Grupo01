@@ -53,6 +53,7 @@
 	}
 	
 	var init = function(){
+	    $('#list-stamps .features_list').hide();
 	    $scope.listCategories();
 	    $scope.listStamps();
 	}

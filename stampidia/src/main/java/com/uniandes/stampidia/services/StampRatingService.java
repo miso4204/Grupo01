@@ -24,9 +24,19 @@ public class StampRatingService {
 	
 	@Autowired
 	private StampratingRepository stampratingRepository;
+	@Autowired
+	private StampRepository stampRepository;
+    @Autowired
+	private UserRepository userRepository;
 
 	public StmpStampRating createStampRating(StmpStampRating rating){
-		return stampratingRepository.save(rating);
+        if(rating.getIdUser() != null && rating.getIdStamp() != null) {
+            rating.setIdStamp(stampRepository.findOne(rating.getIdStamp().getId()));
+            rating.setIdUser(userRepository.findOne(rating.getIdUser().getId()));
+
+            return stampratingRepository.save(rating);
+        }
+		return null;
 	}
 	
 }

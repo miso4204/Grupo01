@@ -5,20 +5,12 @@
  */
 package com.uniandes.stampidia.model;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
 *
@@ -27,7 +19,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "stmp_ofert")
 @NamedQueries({
-    @NamedQuery(name = "StmpOfert.findAll", query = "SELECT s FROM StmpOfert s")})
+    @NamedQuery(name = "StmpOfert.findAll", query = "SELECT s FROM StmpOfert s WHERE s.status = true")})
 public class StmpOfert implements Serializable {
    private static final long serialVersionUID = 1L;
    @Id

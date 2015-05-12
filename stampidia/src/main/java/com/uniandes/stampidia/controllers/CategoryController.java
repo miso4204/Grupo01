@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uniandes.stampidia.model.StmpCategory;
 import com.uniandes.stampidia.services.CategoryService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -25,7 +26,7 @@ public class CategoryController {
 	public Resultado getSizes(){
 		Resultado ro = new Resultado();	
 		List<StmpCategory> category = categoryService.getAllCategories();
-		ro.setResultado(category);
+		ro.setResultado(ConvertObjetHelper.listToMap(category));
 		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
 		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(category.size());

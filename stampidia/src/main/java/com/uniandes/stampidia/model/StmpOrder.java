@@ -5,19 +5,14 @@
  */
 package com.uniandes.stampidia.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.Serializable;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Fetch;
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -131,7 +126,6 @@ public class StmpOrder implements Serializable {
         this.totalAmount = totalAmount;
     }
 
-    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;
     }
