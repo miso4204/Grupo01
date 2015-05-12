@@ -80,7 +80,6 @@
     function getDetailByShirtId(element, shirtId){
         return element.idShirt.id === shirtId;
     }
-    /*
     $scope.getSpecialOffer = function(){
         console.log("Entra a getSpecialOffer");
         offerService.getOffer().$promise.then(
@@ -94,7 +93,16 @@
             }
         );
     }
-    $scope.getSpecialOffer();*/
+    $scope.getSpecialOffer();
+
+    $scope.hasNoOffers = function() {
+        console.log('special offer : ' + $rootScope.specialOffer);
+        if ($rootScope.specialOffer == undefined) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 	var init = function(){
 	    console.log("init");
