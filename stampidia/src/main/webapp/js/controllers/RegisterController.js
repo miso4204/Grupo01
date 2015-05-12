@@ -25,6 +25,7 @@
 		$scope.user.resultado.address = $scope.signupData.address;
 		$scope.user.resultado.password = $scope.signupData.password;
 		registerService.update($scope.user.resultado);
+		$location.url("/");
 	    });
 	}
 
