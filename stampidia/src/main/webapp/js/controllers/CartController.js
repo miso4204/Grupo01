@@ -42,6 +42,7 @@
                         function(response){
                             console.log('Save Order' + response);
                             $rootScope.order.stmpOrderDetailList = response.resultado;
+                            $rootScope.itemCount = 0;
                             $location.url("/select_payment");
                         }, function(response){
                             console.log(response);
