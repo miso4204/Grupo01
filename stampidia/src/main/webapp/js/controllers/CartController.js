@@ -22,37 +22,37 @@
             $rootScope.order.stmpOrderDetailList.splice(indx, 1)
         }
 
-        $scope.continueFlag = function(){
-            if($rootScope.order != null){
-                return $rootScope.order.stmpOrderDetailList.length == 0;
-            }
-            return true;
-        }
-
         $scope.saveOrder = function(){
             if($rootScope.order != null){
                 console.log("Entra a saveOrder")
                 $rootScope.order = fillOrder($rootScope.order);
+                var newOrder = {};
                 cartService.update($rootScope.order).$promise.then(
                 function(response){
                     console.log('Save Order' + response);
+                    newOrder = response.resultado;
                     $rootScope.order.stmpOrderDetailList = setOrderId($rootScope.order.stmpOrderDetailList, response.resultado.id);
-                    cartService.updateDetails($rootScope.order.stmpOrderDetailList).$promise.then(
-                        function(response){
-                            console.log('Save Order' + response);
-                            $location.url("/select_payment");
-                        }, function(response){
-                            console.log(response);
-                            $scope.error = true;
-                            $scope.launch('error');
-                        }
-                    );
                     }, function(response){
                         console.log(response);
                         $scope.error = true;
                         $scope.launch('error');
                     }
                 );
+                var newDetails = {};
+                cartService.updateDetails($rootScope.order.stmpOrderDetailList).$promise.then(
+                    function(response){
+                        console.log('Save Order' + response);
+                        newDetails = response.resultado;
+                    }, function(response){
+                        console.log(response);
+                        $scope.error = true;
+                        $scope.launch('error');
+                    }
+                );
+                $rootScope.order = newOrder;
+                $rootScope.order.stmpOrderDetailList = newDetails;
+                $rootScope.itemCount = 0;
+                $location.url("/select_payment");
             }
         }
 
