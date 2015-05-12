@@ -57,7 +57,7 @@ public class StampController {
 		Resultado resultado = new Resultado();
         StmpStamp stamp = new StmpStamp();
         stamp = stampService.addStamp(stampName, stampDescription,stampImage,stampTags,stampArtist,stampSalesNumber,stampCategory,stampPrice);
-        resultado.setResultado(stamp);
+        resultado.setResultado(ConvertObjetHelper.objectToMap(stamp));
         return resultado;
         
 		

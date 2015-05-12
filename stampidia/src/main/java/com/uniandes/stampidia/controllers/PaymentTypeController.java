@@ -15,6 +15,7 @@ import com.uniandes.stampidia.repos.OrderRepository;
 import com.uniandes.stampidia.repos.PaymentTypeRepository;
 import com.uniandes.stampidia.services.PaymentTypeService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -41,7 +42,7 @@ public class PaymentTypeController {
 	public Resultado getPaymentTypes(){
 		Resultado ro = new Resultado();	
 		List<StmpPaymentType> paymentTypes = paymentTypeService.getAllPaymentTypes();
-		ro.setResultado(paymentTypes);
+		ro.setResultado(ConvertObjetHelper.listToMap(paymentTypes));
 		ro.setMensajeConsulta("Este es el resultado!");
 		ro.setTotalObjetos(paymentTypes.size());
 		return ro;
@@ -64,7 +65,7 @@ public class PaymentTypeController {
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(false);
-            resultado.setResultado(orderRepository.save(order));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(orderRepository.save(order)));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
@@ -91,7 +92,7 @@ public class PaymentTypeController {
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(true);
-            resultado.setResultado(orderRepository.save(order));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(orderRepository.save(order)));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
@@ -118,7 +119,7 @@ public class PaymentTypeController {
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(true);
-            resultado.setResultado(orderRepository.save(order));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(orderRepository.save(order)));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
