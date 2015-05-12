@@ -1,0 +1,5 @@
+ChangePassword;UserController.java
+RateDesigns;RateDesignsController.java
+RateProducts;RateProductsController.java
+Reports;ReportsController.java
+SpecialOffers;SpecialOffersController.java

@@ -4,6 +4,8 @@
     var CartController = function($rootScope, $scope, $cookieStore, $location,$dialogs, sessionService, cartService){
 
         $rootScope.order = $cookieStore.get('order');
+        $scope.order = $cookieStore.get('order');
+        console.log('order de COOKIE : '+JSON.stringify($rootScope.order));
 
         $scope.increaseQuantity = function(data){
             data.quantity = data.quantity + 1;
@@ -23,36 +25,47 @@
         }
 
         $scope.continueFlag = function(){
-            if($rootScope.order != null){
-                return $rootScope.order.stmpOrderDetailList.length == 0;
-            }
-            return true;
-        }
+                        if($rootScope.order != null){
+                                return $rootScope.order.stmpOrderDetailList.length == 0;
+                            }
+                       return true;
+                    }
+
 
         $scope.saveOrder = function(){
-            if($rootScope.order != null){
+            if($scope.order != null){
                 console.log("Entra a saveOrder")
-                $rootScope.order = fillOrder($rootScope.order);
-                cartService.update($rootScope.order).$promise.then(
+                $scope.order = fillOrder($scope.order);
+                cartService.update($scope.order).$promise.then(
                 function(response){
-                    console.log('Save Order' + response);
-                    $rootScope.order.stmpOrderDetailList = setOrderId($rootScope.order.stmpOrderDetailList, response.resultado.id);
-                    cartService.updateDetails($rootScope.order.stmpOrderDetailList).$promise.then(
-                        function(response){
-                            console.log('Save Order' + response);
-                            $location.url("/select_payment");
-                        }, function(response){
-                            console.log(response);
-                            $scope.error = true;
-                            $scope.launch('error');
-                        }
-                    );
-                    }, function(response){
+
+                    $scope.newOrder = response.resultado;
+                    $rootScope.order = angular.copy($scope.newOrder);
+                    console.log($scope.order.stmpOrderDetailList);
+                    $scope.order.stmpOrderDetailList = setOrderId($scope.order.stmpOrderDetailList, response.resultado.id);
+                    
+                    cartService.updateDetails($scope.order.stmpOrderDetailList).$promise.then(
+                            function(response){
+                                console.log('Save Order' + response);
+                                $scope.newDetails = response.resultado;
+                                $rootScope.order.stmpOrderDetailList = angular.copy($scope.newDetails);
+                            }, function(response){
+                                console.log(response);
+                                $scope.error = true;
+                                $scope.launch('error');
+                            }
+                        );
+                }, function(response){
                         console.log(response);
                         $scope.error = true;
                         $scope.launch('error');
                     }
                 );
+                
+
+                $rootScope.itemCount = 0;
+                console.log('id de la orden al final ' + $scope.newOrder + '|' + $rootScope.order);
+                $location.url("/select_payment");
             }
         }
 

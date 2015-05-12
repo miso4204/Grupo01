@@ -4,8 +4,13 @@
     var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, rateProductService, rateDesignService, appSettings) {
 
 	$scope.selectedOrderDetail={};
-
-	    var res= orderDetailService.get({ id: $rootScope.selectedOrder }).$promise.then(function(response){
+		
+	   if($rootScope.order != undefined) 
+	       $scope.ord=$rootScope.order.id;
+	   if($rootScope.selectedOrder != undefined) 
+	       $scope.ord=$rootScope.selectedOrder;
+	
+	    var res= orderDetailService.get({ id: $scope.ord }).$promise.then(function(response){
 
 		if(response.estado.type=='OK')
 		{
