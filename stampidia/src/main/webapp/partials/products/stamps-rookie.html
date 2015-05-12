@@ -1,0 +1,83 @@
+ 
+
+<section>
+   <div class="header-bottom">
+        <!--header-bottom-->
+		<div class="container">
+			<div class="row">					
+				<div class="col-sm">
+					<div class="search_box pull-right">
+						<input type="text" placeholder="Search" ng-model="search"/>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<h2>Category</h2>
+					<div class="panel-group category-products" id="accordian">
+						<!--category-productsr-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="" ng-click="listStamps()">All</a>
+								</h4>
+								<h4 class="panel-title" data-ng-repeat="category in categories">
+									<a href="" ng-click="selectCategory(category.id)">{{category.name}}</a>
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div class="shipping text-center">
+						<!--shipping-->
+						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div>			
+				<div class="col-sm-9 padding-right">
+					<h2 class="title text-center">Stamps</h2>
+					<div class="features_list" id="cart_items">
+						<div class="table-responsive cart_info">
+						<table class="table table-condensed">
+					  	  <thead>
+							<tr class="cart_menu">
+							  <td class="image">Image</td>
+							  <td class="description">Name</td>
+							  <td class="size">Category</td>
+						      <td class="price">Price</td>
+							  <td class="total"></td>
+							  <td></td>
+							</tr>
+						  </thead>		
+					      <tbody>
+					       <tr data-ng-repeat="stamp in stamps | filter: search">
+				   		    <td class="cart_product">
+								<a href="#/stamp-details/{{stamp.id}}" >
+								<img ng-src="{{stamp.image}}" height="75" width="75" alt="" class="img-responsive" />											
+	  					  	</td>
+						  	<td class="">
+								{{stamp.name}}
+	  					  	</td>
+	  					  	<td class="cart_price">
+								{{stamp.idCategory.description}}
+	 					  	</td>
+				   		  	<td class="cart_total">
+								<p class="cart_total_price">{{stamp.price | currency : symbol : fractionSize}}</p>
+	  					  	</td>
+	  					  	 <td class="cart_total">
+								<a href="#/create-product/{{stamp.id}}" ng-click="loadCreateProduct(stamp.id)" class="btn btn-default add-to-cart">Create product</a>
+	  					  	</td>
+					  	   </tr>
+					  	</tbody>
+						</table>
+			    	 </div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

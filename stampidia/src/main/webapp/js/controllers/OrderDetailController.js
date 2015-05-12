@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, rateProductService, appSettings) {
+    var OrderDetailController = function($rootScope, $scope, $location, orderService, orderDetailService, sessionService, rateProductService, rateDesignService, appSettings) {
 
 	$scope.selectedOrderDetail={};
 
@@ -20,18 +20,18 @@
 	    
 	    //rating
 	    
-	    $scope.rating = {};
+	    //rating shirt data
+	    $scope.shirtRating = {};
 	    $scope.comment;
 	    $scope.hideComment = true;
 	    
-	    $scope.valorationFunction = function(rating) {
+	    $scope.valorationFunction = function() {
 		$scope.hideComment = false;
-		$scope.rating=rating;
 	    };
 	    
-	    $scope.rateFunction = function(comment, shirt) {
+	    $scope.rateFunction = function(comment, shirt, shirtRating) {
 	      
-	      rateProductService.update({  valoration : $scope.rating,
+	      rateProductService.update({  valoration : shirtRating,
 		  comment : comment,
 		  idShirt : {
 		    id : shirt
@@ -53,11 +53,46 @@
 			console.log('Error: ' +response);
 		    })
 	    };
+	    
+	    //rating stamp data
+	    $scope.stampRating = {};
+	    $scope.stampComment;
+	    $scope.hideStampComment = true;
+	    
+	    $scope.valorationStampFunction = function() {
+		$scope.hideStampComment = false;
+	    };
+	    
+	    $scope.rateStampFunction = function(stampComment, stamp, stampRating) {
+	      
+	      rateDesignService.update({  valoration : stampRating,
+		  comment : stampComment,
+		  idStamp : {
+		    id : stamp
+		  }, 
+		  idUser : {
+		    id : sessionService.id
+		  } }).$promise.then(function(response){
+		      
+		      $scope.hideStampComment = true;
+
+			if(response.estado.type=='OK')
+			{
+			   
+			}else{
+			    //TODO send error
+			}
+
+		    }, function(response) {
+			console.log('Error: ' +response);
+		    })
+	    };
+	    
     };
     
     
     angular.module('stampidia.controllers').controller('OrderDetailController',
-	    [ '$rootScope', '$scope', '$location', 'orderService', 'orderDetailService','sessionService', 'rateProductService', 'appSettings',  OrderDetailController ]).directive("starRating", function() {
+	    [ '$rootScope', '$scope', '$location', 'orderService', 'orderDetailService','sessionService', 'rateProductService', 'rateDesignService', 'appSettings',  OrderDetailController ]).directive("starRating", function() {
 		  return {
 		      restrict : "EA",
 		      template : "<ul class='rating' ng-class='{readonly: readonly}'>" +
