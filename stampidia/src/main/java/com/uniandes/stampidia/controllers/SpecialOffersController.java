@@ -67,22 +67,17 @@ public class SpecialOffersController {
         return resultado;
     }
 
-    @RequestMapping(value="/specialoffer/{plan}",method= RequestMethod.GET)
-    public Resultado getSpecialOfferAvailable(@PathVariable("plan") String plan){
+    @RequestMapping(value="/specialoffer",method= RequestMethod.GET)
+    public Resultado getSpecialOfferAvailable(){
         Resultado resultado = new Resultado();
 
-        if(plan != null && plan.equals(Constantes.PLAN_BUSSINESS.getDescription())) {
+        Object offer = offerService.getActiveSpecialOffer();
 
-            Object offer = offerService.getActiveSpecialOffer();
-
-            if (offer != null) {
-                resultado.setResultado(offer);
-                resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-            } else {
-                resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
-            }
-        }else{
+        if (offer != null) {
+            resultado.setResultado(offer);
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
+        } else {
+            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
         }
 
         return resultado;

@@ -2,9 +2,7 @@
     'use strict';
     var OfferService = function($resource, $window) {
 
-        var getActiveOffer = $resource('http://localhost:8080/stampidia/rest/specialoffer/:plan', {
-                plan : '@plan'
-            },
+        var getActiveOffer = $resource('http://localhost:8080/stampidia/rest/specialoffer', null,
             {
                 getOffer : {
                     method : "GET"
@@ -13,10 +11,9 @@
         );
 
         return {
-            getOffer : function(plan){
-                console.log(plan);
+            getOffer : function(){
+                console.log();
                 return getActiveOffer.getOffer({
-                    plan : plan
                 });
             }
         }
