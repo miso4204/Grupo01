@@ -65,7 +65,8 @@ public class PaymentTypeController {
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(false);
-            resultado.setResultado(ConvertObjetHelper.objectToMap(orderRepository.save(order)));
+            orderRepository.save(order);
+            resultado.setResultado(ConvertObjetHelper.objectToMap(order));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {

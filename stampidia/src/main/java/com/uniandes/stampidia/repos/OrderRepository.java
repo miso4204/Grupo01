@@ -16,7 +16,7 @@ public interface OrderRepository extends CrudRepository<StmpOrder,Integer> {
     @Override
     StmpOrder findOne(Integer integer);
 
-    StmpOrder save(StmpOrder order);
+//    StmpOrder save(StmpOrder order);
 
     void delete(StmpOrder order);
 
