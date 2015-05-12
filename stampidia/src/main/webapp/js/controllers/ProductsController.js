@@ -1,6 +1,7 @@
 (function() {
     'use strict';
 
+    //var ProductsController = function($rootScope, $scope, $cookieStore, productsService, categoriesService,offerService, sessionService, cartService, appSettings) {
     var ProductsController = function($rootScope, $scope, $cookieStore, productsService, categoriesService, sessionService, cartService, appSettings) {
 	$scope.listProducts = function(id){
 	    productsService.listProducts(id).$promise.then(
@@ -80,7 +81,7 @@
     function getDetailByShirtId(element, shirtId){
         return element.idShirt.id === shirtId;
     }
-
+    /*
     $scope.getSpecialOffer = function(){
         console.log("Entra a getSpecialOffer");
         offerService.getOffer().$promise.then(
@@ -94,7 +95,7 @@
             }
         );
     }
-    getSpecialOffer();
+    $scope.getSpecialOffer();*/
 
 	var init = function(){
 	    console.log("init");
@@ -114,6 +115,7 @@
 	init();
 
     };
+    //angular.module('stampidia.controllers').controller('ProductsController', [ '$rootScope','$scope', '$cookieStore', 'productsService', 'categoriesService', 'offerService', 'sessionService','cartService', 'appSettings', ProductsController ]);
     angular.module('stampidia.controllers').controller('ProductsController', [ '$rootScope','$scope', '$cookieStore', 'productsService', 'categoriesService', 'sessionService','cartService', 'appSettings', ProductsController ]);
 
 }());
