@@ -36,10 +36,12 @@
                 cartService.update($rootScope.order).$promise.then(
                 function(response){
                     console.log('Save Order' + response);
+                    $rootScope.order = response.resultado;
                     $rootScope.order.stmpOrderDetailList = setOrderId($rootScope.order.stmpOrderDetailList, response.resultado.id);
                     cartService.updateDetails($rootScope.order.stmpOrderDetailList).$promise.then(
                         function(response){
                             console.log('Save Order' + response);
+                            $rootScope.order.stmpOrderDetailList = response.resultado;
                             $location.url("/select_payment");
                         }, function(response){
                             console.log(response);
