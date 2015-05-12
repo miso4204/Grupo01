@@ -34,6 +34,10 @@
 				</div>
 			</div>
 			<div id="list-products">
+                <div ng-hide="hasNoOffers()" class="col-sm-9 padding-right">
+                    <h2 class="title text-center">Special Offers</h2>
+                    <h3 class="panel-title text-center special-offer">{{specialOffer.name}} : Today {{specialOffer.discount}} % off in all T-Shirts!</h3>
+                </div>
 				<div class="col-sm-9 padding-right" >
 				<h2 class="title text-center">Products</h2>
 			    	    <div class="icons-mode-view">
