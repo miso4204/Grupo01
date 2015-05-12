@@ -10,7 +10,7 @@
 	    console.log('bad' + response);
 	});
 	$scope.goHome = function() {
-	    $location.url('/');
+	    $location.url('/order-details');
 	};
 	$scope.deliveryDay = function() {
 	    var month = new Array();

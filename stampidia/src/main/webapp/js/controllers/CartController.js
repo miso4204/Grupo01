@@ -42,24 +42,26 @@
                     $scope.newOrder = response.resultado;
                     $rootScope.order = angular.copy($scope.newOrder);
                     console.log($scope.order.stmpOrderDetailList);
-                    $rootScope.order.stmpOrderDetailList = setOrderId($scope.order.stmpOrderDetailList, response.resultado.id);
+                    $scope.order.stmpOrderDetailList = setOrderId($scope.order.stmpOrderDetailList, response.resultado.id);
+                    
+                    cartService.updateDetails($scope.order.stmpOrderDetailList).$promise.then(
+                            function(response){
+                                console.log('Save Order' + response);
+                                $scope.newDetails = response.resultado;
+                                $rootScope.order.stmpOrderDetailList = angular.copy($scope.newDetails);
+                            }, function(response){
+                                console.log(response);
+                                $scope.error = true;
+                                $scope.launch('error');
+                            }
+                        );
                 }, function(response){
                         console.log(response);
                         $scope.error = true;
                         $scope.launch('error');
                     }
                 );
-                cartService.updateDetails($scope.order.stmpOrderDetailList).$promise.then(
-                    function(response){
-                        console.log('Save Order' + response);
-                        $scope.newDetails = response.resultado;
-                        $rootScope.order.stmpOrderDetailList = angular.copy($scope.newDetails);
-                    }, function(response){
-                        console.log(response);
-                        $scope.error = true;
-                        $scope.launch('error');
-                    }
-                );
+                
 
                 $rootScope.itemCount = 0;
                 console.log('id de la orden al final ' + $scope.newOrder + '|' + $rootScope.order);
