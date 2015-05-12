@@ -50,8 +50,9 @@
                 idShirt : item
             };
             $rootScope.order.stmpOrderDetailList.push(detail);
-            $cookieStore.put('order',$rootScope.order);
+            console.log($rootScope.order.stmpOrderDetailList.length);
         }
+        //$cookieStore.put('order',$rootScope.order);
         console.log('RESULT ORDER =>' + $rootScope.order.stmpOrderDetailList.length);
 		var itemCount = 0;
 		for(var i = 0 ; i < $rootScope.order.stmpOrderDetailList.length;i++){

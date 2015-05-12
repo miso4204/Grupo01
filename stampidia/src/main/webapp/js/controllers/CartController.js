@@ -3,8 +3,8 @@
 
     var CartController = function($rootScope, $scope, $cookieStore, $location,$dialogs, sessionService, cartService){
 
-        $rootScope.order = $cookieStore.get('order');
-        $scope.order = $cookieStore.get('order');
+        //$rootScope.order = $cookieStore.get('order');
+        //$scope.order = $cookieStore.get('order');
         console.log('order de COOKIE : '+JSON.stringify($rootScope.order));
 
         $scope.increaseQuantity = function(data){
