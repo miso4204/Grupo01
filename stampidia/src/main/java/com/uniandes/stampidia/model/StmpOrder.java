@@ -5,19 +5,14 @@
  */
 package com.uniandes.stampidia.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.io.Serializable;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Fetch;
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -30,7 +25,8 @@ import org.hibernate.annotations.Fetch;
 public class StmpOrder implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "order_seq", sequenceName = "order_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "order_seq")
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
@@ -39,15 +35,15 @@ public class StmpOrder implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
     @Column(name = "shipping_status")
     private boolean shippingStatus;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
     @Column(name = "payment_status")
     private boolean paymentStatus;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @NotNull
     @Column(name = "order_status")
     private boolean orderStatus;
@@ -131,7 +127,6 @@ public class StmpOrder implements Serializable {
         this.totalAmount = totalAmount;
     }
 
-    @JsonIgnore
     public List<StmpOrderDetail> getStmpOrderDetailList() {
         return stmpOrderDetailList;
     }
@@ -207,13 +202,13 @@ public class StmpOrder implements Serializable {
      * Metodo para calcular la cantidad total
      */
     public void calcTotalAmount(){
+        this.totalAmount = BigInteger.ZERO;
         if(this.stmpOrderDetailList != null
-                && !this.stmpOrderDetailList.isEmpty()){
+                && !this.stmpOrderDetailList.isEmpty()){        	
             for(StmpOrderDetail det : this.stmpOrderDetailList){
                 BigInteger quantity = BigInteger.valueOf(det.getQuantity());
                 this.totalAmount.add(det.getUnitValue().multiply(quantity));
             }
         }
-        this.totalAmount = BigInteger.ZERO;
     }
 }

@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.uniandes.stampidia.model.StmpShirt;
 import com.uniandes.stampidia.services.ShirtService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -39,7 +43,8 @@ public class ShirtController {
 		}else{
 			shirts = shirtService.getAllShirts();
 		}
-		ro.setResultado(shirts);
+		
+		ro.setResultado(ConvertObjetHelper.listToMap(shirts));
 		ro.setMensajeConsulta( Constantes.SUCCESS_RESULT.getDescription());
 		ro.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
 		ro.setTotalObjetos(shirts.size());
@@ -57,7 +62,7 @@ public class ShirtController {
         Resultado resultado = new Resultado();
         StmpShirt shirt = new StmpShirt();
         shirt = shirtService.addShirt(shirtText, shirtIdColor, shirtIdStyle, shirtIdSize, shirtIdStamp, shirtIdUser);
-        resultado.setResultado(shirt);
+        resultado.setResultado(ConvertObjetHelper.objectToMap(shirt));
         return resultado;
     }
 	
@@ -67,9 +72,19 @@ public class ShirtController {
 		Resultado ro = new Resultado();
 		StmpShirt shirt;
 		shirt = shirtService.getShirtById(shirtId);
-		ro.setResultado(shirt);
+		ro.setResultado(ConvertObjetHelper.objectToMap(shirt));
 		ro.setMensajeConsulta("shirtId:");
-		System.out.print("GetShirtById");
+		return ro;	
+	}
+	
+	@RequestMapping("/shirtService/social/{shirtId}")
+	public Resultado getSalesById(
+			@PathVariable("shirtId")Integer shirtId){
+		Resultado ro = new Resultado();
+		StmpShirt shirt;
+		shirt = shirtService.getSalesById(shirtId);
+		ro.setResultado(ConvertObjetHelper.objectToMap(shirt));
+		ro.setMensajeConsulta("shirtId:");
 		return ro;	
 	}
 }

@@ -1,16 +1,49 @@
 <section>
 	<div class="container">
 		<div class="row">
-				<input ng-model="highchartsNG.title.text">
-				<button ng-click="addSeries()">Add Series</button>
-				<button ng-click="addPoints()">Add Points to Random Series</button>
-				<button ng-click="removeRandomSeries()">Remove Random
-					Series</button>
-				<button ng-click="swapChartType()">Line/Bar</button>
-				<highchart id="chart1" config="highchartsNG"></highchart>
+				<highchart id="chart1" config="highchartsNGPeriod"></highchart>
 		</div>
-<!-- 		<div class="row"> -->
-<!-- 				<highchart id="chart2" config="highchartsNG2"></highchart> -->
-<!-- 		</div> -->
+
+		<div class="row">
+			<h2 class="title text-center">Report by Store Designs</h2>
+			<h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Stamp Id</th>
+							<th>Stamp AVG rating</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="rating in ratings">
+							<td>{{ rating[1] }}</td>
+							<td>{{ rating[0] }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</h5>
+		</div>
+		
+		<div class="row">
+			<h2 class="title text-center">Report Designs Rating by Artist</h2>
+			<h2> Artist Name </h2>
+			<input ng-model="artistName" ng-keyup="getReportRatingByDesignArtist()">
+			<h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Stamp Id</th>
+							<th>Stamp AVG rating</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="ratingArtist in ratingsArtist">
+							<td>{{ ratingArtist[1] }}</td>
+							<td>{{ ratingArtist[0] }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</h5>
+		</div>
 	</div>
 </section>

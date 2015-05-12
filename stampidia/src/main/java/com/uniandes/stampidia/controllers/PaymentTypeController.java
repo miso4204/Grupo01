@@ -13,8 +13,10 @@ import com.uniandes.stampidia.model.StmpOrder;
 import com.uniandes.stampidia.model.StmpPaymentType;
 import com.uniandes.stampidia.repos.OrderRepository;
 import com.uniandes.stampidia.repos.PaymentTypeRepository;
+import com.uniandes.stampidia.services.CartService;
 import com.uniandes.stampidia.services.PaymentTypeService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -26,8 +28,8 @@ public class PaymentTypeController {
 	@Autowired
 	private PaymentTypeService paymentTypeService;
 	
-    @Autowired
-    private OrderRepository orderRepository;
+	@Autowired
+	private CartService cartService;
     
 	@Autowired
 	private PaymentTypeRepository paymentTypeRepository;
@@ -41,7 +43,7 @@ public class PaymentTypeController {
 	public Resultado getPaymentTypes(){
 		Resultado ro = new Resultado();	
 		List<StmpPaymentType> paymentTypes = paymentTypeService.getAllPaymentTypes();
-		ro.setResultado(paymentTypes);
+		ro.setResultado(ConvertObjetHelper.listToMap(paymentTypes));
 		ro.setMensajeConsulta("Este es el resultado!");
 		ro.setTotalObjetos(paymentTypes.size());
 		return ro;
@@ -59,12 +61,13 @@ public class PaymentTypeController {
         //El id del metodo de pago CashOnDelivery es 1
         StmpPaymentType stmpPaymentType = paymentTypeRepository.findOne(1);
         if(orderId != null){
-            StmpOrder order = orderRepository.findOne(orderId);
+            StmpOrder order = cartService.getOrderById(orderId);
             
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(false);
-            resultado.setResultado(orderRepository.save(order));
+            cartService.save(order);
+            resultado.setResultado(ConvertObjetHelper.objectToMap(order));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
@@ -86,12 +89,13 @@ public class PaymentTypeController {
         //El id del metodo de pago PSE es 2
         StmpPaymentType stmpPaymentType = paymentTypeRepository.findOne(2);
         if(orderId != null){
-            StmpOrder order = orderRepository.findOne(orderId);
+            StmpOrder order = cartService.getOrderById(orderId);
             
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(true);
-            resultado.setResultado(orderRepository.save(order));
+            cartService.save(order);
+            resultado.setResultado(ConvertObjetHelper.objectToMap(order));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {
@@ -113,12 +117,13 @@ public class PaymentTypeController {
         //El id del metodo de pago Credit Card es 3
         StmpPaymentType stmpPaymentType = paymentTypeRepository.findOne(3);
         if(orderId != null){
-            StmpOrder order = orderRepository.findOne(orderId);
+            StmpOrder order = cartService.getOrderById(orderId);
             
             order.setIdPaymentType(stmpPaymentType);
             order.setOrderStatus(true);
             order.setPaymentStatus(true);
-            resultado.setResultado(orderRepository.save(order));
+            cartService.save(order);
+            resultado.setResultado(ConvertObjetHelper.objectToMap(order));
             resultado.setMensajeAccion(stmpPaymentType.getSuccessUrl());
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else {

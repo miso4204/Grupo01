@@ -99,36 +99,38 @@
 												<var>Color</var>
 											</not>
 											<conj>
-												<not>
-													<var>CashOnDelivery</var>
-												</not>
+												<var>ProductDesign</var>
 												<conj>
-													<not>
-														<var>ChangePassword</var>
-													</not>
+													<var>Size</var>
 													<conj>
 														<not>
-															<var>ChangeAddress</var>
+															<var>CashOnDelivery</var>
 														</not>
 														<conj>
-															<not>
-																<var>Reports</var>
-															</not>
+															<var>ChangePassword</var>
 															<conj>
-																<not>
-																	<var>SocialNetwork</var>
-																</not>
+																<var>ChangeAddress</var>
 																<conj>
 																	<not>
-																		<var>SpecialOffers</var>
+																		<var>Reports</var>
 																	</not>
 																	<conj>
 																		<not>
-																			<var>Scalability</var>
+																			<var>SocialNetwork</var>
 																		</not>
-																		<not>
-																			<var>Performance</var>
-																		</not>
+																		<conj>
+																			<not>
+																				<var>SpecialOffers</var>
+																			</not>
+																			<conj>
+																				<not>
+																					<var>Scalability</var>
+																				</not>
+																				<not>
+																					<var>Performance</var>
+																				</not>
+																			</conj>
+																		</conj>
 																	</conj>
 																</conj>
 															</conj>
@@ -158,36 +160,41 @@
 							<conj>
 								<var>Gallery</var>
 								<conj>
-									<var>Color</var>
+									<not>
+										<var>List</var>
+									</not>
 									<conj>
-										<not>
-											<var>Text</var>
-										</not>
+										<var>Color</var>
 										<conj>
-											<var>CashOnDelivery</var>
+											<not>
+												<var>Text</var>
+											</not>
 											<conj>
-												<var>ChangePassword</var>
+												<var>CashOnDelivery</var>
 												<conj>
-													<var>ChangeAddress</var>
+													<var>ChangePassword</var>
 													<conj>
-														<not>
-															<var>Reports</var>
-														</not>
+														<var>ChangeAddress</var>
 														<conj>
-															<var>SocialNetwork</var>
+															<not>
+																<var>Reports</var>
+															</not>
 															<conj>
-																<var>Facebook</var>
+																<var>SocialNetwork</var>
 																<conj>
-																	<var>Twitter</var>
+																	<var>Facebook</var>
 																	<conj>
-																		<not>
-																			<var>SpecialOffers</var>
-																		</not>
+																		<var>Twitter</var>
 																		<conj>
 																			<not>
-																				<var>Scalability</var>
+																				<var>SpecialOffers</var>
 																			</not>
-																			<var>Performance</var>
+																			<conj>
+																				<not>
+																					<var>Scalability</var>
+																				</not>
+																				<var>Performance</var>
+																			</conj>
 																		</conj>
 																	</conj>
 																</conj>

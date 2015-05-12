@@ -5,9 +5,11 @@ import com.uniandes.stampidia.model.StmpShirtRating;
 import com.uniandes.stampidia.repos.ShirtRatingRepository;
 import com.uniandes.stampidia.services.OfferService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +33,7 @@ public class SpecialOffersController {
             StmpOfert newOffer = offerService.saveSpecialOffer(specialOffer);
 
             if(newOffer != null){
-                resultado.setResultado(newOffer);
+                resultado.setResultado(ConvertObjetHelper.objectToMap(newOffer));
                 resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
             }else {
                 resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
@@ -54,7 +56,7 @@ public class SpecialOffersController {
             StmpOfert newOffer = offerService.saveSpecialOffer(specialOffer);
 
             if(newOffer != null){
-                resultado.setResultado(newOffer);
+                resultado.setResultado(ConvertObjetHelper.objectToMap(newOffer));
                 resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
             }else {
                 resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
@@ -67,40 +69,16 @@ public class SpecialOffersController {
         return resultado;
     }
 
-    @RequestMapping(value="/specialoffers/{id}",method= RequestMethod.GET)
-    public Resultado checkPromo(
-            @RequestParam(value = "id") Integer id){
+    @RequestMapping(value="/specialoffer",method= RequestMethod.GET)
+    public Resultado getSpecialOfferAvailable(){
         Resultado resultado = new Resultado();
 
-        if(id != null){
+        Object offer = offerService.getActiveSpecialOffer();
 
-            StmpOfert offer = offerService.getSpecialOffer(id);
-
-            if(offer != null){
-                resultado.setResultado(offer);
-                resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-            }else {
-                resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
-            }
-
-        }else {
-            resultado.setEstado(new Status(EStatusType.ERROR, Constantes.INVALID_PARAMS_RESULT.getDescription()));
-        }
-
-        return resultado;
-    }
-
-    @RequestMapping(value="/specialoffers",method= RequestMethod.GET)
-    public Resultado checkAllPromos(
-            @RequestParam(value = "id") Integer id){
-        Resultado resultado = new Resultado();
-
-        List<StmpOfert> offers = offerService.listAllOffers();
-
-        if(offers != null){
-            resultado.setResultado(offers);
+        if (offer != null) {
+            resultado.setResultado(offer);
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
-        }else {
+        } else {
             resultado.setEstado(new Status(EStatusType.ERROR, Constantes.ERROR_RESULT.getDescription()));
         }
 

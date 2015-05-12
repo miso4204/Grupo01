@@ -10,9 +10,15 @@ import com.uniandes.stampidia.model.StmpShirt;
 
 public interface ReportRepository extends JpaRepository<StmpShirt, Integer>{
 	
-	@Query(value="select s.id_stamp,count(1) from stmp_order o, stmp_order_detail d, stmp_shirt s, stmp_user u where o.id = d.id_order and d.id_shirt = s.id and o.order_status = false and o.id_user = u.id and u.username = :username group by s.id_stamp",nativeQuery=true)
-    List<Object[]> reportBySales(@Param("username") String username);
+    @Query(value="select to_char(o.date,'Mon'), extract(year from o.date), SUM(o.totalAmount) from StmpOrder o, StmpUser u where o.orderStatus = false and o.idUser = u.id and u.username = :username group by 1,2 order by to_date(to_char(o.date,'Mon'),'Mon') ASC")
+    List<Object[]> reportSalesByPeriod(@Param("username") String username);
     
-    @Query(value="select to_char(o.date,'Mon'), extract(year from o.date), SUM(o.totalAmount) from StmpOrder o, StmpUser u where o.orderStatus = false and o.idUser = u.id and u.username = :username group by 1,2")
-    List<Object[]> reportByPeriod(@Param("username") String username);
+    @Query(value="select to_char(o.date,'Mon'), extract(year from o.date), SUM(o.totalAmount) from StmpOrder o, StmpUser u where o.orderStatus = false and o.idUser = u.id and u.username = :username group by 1,2 order by to_date(to_char(o.date,'Mon'),'Mon') ASC")
+    List<Object[]> reportSalesByArtist(@Param("username") String username);
+    
+    @Query(value="select avg(d.valoration) as rating, d.id_stamp from stmp_stamp_rating d,stmp_stamp s,stmp_user u where d.id_stamp = s.id and s.id_artist_user = u.id group by d.id_stamp",nativeQuery=true)
+    List<Object[]> reportRatingDesigns();
+    
+    @Query(value="select avg(d.valoration) as rating, d.id_stamp from stmp_stamp_rating d,stmp_stamp s,stmp_user u where d.id_stamp = s.id and s.id_artist_user = u.id and u.username = :username group by d.id_stamp",nativeQuery=true)
+    List<Object[]> reportRatingDesignsByArtist(@Param("username") String username);
 }

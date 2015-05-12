@@ -1,0 +1,88 @@
+<section>
+    <div class="container">
+		<div class="row">					
+			<div class="col-sm">
+				<div class="search_box pull-right">
+					<input type="text" placeholder="Search" ng-model="search"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<h2>Category</h2>
+					<a></a>
+					<div class="panel-group category-products" id="accordian">
+						<!--category-productsr-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="" ng-click="listProducts()">All</a>
+								</h4>
+								<h4 class="panel-title" data-ng-repeat="category in categories">
+									<a href="" ng-click="selectCategory(category.id)">{{category.name}}</a>
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div class="shipping text-center">
+						<!--shipping-->
+						<img src="/stampidia/lib/bootstrap/images/home/shipping.jpg" alt="" />
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="col-sm-9 padding-right" >
+				<h2 class="title text-center">Products</h2>
+			    <div class="icons-mode-view">
+			    	    	
+				</div>
+			    <div class="features_list">
+					<div class="table-responsive cart_info">
+						<table class="table table-condensed">
+					  	  <thead>
+							<tr class="cart_menu">
+							  <td class="image">Image</td>
+							  <td class="description">Text</td>
+							  <td class="size">Size</td>
+						      <td class="style">Style</td>
+						   	  <td class="price">Price</td>
+							  <td class="total"></td>
+							  <td></td>
+							</tr>
+						  </thead>		
+					      <tbody>
+					       <tr data-ng-repeat="product in products | filter: search">
+				   		    <td class="cart_product">
+								<a href="#/product-details/{{product.id}}" >
+								<img src="http://cosmicbobo.com/images/PLAIN_WHT_01.jpg" height="100" width="100" class="img-responsive" />
+										<div class="project-overlay-small">
+											<img ng-src="{{product.idStamp.image}}" height="35" width="35" alt="" class="img-responsive" />										
+										</div>	
+	  					  	</td>
+						  	<td class="">
+								{{product.text }}
+	  					  	</td>
+	  					  	<td class="cart_price">
+								{{product.idSize.name}}
+	 					  	</td>
+				   		  	<td class="cart_price">
+								{{product.idStyle.name}}
+	 					  	</td>
+				   		    <td class="cart_total">
+								<p class="cart_total_price">{{product.idStamp.price + product.idStyle.price | currency : symbol : fractionSize}}</p>
+	  					  	</td>
+	  					  	 <td class="cart_total">
+								<a href="" class="btn btn-default add-to-cart" ng-click="addItemToCart(product)">
+										<i class="fa fa-shopping-cart"></i>Add to cart</a>
+	  					  	</td>
+					  	   </tr>
+					  	</tbody>
+						</table>
+			    	 </div>
+			</div>
+		</div>
+	</div>
+</section>
