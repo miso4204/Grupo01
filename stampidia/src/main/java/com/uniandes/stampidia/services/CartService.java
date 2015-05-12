@@ -114,6 +114,9 @@ public class CartService {
     public StmpOrder getOrderById(Integer orderId){
         return orderRepository.findOne(orderId);
     }
+    public StmpOrder save(StmpOrder order){
+    	return orderRepository.save(order);
+    }
 
     public List<StmpOrderDetail> getOrderDetailsByOrderId(Integer orderId){
         try {

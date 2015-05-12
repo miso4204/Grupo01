@@ -15,25 +15,40 @@
 	 * Endpoint base del api 
 	 * TODO se debe cambiar para produccion a la url definitiva
 	 */	
-	var reportByPeriod = $resource('/stampidia/rest/report_by_period',{},{
-	    period:{
+	var reportSalesByPeriod = $resource('/stampidia/rest/report/sales/period',{},{
+	    report:{
 		method:'GET'
 	    }
 	});
-	var reportBySales = $resource('/stampidia/rest/report_by_sales',{},{
-	    sales:{
+	var reportSalesByArtist = $resource('/stampidia/rest/report/sales/artist',{},{
+	    report:{
+		method:'GET'
+	    }
+	});
+	var reportDesign = $resource('/stampidia/rest/report/rating/designs',{},{
+	    report:{
+		method:'GET'
+	    }
+	});
+	var reportDesignByArtist = $resource('/stampidia/rest/report/rating/designs/artist',{},{
+	    report:{
 		method:'GET'
 	    }
 	});
 	
+	
 	return {
-	    sales : function(username){
-		console.log(username);
-	    	return reportBySales.sales({username:username});
+	    salesPeriod : function(username){
+		return reportSalesByPeriod.report({username:username});
 	    }, 
-	    period : function(username){
-		console.log(username);
-	    	return reportByPeriod.period({username:username});
+	    salesArtist : function(username){
+		return reportSalesByArtist.report({username:username});
+	    },
+	    ratingDesigns : function(){
+		return reportDesign.report();
+	    },
+	    ratingDesignsArtist : function(username){
+		return reportDesignByArtist.report({username:username});
 	    }
 	}
     };

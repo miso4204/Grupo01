@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.uniandes.stampidia.services.ReportService;
 import com.uniandes.stampidia.utilities.Resultado;
 
@@ -17,17 +16,31 @@ public class ReportsController {
 	private ReportService reportsService;
 
 	
-	@RequestMapping(value="/report_by_period",method=RequestMethod.GET)
-	public Resultado getReportByPeriod(@RequestParam(value="username", required = true) String username){
+	@RequestMapping(value="/report/sales/period",method=RequestMethod.GET)
+	public Resultado getReportSalesByPeriod(@RequestParam(value="username", required = true) String username){
 		Resultado resultado = new Resultado();
-		resultado.setResultado(reportsService.reportByPeriod(username));
+		resultado.setResultado(reportsService.reportSalesByPeriod(username));
 		return resultado;
 	}
 	
-	@RequestMapping(value="/report_by_sales",method=RequestMethod.GET)
-	public Resultado getReportBySales(@RequestParam(value="username", required = true) String username){
+	@RequestMapping(value="/report/sales/artist",method=RequestMethod.GET)
+	public Resultado getReportSalesByArtist(@RequestParam(value="username", required = true) String username){
 		Resultado resultado = new Resultado();
-		resultado.setResultado(reportsService.reportBySales(username));
+		resultado.setResultado(reportsService.reportSalesByArtist(username));
+		return resultado;
+	}
+        
+	@RequestMapping(value="/report/rating/designs",method=RequestMethod.GET)
+	public Resultado reportRatingDesigns(){
+		Resultado resultado = new Resultado();
+		resultado.setResultado(reportsService.reportRatingDesigns());
+		return resultado;
+	}
+	
+	@RequestMapping(value="/report/rating/designs/artist",method=RequestMethod.GET)
+	public Resultado reportRatingDesignsByArtist(String username){
+		Resultado resultado = new Resultado();
+		resultado.setResultado(reportsService.reportRatingDesignsByArtist(username));
 		return resultado;
 	}
 }

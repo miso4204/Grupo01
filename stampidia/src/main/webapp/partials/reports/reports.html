@@ -5,27 +5,41 @@
 		</div>
 
 		<div class="row">
-			<h2 class="title text-center">My Orders</h2>
+			<h2 class="title text-center">Report by Store Designs</h2>
 			<h5>
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>PAY METHOD</th>
-							<th>DATE</th>
-							<th>TOTAL AMOUNT</th>
-							<th>DETAILS</th>
+							<th>Stamp Id</th>
+							<th>Stamp AVG rating</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="order in orderData">
-							<td>{{ order.id }}</td>
-							<td>{{ order.idShippingType.name}}</td>
-							<td>{{ order.date }}</td>
-							<td>{{ order.totalAmount }}</td>
-							<td>
-							    <a ng-click="selectOrder(order.id)"><span class="glyphicon glyphicon-list-alt"></span></a>
-							</td>
+						<tr ng-repeat="rating in ratings">
+							<td>{{ rating[1] }}</td>
+							<td>{{ rating[0] }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</h5>
+		</div>
+		
+		<div class="row">
+			<h2 class="title text-center">Report Designs Rating by Artist</h2>
+			<h2> Artist Name </h2>
+			<input ng-model="artistName" ng-keyup="getReportRatingByDesignArtist()">
+			<h5>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Stamp Id</th>
+							<th>Stamp AVG rating</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="ratingArtist in ratingsArtist">
+							<td>{{ ratingArtist[1] }}</td>
+							<td>{{ ratingArtist[0] }}</td>
 						</tr>
 					</tbody>
 				</table>
