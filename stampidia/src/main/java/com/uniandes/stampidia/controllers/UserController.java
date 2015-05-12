@@ -4,6 +4,7 @@ import com.uniandes.stampidia.model.StmpUser;
 import com.uniandes.stampidia.services.PlanService;
 import com.uniandes.stampidia.services.UserService;
 import com.uniandes.stampidia.utilities.Constantes;
+import com.uniandes.stampidia.utilities.ConvertObjetHelper;
 import com.uniandes.stampidia.utilities.Resultado;
 import com.uniandes.stampidia.utilities.Status;
 import com.uniandes.stampidia.utilities.enums.EStatusType;
@@ -33,7 +34,7 @@ public class UserController {
         Resultado resultado = new Resultado();
 
         if(seller != null && seller.getId() != null){
-            resultado.setResultado(userService.updateSellerProfile(seller));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(userService.updateSellerProfile(seller)));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else{
@@ -49,7 +50,7 @@ public class UserController {
         Resultado resultado = new Resultado();
 
         if(id != null ){
-            resultado.setResultado(userService.findUserById(id));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(userService.findUserById(id)));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else{
@@ -67,7 +68,7 @@ public class UserController {
         Resultado resultado = new Resultado();
 
         if(buyer != null && buyer.getId() != null){
-            resultado.setResultado(userService.updateBuyerProfile(buyer));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(userService.updateBuyerProfile(buyer)));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else{
@@ -85,7 +86,7 @@ public class UserController {
 
         if(user != null){        
  	
-            resultado.setResultado(userService.createProfile(user));
+            resultado.setResultado(ConvertObjetHelper.objectToMap(userService.createProfile(user)));
 
             resultado.setEstado(new Status(EStatusType.OK, Constantes.SUCCESS_RESULT.getDescription()));
         }else{
