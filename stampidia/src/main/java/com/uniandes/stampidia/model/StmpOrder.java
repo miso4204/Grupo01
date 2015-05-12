@@ -204,7 +204,7 @@ public class StmpOrder implements Serializable {
     public void calcTotalAmount(){
         this.totalAmount = BigInteger.ZERO;
         if(this.stmpOrderDetailList != null
-                && !this.stmpOrderDetailList.isEmpty()){
+                && !this.stmpOrderDetailList.isEmpty()){        	
             for(StmpOrderDetail det : this.stmpOrderDetailList){
                 BigInteger quantity = BigInteger.valueOf(det.getQuantity());
                 this.totalAmount.add(det.getUnitValue().multiply(quantity));
