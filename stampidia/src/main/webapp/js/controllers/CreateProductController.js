@@ -3,11 +3,12 @@
 
     var CreateProductController = function($rootScope,$scope,$location,$dialogs,$timeout,$routeParams,stampService,shirtService,sizeService,colorService,shirtStyleService,sessionService,appSettings) {
 	$scope.animationsEnabled = true;
+	$scope.product = {stamp: ''};
+	$scope.product = {color: ''};
 	
 	$scope.getProduct = function(){	    
 	    stampService.getStamp($routeParams.stampId).$promise.then(
 		    function(response){
-			$scope.product = {stamp: ''};
 			$scope.product.stamp = response.resultado;
 		    }, function(response){
 			console.log(response);
@@ -45,6 +46,15 @@
 	
 	$scope.createProduct = function() {
 	    console.log($scope.product);
+	    if ($scope.product.text == null)
+		$scope.product.text = "defaut";
+	    
+	    if (angular.isUndefined($scope.product.color.id)){
+		$scope.product.color = {"id":5};
+	    }
+	    
+	    console.log(JSON.stringify($scope.product));
+	    
 	    shirtService.createShirt($scope.product.text,$scope.product.color.id,$scope.product.styleShirt.id,$scope.product.size.id, $scope.product.stamp.id,1).$promise.then(
 		    function(response){
 			$scope.product = {stamp: ''};
@@ -62,11 +72,11 @@
 	    
         }
 	$scope.cleanFrom = function() {
-	    $scope.product.size = "";
-	    $scope.product.color = "";
-	    $scope.product.styleShirt = "";
-	    $scope.product.text = "";
-	    $scope.createProductForm.product_text.$dirty = false;
+	    //$scope.product.size = "";
+	    //$scope.product.color = "";
+	    //$scope.product.styleShirt = "";
+	    //$scope.product.text = "";
+	    ///$scope.createProductForm.product_text.$dirty = false;
         }
 	$scope.launch = function(which){
 	    var dlg = null;

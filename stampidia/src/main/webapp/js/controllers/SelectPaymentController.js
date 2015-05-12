@@ -50,7 +50,7 @@
 	    } else if ($scope.paymenttype == 3) {
 		paymentMethod = "credit"
 	    }
-	    selectPaymentService.pay(paymentMethod, 1).$promise.then(function(response) {
+	    selectPaymentService.pay(paymentMethod, $rootScope.order.id).$promise.then(function(response) {
 		console.log(response);
 		$location.url('/'+response.mensajeAccion);
 	    }, function(response) {
