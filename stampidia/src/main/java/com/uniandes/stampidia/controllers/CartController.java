@@ -34,6 +34,7 @@ public class CartController {
 		if(!order.isNull()){
 
 			order.calcTotalAmount();
+            order.setStmpOrderDetailList(null);
 			StmpOrder newOrder = cartService.updateOrder(order);
 
 			if(newOrder != null){
