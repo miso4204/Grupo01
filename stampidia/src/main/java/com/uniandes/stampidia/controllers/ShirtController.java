@@ -62,7 +62,7 @@ public class ShirtController {
         Resultado resultado = new Resultado();
         StmpShirt shirt = new StmpShirt();
         shirt = shirtService.addShirt(shirtText, shirtIdColor, shirtIdStyle, shirtIdSize, shirtIdStamp, shirtIdUser);
-        resultado.setResultado(shirt);
+        resultado.setResultado(ConvertObjetHelper.objectToMap(shirt));
         return resultado;
     }
 	
@@ -72,7 +72,7 @@ public class ShirtController {
 		Resultado ro = new Resultado();
 		StmpShirt shirt;
 		shirt = shirtService.getShirtById(shirtId);
-		ro.setResultado(shirt);
+		ro.setResultado(ConvertObjetHelper.objectToMap(shirt));
 		ro.setMensajeConsulta("shirtId:");
 		return ro;	
 	}
@@ -83,7 +83,7 @@ public class ShirtController {
 		Resultado ro = new Resultado();
 		StmpShirt shirt;
 		shirt = shirtService.getSalesById(shirtId);
-		ro.setResultado(shirt);
+		ro.setResultado(ConvertObjetHelper.objectToMap(shirt));
 		ro.setMensajeConsulta("shirtId:");
 		return ro;	
 	}
