@@ -20,6 +20,7 @@
 	})
 
 	$scope.selectOrder=function(id){
+	    $rootScope.order=undefined;
 	    $rootScope.selectedOrder=id;
 	    $location.url('order-details');
 	}

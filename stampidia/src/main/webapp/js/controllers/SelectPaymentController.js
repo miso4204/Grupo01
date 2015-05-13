@@ -10,6 +10,7 @@
 	    console.log('bad' + response);
 	});
 	$scope.goHome = function() {
+	    $rootScope.selectedOrder=undefined;
 	    $location.url('/order-details');
 	};
 	$scope.deliveryDay = function() {
